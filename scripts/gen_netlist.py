@@ -156,7 +156,7 @@ add("C17", "15pF", "C_0603_1608Metric", {"1": "X1_XIN", "2": "GND"})
 add("C18", "15pF", "C_0603_1608Metric", {"1": "X1_XOUT", "2": "GND"})
 add("C22", "22pF", "C_0603_1608Metric", {"1": "X2_XI", "2": "GND"})
 add("C23", "22pF", "C_0603_1608Metric", {"1": "X2_XO", "2": "GND"})
-C["C27"]["footprint"] = "CP_Radial_D6.3mm_P2.5mm"
+C["C27"]["footprint"] = "C_1210_3225Metric"
 
 # --- test pads ------------------------------------------------------------
 for ref, net in (

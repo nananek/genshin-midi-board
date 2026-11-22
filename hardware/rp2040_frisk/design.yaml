@@ -524,10 +524,10 @@ bom:
     assembly: SMT
   - ref: "C27"
     value: "100uF 10V"
-    footprint: "CP_Radial_D6.3mm_P2.5mm"
-    lcsc: null
-    assembly: THT
-    note: "USB-A VBUS バルク。電解コンデンサ、手はんだ。極性に注意"
+    footprint: "C_1210_3225Metric"
+    lcsc: "C96123"
+    assembly: SMT
+    note: "USB-A VBUS バルク。1210 セラミック。LCSC 型番は発注前に再確認"
   - ref: "LED1"
     value: "red 0603"
     footprint: "0603"

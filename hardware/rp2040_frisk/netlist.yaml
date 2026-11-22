@@ -516,7 +516,7 @@ components:
       '2': GND
   C27:
     value: 100uF
-    footprint: CP_Radial_D6.3mm_P2.5mm
+    footprint: C_1210_3225Metric
     pins:
       '1': VBUS_USB_A
       '2': GND
