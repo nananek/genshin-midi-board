@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: all check test floorplan tables netlist kicad-shell erc drc kicad-check clean
+.PHONY: all check test floorplan tables netlist sch kicad-shell erc drc kicad-check clean
 
 all: check floorplan tables netlist
 
@@ -26,6 +26,9 @@ KICAD := ./scripts/kicad.sh
 
 kicad-shell:
 	$(KICAD) bash
+
+sch:
+	$(KICAD) python3 hardware/rp2040_frisk/scripts/gen_sch.py
 
 erc:
 	$(KICAD) kicad-cli sch erc --severity-all --output hardware/rp2040_frisk/erc.rpt $(KICAD_SCH)
