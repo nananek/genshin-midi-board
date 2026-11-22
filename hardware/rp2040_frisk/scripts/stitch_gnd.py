@@ -58,9 +58,6 @@ def gnd_pads(report):
 def main() -> int:
     board = pcbnew.LoadBoard(str(PCB))
     pads = gnd_pads(RPT)
-    if not pads:
-        print("no isolated GND pads")
-        return 0
     tracks = []
     for t in board.GetTracks():
         if isinstance(t, pcbnew.PCB_VIA):
@@ -78,6 +75,21 @@ def main() -> int:
         for pad in fp.Pads():
             all_pads.append((pad.GetBoundingBox(), pad.GetNetname()))
     vias = [t[1] for t in tracks if t[0] == "via"]
+
+    def legal(cx, cy):
+        if not (0.8 < cx < 56.8 and 0.8 < cy < 30.6):
+            return False
+        for bb, net in all_pads:
+            if rect_dist((cx, cy), bb) < 0.45 + 0.05:
+                return False
+        for kind, geo, net, half in tracks:
+            if net == "GND":
+                continue
+            d = (seg_dist((cx, cy), geo[0], geo[1]) if kind == "seg"
+                 else hypot(cx - geo[0], cy - geo[1]))
+            if d < half + CLEAR:
+                return False
+        return not any(hypot(cx - vx, cy - vy) < VIA_GAP for vx, vy in vias)
 
     added = 0
     for (x, y, ref, pin) in pads:
@@ -125,10 +137,54 @@ def main() -> int:
         vias.append(placed)
         added += 1
         print(f"  via for {ref}.{pin} at {placed[0]:.2f},{placed[1]:.2f}")
+    # second pass: every F.Cu pour island that holds no ground via gets one
+    gnd_vias = [(t.GetPosition().x, t.GetPosition().y) for t in board.GetTracks()
+                if isinstance(t, pcbnew.PCB_VIA) and t.GetNetname() == "GND"]
+    islands = 0
+    for z in board.Zones():
+        if z.GetLayer() != pcbnew.F_Cu or z.GetNetname() != "GND":
+            continue
+        poly = z.GetFilledPolysList(z.GetLayer())
+        for i in range(poly.OutlineCount()):
+            island = poly.Outline(i)
+            pts = island.CPoints()
+            if len(pts) < 3:
+                continue
+            xs = [p.x for p in pts]
+            ys = [p.y for p in pts]
+            cx, cy = sum(xs) / len(xs), sum(ys) / len(ys)
+            if any(island.PointInside(pcbnew.VECTOR2I(x, y)) for x, y in gnd_vias):
+                continue
+            spot = None
+            for k in range(len(pts)):
+                px, py = pts[k].x / 1e6, pts[k].y / 1e6
+                j = (k + len(pts) // 2) % len(pts)
+                qx, qy = pts[j].x / 1e6, pts[j].y / 1e6
+                mx, my = (px + qx) / 2, (py + qy) / 2
+                if island.PointInside(pcbnew.VECTOR2I(int(mx * 1e6), int(my * 1e6))) \
+                        and legal(mx, my):
+                    spot = (mx, my)
+                    break
+            if spot is None:
+                continue
+            islands += 1
+            v = pcbnew.PCB_VIA(board)
+            v.SetPosition(pcbnew.VECTOR2I(pcbnew.FromMM(spot[0]), pcbnew.FromMM(spot[1])))
+            v.SetWidth(pcbnew.FromMM(0.5))
+            v.SetDrill(pcbnew.FromMM(0.3))
+            v.SetViaType(pcbnew.VIATYPE_THROUGH)
+            v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+            v.SetNet(board.FindNet("GND"))
+            board.Add(v)
+            vias.append(spot)
+            gnd_vias.append((pcbnew.FromMM(spot[0]), pcbnew.FromMM(spot[1])))
+            added += 1
+
     board.BuildConnectivity()
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(str(PCB), board)
-    print(f"added {added} stitching vias for {len(pads)} isolated GND pads")
+    print(f"added {added} stitching vias for {len(pads)} isolated GND pads "
+          f"and {islands} pour islands")
     return 0
 
 
