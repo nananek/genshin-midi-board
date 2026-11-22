@@ -7,10 +7,13 @@
 | ファイル | 内容 |
 | --- | --- |
 | `design.yaml` | 基板、コネクタ、配置、スイッチ、ピン、BOM、製造ルールの正本 |
+| `netlist.yaml` | 83 部品、54 ネットのピン接続。回路図と PCB の共通ソース |
 | `pinmap.csv` | ピン割り当て（`design.yaml` から生成） |
 | `bom.csv` | BOM（`design.yaml` から生成） |
 | `placement.csv` | コネクタと主要部品の配置（`design.yaml` から生成） |
 | `floorplan.svg` | 配置・干渉検討図（`scripts/gen_floorplan.py` から生成） |
+| `rp2040_frisk.kicad_sch` | KiCad 10 回路図（次の工程で追加） |
+| `rp2040_frisk.kicad_pcb` | KiCad 10 基板（次の工程で追加） |
 
 ## 再生成
 
