@@ -174,8 +174,8 @@ USB_NETS = {n for n in (
     "USB_PC_DP", "USB_PC_DM", "USB_PC_DP_MCU", "USB_PC_DM_MCU",
     "USB_A_DP", "USB_A_DM", "USB_A_DP_MCU", "USB_A_DM_MCU",
     "USB_MIDI_DP", "USB_MIDI_DM", "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU")}
-POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0,
-               "+3V3": 0.5, "+1V1": 0.4}
+POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0}
+PLANE_WIDTH = {"+3V3": 0.2, "+1V1": 0.2}
 USB_ROUTE_ORDER = [
     "VBUS_PC", "VBUS_IPAD", "+5V", "VBUS_USB_A", "+1V1",
     "USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
@@ -195,6 +195,8 @@ USB_ROUTE_ORDER = [
 def rule_for(net):
     if net in POWER_WIDTH:
         return POWER_WIDTH[net], 0.2
+    if net in PLANE_WIDTH:
+        return PLANE_WIDTH[net], 0.127
     if net in USB_NETS:
         return 0.2, 0.127
     return 0.15, 0.127
@@ -377,8 +379,13 @@ def place_footprints(board, netlist):
         if ref in ("J1", "J3"):
             for pad in fp.Pads():
                 pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
-        # small GND pads on ICs cannot take two thermal spokes
-        if len(fp.Pads()) > 2:
+        # small SMD GND pads cannot host two thermal spokes
+        if len(fp.Pads()) <= 2:
+            for pad in fp.Pads():
+                if (pad.GetNetname() == "GND" and
+                        not pad.GetLayerSet().Contains(pcbnew.B_Cu)):
+                    pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
+        else:
             for pad in fp.Pads():
                 if (pad.GetNetname() == "GND" and
                         not pad.GetLayerSet().Contains(pcbnew.B_Cu)):
@@ -489,6 +496,8 @@ def route(board, netlist, fps):
             if net is None:
                 net = f"__nc_{ref}_{pin or 'npth'}"
             clr = rule_for(net)[1] if not net.startswith("__nc") else 0.127
+            if pad.GetDrillSize().x > 0:
+                clr = max(clr, 0.35)
             bb = pad.GetBoundingBox()
             layers = []
             if pad.GetLayerSet().Contains(pcbnew.F_Cu):
@@ -525,7 +534,8 @@ def route(board, netlist, fps):
                 best = min(connected, key=lambda j: math.hypot(
                     pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
                 if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=1000000 if net.startswith("QSPI") else 30):
+                                  via_cost=60 if net.startswith("QSPI") else 30,
+                                  max_expand=900000):
                     connected.append(i)
                 else:
                     remaining.append(i)
@@ -536,20 +546,27 @@ def route(board, netlist, fps):
 
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     report = {}
-    # USB data first: short, and they set the corridors
+
+    # 1. USB data: short, local, and they define the corridors
     for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
                 "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
                 "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
         report[net] = do_net(net)
 
-    # QSPI: keep on F.Cu, 0.15 mm
+    # 2. power distribution: it needs the wide corridors
+    for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V"):
+        w, _ = rule_for(net)
+        report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25])
+
+    # 3. QSPI flash bus, F.Cu only
     for net in ("QSPI_SS", "QSPI_SCLK", "QSPI_SD0", "QSPI_SD1", "QSPI_SD2", "QSPI_SD3"):
         report[net] = do_net(net)
 
-    # power distribution
-    for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V", "+1V1"):
-        w, _ = rule_for(net)
-        report[net] = do_net(net, [w, 0.5, 0.35, 0.25])
+    # 4. core rail and the crystals
+    report["+1V1"] = do_net("+1V1", [0.2, 0.15])
+    for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO",
+                "MIDI_UART_TX", "MIDI_UART_RX"):
+        report[net] = do_net(net, [0.15, 0.127])
 
     # +3V3 lives on the In2 plane: stub every pad to a via
     ok = fail = 0
@@ -563,8 +580,7 @@ def route(board, netlist, fps):
             fail += 1
     report["+3V3"] = (ok + 1, fail)
 
-    for net in ("MIDI_UART_TX", "MIDI_UART_RX", "X1_XIN", "X1_XOUT_MCU", "X1_XOUT",
-                "X2_XI", "X2_XO", "CH345_RST", "CH345_V3",
+    for net in ("CH345_RST", "CH345_V3",
                 "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
                 "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
                 "UART0_TX", "UART0_RX", "SWCLK", "SWDIO",
@@ -574,31 +590,36 @@ def route(board, netlist, fps):
 
     # stitching vias in whatever free space is left
     stitched = 0
+    guard = [router._dilate(int.from_bytes(bytes(router.copper[0]), "little"), 7),
+             router._dilate(int.from_bytes(bytes(router.copper[1]), "little"), 7)]
+    edge = router.edge_mask(0.5)
+
+    def gnd_via(x, y):
+        nonlocal stitched
+        if not (0.8 < x < 56.8 and 0.8 < y < 30.6):
+            return False
+        i = router.idx(router.cx(x), router.cy(y))
+        bit = 0xFF << (8 * i)
+        if (guard[0] & bit) or (guard[1] & bit) or router.padguard[i] or edge[i]:
+            return False
+        if not router.commit_via("GND", (x, y)):
+            return False
+        disc = bytearray(router.n)
+        router.stamp_disc(disc, x, y, 0.7)
+        for lay in (0, 1):
+            guard[lay] |= int.from_bytes(bytes(disc), "little")
+        stitched += 1
+        return True
+
     # GND vias next to the RP2040 thermal pad, outside the exposed pad
     for dx, dy in ((2.2, 2.2), (-2.2, 2.2), (2.2, -2.2), (-2.2, -2.2),
-                   (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6)):
-        x, y = 20.0 + dx, 12.5 + dy
-        i = router.idx(router.cx(x), router.cy(y))
-        if router.copper[0][i] or router.copper[1][i] or router.padguard[i]:
-            continue
-        if router.commit_via("GND", (x, y)):
-            stitched += 1
-    edge = router.edge_mask(0.5)
-    stitch_guard = [
-        int.from_bytes(router._dilate(
-            int.from_bytes(bytes(router.copper[0]), "little"), 4).to_bytes(router.n, "little"), "little"),
-        int.from_bytes(router._dilate(
-            int.from_bytes(bytes(router.copper[1]), "little"), 4).to_bytes(router.n, "little"), "little")]
+                   (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6),
+                   (3.0, 1.2), (-3.0, -1.2), (1.2, 3.0), (-1.2, -3.0)):
+        gnd_via(20.0 + dx, 12.5 + dy)
     for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 30.5):
         for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
                   50.0, 56.7):
-            i = router.idx(router.cx(x), router.cy(y))
-            if (stitch_guard[0] >> (8 * i)) & 0xFF or (stitch_guard[1] >> (8 * i)) & 0xFF:
-                continue
-            if router.padguard[i] or edge[i]:
-                continue
-            router.commit_via("GND", (x, y))
-            stitched += 1
+            gnd_via(x, y)
     print(f"GND stitching vias: {stitched}", flush=True)
 
     # QFN-56 escapes use the 0.127 mm minimum width
@@ -621,7 +642,7 @@ def route(board, netlist, fps):
         ni = board.FindNet(net)
         for item in geom:
             if item[0] == "trk":
-                _, layer, p0, p1, width = item
+                _, layer, p0, p1, width, _extra = item
                 t = pcbnew.PCB_TRACK(board)
                 t.SetStart(pcbnew.VECTOR2I(MM(p0[0]), MM(p0[1])))
                 t.SetEnd(pcbnew.VECTOR2I(MM(p1[0]), MM(p1[1])))
@@ -758,7 +779,9 @@ def main(argv=None):
     filler.Fill(board.Zones())
     pcbnew.SaveBoard(args.out, board)
     write_stackup(str(args.out))
-    write_project(str(Path(args.out).with_suffix(".kicad_pro")))
+    pro = Path(args.out).with_suffix(".kicad_pro")
+    if not pro.exists():
+        write_project(str(pro))
     print(f"wrote {args.out}")
     return 0
 
