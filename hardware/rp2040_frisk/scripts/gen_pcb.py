@@ -573,15 +573,15 @@ def route(board, netlist, fps):
     # 3b. power: wide corridors, after the USB pair has its lanes
     for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V"):
         w, _ = rule_for(net)
-        report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25])
+        report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
     # 4. switches and debug pads: they may jog to B.Cu to pass the switch rows
     for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
                 "SWCLK", "SWDIO", "RUN"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=14)
+        report[net] = do_net(net, [0.15, 0.127], via_cost=8)
 
     for net in ("UART0_TX", "UART0_RX"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=12)
+        report[net] = do_net(net, [0.15, 0.127], via_cost=6)
 
     for net in ("MIDI_UART_TX", "MIDI_UART_RX"):
         report[net] = do_net(net, [0.15, 0.127])
@@ -602,7 +602,7 @@ def route(board, netlist, fps):
                 "STATUS_LED", "LED_A", "BOOTSEL",
                 "TPS_EN", "TPS_ILIM", "TPS_FAULT",
                 "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
-        report[net] = do_net(net, [0.15, 0.127])
+        report[net] = do_net(net, [0.15, 0.127], via_cost=6)
 
     # stitching vias in whatever free space is left
     stitched = 0
