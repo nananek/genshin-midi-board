@@ -24,6 +24,11 @@ KICAD_SCH := hardware/rp2040_frisk/rp2040_frisk.kicad_sch
 KICAD_PCB := hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
 KICAD := ./scripts/kicad.sh
 
+PCB_GEN := hardware/rp2040_frisk/scripts/gen_pcb.py
+
+pcb:
+	$(KICAD) python3 -u $(PCB_GEN)
+
 kicad-shell:
 	$(KICAD) bash
 
