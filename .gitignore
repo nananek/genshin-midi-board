@@ -1,6 +1,7 @@
 .tmp/
 __pycache__/
 *.pyc
+*.kicad_prl
 
 # firmware build outputs
 /firmware/build/

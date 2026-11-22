@@ -1,0 +1,13 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "rp2040_frisk")(type "KiCad")(uri "${KIPRJMOD}/lib/rp2040_frisk.pretty")(options "")(descr "RP2040 frisk project footprints"))
+	(lib (name "Capacitor_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Capacitor_SMD.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Capacitor_THT")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Capacitor_THT.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Crystal")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Crystal.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Diode_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Diode_SMD.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "LED_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/LED_SMD.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Package_DFN_QFN")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Package_DFN_QFN.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Package_SO")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Package_SO.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Package_TO_SOT_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Package_TO_SOT_SMD.pretty")(options "")(descr "official KiCad footprints"))
+	(lib (name "Resistor_SMD")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/Resistor_SMD.pretty")(options "")(descr "official KiCad footprints"))
+)
