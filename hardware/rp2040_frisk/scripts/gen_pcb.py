@@ -76,7 +76,7 @@ PLACEMENT = {
     "J3": (43.0, 2.4, 180),
     "J2": (29.5, 28.0, 180),
     "U1": (20.0, 12.5, 270),
-    "U2": (30.5, 12.5, 0),
+    "U2": (30.5, 12.0, 90),
     "U3": (44.0, 12.5, 0),
     "U4": (27.0, 20.1, 0),
     "U5": (18.0, 20.2, 0),
@@ -96,19 +96,19 @@ PLACEMENT = {
     # left hand column (J1 / CC / VBUS_PC)
     "R1": (9.55, 9.5, 90),
     "R2": (9.55, 12.7, 90),
-    "R5": (9.55, 15.9, 90),
-    "R6": (9.55, 19.1, 90),
+    "R5": (50.4, 26.9, 0),
+    "R6": (53.7, 26.9, 0),
     "C24": (9.55, 22.3, 90),
     # crystal X1 group and DVDD/IOVDD decoupling
     "C17": (11.3, 16.8, 90),
     "R14": (13.7, 16.8, 90),
     "C3": (11.3, 19.9, 90),
     "C18": (13.7, 19.9, 90),
-    "C8": (12.0, 22.5, 0),
+    "C8": (53.7, 24.4, 0),
     # row under the RP2040
-    "R3": (16.7, 17.5, 0),
-    "R4": (19.8, 17.5, 0),
-    "C14": (23.0, 17.5, 0),
+    "R3": (16.05, 17.5, 0),
+    "R4": (19.3, 17.5, 0),
+    "C14": (50.4, 28.6, 0),
     "C1": (27.8, 17.5, 0),
     "C2": (25.4, 16.6, 90),
     # TPS2553 support
@@ -119,7 +119,7 @@ PLACEMENT = {
     "R17": (35.9, 14.05, 0),
     "R18": (35.9, 15.75, 0),
     # single column right of U4
-    "R12": (31.0, 16.13, 0),
+    "R12": (34.2, 17.8, 0),
     "C4": (31.0, 17.8, 0),
     "C26": (31.0, 19.47, 0),
     "R15": (31.0, 21.05, 0),
@@ -518,7 +518,7 @@ def route(board, netlist, fps):
             out.append((TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), layers))
         return out
 
-    def do_net(net, widths=None):
+    def do_net(net, widths=None, via_cost=None):
         if net in skip:
             return 0, len(endpoints(net)) - 1
         pts = endpoints(net)
@@ -533,9 +533,10 @@ def route(board, netlist, fps):
             for i in todo:
                 best = min(connected, key=lambda j: math.hypot(
                     pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
+                vc = via_cost if via_cost is not None else (
+                    60 if net.startswith("QSPI") else 30)
                 if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=60 if net.startswith("QSPI") else 30,
-                                  max_expand=900000):
+                                  via_cost=vc, max_expand=900000):
                     connected.append(i)
                 else:
                     remaining.append(i)
@@ -544,8 +545,24 @@ def route(board, netlist, fps):
                 break
         return len(connected), len(todo)
 
+    # U1 pin 19 is ground: strap it into the exposed pad before routing so the
+    # signal escapes have to go around it (it is inside the QFN footprint)
+    router.commit_track("GND", "F", (16.5625, 11.5), (18.45, 11.5), 0.2, 0.0)
+
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     report = {}
+
+    # 0. the core rail: short pins but two caps sit far right, so it needs
+    #    a clean corridor before the signal nets take it
+    report["+1V1"] = do_net("+1V1", [0.2, 0.15])
+
+    # 0b. QSPI: six short nets between U1 and the flash, no vias
+    for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
+        report[net] = do_net(net)
+
+    # 0c. crystals: short, and they must hug XIN/XOUT
+    for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
+        report[net] = do_net(net, [0.15, 0.127])
 
     # 1. USB data: short, local, and they define the corridors
     for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
@@ -553,19 +570,19 @@ def route(board, netlist, fps):
                 "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
         report[net] = do_net(net)
 
+    # 1b. the left/bottom GPIO nets: long, and they prefer B.Cu, which keeps
+    #     them out of the F.Cu USB corridors
+    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
+                "SWCLK", "SWDIO", "RUN", "UART0_TX", "UART0_RX"):
+        report[net] = do_net(net, [0.15, 0.127])
+
     # 2. power distribution: it needs the wide corridors
     for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V"):
         w, _ = rule_for(net)
         report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25])
 
-    # 3. QSPI flash bus, F.Cu only
-    for net in ("QSPI_SS", "QSPI_SCLK", "QSPI_SD0", "QSPI_SD1", "QSPI_SD2", "QSPI_SD3"):
-        report[net] = do_net(net)
-
     # 4. core rail and the crystals
-    report["+1V1"] = do_net("+1V1", [0.2, 0.15])
-    for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO",
-                "MIDI_UART_TX", "MIDI_UART_RX"):
+    for net in ("MIDI_UART_TX", "MIDI_UART_RX"):
         report[net] = do_net(net, [0.15, 0.127])
 
     # +3V3 lives on the In2 plane: stub every pad to a via
@@ -581,9 +598,7 @@ def route(board, netlist, fps):
     report["+3V3"] = (ok + 1, fail)
 
     for net in ("CH345_RST", "CH345_V3",
-                "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
-                "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
-                "UART0_TX", "UART0_RX", "SWCLK", "SWDIO",
+                "STATUS_LED", "LED_A", "BOOTSEL",
                 "TPS_EN", "TPS_ILIM", "TPS_FAULT",
                 "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
         report[net] = do_net(net, [0.15, 0.127])
