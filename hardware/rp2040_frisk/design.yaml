@@ -506,7 +506,7 @@ bom:
     footprint: "0603"
     lcsc: "C14675"
     assembly: SMT
-  - ref: "R12"
+  - ref: "R12,R19"
     value: "10k"
     footprint: "0603"
     lcsc: "C25744"

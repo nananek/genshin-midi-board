@@ -128,11 +128,12 @@ add("R10", "100k", "R_0603_1608Metric", {"1": "TPS_EN", "2": "GND"})
 add("R11", "100k", "R_0603_1608Metric", {"1": "TPS_FAULT", "2": "+3V3"})
 add("R12", "10k", "R_0603_1608Metric", {"1": "QSPI_SS", "2": "+3V3"})
 add("R13", "1k", "R_0603_1608Metric", {"1": "STATUS_LED", "2": "LED_A"})
-add("R14", "1k", "R_0603_1608Metric", {"1": "X1_XOUT_MCU", "2": "X1_XIN"})
+add("R14", "1k", "R_0603_1608Metric", {"1": "X1_XOUT_MCU", "2": "X1_XOUT"})
 add("R15", "1k", "R_0603_1608Metric", {"1": "QSPI_SS", "2": "BOOTSEL"})
 add("R16", "100k", "R_0603_1608Metric", {"1": "CH345_RST", "2": "+5V"})
 add("R17", "22R", "R_0603_1608Metric", {"1": "USB_MIDI_DP_MCU", "2": "USB_MIDI_DP"})
 add("R18", "22R", "R_0603_1608Metric", {"1": "USB_MIDI_DM_MCU", "2": "USB_MIDI_DM"})
+add("R19", "10k", "R_0603_1608Metric", {"1": "RUN", "2": "+3V3"})
 
 # --- capacitors -----------------------------------------------------------
 caps = {

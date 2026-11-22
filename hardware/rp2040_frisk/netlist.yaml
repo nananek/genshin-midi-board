@@ -358,7 +358,7 @@ components:
     footprint: R_0603_1608Metric
     pins:
       '1': X1_XOUT_MCU
-      '2': X1_XIN
+      '2': X1_XOUT
   R15:
     value: 1k
     footprint: R_0603_1608Metric
@@ -383,6 +383,12 @@ components:
     pins:
       '1': USB_MIDI_DM_MCU
       '2': USB_MIDI_DM
+  R19:
+    value: 10k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': RUN
+      '2': +3V3
   C1:
     value: 1uF
     footprint: C_0603_1608Metric
@@ -647,6 +653,7 @@ nets:
   - SW4.3
   - R11.2
   - R12.2
+  - R19.2
   - C1.1
   - C4.1
   - C5.1
@@ -800,6 +807,7 @@ nets:
   - R15.1
   RUN:
   - U1.26
+  - R19.1
   - TP6.1
   STATUS_LED:
   - U1.37
@@ -920,10 +928,10 @@ nets:
   X1_XIN:
   - U1.20
   - X1.1
-  - R14.2
   - C17.1
   X1_XOUT:
   - X1.3
+  - R14.2
   - C18.1
   X1_XOUT_MCU:
   - U1.21
