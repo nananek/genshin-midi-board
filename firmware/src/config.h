@@ -107,45 +107,16 @@
 #endif
 
 // ---------------------------------------------------------------------------
-//  予備スイッチ (任意)
-//  旧ボード2のサステインスイッチを、PIO-USB MIDI-HID ガジェット側の
-//  予備入力へ移したもの。既定では状態を読むだけで MIDI へは送らない。
-//  SPARE_SWITCH_CC を 0..127 にすると、エッジでその CC を CH345 へ送る
-//  (例: 64 にすると従来のサステインと同じ動作)。
-//  既定配線: GP27 ↔ GND (内部プルアップ、アクティブ LOW)。
-// ---------------------------------------------------------------------------
-#ifndef SPARE_SWITCH_ENABLE
-#define SPARE_SWITCH_ENABLE 1
-#endif
-#ifndef SPARE_SWITCH_PIN
-#define SPARE_SWITCH_PIN 27
-#endif
-#ifndef SPARE_SWITCH_ACTIVE_LEVEL
-#define SPARE_SWITCH_ACTIVE_LEVEL 0
-#endif
-#ifndef SPARE_SWITCH_DEBOUNCE_MS
-#define SPARE_SWITCH_DEBOUNCE_MS 20
-#endif
-// -1 = MIDI へ送らない (純粋な予備入力)。0..127 = その CC を送る。
-#ifndef SPARE_SWITCH_CC
-#define SPARE_SWITCH_CC (-1)
-#endif
-// SPARE_SWITCH_CC を送るときの MIDI チャンネル (0-indexed、既定 0 = ch1)。
-#ifndef SPARE_SWITCH_MIDI_CHANNEL
-#define SPARE_SWITCH_MIDI_CHANNEL 0
-#endif
-
-// ---------------------------------------------------------------------------
-//  サステインスイッチ (SW5)
-//  GP26 ↔ GND のトグルスイッチ (内部プルアップ、アクティブ LOW)。
+//  サステインスイッチ (SW3)
+//  GP27 ↔ GND のトグルスイッチ (内部プルアップ、アクティブ LOW)。
 //  押下で CC64=127、離すと CC64=0 を CH345 へ送る (20 ms デバウンス)。
-//  ピンとデバウンス時間の正本は board_pins.h。
+//  ピンとデバウンス時間の正本は board_pins.h。GP26 は未使用。
 // ---------------------------------------------------------------------------
 #ifndef SUSTAIN_SWITCH_ENABLE
 #define SUSTAIN_SWITCH_ENABLE 1
 #endif
 #ifndef SUSTAIN_SWITCH_PIN
-#define SUSTAIN_SWITCH_PIN 26
+#define SUSTAIN_SWITCH_PIN 27
 #endif
 #ifndef SUSTAIN_SWITCH_ACTIVE_LEVEL
 #define SUSTAIN_SWITCH_ACTIVE_LEVEL 0

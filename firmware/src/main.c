@@ -15,7 +15,6 @@
 #include "midi_uart.h"
 #include "mirror_filter_switch.h"
 #include "reset_button.h"
-#include "spare_switch.h"
 #include "status_led.h"
 #include "sustain_switch.h"
 
@@ -101,7 +100,6 @@ int main(void) {
     midi_uart_init();
     hid_mute_init();
     mirror_filter_switch_init();
-    spare_switch_init();
     sustain_switch_init();
     reset_button_init();
     status_led_init();
@@ -132,22 +130,7 @@ int main(void) {
             reassert_held_notes();
         }
 
-        // --- 予備スイッチ: 既定では状態を読むだけ。SPARE_SWITCH_CC を
-        //     設定すると CH345 経由で CC を送る ---
-        spare_switch_edge_t spare_edge = spare_switch_poll();
-        if (spare_edge != SPARE_SWITCH_NO_CHANGE) {
-#if SPARE_SWITCH_CC >= 0
-            uint8_t value = (spare_edge == SPARE_SWITCH_ENTER) ? 127u : 0u;
-            midi_uart_send_cc(SPARE_SWITCH_MIDI_CHANNEL,
-                              (uint8_t)SPARE_SWITCH_CC, value);
-            printf("[spare] CC%d=%u\r\n", SPARE_SWITCH_CC, value);
-#else
-            printf("[spare] %s\r\n",
-                   spare_edge == SPARE_SWITCH_ENTER ? "ON" : "OFF");
-#endif
-        }
-
-        // --- サステインスイッチ: CC64=127 / 0 を CH345 へ ---
+        // --- サステインスイッチ (SW3): CC64=127 / 0 を CH345 へ ---
         sustain_switch_poll();
 
         // --- MIDI リセットボタン: CC123/CC121 を全 16ch へ ---

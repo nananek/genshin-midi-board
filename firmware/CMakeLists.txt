@@ -65,7 +65,6 @@ add_executable(${PROJECT_NAME}
     src/note_mapper.c
     src/nkro_report.c
     src/reset_button.c
-    src/spare_switch.c
     src/status_led.c
     src/sustain_switch.c
 
