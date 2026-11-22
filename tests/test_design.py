@@ -61,16 +61,15 @@ class BoardTests(unittest.TestCase):
         self.assertEqual(len(pins), len(set(pins)))
         self.assertEqual(len(gpios), len(set(gpios)))
 
-    def test_six_switches_match_the_original_implementation(self) -> None:
+    def test_five_switches_match_the_original_implementation(self) -> None:
         switches = {s["ref"]: s for s in DESIGN["switches"]}
-        self.assertEqual(set(switches), {"SW1", "SW2", "SW3", "SW4", "SW5", "SW6"})
-        self.assertEqual(sum(1 for s in switches.values() if s["type"] == "slide"), 5)
+        self.assertEqual(set(switches), {"SW1", "SW2", "SW3", "SW4", "SW6"})
+        self.assertEqual(sum(1 for s in switches.values() if s["type"] == "slide"), 4)
         self.assertEqual(sum(1 for s in switches.values() if s["type"] == "tact"), 1)
         self.assertIsNone(switches["SW4"]["gpio"])
         self.assertEqual(switches["SW1"]["gpio"], 28)
         self.assertEqual(switches["SW2"]["gpio"], 29)
         self.assertEqual(switches["SW3"]["gpio"], 27)
-        self.assertEqual(switches["SW5"]["gpio"], 26)
         self.assertEqual(switches["SW6"]["gpio"], 14)
 
     def test_smt_bom_has_lcsc_parts(self) -> None:

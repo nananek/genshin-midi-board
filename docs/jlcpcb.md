@@ -108,7 +108,7 @@ RP2040 の QFN-56 は 0.4 mm ピッチです。パッド間に配線を通さず
 ### 手はんだ（THT）
 
 - J2: USB-A 5075AR-04-WH（Akizuki 100160）
-- SW1-SW5: NKK 115643（Akizuki 115643）
+- SW1-SW4: NKK 115643（Akizuki 115643）
 - SW6: DTS-63-N-V-BLK（Akizuki 103647）
 - C27: 100 uF 電解コンデンサ
 

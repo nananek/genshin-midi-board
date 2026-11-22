@@ -33,7 +33,7 @@ add("U1", "RP2040", "QFN-56_7x7mm_P0.4mm", {
     "22": "+3V3", "23": "+1V1", "24": "SWCLK", "25": "SWDIO", "26": "RUN",
     "27": None, "28": None, "29": None, "30": None, "31": None, "32": None,
     "33": "+3V3", "34": None, "35": None, "36": None, "37": "STATUS_LED",
-    "38": "SW5_SUSTAIN", "39": "SW3_SPARE", "40": "SW1_MUTE", "41": "SW2_LYRE",
+    "38": None, "39": "SW3_SUSTAIN", "40": "SW1_MUTE", "41": "SW2_LYRE",
     "42": "+3V3", "43": "+3V3", "44": "+3V3", "45": "+1V1",
     "46": "USB_PC_DM_MCU", "47": "USB_PC_DP_MCU", "48": "+3V3", "49": "+3V3",
     "50": "+1V1", "51": "QSPI_SD3", "52": "QSPI_SCLK", "53": "QSPI_SD0",
@@ -109,7 +109,7 @@ add("D2", "BAT54WS", "D_SOD-323", {"1": "+5V", "2": "VBUS_IPAD"})
 add("LED1", "KT-0603R", "LED_0603_1608Metric", {"1": "GND", "2": "LED_A"})
 
 # --- switches -------------------------------------------------------------
-for ref, net in (("SW1", "SW1_MUTE"), ("SW2", "SW2_LYRE"), ("SW3", "SW3_SPARE"), ("SW5", "SW5_SUSTAIN")):
+for ref, net in (("SW1", "SW1_MUTE"), ("SW2", "SW2_LYRE"), ("SW3", "SW3_SUSTAIN")):
     add(ref, "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": net, "3": "GND"})
 add("SW4", "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": "TPS_EN", "3": "+3V3"})
 add("SW6", "DTS-63-N-V-BLK", "SW_TACT_Akizuki_DTS63", {"1": "GND", "2": "GND", "3": "SW6_RESET", "4": "SW6_RESET"})

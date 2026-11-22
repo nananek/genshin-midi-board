@@ -140,8 +140,7 @@ RP2040 のサーマルパッド内にはビアを置きません。F.Cu の GND 
 | native USB D- | 46 | - | USB_PC_DM | 27 Ω → U7 → J1 D- |
 | 原神モード SW1 | 40 | GP28 | SW1_MUTE | SW1 pin 2 |
 | 楽器モード SW2 | 41 | GP29 | SW2_LYRE | SW2 pin 2 |
-| 予備 SW3 | 39 | GP27 | SW3_SPARE | SW3 pin 2 |
-| サステイン SW5 | 38 | GP26 | SW5_SUSTAIN | SW5 pin 2 |
+| サステイン SW3 | 39 | GP27 | SW3_SUSTAIN | SW3 pin 2 |
 | MIDI リセット SW6 | 17 | GP14 | SW6_RESET | SW6 pin 3/4 |
 | ステータス LED | 37 | GP25 | STATUS_LED | 1 kΩ → LED1 → GND |
 | デバッグ UART TX | 2 | GP0 | UART0_TX | TP1 |
@@ -160,9 +159,8 @@ GPIO6-11、GPIO15-24 は未使用です。テストパッドか将来の拡張�
 | --- | --- | --- | --- | --- |
 | SW1 | NKK 115643 | 原神モード | GP28 ↔ GND | ON で NKRO HID をミュート。UART の MIDI は継続 |
 | SW2 | NKK 115643 | 楽器モード | GP29 ↔ GND | ON でスメール音階に切り替え |
-| SW3 | NKK 115643 | 予備 | GP27 ↔ GND | 状態を読むだけ。設定で CC を送れる |
+| SW3 | NKK 115643 | サステイン | GP27 ↔ GND | ON で CC64=127、OFF で CC64=0 |
 | SW4 | NKK 115643 | USB-A VBUS | TPS2553 EN | ON で USB-A へ 5 V を供給 |
-| SW5 | NKK 115643 | サステイン | GP26 ↔ GND | ON で CC64=127、OFF で CC64=0 |
 | SW6 | DTS-63-N-V-BLK | MIDI リセット | GP14 ↔ GND | 押下で CC123 と CC121 を全チャンネルへ送る |
 
 スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW6 は 4 ピンの片側 2 本を GND、反対側 2 本を GP14 に束ねます。
@@ -193,9 +191,8 @@ J1/J3 のコートヤードは基板左右端から 8.68 mm / 9.28 mm 内側に�
 ### スイッチ
 
 - SW1 / SW2: 左短辺、y=8.0 / 22.0、アクチュエータは左
-- SW3: 右短辺、y=8.0、アクチュエータは右
+- SW3: 右短辺、y=8.0、アクチュエータは右。サステインに使う
 - SW4: 下長辺の左寄り、x=15.0、アクチュエータは下
-- SW5: 下長辺の右寄り、x=48.0、アクチュエータは下
 - SW6: 上長辺の中央、x=28.8、タクトの押し子は上
 
 SW6 は J1 と J3 の間の 18 mm の隙間に置きます。USB-C ケーブルの樹脂部は J1/J3 の中心から約 6 mm まで広がるため、中央のタクトには触れません。
@@ -253,7 +250,7 @@ USB は Full-Speed（12 Mbps）なのでインピーダンス制御は必須で�
 | U6-U8 | USBLC6-2SC6 | C7519 | SMT |
 | J1/J3 | TYPE-C-31-M-12 | C165948 | SMT |
 | J2 | USB-A 5075AR-04-WH | - | THT |
-| SW1-SW5 | NKK 115643 | - | THT |
+| SW1-SW4 | NKK 115643 | - | THT |
 | SW6 | DTS-63-N-V-BLK | - | THT |
 
 AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF 電解コンデンサは発注前に再確認します。
@@ -285,7 +282,7 @@ AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF 電解コンデンサは発注
 4. 3 和音以上を弾いて、PC 側で全キーが同時に押される
 5. 黒鍵が無視される
 6. SW1 で HID がミュートされ、SW2 で音階が変わる
-7. SW5 で CC64 が送られ、SW6 で CC123/CC121 が送られる
+7. SW3 で CC64 が送られ、SW6 で CC123/CC121 が送られる
 8. SW4 を OFF にすると microKEY2 の VBUS が落ちる
 9. PC と iPad の片方だけ給電しても動作する
 10. キーボードを抜き差しして、HID の全キーが解放される
@@ -396,7 +393,6 @@ U2 pin8 は +3V3、C16 100 nF。pin4 は GND。
 | --- | --- |
 | SW1 | pin2 → GP28、pin3 → GND、pin1 → NC |
 | SW2 | pin2 → GP29、pin3 → GND、pin1 → NC |
-| SW3 | pin2 → GP27、pin3 → GND、pin1 → NC |
+| SW3 | pin2 → GP27、pin3 → GND、pin1 → NC（サステイン） |
 | SW4 | pin2 → TPS_EN、pin3 → +3V3、pin1 → NC |
-| SW5 | pin2 → GP26、pin3 → GND、pin1 → NC |
 | SW6 | pin1/2 → GND、pin3/4 → GP14 |
