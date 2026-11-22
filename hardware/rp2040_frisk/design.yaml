@@ -244,7 +244,7 @@ switches:
   - ref: SW3
     part: "NKK 115643 (Akizuki 115643)"
     type: slide
-    function: "spare input"
+    function: "sustain / MIDI CC64"
     gpio: 27
     net: SW3_SUSTAIN
     rp2040_pin: 39

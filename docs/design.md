@@ -257,7 +257,7 @@ AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF 電解コンデンサは発注
 
 ## 12. ファームウェア
 
-現行の RP2350 ファームウェアを RP2040 に移します。ピン割り当ては GP4/5、GP12/13、GP27/28/29 をそのまま使うため、`config.h` の変更は最小です。追加で GP26（サステイン）、GP14（MIDI リセット）、GP25（LED）を使います。
+現行の RP2350 ファームウェアを RP2040 に移します。ピン割り当ては GP4/5、GP12/13、GP27/28/29 をそのまま使うため、`config.h` の変更は最小です。GP27 は SW3 のサステイン、GP14 は MIDI リセット、GP25 は LED に使います。GP26 は未使用です。
 
 ビルドは pico-sdk 2.x の `PICO_BOARD=pico` を基本にし、ボード定義でピンを上書きします。PIO-USB は RP2040 対応の `sekigon-gonnoc/Pico-PIO-USB` を使います。native USB は TinyUSB の HID、CH345T は UART1 の生 MIDI 出力です。
 

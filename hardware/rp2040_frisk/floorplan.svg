@@ -83,7 +83,7 @@
 <circle cx="69.4" cy="334.0" r="1.5" fill="#9a5b13"/>
 <rect x="659.8" y="104.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
 <text x="698.8" y="164.0" text-anchor="middle" class="label">SW3</text>
-<text x="698.8" y="176.0" text-anchor="middle" class="small">spare</text>
+<text x="698.8" y="176.0" text-anchor="middle" class="small">sustain</text>
 <line x1="737.8" y1="166.0" x2="761.8" y2="166.0" stroke="#9a5b13" stroke-width="1.6"/>
 <circle cx="761.8" cy="166.0" r="1.5" fill="#9a5b13"/>
 <rect x="188.8" y="361.0" width="122.4" height="78.0" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
