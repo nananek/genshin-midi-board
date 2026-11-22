@@ -91,8 +91,46 @@ def main() -> int:
                 return False
         return not any(hypot(cx - vx, cy - vy) < VIA_GAP for vx, vy in vias)
 
+    def line_clear(p0, p1, clear=0.30):
+        n = max(2, int(hypot(p1[0] - p0[0], p1[1] - p0[1]) / 0.1))
+        for k in range(n + 1):
+            t = k / n
+            px = p0[0] + (p1[0] - p0[0]) * t
+            py = p0[1] + (p1[1] - p0[1]) * t
+            for bb, net in all_pads:
+                if net == "GND":
+                    continue
+                if rect_dist((px, py), bb) < 0.15 + clear:
+                    return False
+            for kind, geo, net, half in tracks:
+                if net == "GND":
+                    continue
+                d = (seg_dist((px, py), geo[0], geo[1]) if kind == "seg"
+                     else hypot(px - geo[0], py - geo[1]))
+                if d < half + 0.15 + clear:
+                    return False
+        return True
+
     added = 0
     for (x, y, ref, pin) in pads:
+        # first choice: a short ground track to an existing ground via
+        best = None
+        for (vx, vy) in vias:
+            d = hypot(vx - x, vy - y)
+            if d < 4.0 and (best is None or d < best[0]) and line_clear((x, y), (vx, vy)):
+                best = (d, vx, vy)
+        if best is not None:
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(x), pcbnew.FromMM(y)))
+            t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(best[1]), pcbnew.FromMM(best[2])))
+            t.SetWidth(pcbnew.FromMM(0.2))
+            t.SetLayer(pcbnew.F_Cu)
+            t.SetNet(board.FindNet("GND"))
+            board.Add(t)
+            added += 1
+            print(f"  strap for {ref}.{pin} -> via at {best[1]:.2f},{best[2]:.2f}")
+            continue
+
         placed = None
         for r in (0.85, 1.0, 1.15, 1.3, 1.5, 1.75, 2.0, 2.3, 2.6):
             for k in range(24):
@@ -156,15 +194,18 @@ def main() -> int:
             if any(island.PointInside(pcbnew.VECTOR2I(x, y)) for x, y in gnd_vias):
                 continue
             spot = None
-            for k in range(len(pts)):
-                px, py = pts[k].x / 1e6, pts[k].y / 1e6
-                j = (k + len(pts) // 2) % len(pts)
-                qx, qy = pts[j].x / 1e6, pts[j].y / 1e6
-                mx, my = (px + qx) / 2, (py + qy) / 2
-                if island.PointInside(pcbnew.VECTOR2I(int(mx * 1e6), int(my * 1e6))) \
-                        and legal(mx, my):
-                    spot = (mx, my)
-                    break
+            x0, y0 = min(xs) / 1e6, min(ys) / 1e6
+            x1, y1 = max(xs) / 1e6, max(ys) / 1e6
+            gx = x0
+            while gx <= x1 and spot is None:
+                gy = y0
+                while gy <= y1:
+                    if island.PointInside(pcbnew.VECTOR2I(
+                            pcbnew.FromMM(gx), pcbnew.FromMM(gy))) and legal(gx, gy):
+                        spot = (gx, gy)
+                        break
+                    gy += 0.3
+                gx += 0.3
             if spot is None:
                 continue
             islands += 1
