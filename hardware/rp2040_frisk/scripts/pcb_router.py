@@ -122,8 +122,8 @@ class Router:
         return self.edge_masks[best]
 
     def add_pad(self, net, x0, y0, x1, y1, layers, clearance):
-        self.pads.append((net, x0, y0, x1, y1, layers))
         extra = max(0.0, clearance - MIN_CLEAR)
+        self.pads.append((net, x0, y0, x1, y1, layers, extra))
         for layer in layers:
             lay = 0 if layer == "F" else 1
             self.stamp_rect(self.copper[lay], x0, y0, x1, y1, extra)
@@ -132,7 +132,7 @@ class Router:
     def commit_track(self, net, layer, p0, p1, width, extra=0.0):
         lay = 0 if layer == "F" else 1
         self.stamp_seg(self.copper[lay], p0, p1, width / 2 + extra)
-        self.net_geom.setdefault(net, []).append(("trk", layer, p0, p1, width))
+        self.net_geom.setdefault(net, []).append(("trk", layer, p0, p1, width, extra))
 
     def commit_via(self, net, p):
         key = (self.cx(p[0]), self.cy(p[1]))
@@ -145,19 +145,20 @@ class Router:
         self.net_geom.setdefault(net, []).append(("via", p))
         return True
 
-    def _own_map(self, net, extra=0.0):
+    def _own_map(self, net):
         """Copper of `net` only, as two bytearrays."""
         own = [bytearray(self.n), bytearray(self.n)]
-        for (pnet, x0, y0, x1, y1, layers) in self.pads:
+        for (pnet, x0, y0, x1, y1, layers, pextra) in self.pads:
             if pnet != net:
                 continue
             for layer in layers:
                 lay = 0 if layer == "F" else 1
-                self.stamp_rect(own[lay], x0, y0, x1, y1, extra)
+                self.stamp_rect(own[lay], x0, y0, x1, y1, pextra)
         for item in self.net_geom.get(net, []):
             if item[0] == "trk":
-                _, layer, p0, p1, w = item
-                self.stamp_seg(own[0 if layer == "F" else 1], p0, p1, w / 2 + extra)
+                _, layer, p0, p1, w, text = item
+                self.stamp_seg(own[0 if layer == "F" else 1], p0, p1,
+                               w / 2 + text)
             else:
                 p = item[1]
                 self.stamp_disc(own[0], p[0], p[1], VIA_R)
@@ -166,11 +167,10 @@ class Router:
 
     # ---------------------------------------------------------------- routing
     def masks(self, net, width, clearance=MIN_CLEAR):
-        extra = max(0.0, clearance - MIN_CLEAR)
-        own = self._own_map(net, extra)
+        own = self._own_map(net)
         # the copper stamps already include half a cell of slack
         r_route = max(1, int((width / 2 + clearance + 0.02 - 0.05) / self.cell) + 1)
-        r_via = cells(VIA_R + 0.25 + 0.02 - 0.05, self.cell)
+        r_via = cells(VIA_R + MIN_CLEAR + 0.02 - 0.05, self.cell)
         edge = int.from_bytes(self.edge_mask(width), "little")
         viamask = int.from_bytes(bytes(self.padguard), "little")
         blocked = []
@@ -287,10 +287,12 @@ class Router:
             tracks.append((lg, (a[0], a[1]), (b[0], b[1]), width))
             self.commit_track(net, lg, (a[0], a[1]), (b[0], b[1]), width, extra)
 
-    def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30):
+    def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30,
+                max_expand=400000):
         blocked, viamask = self.masks(net, width, clearance)
         for _ in range(4):
-            path = self.search(blocked, viamask, src, dst, via_cost=via_cost)
+            path = self.search(blocked, viamask, src, dst,
+                               max_expand=max_expand, via_cost=via_cost)
             if path is None:
                 return False
             vias = [(self.cell * ix, self.cell * iy) for lay, ix, iy in path]
@@ -302,14 +304,12 @@ class Router:
                     vl.append((self.cell * ix, self.cell * iy))
                 prev = lay
             clash = [(a, b) for i, a in enumerate(vl) for b in vl[i + 1:]
-                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.72]
+                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.8]
             for a in vl:
                 for other_net, cells in self.via_cells.items():
-                    if other_net == net:
-                        continue
                     for (cx, cy) in cells:
                         if hypot(a[0] - cx * self.cell,
-                                 a[1] - cy * self.cell) < 0.72:
+                                 a[1] - cy * self.cell) < 0.8:
                             clash.append((a, (cx * self.cell, cy * self.cell)))
             if not clash:
                 break
@@ -325,6 +325,13 @@ class Router:
         return True
 
     # ------------------------------------------------------- plane connection
+    def _near_via(self, x, y, dist=0.8):
+        for cells in self.via_cells.values():
+            for (cx, cy) in cells:
+                if hypot(cx * self.cell - x, cy * self.cell - y) < dist:
+                    return True
+        return False
+
     def connect_to_plane(self, net, pad, width, clearance=MIN_CLEAR):
         x, y = pad[0], pad[1]
         extra = max(0.0, clearance - MIN_CLEAR)
@@ -339,19 +346,38 @@ class Router:
                 if cx < 0.7 or cy < 0.7 or cx > xmax or cy > ymax:
                     continue
                 i = self.idx(self.cx(cx), self.cy(cy))
-                if viamask[i]:
+                if viamask[i] or self._near_via(cx, cy):
                     continue
                 if not self._seg_clear(blocked[0], (x, y), (cx, cy)):
                     continue
                 cands.append((r, (cx, cy)))
             if cands:
                 break
-        if not cands:
-            return [], []
-        (cx, cy) = min(cands, key=lambda c: c[0])[1]
-        self.commit_track(net, "F", (x, y), (cx, cy), width, extra)
-        self.commit_via(net, (cx, cy))
-        return [("F", (x, y), (cx, cy), width)], [(cx, cy)]
+        if cands:
+            (cx, cy) = min(cands, key=lambda c: c[0])[1]
+            self.commit_track(net, "F", (x, y), (cx, cy), width, extra)
+            self.commit_via(net, (cx, cy))
+            return [("F", (x, y), (cx, cy), width)], [(cx, cy)]
+        # fallback: A* to any reachable cell where a via is legal
+        goals = []
+        r = 3.2
+        for gy in range(max(0, self.cy(y - r)), min(self.ny, self.cy(y + r)) + 1):
+            for gx in range(max(0, self.cx(x - r)), min(self.nx, self.cx(x + r)) + 1):
+                i = self.idx(gx, gy)
+                if viamask[i] or blocked[0][i] or self._near_via(gx * self.cell, gy * self.cell):
+                    continue
+                d = hypot(gx * self.cell - x, gy * self.cell - y)
+                goals.append((d, gx * self.cell, gy * self.cell))
+        goals.sort()
+        for _, gx, gy in goals[:40]:
+            path = self.search(blocked, viamask, pad, (gx, gy, "F"),
+                               max_expand=20000)
+            if path is None:
+                continue
+            self.emit(net, path, width, pad[:2], (gx, gy), extra)
+            self.commit_via(net, (gx, gy))
+            return [("trk", "F", pad[:2], (gx, gy), width, extra)], [(gx, gy)]
+        return [], []
 
     def _seg_clear(self, block, p0, p1):
         x0, y0 = p0
