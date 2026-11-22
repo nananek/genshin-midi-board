@@ -1,0 +1,767 @@
+#!/usr/bin/env python3
+"""Generate hardware/rp2040_frisk/rp2040_frisk.kicad_pcb from netlist.yaml.
+
+Run inside the KiCad container, e.g.
+
+    ./scripts/kicad.sh python3 hardware/rp2040_frisk/scripts/gen_pcb.py
+"""
+
+from __future__ import annotations
+
+import argparse
+import math
+import os
+import sys
+from pathlib import Path
+
+import pcbnew
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent          # hardware/rp2040_frisk
+PROJ_LIB = ROOT / "lib" / "rp2040_frisk.pretty"
+KICAD_LIB = Path("/usr/share/kicad/footprints")
+PCB_PATH = ROOT / "rp2040_frisk.kicad_pcb"
+
+MM = pcbnew.FromMM
+TOMM = pcbnew.ToMM
+
+BOARD_W = 57.6
+BOARD_H = 31.4
+CHAMFER = 2.0
+EDGE_CLEARANCE = 0.3
+
+LAYER_F = pcbnew.F_Cu
+LAYER_IN1 = pcbnew.In1_Cu
+LAYER_IN2 = pcbnew.In2_Cu
+LAYER_B = pcbnew.B_Cu
+
+# ---------------------------------------------------------------------------
+# footprints: netlist name -> (directory, footprint file stem)
+# ---------------------------------------------------------------------------
+FOOTPRINTS = {
+    "QFN-56_7x7mm_P0.4mm": (KICAD_LIB / "Package_DFN_QFN.pretty",
+                            "QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm", "Package_DFN_QFN"),
+    "SOIC-8_3.9x4.9mm_P1.27mm": (KICAD_LIB / "Package_SO.pretty",
+                                 "SOIC-8_3.9x4.9mm_P1.27mm", "Package_SO"),
+    "SSOP-20_5.3x7.2mm_P0.65mm": (PROJ_LIB, "SSOP-20_5.3x7.2mm_P0.65mm", "rp2040_frisk"),
+    "SOT-23-5": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-5", "Package_TO_SOT_SMD"),
+    "SOT-23-6": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-6", "Package_TO_SOT_SMD"),
+    "USB_C_Receptacle_HRO_TYPE-C-31-M-12": (PROJ_LIB,
+                                            "USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+                                            "rp2040_frisk"),
+    "USB_A_Neltron_5075AR-04-WH": (PROJ_LIB, "USB_A_Neltron_5075AR-04-WH", "rp2040_frisk"),
+    "Crystal_SMD_3225-4Pin_3.2x2.5mm": (KICAD_LIB / "Crystal.pretty",
+                                        "Crystal_SMD_3225-4Pin_3.2x2.5mm", "Crystal"),
+    "D_SOD-323": (KICAD_LIB / "Diode_SMD.pretty", "D_SOD-323", "Diode_SMD"),
+    "LED_0603_1608Metric": (KICAD_LIB / "LED_SMD.pretty", "LED_0603_1608Metric", "LED_SMD"),
+    "R_0603_1608Metric": (KICAD_LIB / "Resistor_SMD.pretty", "R_0603_1608Metric",
+                          "Resistor_SMD"),
+    "C_0603_1608Metric": (KICAD_LIB / "Capacitor_SMD.pretty", "C_0603_1608Metric",
+                          "Capacitor_SMD"),
+    "C_0805_2012Metric": (KICAD_LIB / "Capacitor_SMD.pretty", "C_0805_2012Metric",
+                          "Capacitor_SMD"),
+    "CP_Radial_D6.3mm_P2.5mm": (KICAD_LIB / "Capacitor_THT.pretty",
+                                "CP_Radial_D6.3mm_P2.50mm", "Capacitor_THT"),
+    "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_frisk"),
+    "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_frisk"),
+    "TestPoint_1P": (PROJ_LIB, "TestPoint_1P", "rp2040_frisk"),
+}
+
+# ---------------------------------------------------------------------------
+# placement (mm, board origin top-left, y down) and rotation
+# ---------------------------------------------------------------------------
+PLACEMENT = {
+    # connectors and the fixed placements from design.yaml
+    "J1": (14.0, 2.4, 180),
+    "J3": (43.0, 2.4, 180),
+    "J2": (29.5, 28.0, 180),
+    "U1": (20.0, 12.5, 270),
+    "U2": (30.5, 12.5, 0),
+    "U3": (44.0, 12.5, 0),
+    "U4": (27.0, 20.1, 0),
+    "U5": (18.0, 20.2, 0),
+    "U6": (22.6, 20.1, 0),
+    "U7": (12.9, 9.6, 0),
+    "U8": (36.5, 9.7, 0),
+    "X1": (12.6, 13.4, 0),
+    "X2": (38.8, 19.4, 0),
+    "D1": (21.2, 5.0, 0),
+    "D2": (35.8, 5.0, 0),
+    "LED1": (35.4, 3.0, 0),
+    "SW1": (5.2, 8.0, 90),
+    "SW2": (5.2, 22.0, 90),
+    "SW3": (52.4, 8.0, 270),
+    "SW4": (15.0, 27.5, 0),
+    "SW6": (28.8, 4.2, 0),
+    # left hand column (J1 / CC / VBUS_PC)
+    "R1": (9.55, 9.5, 90),
+    "R2": (9.55, 12.7, 90),
+    "R5": (9.55, 15.9, 90),
+    "R6": (9.55, 19.1, 90),
+    "C24": (9.55, 22.3, 90),
+    # crystal X1 group and DVDD/IOVDD decoupling
+    "C17": (11.3, 16.8, 90),
+    "R14": (13.7, 16.8, 90),
+    "C3": (11.3, 19.9, 90),
+    "C18": (13.7, 19.9, 90),
+    "C8": (12.0, 22.5, 0),
+    # row under the RP2040
+    "R3": (16.7, 17.5, 0),
+    "R4": (19.8, 17.5, 0),
+    "C14": (23.0, 17.5, 0),
+    "C1": (27.8, 17.5, 0),
+    "C2": (25.4, 16.6, 90),
+    # TPS2553 support
+    "R10": (16.5, 23.0, 0),
+    "R9": (19.6, 23.0, 0),
+    # flash, crystal X2, USB-MIDI series resistors
+    "C16": (35.9, 12.35, 0),
+    "R17": (35.9, 14.05, 0),
+    "R18": (35.9, 15.75, 0),
+    # single column right of U4
+    "R12": (31.0, 16.13, 0),
+    "C4": (31.0, 17.8, 0),
+    "C26": (31.0, 19.47, 0),
+    "R15": (31.0, 21.05, 0),
+    # CH345T + 5V distribution
+    "C20": (42.8, 17.8, 0),
+    "C21": (46.4, 17.8, 0),
+    "C19": (42.8, 19.7, 0),
+    "R16": (46.4, 19.7, 0),
+    "C28": (42.8, 21.6, 0),
+    "C29": (46.4, 21.6, 0),
+    "C30": (50.3, 25.2, 0),
+    "R11": (53.6, 22.7, 0),
+    # X2 load caps and lower right column
+    "C22": (39.5, 22.05, 0),
+    "C23": (39.55, 23.95, 0),
+    "C11": (39.55, 25.6, 0),
+    "C12": (39.55, 27.25, 0),
+    "C27": (43.6, 27.5, 0),
+    # right hand column
+    "C25": (50.4, 14.2, 0),
+    "C13": (53.7, 14.2, 0),
+    "R7": (50.4, 15.9, 0),
+    "R8": (53.7, 15.9, 0),
+    "R19": (50.4, 17.6, 0),
+    "C6": (53.7, 17.6, 0),
+    "C10": (50.4, 19.3, 0),
+    "C9": (53.7, 19.3, 0),
+    "C15": (50.4, 21.0, 0),
+    "C7": (53.7, 21.0, 0),
+    "C5": (50.3, 22.85, 0),
+    # LED series resistor
+    "R13": (35.1, 7.0, 0),
+    # test points
+    "TP1": (20.4, 7.2, 0),
+    "TP2": (22.8, 7.2, 0),
+    "TP3": (2.5, 15.0, 0),
+    "TP4": (4.5, 15.0, 0),
+    "TP5": (6.5, 15.0, 0),
+    "TP6": (2.5, 29.4, 0),
+    "TP7": (5.5, 29.4, 0),
+    "TP12": (8.5, 29.4, 0),
+    "TP8": (39.5, 29.4, 0),
+    "TP9": (50.0, 1.3, 0),
+    "TP10": (52.2, 1.3, 0),
+    "TP11": (54.4, 1.3, 0),
+}
+
+# ---------------------------------------------------------------------------
+# net rules
+# ---------------------------------------------------------------------------
+USB_NETS = {n for n in (
+    "USB_PC_DP", "USB_PC_DM", "USB_PC_DP_MCU", "USB_PC_DM_MCU",
+    "USB_A_DP", "USB_A_DM", "USB_A_DP_MCU", "USB_A_DM_MCU",
+    "USB_MIDI_DP", "USB_MIDI_DM", "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU")}
+POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0,
+               "+3V3": 0.5, "+1V1": 0.4}
+USB_ROUTE_ORDER = [
+    "VBUS_PC", "VBUS_IPAD", "+5V", "VBUS_USB_A", "+1V1",
+    "USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
+    "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
+    "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM",
+    "QSPI_SS", "QSPI_SCLK", "QSPI_SD0", "QSPI_SD1", "QSPI_SD2", "QSPI_SD3",
+    "MIDI_UART_TX", "MIDI_UART_RX",
+    "X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO",
+    "CH345_RST", "CH345_V3", "TPS_EN", "TPS_ILIM", "TPS_FAULT",
+    "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
+    "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
+    "UART0_TX", "UART0_RX", "SWCLK", "SWDIO",
+    "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD",
+]
+
+
+def rule_for(net):
+    if net in POWER_WIDTH:
+        return POWER_WIDTH[net], 0.2
+    if net in USB_NETS:
+        return 0.2, 0.127
+    return 0.15, 0.127
+
+
+# ---------------------------------------------------------------------------
+
+PROJECT_TEMPLATE = {
+    "board": {
+        "design_settings": {
+            "defaults": {},
+            "diff_pair_dimensions": [],
+            "drc_exclusions": [],
+            "meta": {"version": 2},
+            "rule_severities": {
+                "silk_over_copper": "ignore",
+                "silk_overlap": "ignore",
+                "silk_edge_clearance": "ignore",
+                "courtyards_overlap": "error",
+                "starved_thermal": "error",
+                "copper_edge_clearance": "error",
+                "lib_footprint_issues": "warning",
+            },
+            "rules": {
+                "allow_blind_buried_vias": False,
+                "allow_microvias": False,
+                "max_error": 0.005,
+                "min_clearance": 0.127,
+                "min_copper_edge_clearance": 0.3,
+                "min_hole_clearance": 0.25,
+                "min_hole_to_hole": 0.25,
+                "min_microvia_diameter": 0.2,
+                "min_microvia_drill": 0.1,
+                "min_silk_clearance": 0.0,
+                "min_silk_text_height": 0.5,
+                "min_silk_text_thickness": 0.08,
+                "min_through_hole_diameter": 0.3,
+                "min_track_width": 0.127,
+                "min_via_annular_width": 0.1,
+                "min_via_diameter": 0.5,
+                "use_height_for_length_calcs": True,
+            },
+            "track_widths": [0.0, 0.127, 0.15, 0.2, 0.4, 0.8, 1.0],
+            "via_dimensions": [{"diameter": 0.5, "drill": 0.3}],
+            "zones_allow_external_fillets": False,
+        },
+        "layer_pairs": [],
+        "layer_presets": [],
+        "viewports": [],
+    },
+    "boards": [],
+    "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
+    "meta": {"filename": "rp2040_frisk.kicad_pro", "project": "rp2040_frisk",
+             "version": 3},
+    "net_settings": {
+        "classes": [{
+            "bus_width": 12.0,
+            "clearance": 0.127,
+            "diff_pair_gap": 0.25,
+            "diff_pair_via_gap": 0.25,
+            "diff_pair_width": 0.2,
+            "line_style": 0,
+            "microvia_diameter": 0.3,
+            "microvia_drill": 0.1,
+            "name": "Default",
+            "pcb_color": "rgba(0, 0, 0, 0.000)",
+            "schematic_color": "rgba(0, 0, 0, 0.000)",
+            "track_width": 0.15,
+            "via_diameter": 0.5,
+            "via_drill": 0.3,
+            "wire_width": 6.0,
+        }],
+        "meta": {"version": 4},
+        "net_colors": None,
+        "netclass_assignments": None,
+        "netclass_patterns": [],
+    },
+    "pcbnew": {
+        "last_paths": {"gencad": "", "idf": "", "netlist": "", "plot": "",
+                       "pos_files": "", "specctra_dsn": "", "step": "", "svg": "",
+                       "vrml": ""},
+        "page_layout_descr_file": "",
+    },
+    "text_variables": {},
+}
+
+
+def write_project(path):
+    import json
+    Path(path).write_text(json.dumps(PROJECT_TEMPLATE, indent=2) + "\n",
+                          encoding="utf-8")
+
+
+def outline_points():
+    c = CHAMFER
+    return [(c, 0.0), (BOARD_W - c, 0.0), (BOARD_W, c), (BOARD_W, BOARD_H - c),
+            (BOARD_W - c, BOARD_H), (c, BOARD_H), (0.0, BOARD_H - c), (0.0, c)]
+
+
+def new_board():
+    board = pcbnew.BOARD()
+    board.SetCopperLayerCount(4)
+    ds = board.GetDesignSettings()
+    ds.SetBoardThickness(MM(1.6))
+    ds.m_MinClearance = MM(0.127)
+    ds.m_TrackMinWidth = MM(0.127)
+    ds.m_ViasMinSize = MM(0.5)
+    ds.m_MinThroughDrill = MM(0.3)
+    ds.m_ViasMinAnnularWidth = MM(0.1)
+    ds.m_CopperEdgeClearance = MM(EDGE_CLEARANCE)
+    ds.m_HoleClearance = MM(0.25)
+    ds.m_HoleToHoleMin = MM(0.25)
+    nc = ds.m_NetSettings.GetDefaultNetclass()
+    nc.SetClearance(MM(0.127))
+    nc.SetTrackWidth(MM(0.15))
+    nc.SetViaDiameter(MM(0.5))
+    nc.SetViaDrill(MM(0.3))
+    board.SetLayerType(LAYER_IN1, pcbnew.LT_POWER)
+    board.SetLayerType(LAYER_IN2, pcbnew.LT_POWER)
+    board.SetLayerName(LAYER_IN1, "In1.Cu")
+    board.SetLayerName(LAYER_IN2, "In2.Cu")
+    return board
+
+
+def add_outline(board):
+    pts = outline_points()
+    for a, b in zip(pts, pts[1:] + pts[:1]):
+        seg = pcbnew.PCB_SHAPE(board)
+        seg.SetShape(pcbnew.SHAPE_T_SEGMENT)
+        seg.SetStart(pcbnew.VECTOR2I(MM(a[0]), MM(a[1])))
+        seg.SetEnd(pcbnew.VECTOR2I(MM(b[0]), MM(b[1])))
+        seg.SetLayer(pcbnew.Edge_Cuts)
+        seg.SetWidth(MM(0.1))
+        board.Add(seg)
+
+
+def add_nets(board, netlist):
+    for name in netlist["nets"]:
+        ni = pcbnew.NETINFO_ITEM(board, name)
+        board.Add(ni)
+
+
+def load_footprint(netlist, ref):
+    fp_name = netlist["components"][ref]["footprint"]
+    directory, stem, nickname = FOOTPRINTS[fp_name]
+    fp = pcbnew.FootprintLoad(str(directory), stem)
+    if fp is None:
+        raise SystemExit(f"cannot load {fp_name} for {ref}")
+    fp.SetFPID(pcbnew.LIB_ID(nickname, stem))
+    return fp
+
+
+def place_footprints(board, netlist):
+    missing = set(netlist["components"]) - set(PLACEMENT)
+    if missing:
+        raise SystemExit(f"no placement for {sorted(missing)}")
+    fps = {}
+    for ref, comp in netlist["components"].items():
+        x, y, rot = PLACEMENT[ref]
+        fp = load_footprint(netlist, ref)
+        fp.SetPosition(pcbnew.VECTOR2I(MM(x), MM(y)))
+        fp.SetOrientationDegrees(rot)
+        fp.SetReference(ref)
+        fp.SetValue(comp["value"])
+        for txt in (fp.Reference(), fp.Value()):
+            if TOMM(txt.GetTextHeight()) < 0.8:
+                txt.SetTextSize(pcbnew.VECTOR2I(MM(0.8), MM(0.8)))
+                txt.SetTextThickness(MM(0.12))
+        board.Add(fp)
+        for pad in fp.Pads():
+            pin = pad.GetNumber()
+            if not pin:
+                continue
+            net = comp["pins"].get(pin)
+            if net:
+                ni = board.FindNet(net)
+                if ni is None:
+                    raise SystemExit(f"unknown net {net} on {ref}.{pin}")
+                pad.SetNet(ni)
+        if ref in ("J1", "J3"):
+            for pad in fp.Pads():
+                pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
+        # small GND pads on ICs cannot take two thermal spokes
+        if len(fp.Pads()) > 2:
+            for pad in fp.Pads():
+                if (pad.GetNetname() == "GND" and
+                        not pad.GetLayerSet().Contains(pcbnew.B_Cu)):
+                    pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
+        fps[ref] = fp
+    return fps
+
+
+def add_zones(board):
+    poly = outline_points()
+    for layer, net in ((LAYER_IN1, "GND"), (LAYER_IN2, "+3V3"),
+                       (LAYER_F, "GND"), (LAYER_B, "GND")):
+        z = pcbnew.ZONE(board)
+        z.SetLayer(layer)
+        z.SetNet(board.FindNet(net))
+        z.SetLocalClearance(MM(0.2))
+        z.SetMinThickness(MM(0.25))
+        z.SetThermalReliefGap(MM(0.2))
+        z.SetThermalReliefSpokeWidth(MM(0.3))
+        z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+        o = z.Outline()
+        o.NewOutline()
+        for (x, y) in poly:
+            o.Append(MM(x), MM(y))
+        board.Add(z)
+
+
+def add_silk(board):
+    txt = pcbnew.PCB_TEXT(board)
+    txt.SetText("RP2040 FRISK MIDI BRIDGE  REV A")
+    txt.SetLayer(pcbnew.F_SilkS)
+    txt.SetPosition(pcbnew.VECTOR2I(MM(28.8), MM(31.0)))
+    txt.SetTextSize(pcbnew.VECTOR2I(MM(0.8), MM(0.8)))
+    txt.SetTextThickness(MM(0.12))
+    board.Add(txt)
+
+
+# ---------------------------------------------------------------------------
+def check_placement(board, fps):
+    boxes = {}
+    for ref, fp in fps.items():
+        poly = fp.GetCourtyard(pcbnew.F_CrtYd)
+        bb = poly.BBox()
+        boxes[ref] = (TOMM(bb.GetLeft()), TOMM(bb.GetTop()),
+                      TOMM(bb.GetRight()), TOMM(bb.GetBottom()))
+    bad = 0
+    refs = sorted(boxes)
+    for i, a in enumerate(refs):
+        ax0, ay0, ax1, ay1 = boxes[a]
+        if ref not in ("J1", "J2", "J3") and (
+                ax0 < -0.01 or ay0 < -0.01 or ax1 > BOARD_W + 0.01 or ay1 > BOARD_H + 0.01):
+            print(f"OUTSIDE {a}: {ax0:.2f},{ay0:.2f} - {ax1:.2f},{ay1:.2f}")
+        for b in refs[i + 1:]:
+            bx0, by0, bx1, by1 = boxes[b]
+            ox = min(ax1, bx1) - max(ax0, bx0)
+            oy = min(ay1, by1) - max(ay0, by0)
+            if ox > 0.001 and oy > 0.001:
+                print(f"OVERLAP {a} / {b}: {ox:.2f} x {oy:.2f} mm")
+                bad += 1
+    print(f"{len(boxes)} footprints, {bad} courtyard overlaps")
+    return bad
+
+
+def report_nets(board, netlist):
+    counts = {"pads": 0, "pads_with_net": 0}
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            counts["pads"] += 1
+            if pad.GetNetCode() > 0:
+                counts["pads_with_net"] += 1
+    print(f"{counts['pads']} pads, {counts['pads_with_net']} with a net, "
+          f"{len(netlist['components'])} components, {len(netlist['nets'])} nets")
+
+
+
+# ---------------------------------------------------------------------------
+# routing
+# ---------------------------------------------------------------------------
+def pad_endpoints(fps, netlist):
+    """net -> [(x, y, layers)] plus a pad lookup for the router."""
+    by_net = {}
+    for ref, comp in netlist["components"].items():
+        fp = fps[ref]
+        for pad in fp.Pads():
+            pin = pad.GetNumber()
+            if not pin:
+                continue
+            net = comp["pins"].get(pin)
+            if not net:
+                continue
+            by_net.setdefault(net, []).append((ref, pin, pad))
+    return by_net
+
+
+def route(board, netlist, fps):
+    import pcb_router as R
+
+    router = R.Router(BOARD_W, BOARD_H, cell=0.1)
+    router.set_outline(outline_points())
+    by_net = pad_endpoints(fps, netlist)
+
+    # every pad is an obstacle, including unconnected ones
+    for ref, comp in netlist["components"].items():
+        fp = fps[ref]
+        for pad in fp.Pads():
+            pin = pad.GetNumber()
+            net = comp["pins"].get(pin) if pin else None
+            if net is None:
+                net = f"__nc_{ref}_{pin or 'npth'}"
+            clr = rule_for(net)[1] if not net.startswith("__nc") else 0.127
+            bb = pad.GetBoundingBox()
+            layers = []
+            if pad.GetLayerSet().Contains(pcbnew.F_Cu):
+                layers.append("F")
+            if pad.GetLayerSet().Contains(pcbnew.B_Cu):
+                layers.append("B")
+            router.add_pad(net, TOMM(bb.GetLeft()), TOMM(bb.GetTop()),
+                           TOMM(bb.GetRight()), TOMM(bb.GetBottom()),
+                           layers or ["F"], clr)
+
+
+    def endpoints(net):
+        out = []
+        for ref, pin, pad in by_net.get(net, []):
+            bb = pad.GetBoundingBox()
+            layers = "FB" if (pad.GetLayerSet().Contains(pcbnew.F_Cu) and
+                              pad.GetLayerSet().Contains(pcbnew.B_Cu)) else "F"
+            out.append((TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), layers))
+        return out
+
+    def do_net(net, widths=None):
+        if net in skip:
+            return 0, len(endpoints(net)) - 1
+        pts = endpoints(net)
+        if len(pts) < 2:
+            return 0, 0
+        width, clearance = rule_for(net)
+        tries = widths or [width]
+        connected = [0]
+        todo = list(range(1, len(pts)))
+        for w in tries:
+            remaining = []
+            for i in todo:
+                best = min(connected, key=lambda j: math.hypot(
+                    pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
+                if router.connect(net, pts[i], pts[best], w, clearance,
+                                  via_cost=1000000 if net.startswith("QSPI") else 30):
+                    connected.append(i)
+                else:
+                    remaining.append(i)
+            todo = remaining
+            if not todo:
+                break
+        return len(connected), len(todo)
+
+    skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
+    report = {}
+    # USB data first: short, and they set the corridors
+    for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
+                "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
+                "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
+        report[net] = do_net(net)
+
+    # QSPI: keep on F.Cu, 0.15 mm
+    for net in ("QSPI_SS", "QSPI_SCLK", "QSPI_SD0", "QSPI_SD1", "QSPI_SD2", "QSPI_SD3"):
+        report[net] = do_net(net)
+
+    # power distribution
+    for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V", "+1V1"):
+        w, _ = rule_for(net)
+        report[net] = do_net(net, [w, 0.5, 0.35, 0.25])
+
+    # +3V3 lives on the In2 plane: stub every pad to a via
+    ok = fail = 0
+    for ref, pin, pad in by_net.get("+3V3", []):
+        bb = pad.GetBoundingBox()
+        p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
+        tracks, vias = router.connect_to_plane("+3V3", p, 0.2, 0.127)
+        if vias:
+            ok += 1
+        else:
+            fail += 1
+    report["+3V3"] = (ok + 1, fail)
+
+    for net in ("MIDI_UART_TX", "MIDI_UART_RX", "X1_XIN", "X1_XOUT_MCU", "X1_XOUT",
+                "X2_XI", "X2_XO", "CH345_RST", "CH345_V3",
+                "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
+                "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
+                "UART0_TX", "UART0_RX", "SWCLK", "SWDIO",
+                "TPS_EN", "TPS_ILIM", "TPS_FAULT",
+                "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
+        report[net] = do_net(net, [0.15, 0.127])
+
+    # stitching vias in whatever free space is left
+    stitched = 0
+    # GND vias next to the RP2040 thermal pad, outside the exposed pad
+    for dx, dy in ((2.2, 2.2), (-2.2, 2.2), (2.2, -2.2), (-2.2, -2.2),
+                   (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6)):
+        x, y = 20.0 + dx, 12.5 + dy
+        i = router.idx(router.cx(x), router.cy(y))
+        if router.copper[0][i] or router.copper[1][i] or router.padguard[i]:
+            continue
+        if router.commit_via("GND", (x, y)):
+            stitched += 1
+    edge = router.edge_mask(0.5)
+    stitch_guard = [
+        int.from_bytes(router._dilate(
+            int.from_bytes(bytes(router.copper[0]), "little"), 4).to_bytes(router.n, "little"), "little"),
+        int.from_bytes(router._dilate(
+            int.from_bytes(bytes(router.copper[1]), "little"), 4).to_bytes(router.n, "little"), "little")]
+    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 30.5):
+        for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
+                  50.0, 56.7):
+            i = router.idx(router.cx(x), router.cy(y))
+            if (stitch_guard[0] >> (8 * i)) & 0xFF or (stitch_guard[1] >> (8 * i)) & 0xFF:
+                continue
+            if router.padguard[i] or edge[i]:
+                continue
+            router.commit_via("GND", (x, y))
+            stitched += 1
+    print(f"GND stitching vias: {stitched}", flush=True)
+
+    # QFN-56 escapes use the 0.127 mm minimum width
+    u1 = fps["U1"].GetBoundingBox()
+    qfn = (TOMM(u1.GetLeft()) - 0.1, TOMM(u1.GetTop()) - 0.1,
+           TOMM(u1.GetRight()) + 0.1, TOMM(u1.GetBottom()) + 0.1)
+
+    def width_for(layer, p0, p1, width):
+        if layer != "F":
+            return width
+        for (x, y) in (p0, p1):
+            if qfn[0] <= x <= qfn[2] and qfn[1] <= y <= qfn[3]:
+                return min(width, 0.127)
+        return width
+
+    # emit the copper into the board
+    for net, geom in router.net_geom.items():
+        if net.startswith("__nc"):
+            continue
+        ni = board.FindNet(net)
+        for item in geom:
+            if item[0] == "trk":
+                _, layer, p0, p1, width = item
+                t = pcbnew.PCB_TRACK(board)
+                t.SetStart(pcbnew.VECTOR2I(MM(p0[0]), MM(p0[1])))
+                t.SetEnd(pcbnew.VECTOR2I(MM(p1[0]), MM(p1[1])))
+                w = width_for(layer, p0, p1, width)
+                if layer == "F":
+                    t.SetLayer(pcbnew.F_Cu)
+                else:
+                    t.SetLayer(pcbnew.B_Cu)
+                t.SetWidth(MM(w))
+                t.SetNet(ni)
+                board.Add(t)
+            else:
+                _, p = item
+                v = pcbnew.PCB_VIA(board)
+                v.SetPosition(pcbnew.VECTOR2I(MM(p[0]), MM(p[1])))
+                v.SetWidth(MM(0.5))
+                v.SetDrill(MM(0.3))
+                v.SetViaType(pcbnew.VIATYPE_THROUGH)
+                v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
+                v.SetNet(ni)
+                board.Add(v)
+
+    unrouted = sum(f for _, f in report.values())
+    print(f"routed {len(report)} nets, {unrouted} unrouted pad connections")
+    for net in sorted(report):
+        ok, bad = report[net]
+        if bad:
+            print(f"  UNROUTED {net}: {bad} of {ok + bad}")
+    return report
+
+
+STACKUP = """	(stackup
+		(layer "F.SilkS"
+			(type "Top Silk Screen")
+		)
+		(layer "F.Paste"
+			(type "Top Solder Paste")
+		)
+		(layer "F.Mask"
+			(type "Top Solder Mask")
+			(thickness 0.01)
+		)
+		(layer "F.Cu"
+			(type "copper")
+			(thickness 0.035)
+		)
+		(layer "dielectric 1"
+			(type "prepreg")
+			(thickness 0.1)
+			(material "FR4")
+			(epsilon_r 4.5)
+			(loss_tangent 0.02)
+		)
+		(layer "In1.Cu"
+			(type "copper")
+			(thickness 0.0175)
+		)
+		(layer "dielectric 2"
+			(type "core")
+			(thickness 1.24)
+			(material "FR4")
+			(epsilon_r 4.5)
+			(loss_tangent 0.02)
+		)
+		(layer "In2.Cu"
+			(type "copper")
+			(thickness 0.0175)
+		)
+		(layer "dielectric 3"
+			(type "prepreg")
+			(thickness 0.1)
+			(material "FR4")
+			(epsilon_r 4.5)
+			(loss_tangent 0.02)
+		)
+		(layer "B.Cu"
+			(type "copper")
+			(thickness 0.035)
+		)
+		(layer "B.Mask"
+			(type "Bottom Solder Mask")
+			(thickness 0.01)
+		)
+		(layer "B.Paste"
+			(type "Bottom Solder Paste")
+		)
+		(layer "B.SilkS"
+			(type "Bottom Silk Screen")
+		)
+		(copper_finish "HASL lead free")
+		(dielectric_constraints no)
+	)
+"""
+
+
+def write_stackup(path):
+    """Insert the JLCPCB 4-layer stackup if the file does not have one."""
+    text = Path(path).read_text(encoding="utf-8")
+    if "(stackup" in text:
+        return
+    marker = "\t(setup\n"
+    i = text.find(marker)
+    if i < 0:
+        print("stackup: no (setup section found")
+        return
+    text = text[:i + len(marker)] + STACKUP + text[i + len(marker):]
+    Path(path).write_text(text, encoding="utf-8")
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--check-placement", action="store_true")
+    ap.add_argument("--no-route", action="store_true")
+    ap.add_argument("--out", default=str(PCB_PATH))
+    args = ap.parse_args(argv)
+
+    netlist = yaml.safe_load((ROOT / "netlist.yaml").read_text(encoding="utf-8"))
+    board = new_board()
+    add_outline(board)
+    add_nets(board, netlist)
+    fps = place_footprints(board, netlist)
+    report_nets(board, netlist)
+    bad = check_placement(board, fps)
+    if args.check_placement:
+        return 1 if bad else 0
+
+    if not args.no_route:
+        route(board, netlist, fps)
+
+    add_zones(board)
+    add_silk(board)
+    board.BuildConnectivity()
+    filler = pcbnew.ZONE_FILLER(board)
+    filler.Fill(board.Zones())
+    pcbnew.SaveBoard(args.out, board)
+    write_stackup(str(args.out))
+    write_project(str(Path(args.out).with_suffix(".kicad_pro")))
+    print(f"wrote {args.out}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

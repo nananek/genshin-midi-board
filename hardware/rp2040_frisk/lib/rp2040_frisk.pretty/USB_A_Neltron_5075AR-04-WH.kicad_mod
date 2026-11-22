@@ -21,4 +21,14 @@
   (fp_line (start 8.15 -6) (end 8.15 6) (layer "F.SilkS") (width 0.15))
   (fp_line (start 8.15 6) (end -8.15 6) (layer "F.SilkS") (width 0.15))
   (fp_line (start -8.15 6) (end -8.15 -6) (layer "F.SilkS") (width 0.15))
+	(fp_rect
+		(start -8.15 -3.4)
+		(end 8.15 6.0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+	)
 )

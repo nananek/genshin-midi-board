@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: all check test floorplan tables netlist sch kicad-shell erc drc kicad-check clean
+.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check clean
 
 all: check floorplan tables netlist
 
@@ -24,11 +24,16 @@ KICAD_SCH := hardware/rp2040_frisk/rp2040_frisk.kicad_sch
 KICAD_PCB := hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
 KICAD := ./scripts/kicad.sh
 
-kicad-shell:
-	$(KICAD) bash
+PCB_GEN := hardware/rp2040_frisk/scripts/gen_pcb.py
 
 sch:
 	$(KICAD) python3 hardware/rp2040_frisk/scripts/gen_sch.py
+
+pcb:
+	$(KICAD) python3 -u $(PCB_GEN)
+
+kicad-shell:
+	$(KICAD) bash
 
 erc:
 	$(KICAD) kicad-cli sch erc --severity-all --output hardware/rp2040_frisk/erc.rpt $(KICAD_SCH)
