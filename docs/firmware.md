@@ -15,8 +15,7 @@
 | CH345T RX | 5 | UART1 RX |
 | 原神モード SW1 | 28 | アクティブ LOW |
 | 楽器モード SW2 | 29 | アクティブ LOW |
-| 予備 SW3 | 27 | アクティブ LOW |
-| サステイン SW5 | 26 | アクティブ LOW |
+| サステイン SW3 | 27 | アクティブ LOW |
 | MIDI リセット SW6 | 14 | アクティブ LOW |
 | ステータス LED | 25 | アクティブ HIGH |
 | デバッグ UART TX | 0 | UART0 |
@@ -60,11 +59,10 @@ PIO-USB は 120 MHz を要求します。12 MHz 水晶から `set_sys_clock_khz(
 
 - SW1: `MUTE_SWITCH_PIN 28`
 - SW2: `LYRE_SWITCH_PIN 29`
-- SW3: `SPARE_SWITCH_PIN 27`
-- SW5: `SUSTAIN_SWITCH_PIN 26`
+- SW3: `SUSTAIN_SWITCH_PIN 27`
 - SW6: `MIDI_RESET_BUTTON_PIN 14`
 
-SW5 は押下で CC64=127、離すと CC64=0 を CH345T へ送ります。SW6 は押下で CC123（All Notes Off）と CC121（Reset All Controllers）を全 16 チャンネルへ送ります。どちらも 20 ms デバウンスです。
+SW3 は押下で CC64=127、離すと CC64=0 を CH345T へ送ります。SW6 は押下で CC123（All Notes Off）と CC121（Reset All Controllers）を全 16 チャンネルへ送ります。どちらも 20 ms デバウンスです。
 
 SW4 は GPIO ではなく、TPS2553 の EN を制御する電源スイッチです。ファームウェアからは触りません。
 
@@ -99,7 +97,7 @@ UART0 を GP0（TX）/ GP1（RX）、115200 8N1 で使います。`stdio_init_al
 - `PICO_BOARD` を `pico` またはカスタム RP2040 ボードにする
 - `set_sys_clock_khz(120000, true)` はそのまま
 - PIO-USB の rhport を 1、native USB を 0 にする
-- `config.h` に `SUSTAIN_SWITCH_PIN 26`、`MIDI_RESET_BUTTON_PIN 14`、`STATUS_LED_PIN 25` を追加
+- `config.h` に `SUSTAIN_SWITCH_PIN 27`、`MIDI_RESET_BUTTON_PIN 14`、`STATUS_LED_PIN 25` を追加
 - `main.c` にサステインと MIDI リセットのポーリングを追加
 - `usb_descriptors.c` と `nkro_report.c` は変更なし
 - `midi_uart.c` は UART1 GP4/5、31250 のまま
@@ -111,4 +109,4 @@ UART0 を GP0（TX）/ GP1（RX）、115200 8N1 で使います。`stdio_init_al
 - CH345T の UART 31250 で取りこぼしがない
 - NKRO の 21 同時押しが PC で認識される
 - iPad が CH345T を USB-MIDI として認識する
-- SW5 の CC64 と SW6 の CC123/CC121 が DAW で見える
+- SW3 の CC64 と SW6 の CC123/CC121 が DAW で見える

@@ -246,7 +246,7 @@ switches:
     type: slide
     function: "spare input"
     gpio: 27
-    net: SW3_SPARE
+    net: SW3_SUSTAIN
     rp2040_pin: 39
     active: low
     debounce_ms: 20
@@ -269,20 +269,6 @@ switches:
     y_mm: 27.5
     rotation_deg: 0
     body: [9.9, 24.25, 10.2, 6.5]
-  - ref: SW5
-    part: "NKK 115643 (Akizuki 115643)"
-    type: slide
-    function: "sustain / MIDI CC64"
-    gpio: 26
-    net: SW5_SUSTAIN
-    rp2040_pin: 38
-    active: low
-    debounce_ms: 20
-    wiring: "pin2=GP26, pin3=GND, pin1=NC"
-    x_mm: 48.0
-    y_mm: 27.5
-    rotation_deg: 0
-    body: [42.9, 24.25, 10.2, 6.5]
   - ref: SW6
     part: "Akizuki DTS-63-N-V-BLK (103647)"
     type: tact
@@ -347,17 +333,11 @@ pinmap:
     net: "SW2_LYRE"
     destination: "SW2 pin2"
     note: "internal pull-up, active low"
-  - signal: "spare switch"
+  - signal: "sustain switch"
     rp2040_pin: 39
     gpio: 27
-    net: "SW3_SPARE"
+    net: "SW3_SUSTAIN"
     destination: "SW3 pin2"
-    note: "internal pull-up, active low"
-  - signal: "sustain switch"
-    rp2040_pin: 38
-    gpio: 26
-    net: "SW5_SUSTAIN"
-    destination: "SW5 pin2"
     note: "internal pull-up, active low"
   - signal: "MIDI reset button"
     rp2040_pin: 17
@@ -468,12 +448,12 @@ bom:
     lcsc: null
     assembly: THT
     note: "Akizuki 100160。手はんだ"
-  - ref: "SW1-SW5"
+  - ref: "SW1-SW4"
     value: "NKK 115643"
     footprint: "SPDT slide 3pin"
     lcsc: null
     assembly: THT
-    note: "Akizuki 115643。手はんだ"
+    note: "Akizuki 115643。手はんだ。4 個（SW1/SW2/SW3/SW4）"
   - ref: "SW6"
     value: "DTS-63-N-V-BLK"
     footprint: "tact 4pin"

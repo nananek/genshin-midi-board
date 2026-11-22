@@ -41,8 +41,8 @@ components:
       '35': null
       '36': null
       '37': STATUS_LED
-      '38': SW5_SUSTAIN
-      '39': SW3_SPARE
+      '38': null
+      '39': SW3_SUSTAIN
       '40': SW1_MUTE
       '41': SW2_LYRE
       '42': +3V3
@@ -251,14 +251,7 @@ components:
     footprint: SW_SPDT_NKK_115643_Slide
     pins:
       '1': null
-      '2': SW3_SPARE
-      '3': GND
-  SW5:
-    value: NKK_115643
-    footprint: SW_SPDT_NKK_115643_Slide
-    pins:
-      '1': null
-      '2': SW5_SUSTAIN
+      '2': SW3_SUSTAIN
       '3': GND
   SW4:
     value: NKK_115643
@@ -735,7 +728,6 @@ nets:
   - SW1.3
   - SW2.3
   - SW3.3
-  - SW5.3
   - SW6.1
   - SW6.2
   - R5.2
@@ -818,12 +810,9 @@ nets:
   SW2_LYRE:
   - U1.41
   - SW2.2
-  SW3_SPARE:
+  SW3_SUSTAIN:
   - U1.39
   - SW3.2
-  SW5_SUSTAIN:
-  - U1.38
-  - SW5.2
   SW6_RESET:
   - U1.17
   - SW6.3

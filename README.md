@@ -16,7 +16,7 @@ RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T
 | USB-A | PIO-USB ホスト（KORG microKEY2） |
 | USB-C 1 | RP2040 native USB、NKRO HID → PC |
 | USB-C 2 | CH345T、USB-MIDI → iPad |
-| スイッチ | 元実装の SW1〜SW6 を維持（5 × スライド、1 × タクト） |
+| スイッチ | SW1〜SW4 と SW6（4 × スライド、1 × タクト）。SW5 は SW3 に統合 |
 | 製造 | JLCPCB、4 層、0.5/0.3 mm ビア、via-in-pad なし |
 
 ## なぜ RP2040 か
@@ -57,7 +57,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
     │          CH345 / power               │
     │                                       │
     ├────┬────────────────────────────┬────┤
-    │SW4 │        J2 USB-A            │SW5 │
+    │SW4 │        J2 USB-A            │    │
     └────┘       (microKEY2)          └────┘
 ```
 
@@ -69,15 +69,14 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 
 ## スイッチ
 
-元実装（`rp2350_zero_carrier`）の SW1〜SW6 をそのまま残します。
+元実装（`rp2350_zero_carrier`）のスイッチ構成を残し、SW5 のサステインは SW3 に統合します。
 
 | Ref | 部品 | 機能 | 接続 |
 | --- | --- | --- | --- |
 | SW1 | NKK 115643 スライド | 原神モード（HID ミュート） | GP28 ↔ GND |
 | SW2 | NKK 115643 スライド | 楽器モード（スメール音階） | GP29 ↔ GND |
-| SW3 | NKK 115643 スライド | 予備 | GP27 ↔ GND |
+| SW3 | NKK 115643 スライド | サステイン（CC64） | GP27 ↔ GND |
 | SW4 | NKK 115643 スライド | USB-A VBUS 手動 ON/OFF | TPS2553 EN 制御 |
-| SW5 | NKK 115643 スライド | サステイン（CC64） | GP26 ↔ GND |
 | SW6 | DTS-63-N-V-BLK タクト | MIDI リセット（CC123/CC121） | GP14 ↔ GND |
 
 スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW6 は片側 2 ピンを GND、反対側 2 ピンを GP14 に束ねます。
@@ -114,5 +113,5 @@ make floorplan      # hardware/rp2040_frisk/floorplan.svg を再生成
 - ビア径・ドリル径（0.5/0.3 mm のみ、0.15 mm なし）
 - via-in-pad / plugged via の禁止
 - ピン割り当ての重複
-- スイッチ 6 個の機能と接続
+- スイッチ 5 個の機能と接続
 - BOM の SMT 部品に LCSC 型番があること
