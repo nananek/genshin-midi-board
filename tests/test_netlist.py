@@ -11,7 +11,7 @@ NETLIST = yaml.safe_load((ROOT / "hardware" / "rp2040_frisk" / "netlist.yaml").r
 
 class NetlistTests(unittest.TestCase):
     def test_component_and_net_counts(self) -> None:
-        self.assertEqual(len(NETLIST["components"]), 82)
+        self.assertEqual(len(NETLIST["components"]), 83)
         self.assertEqual(len(NETLIST["nets"]), 54)
 
     def test_every_net_has_at_least_two_pins(self) -> None:
