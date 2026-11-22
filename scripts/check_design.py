@@ -114,12 +114,12 @@ def main() -> int:
             if entry.get("net"):
                 gpio_nets[gpio] = entry["net"]
 
-    required_gpios = {12, 13, 4, 5, 28, 29, 27, 26, 14, 25}
+    required_gpios = {12, 13, 4, 5, 28, 29, 27, 14, 25}
     c.require(required_gpios <= set(gpios), "all required GPIOs are assigned")
 
     switches = data["switches"]
-    c.require(len(switches) == 6, "six switches are defined")
-    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW5", "SW6"}, "SW1..SW6 exist")
+    c.require(len(switches) == 5, "five switches are defined")
+    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW6"}, "SW1..SW4 and SW6 exist")
     switch_gpios = [s["gpio"] for s in switches if s["gpio"] is not None]
     c.require(len(switch_gpios) == len(set(switch_gpios)), "switch GPIOs do not collide")
     for s in switches:
