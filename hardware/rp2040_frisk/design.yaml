@@ -114,7 +114,7 @@ connectors:
     lcsc: null
     x_mm: 29.5
     y_mm: 28.0
-    rotation_deg: 0
+    rotation_deg: 180
     edge: bottom
     mouth: down
     courtyard: [21.35, 22.0, 16.3, 9.4]
@@ -125,6 +125,7 @@ placements:
     package: "QFN-56 7x7 mm"
     x_mm: 20.0
     y_mm: 12.5
+    rotation_deg: 270
     w_mm: 9.0
     h_mm: 9.0
   - ref: U2
@@ -176,14 +177,14 @@ placements:
     y_mm: 9.5
     w_mm: 3.0
     h_mm: 3.0
-  - ref: Y1
+  - ref: X1
     value: 12MHz
     package: "3225-4pin"
     x_mm: 12.0
     y_mm: 12.5
     w_mm: 3.5
     h_mm: 3.0
-  - ref: Y2
+  - ref: X2
     value: 12MHz
     package: "3225-4pin"
     x_mm: 38.5

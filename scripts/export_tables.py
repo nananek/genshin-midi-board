@@ -49,7 +49,7 @@ def main() -> None:
             "type": entry["value"],
             "x_mm": entry["x_mm"],
             "y_mm": entry["y_mm"],
-            "rotation_deg": 0,
+            "rotation_deg": entry.get("rotation_deg", 0),
             "edge": "",
             "role": entry["package"],
         })
