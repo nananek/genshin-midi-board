@@ -1,0 +1,20 @@
+signal,rp2040_pin,gpio,net,destination,note
+PIO-USB D+,15,12,USB_A_DP_GP12,22R -> U6 -> J2 D+,PIO-USB requires D- on D+ + 1
+PIO-USB D-,16,13,USB_A_DM_GP13,22R -> U6 -> J2 D-,-
+CH345 MIN (RP2040 TX),6,4,MIDI_UART_TX,CH345 pin 4 (MIN),"UART1 TX, 31250 8N1"
+CH345 MOUT (RP2040 RX),7,5,MIDI_UART_RX,CH345 pin 3 (MOUT),"UART1 RX, 31250 8N1"
+native USB D+,47,,USB_PC_DP,27R -> U7 -> J1 D+,RP2040 USB_DP
+native USB D-,46,,USB_PC_DM,27R -> U7 -> J1 D-,RP2040 USB_DM
+mute switch,40,28,SW1_MUTE,SW1 pin2,"internal pull-up, active low"
+lyre switch,41,29,SW2_LYRE,SW2 pin2,"internal pull-up, active low"
+spare switch,39,27,SW3_SPARE,SW3 pin2,"internal pull-up, active low"
+sustain switch,38,26,SW5_SUSTAIN,SW5 pin2,"internal pull-up, active low"
+MIDI reset button,17,14,SW6_RESET,SW6 pins 3/4,"internal pull-up, active low"
+status LED,37,25,STATUS_LED,1k -> LED1 -> GND,active high
+debug UART TX,2,0,UART0_TX,TP1,"UART0, 115200 8N1"
+debug UART RX,3,1,UART0_RX,TP2,"UART0, 115200 8N1"
+QSPI flash,51-56,,QSPI_*,U2 W25Q128,"dedicated QSPI pins, not GPIO"
+crystal,20/21,,XIN/XOUT,Y1 12MHz,"15 pF load caps, 1k series on XOUT"
+SWD,24/25,,SWCLK/SWDIO,TP4/TP5,-
+RUN,26,,RUN,"TP6, 10k pull-up to +3V3",-
+BOOTSEL,56,,QSPI_SS,TP7 via 1k to GND when pressed,do not hold low during normal boot
