@@ -1,5 +1,5 @@
 ** Drc report for rp2040_frisk.kicad_pcb **
-** Created on 2026-11-22T19:29:23 **
+** Created on 2026-11-22T19:30:20 **
 ** Report includes: Errors, Warnings, Exclusions **
 
 ** Found 0 DRC violations **
@@ -51,7 +51,7 @@
     @(2.0000 mm, 0.0000 mm): Zone [GND] on F.Cu, priority 0
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(2.0000 mm, 0.0000 mm): Zone [GND] on B.Cu, priority 0
+    @(2.0000 mm, 0.0000 mm): Zone [GND] on In1.Cu, priority 0
     @(2.0000 mm, 0.0000 mm): Zone [GND] on F.Cu, priority 0
 [unconnected_items]: Missing connection between items
     Local override; error
@@ -128,7 +128,7 @@
 [unconnected_items]: Missing connection between items
     Local override; error
     @(22.2250 mm, 17.5000 mm): Pad 1 [+1V1] of C14 on F.Cu
-    @(24.6000 mm, 16.6000 mm): Track [+1V1] on F.Cu, length 3.1000 mm
+    @(25.3000 mm, 17.3000 mm): Track [+1V1] on F.Cu, length 0.9899 mm
 [unconnected_items]: Missing connection between items
     Local override; error
     @(23.4375 mm, 10.7000 mm): Pad 54 [QSPI_SD2] of U1 on F.Cu
@@ -167,7 +167,7 @@
     @(32.0500 mm, 1.9500 mm): PTH pad 4 [SW6_RESET] of SW6
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(15.3000 mm, 19.7000 mm): Track [RUN] on B.Cu, length 0.1000 mm
+    @(15.2000 mm, 19.7000 mm): Track [RUN] on B.Cu, length 1.7000 mm
     @(2.5000 mm, 29.4000 mm): Pad 1 [RUN] of TP6 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
