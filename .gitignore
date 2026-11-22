@@ -1,3 +1,22 @@
 .tmp/
 __pycache__/
 *.pyc
+
+# firmware build outputs
+/firmware/build/
+/firmware/*.uf2
+/firmware/*.elf
+/firmware/*.bin
+/firmware/*.hex
+/firmware/*.dis
+/firmware/*.map
+
+# fetched firmware dependencies (scripts/fetch_deps.sh)
+/firmware/lib/tinyusb/
+/firmware/lib/Pico-PIO-USB/
+
+# host unit test binaries
+/firmware/tests/t_note_mapper
+/firmware/tests/t_midi_parse
+/firmware/tests/t_nkro_report
+/firmware/tests/t_nkro_report_wrap
