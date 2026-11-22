@@ -76,13 +76,13 @@ PLACEMENT = {
     "J3": (43.0, 2.4, 180),
     "J2": (29.5, 28.0, 180),
     "U1": (20.0, 12.5, 270),
-    "U2": (30.5, 12.0, 90),
+    "U2": (32.0, 12.0, 90),
     "U3": (44.0, 12.5, 0),
     "U4": (27.0, 20.1, 0),
     "U5": (18.0, 20.2, 0),
     "U6": (22.6, 20.1, 0),
     "U7": (12.9, 9.6, 0),
-    "U8": (36.5, 9.7, 0),
+    "U8": (37.0, 9.7, 0),
     "X1": (12.6, 13.4, 0),
     "X2": (38.8, 19.4, 0),
     "D1": (21.2, 5.0, 0),
@@ -115,9 +115,9 @@ PLACEMENT = {
     "R10": (16.5, 23.0, 0),
     "R9": (19.6, 23.0, 0),
     # flash, crystal X2, USB-MIDI series resistors
-    "C16": (35.9, 12.35, 0),
-    "R17": (35.9, 14.05, 0),
-    "R18": (35.9, 15.75, 0),
+    "C16": (36.6, 12.35, 0),
+    "R17": (36.4, 14.05, 0),
+    "R18": (36.4, 15.75, 0),
     # single column right of U4
     "R12": (34.2, 17.8, 0),
     "C4": (31.0, 17.8, 0),
@@ -153,13 +153,13 @@ PLACEMENT = {
     # LED series resistor
     "R13": (35.1, 7.0, 0),
     # test points
-    "TP1": (20.4, 7.2, 0),
-    "TP2": (22.8, 7.2, 0),
+    "TP1": (4.7, 15.0, 0),
+    "TP2": (6.9, 15.0, 0),
     "TP3": (2.5, 15.0, 0),
-    "TP4": (4.5, 15.0, 0),
-    "TP5": (6.5, 15.0, 0),
-    "TP6": (2.5, 29.4, 0),
-    "TP7": (5.5, 29.4, 0),
+    "TP4": (1.9, 29.4, 0),
+    "TP5": (4.1, 29.4, 0),
+    "TP6": (6.3, 29.4, 0),
+    "TP7": (35.5, 20.5, 0),
     "TP12": (8.5, 29.4, 0),
     "TP8": (39.5, 29.4, 0),
     "TP9": (50.0, 1.3, 0),
@@ -552,36 +552,37 @@ def route(board, netlist, fps):
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     report = {}
 
-    # 0. the core rail: short pins but two caps sit far right, so it needs
-    #    a clean corridor before the signal nets take it
+    # 1. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
+    #    (vias only if a net cannot make the fan)
+    for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
+        report[net] = do_net(net, [0.15, 0.127], via_cost=45)
+
+    # 1c. core rail: two of its caps sit far right, so it needs a clean run
     report["+1V1"] = do_net("+1V1", [0.2, 0.15])
 
-    # 0b. QSPI: six short nets between U1 and the flash, no vias
-    for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
-        report[net] = do_net(net)
-
-    # 0c. crystals: short, and they must hug XIN/XOUT
+    # 2. crystals: short, must hug XIN/XOUT
     for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
         report[net] = do_net(net, [0.15, 0.127])
 
-    # 1. USB data: short, local, and they define the corridors
+    # 3. USB data
     for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
                 "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
                 "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
         report[net] = do_net(net)
 
-    # 1b. the left/bottom GPIO nets: long, and they prefer B.Cu, which keeps
-    #     them out of the F.Cu USB corridors
-    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
-                "SWCLK", "SWDIO", "RUN", "UART0_TX", "UART0_RX"):
-        report[net] = do_net(net, [0.15, 0.127])
-
-    # 2. power distribution: it needs the wide corridors
+    # 3b. power: wide corridors, after the USB pair has its lanes
     for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V"):
         w, _ = rule_for(net)
         report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25])
 
-    # 4. core rail and the crystals
+    # 4. switches and debug pads: they may jog to B.Cu to pass the switch rows
+    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
+                "SWCLK", "SWDIO", "RUN"):
+        report[net] = do_net(net, [0.15, 0.127], via_cost=14)
+
+    for net in ("UART0_TX", "UART0_RX"):
+        report[net] = do_net(net, [0.15, 0.127], via_cost=12)
+
     for net in ("MIDI_UART_TX", "MIDI_UART_RX"):
         report[net] = do_net(net, [0.15, 0.127])
 
