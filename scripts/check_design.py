@@ -65,13 +65,15 @@ def main() -> int:
     c.near(float(board["chamfer_mm"]), 2.0, 0.001, "corner punch cut")
 
     fab = data["fabrication"]
-    c.require(float(fab["via_diameter_mm"]) == 0.5, "via diameter is 0.5 mm")
-    c.require(float(fab["via_drill_mm"]) == 0.3, "via drill is 0.3 mm")
+    c.require(float(fab["via_diameter_mm"]) == 0.5, "default via diameter is 0.5 mm")
+    c.require(float(fab["via_drill_mm"]) == 0.3, "default via drill is 0.3 mm")
     c.require(fab["via_in_pad"] is False, "via-in-pad is forbidden")
     c.require(fab["plugged_vias"] is False, "plugged vias are forbidden")
     c.require(fab["advanced_via_process"] is False, "advanced via process is forbidden")
     c.require(0.15 not in [float(v) for v in fab["allowed_via_drills_mm"]], "0.15 mm drill is not allowed")
+    c.require(0.2 not in [float(v) for v in fab["allowed_via_drills_mm"]], "0.2 mm drill is not allowed")
     c.require(0.15 not in [float(v) for v in fab["allowed_via_diameters_mm"]], "0.15 mm via diameter is not allowed")
+    c.require(0.45 in [float(v) for v in fab["allowed_via_diameters_mm"]], "0.45 mm via is allowed")
 
     connectors = {entry["ref"]: entry for entry in data["connectors"]}
     j1, j3, j2 = connectors["J1"], connectors["J3"], connectors["J2"]

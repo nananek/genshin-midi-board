@@ -61,8 +61,8 @@ make kicad-check
 
 - 基板外形が 57.6 × 31.4 mm
 - 4 層（F.Cu / In1.Cu / In2.Cu / B.Cu）
-- すべてのビアが 0.5/0.3 mm
-- 0.15 mm ドリルがない
+- ビアが 0.5/0.3 mm または 0.45/0.25 mm
+- 0.15 / 0.2 mm ドリルがない
 - via-in-pad がない
 - plugged / capped / filled がない
 - blind / buried / micro via がない

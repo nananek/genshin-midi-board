@@ -4,7 +4,7 @@ USB MIDI キーボード（KORG microKEY2）を USB-A で受け、PC へは NKRO
 
 RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T + 4 層基板**に置き換えます。外形は `nananek/serial-km-emulator` と同じ 57.6 × 31.4 mm、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。
 
-> 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC ですが、未接続 36 点が残っています。実機検証はまだです。
+> 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC ですが、未接続 25 点が残っています。実機検証はまだです。
 
 ## 結論
 
@@ -17,7 +17,7 @@ RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T
 | USB-C 1 | RP2040 native USB、NKRO HID → PC |
 | USB-C 2 | CH345T、USB-MIDI → iPad |
 | スイッチ | SW1〜SW4 と SW6（4 × スライド、1 × タクト）。SW5 は SW3 に統合 |
-| 製造 | JLCPCB、4 層、0.5/0.3 mm ビア、via-in-pad なし |
+| 製造 | JLCPCB、4 層、0.5/0.3 mm ビア（最終ホップは 0.45/0.25 mm）、via-in-pad なし |
 
 ## なぜ RP2040 か
 
@@ -110,7 +110,7 @@ make floorplan      # hardware/rp2040_frisk/floorplan.svg を再生成
 
 - 基板寸法、層数、パンチカット
 - USB-C 2 ポートのピッチとエッジ余裕
-- ビア径・ドリル径（0.5/0.3 mm のみ、0.15 mm なし）
+- ビア径・ドリル径（0.5/0.3 mm と 0.45/0.25 mm、0.15/0.2 mm なし）
 - via-in-pad / plugged via の禁止
 - ピン割り当ての重複
 - スイッチ 5 個の機能と接続

@@ -42,10 +42,11 @@ fabrication:
   process: "standard 4-layer"
   via_diameter_mm: 0.5
   via_drill_mm: 0.3
-  allowed_via_diameters_mm: [0.5]
-  allowed_via_drills_mm: [0.3]
-  min_trace_mm: 0.127
-  min_space_mm: 0.127
+  allowed_via_diameters_mm: [0.5, 0.45]
+  allowed_via_drills_mm: [0.3, 0.25]
+  min_trace_mm: 0.1
+  min_space_mm: 0.1
+  min_hole_clearance_mm: 0.2
   preferred_signal_trace_mm: 0.15
   power_trace_mm: 0.8
   usb_trace_mm: 0.2
@@ -59,8 +60,9 @@ fabrication:
   impedance_control: false
   assembly_side: "top only"
   notes:
-    - "PR #22 の教訓: 0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。すべて 0.5/0.3 mm にする。"
+    - "PR #22 の教訓: 0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。通常は 0.5/0.3 mm、最後の 1 本だけ 0.45/0.25 mm を使う。"
     - "PR #22 の教訓: via covering は tented のままにし、plugged にしない。"
+    - "配線間隔は 0.1 mm、ホール間隔は 0.2 mm、ビア径は 0.45 mm 以上を JLCPCB 4 層の標準範囲として使う。発注画面で確認する。"
     - "Type-C の A7/B7 はパッド内ビアを使わず、ドッグボーンでパッド外の 0.5/0.3 mm ビアへ逃がす。"
     - "QFN-56 のサーマルパッド内にビアを置かない。パッド外のビアと F.Cu の GND で接続する。"
 

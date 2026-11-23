@@ -47,7 +47,10 @@ class BoardTests(unittest.TestCase):
         self.assertFalse(fab["via_in_pad"])
         self.assertFalse(fab["plugged_vias"])
         self.assertFalse(fab["advanced_via_process"])
+        self.assertIn(0.45, fab["allowed_via_diameters_mm"])
+        self.assertIn(0.25, fab["allowed_via_drills_mm"])
         self.assertNotIn(0.15, fab["allowed_via_drills_mm"])
+        self.assertNotIn(0.2, fab["allowed_via_drills_mm"])
         self.assertNotIn(0.15, fab["allowed_via_diameters_mm"])
 
     def test_pinmap_has_no_conflicts(self) -> None:
