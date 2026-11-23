@@ -134,15 +134,15 @@ class Router:
         self.stamp_seg(self.copper[lay], p0, p1, width / 2 + extra)
         self.net_geom.setdefault(net, []).append(("trk", layer, p0, p1, width, extra))
 
-    def commit_via(self, net, p):
+    def commit_via(self, net, p, drill=0.3, radius=VIA_R):
         key = (self.cx(p[0]), self.cy(p[1]))
         seen = self.via_cells.setdefault(net, set())
         if key in seen:
             return False
         seen.add(key)
-        self.stamp_disc(self.copper[0], p[0], p[1], VIA_R)
-        self.stamp_disc(self.copper[1], p[0], p[1], VIA_R)
-        self.net_geom.setdefault(net, []).append(("via", p))
+        self.stamp_disc(self.copper[0], p[0], p[1], radius)
+        self.stamp_disc(self.copper[1], p[0], p[1], radius)
+        self.net_geom.setdefault(net, []).append(("via", p, drill, radius))
         return True
 
     def _own_map(self, net):
@@ -161,16 +161,20 @@ class Router:
                                w / 2 + text)
             else:
                 p = item[1]
-                self.stamp_disc(own[0], p[0], p[1], VIA_R)
-                self.stamp_disc(own[1], p[0], p[1], VIA_R)
+                r = item[3] if len(item) > 3 else VIA_R
+                self.stamp_disc(own[0], p[0], p[1], r)
+                self.stamp_disc(own[1], p[0], p[1], r)
         return own
 
     # ---------------------------------------------------------------- routing
-    def masks(self, net, width, clearance=MIN_CLEAR):
+    def masks(self, net, width, clearance=MIN_CLEAR, via_radius=VIA_R):
         own = self._own_map(net)
         # the copper stamps already include half a cell of slack
-        r_route = max(1, int((width / 2 + clearance + 0.02 - 0.05) / self.cell) + 1)
-        r_via = cells(VIA_R + MIN_CLEAR + 0.02 - 0.05, self.cell)
+        bump = 0 if clearance < 0.12 else 1
+        r_route = max(1, int((width / 2 + clearance + 0.02
+                              - self.cell * 0.5) / self.cell) + bump)
+        r_via = cells(via_radius + clearance + 0.02 - self.cell * 0.5, self.cell) if clearance < 0.12 \
+            else cells(via_radius + MIN_CLEAR + 0.02 - self.cell * 0.5, self.cell)
         edge = int.from_bytes(self.edge_mask(width), "little")
         viamask = int.from_bytes(bytes(self.padguard), "little")
         blocked = []
@@ -249,7 +253,8 @@ class Router:
         path.reverse()
         return path
 
-    def emit(self, net, path, width, start_xy=None, end_xy=None, extra=0.0):
+    def emit(self, net, path, width, start_xy=None, end_xy=None, extra=0.0,
+             via_radius=VIA_R):
         points = [(self.cell * ix, self.cell * iy, lay) for lay, ix, iy in path]
         if start_xy is not None:
             points[0] = (start_xy[0], start_xy[1], points[0][2])
@@ -271,7 +276,7 @@ class Router:
         for p in simple[1:]:
             if p[2] != run[-1][2]:
                 vias.append((p[0], p[1]))
-                self.commit_via(net, (p[0], p[1]))
+                self.commit_via(net, (p[0], p[1]), 0.25 if via_radius != VIA_R else 0.3, via_radius)
                 self._commit_run(net, run, width, tracks, extra)
                 run = [p]
             else:
@@ -288,8 +293,8 @@ class Router:
             self.commit_track(net, lg, (a[0], a[1]), (b[0], b[1]), width, extra)
 
     def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30,
-                max_expand=400000):
-        blocked, viamask = self.masks(net, width, clearance)
+                max_expand=400000, via_radius=VIA_R):
+        blocked, viamask = self.masks(net, width, clearance, via_radius)
         for _ in range(4):
             path = self.search(blocked, viamask, src, dst,
                                max_expand=max_expand, via_cost=via_cost)
@@ -304,12 +309,12 @@ class Router:
                     vl.append((self.cell * ix, self.cell * iy))
                 prev = lay
             clash = [(a, b) for i, a in enumerate(vl) for b in vl[i + 1:]
-                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.8]
+                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.72]
             for a in vl:
                 for other_net, cells in self.via_cells.items():
                     for (cx, cy) in cells:
                         if hypot(a[0] - cx * self.cell,
-                                 a[1] - cy * self.cell) < 0.8:
+                                 a[1] - cy * self.cell) < 0.72:
                             clash.append((a, (cx * self.cell, cy * self.cell)))
             if not clash:
                 break
@@ -321,7 +326,7 @@ class Router:
         else:
             return False
         self.emit(net, path, width, src[:2], dst[:2],
-                  max(0.0, clearance - MIN_CLEAR))
+                  max(0.0, clearance - MIN_CLEAR), via_radius)
         return True
 
     # ------------------------------------------------------- plane connection

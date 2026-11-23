@@ -192,6 +192,12 @@ USB_ROUTE_ORDER = [
 ]
 
 
+TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
+             "STATUS_LED", "UART0_RX", "TPS_FAULT", "USB_MIDI_DP",
+             "USB_MIDI_DM", "CH345_RST", "CC1_PC", "CC1_IPAD", "CC2_IPAD",
+             "+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+3V3"}
+
+
 def rule_for(net):
     if net in POWER_WIDTH:
         return POWER_WIDTH[net], 0.2
@@ -301,16 +307,16 @@ def new_board():
     board.SetCopperLayerCount(4)
     ds = board.GetDesignSettings()
     ds.SetBoardThickness(MM(1.6))
-    ds.m_MinClearance = MM(0.127)
+    ds.m_MinClearance = MM(0.1)
     ds.m_TrackMinWidth = MM(0.127)
     ds.m_ViasMinSize = MM(0.5)
     ds.m_MinThroughDrill = MM(0.3)
     ds.m_ViasMinAnnularWidth = MM(0.1)
     ds.m_CopperEdgeClearance = MM(EDGE_CLEARANCE)
-    ds.m_HoleClearance = MM(0.25)
+    ds.m_HoleClearance = MM(0.2)
     ds.m_HoleToHoleMin = MM(0.25)
     nc = ds.m_NetSettings.GetDefaultNetclass()
-    nc.SetClearance(MM(0.127))
+    nc.SetClearance(MM(0.1))
     nc.SetTrackWidth(MM(0.15))
     nc.SetViaDiameter(MM(0.5))
     nc.SetViaDrill(MM(0.3))
@@ -483,7 +489,7 @@ def pad_endpoints(fps, netlist):
 def route(board, netlist, fps):
     import pcb_router as R
 
-    router = R.Router(BOARD_W, BOARD_H, cell=0.1)
+    router = R.Router(BOARD_W, BOARD_H, cell=0.05)
     router.set_outline(outline_points())
     by_net = pad_endpoints(fps, netlist)
 
@@ -519,6 +525,7 @@ def route(board, netlist, fps):
         return out
 
     def do_net(net, widths=None, via_cost=None):
+        vrad = 0.225 if net in TIGHT_VIA else 0.25
         if net in skip:
             return 0, len(endpoints(net)) - 1
         pts = endpoints(net)
@@ -536,7 +543,8 @@ def route(board, netlist, fps):
                 vc = via_cost if via_cost is not None else (
                     60 if net.startswith("QSPI") else 30)
                 if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=vc, max_expand=900000):
+                                  via_cost=vc, max_expand=900000,
+                                  via_radius=vrad):
                     connected.append(i)
                 else:
                     remaining.append(i)
@@ -582,9 +590,6 @@ def route(board, netlist, fps):
 
     for net in ("UART0_TX", "UART0_RX"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=6)
-
-    for net in ("MIDI_UART_TX", "MIDI_UART_RX"):
-        report[net] = do_net(net, [0.15, 0.127])
 
     # +3V3 lives on the In2 plane: stub every pad to a via
     ok = fail = 0
@@ -671,11 +676,11 @@ def route(board, netlist, fps):
                 t.SetNet(ni)
                 board.Add(t)
             else:
-                _, p = item
+                _, p, drill, radius = item
                 v = pcbnew.PCB_VIA(board)
                 v.SetPosition(pcbnew.VECTOR2I(MM(p[0]), MM(p[1])))
-                v.SetWidth(MM(0.5))
-                v.SetDrill(MM(0.3))
+                v.SetWidth(MM(2 * radius))
+                v.SetDrill(MM(drill))
                 v.SetViaType(pcbnew.VIATYPE_THROUGH)
                 v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
                 v.SetNet(ni)
