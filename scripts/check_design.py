@@ -59,8 +59,8 @@ def main() -> int:
 
     board = data["board"]
     W, H = float(board["width_mm"]), float(board["height_mm"])
-    c.near(W, 57.6, 0.001, "board width")
-    c.near(H, 31.4, 0.001, "board height")
+    c.near(W, 62.0, 0.001, "board width")
+    c.near(H, 35.0, 0.001, "board height")
     c.require(int(board["layers"]) == 4, "board is 4 layers")
     c.near(float(board["chamfer_mm"]), 2.0, 0.001, "corner punch cut")
 

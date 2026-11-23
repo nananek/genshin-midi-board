@@ -1,7 +1,7 @@
 ref,type,x_mm,y_mm,rotation_deg,edge,role
-J1,USB-C receptacle,14.0,2.4,180,top,USB-C receptacle
-J3,USB-C receptacle,43.0,2.4,180,top,USB-C receptacle
-J2,USB-A receptacle,29.5,28.0,180,bottom,USB-A receptacle
+J1,USB-C receptacle,16.5,2.4,180,top,USB-C receptacle
+J3,USB-C receptacle,45.5,2.4,180,top,USB-C receptacle
+J2,USB-A receptacle,31.0,31.6,180,bottom,USB-A receptacle
 U1,RP2040,20.0,12.5,270,,QFN-56 7x7 mm
 U2,W25Q128JVSIQ,32.0,12.0,90,,SOIC-8
 U3,CH345T,44.0,12.5,0,,SSOP-20
@@ -12,6 +12,6 @@ U7,USBLC6-2SC6,12.9,9.6,0,,SOT-23-6
 U8,USBLC6-2SC6,37.0,9.7,0,,SOT-23-6
 X1,12MHz,12.6,13.4,0,,3225-4pin
 X2,12MHz,38.8,19.4,0,,3225-4pin
-D1,BAT54WS,21.2,5.0,0,,SOD-323
-D2,BAT54WS,35.8,5.0,0,,SOD-323
-LED1,status LED,35.5,3.0,0,,0603
+D1,BAT54WS,23.5,5.0,0,,SOD-323
+D2,BAT54WS,36.8,5.0,0,,SOD-323
+LED1,status LED,37.0,3.0,0,,0603

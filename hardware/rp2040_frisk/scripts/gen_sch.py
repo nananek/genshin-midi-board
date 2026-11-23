@@ -509,6 +509,7 @@ FOOTPRINT = {
     "R_0603_1608Metric": "Resistor_SMD:R_0603_1608Metric",
     "C_0603_1608Metric": "Capacitor_SMD:C_0603_1608Metric",
     "C_0805_2012Metric": "Capacitor_SMD:C_0805_2012Metric",
+    "C_1210_3225Metric": "Capacitor_SMD:C_1210_3225Metric",
     "CP_Radial_D6.3mm_P2.5mm": "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm",
     "TestPoint_1P": f"{LIB_NAME}:TestPoint_1P",
 }
@@ -831,7 +832,7 @@ def main():
             ["title", Q("RP2040 Frisk MIDI bridge")],
             ["date", Q("2026-11-23")],
             ["rev", Q("A")],
-            ["comment", "1", Q("Board 57.6 x 31.4 mm, 4 layers, 1.6 mm")],
+            ["comment", "1", Q("Board 62.0 x 35.0 mm, 4 layers, 1.6 mm")],
             ["comment", "2", Q("RP2040 PIO-USB host + native USB HID + CH345T USB-MIDI")],
             ["comment", "3", Q("Generated from hardware/rp2040_frisk/netlist.yaml")]],
            ["lib_symbols"] + embedded]

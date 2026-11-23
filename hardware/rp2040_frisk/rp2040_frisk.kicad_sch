@@ -8,7 +8,7 @@
 		(title "RP2040 Frisk MIDI bridge")
 		(date "2026-11-23")
 		(rev "A")
-		(comment 1 "Board 57.6 x 31.4 mm, 4 layers, 1.6 mm")
+		(comment 1 "Board 62.0 x 35.0 mm, 4 layers, 1.6 mm")
 		(comment 2 "RP2040 PIO-USB host + native USB HID + CH345T USB-MIDI")
 		(comment 3 "Generated from hardware/rp2040_frisk/netlist.yaml")
 	)
@@ -16460,7 +16460,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 480.06 95.25 0)
 			(hide yes)
 			(effects
@@ -16470,6 +16470,15 @@
 			)
 		)
 		(property "Datasheet" ""
+			(at 480.06 95.25 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C96123"
 			(at 480.06 95.25 0)
 			(hide yes)
 			(effects

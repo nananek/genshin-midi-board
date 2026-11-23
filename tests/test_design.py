@@ -14,8 +14,8 @@ DESIGN = yaml.safe_load((ROOT / "hardware" / "rp2040_frisk" / "design.yaml").rea
 class BoardTests(unittest.TestCase):
     def test_board_is_frisk_sized_four_layer(self) -> None:
         board = DESIGN["board"]
-        self.assertAlmostEqual(board["width_mm"], 57.6, places=3)
-        self.assertAlmostEqual(board["height_mm"], 31.4, places=3)
+        self.assertAlmostEqual(board["width_mm"], 62.0, places=3)
+        self.assertAlmostEqual(board["height_mm"], 35.0, places=3)
         self.assertEqual(board["layers"], 4)
         self.assertAlmostEqual(board["chamfer_mm"], 2.0, places=3)
 
