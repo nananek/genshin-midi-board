@@ -100,11 +100,11 @@
 <line x1="68.400" y1="98.150" x2="69.200" y2="98.150" stroke="#000" stroke-width="0.150"/>
 <line x1="65.500" y1="101.850" x2="65.500" y2="101.050" stroke="#000" stroke-width="0.150"/>
 <line x1="65.500" y1="95.250" x2="65.500" y2="94.450" stroke="#000" stroke-width="0.150"/>
-<circle cx="71.500" cy="99.350" r="1.500" fill="none" stroke="#000" stroke-width="0.300"/>
-<line x1="68.800" y1="99.350" x2="69.600" y2="99.350" stroke="#000" stroke-width="0.150"/>
-<line x1="73.400" y1="99.350" x2="74.200" y2="99.350" stroke="#000" stroke-width="0.150"/>
-<line x1="71.500" y1="102.050" x2="71.500" y2="101.250" stroke="#000" stroke-width="0.150"/>
-<line x1="71.500" y1="97.450" x2="71.500" y2="96.650" stroke="#000" stroke-width="0.150"/>
+<circle cx="56.300" cy="77.650" r="1.500" fill="none" stroke="#000" stroke-width="0.300"/>
+<line x1="53.600" y1="77.650" x2="54.400" y2="77.650" stroke="#000" stroke-width="0.150"/>
+<line x1="58.200" y1="77.650" x2="59.000" y2="77.650" stroke="#000" stroke-width="0.150"/>
+<line x1="56.300" y1="80.350" x2="56.300" y2="79.550" stroke="#000" stroke-width="0.150"/>
+<line x1="56.300" y1="75.750" x2="56.300" y2="74.950" stroke="#000" stroke-width="0.150"/>
 <polygon points="36.500,112.500 94.500,112.500 96.500,114.500 96.500,145.500 94.500,147.500 36.500,147.500 34.500,145.500 34.500,114.500" fill="#f0f0f0" stroke="none"/>
 <line x1="36.500" y1="112.500" x2="94.500" y2="112.500" stroke="#727272" stroke-width="0.180"/>
 <line x1="94.500" y1="112.500" x2="96.500" y2="114.500" stroke="#727272" stroke-width="0.180"/>
@@ -215,7 +215,7 @@
 <text x="120.000" y="113.550" font-size="2.550">LED1</text>
 <text x="129.000" y="113.550" font-size="2.550">LED</text>
 <text x="145.000" y="113.550" font-size="2.550">lid</text>
-<text x="163.000" y="113.550" font-size="2.550">x=37.0 y=3.0</text>
+<text x="163.000" y="113.550" font-size="2.550">x=21.8 y=24.7</text>
 <text x="195.000" y="113.550" font-size="2.550">dia 3.0</text>
 <text x="215.000" y="113.550" font-size="2.550">centre</text>
 <text x="120.000" y="120.000" font-size="3.400">DIMENSIONS (mm)</text>

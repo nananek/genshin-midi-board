@@ -133,7 +133,8 @@ class CaseGeometryTests(unittest.TestCase):
         holes = {h.ref: h for h in CASE.holes}
         self.assertEqual(holes["LED1"].diameter, 3.0)
         self.assertEqual(holes["SW6"].diameter, 5.0)
-        self.assertAlmostEqual(holes["LED1"].center[0], 37.5, places=6)
+        led = next(p for p in DESIGN["placements"] if p["ref"] == "LED1")
+        self.assertAlmostEqual(holes["LED1"].center[0], led["x_mm"] + 0.5, places=6)
         self.assertAlmostEqual(holes["SW6"].center[0], 31.5, places=6)
         hinge = CASE.d + CASE.h
         for hole in CASE.holes:
