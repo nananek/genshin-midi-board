@@ -186,12 +186,17 @@ class Router:
             viamask |= self._dilate(others, r_via)
         return blocked, (viamask & self.full).to_bytes(self.n, "little")
 
-    def search(self, blocked, viamask, src, dst, max_expand=400000, via_cost=30):
+    def search(self, blocked, viamask, src, dst, max_expand=400000, via_cost=30,
+               force_layer=None):
         nx, ny, n = self.nx, self.ny, self.n
         sx, sy = self.cx(src[0]), self.cy(src[1])
         dx, dy = self.cx(dst[0]), self.cy(dst[1])
-        src_layers = [0] if src[2] == "F" else [0, 1]
-        dst_layers = {0} if dst[2] == "F" else {0, 1}
+        if force_layer is not None:
+            src_layers = [force_layer]
+            dst_layers = {force_layer}
+        else:
+            src_layers = [0] if src[2] == "F" else [0, 1]
+            dst_layers = {0} if dst[2] == "F" else {0, 1}
         goals = {lay * n + self.idx(dx, dy) for lay in dst_layers}
         gdist = [inf] * (2 * n)
         prev = [-1] * (2 * n)
@@ -233,7 +238,8 @@ class Router:
                     prev[ncur] = cur
                     heapq.heappush(heap, (ng + hypot(jx - dx, jy - dy), ng, ncur))
             other = 1 - lay
-            if not blocked[other][cell] and not viamask[cell]:
+            if (force_layer is None and not blocked[other][cell]
+                    and not viamask[cell]):
                 ng = g + via_cost
                 ncur = other * n + cell
                 if ng < gdist[ncur]:
@@ -293,11 +299,12 @@ class Router:
             self.commit_track(net, lg, (a[0], a[1]), (b[0], b[1]), width, extra)
 
     def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30,
-                max_expand=400000, via_radius=VIA_R):
+                max_expand=400000, via_radius=VIA_R, force_layer=None):
         blocked, viamask = self.masks(net, width, clearance, via_radius)
         for _ in range(4):
             path = self.search(blocked, viamask, src, dst,
-                               max_expand=max_expand, via_cost=via_cost)
+                               max_expand=max_expand, via_cost=via_cost,
+                               force_layer=force_layer)
             if path is None:
                 return False
             vias = [(self.cell * ix, self.cell * iy) for lay, ix, iy in path]
@@ -337,15 +344,17 @@ class Router:
                     return True
         return False
 
-    def connect_to_plane(self, net, pad, width, clearance=MIN_CLEAR):
+    def connect_to_plane(self, net, pad, width, clearance=MIN_CLEAR,
+                         via_radius=VIA_R):
         x, y = pad[0], pad[1]
         extra = max(0.0, clearance - MIN_CLEAR)
-        blocked, viamask = self.masks(net, width, clearance)
+        blocked, viamask = self.masks(net, width, clearance, via_radius)
         xmax, ymax = self.nx * self.cell - 0.7, self.ny * self.cell - 0.7
         cands = []
-        for r in (0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.7, 1.9, 2.1, 2.4, 2.8):
-            for k in range(16):
-                a = 6.283185307179586 * k / 16
+        for r in (0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.7, 1.9, 2.1, 2.4,
+                  2.8, 3.2, 3.6, 4.0, 4.5):
+            for k in range(24):
+                a = 6.283185307179586 * k / 24
                 cx = x + r * __import__("math").cos(a)
                 cy = y + r * __import__("math").sin(a)
                 if cx < 0.7 or cy < 0.7 or cx > xmax or cy > ymax:
@@ -361,11 +370,12 @@ class Router:
         if cands:
             (cx, cy) = min(cands, key=lambda c: c[0])[1]
             self.commit_track(net, "F", (x, y), (cx, cy), width, extra)
-            self.commit_via(net, (cx, cy))
+            self.commit_via(net, (cx, cy), 0.25 if via_radius < VIA_R else 0.3,
+                            via_radius)
             return [("F", (x, y), (cx, cy), width)], [(cx, cy)]
         # fallback: A* to any reachable cell where a via is legal
         goals = []
-        r = 3.2
+        r = 5.0
         for gy in range(max(0, self.cy(y - r)), min(self.ny, self.cy(y + r)) + 1):
             for gx in range(max(0, self.cx(x - r)), min(self.nx, self.cx(x + r)) + 1):
                 i = self.idx(gx, gy)
@@ -374,9 +384,9 @@ class Router:
                 d = hypot(gx * self.cell - x, gy * self.cell - y)
                 goals.append((d, gx * self.cell, gy * self.cell))
         goals.sort()
-        for _, gx, gy in goals[:40]:
+        for _, gx, gy in goals[:80]:
             path = self.search(blocked, viamask, pad, (gx, gy, "F"),
-                               max_expand=20000)
+                               max_expand=120000)
             if path is None:
                 continue
             self.emit(net, path, width, pad[:2], (gx, gy), extra)
