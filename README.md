@@ -2,7 +2,7 @@
 
 USB MIDI キーボード（KORG microKEY2）を USB-A で受け、PC へは NKRO HID キーボード、iPad へは USB-MIDI デバイスとして同時に見せる基板の設計案です。
 
-RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T + 4 層基板**に置き換えます。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。
+RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T + 4 層基板**に置き換えます。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。展開図は [docs/paper_case.md](docs/paper_case.md) と [docs/paper_case_a4.pdf](docs/paper_case_a4.pdf) にあります。
 
 > 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC ですが、未接続 25 点が残っています。実機検証はまだです。
 
@@ -89,6 +89,8 @@ docs/design.md                    詳細設計（電源、ピン、回路、配�
 docs/decisions.md                 代替案の比較と採用理由
 docs/jlcpcb.md                    JLCPCB 向け製造制約と発注チェック
 docs/firmware.md                  ファームウェア移植メモ
+docs/paper_case.md                紙ケースの印刷・折り手順
+docs/paper_case_a4.pdf            A4 1:1 の紙ケース展開図
 hardware/rp2040_frisk/design.yaml 設計の単一ソース
 hardware/rp2040_frisk/pinmap.csv  ピン割り当て
 hardware/rp2040_frisk/bom.csv     BOM

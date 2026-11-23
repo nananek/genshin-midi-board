@@ -49,7 +49,7 @@ make erc
 | J3 | USB-C | 上辺 x=43.0 | iPad / USB-MIDI |
 | J2 | USB-A | 下辺 x=29.5 | microKEY2 |
 
-J1/J3 の中心間は 29.0 mm、コートヤード間は 18.36 mm です。Type-C ケーブルの樹脂部が干渉しない余裕を確保しています。
+J1/J3 の中心間は 29.0 mm、コートヤード間は 18.36 mm です。Type-C ケーブルの樹脂部が干渉しない余裕を確保しています。ケースは内寸 63 × 36 × 9 mm の紙ケースで、展開図は [../../docs/paper_case.md](../../docs/paper_case.md) にあります。
 
 ## 注意
 
