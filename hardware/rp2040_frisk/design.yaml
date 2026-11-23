@@ -125,96 +125,98 @@ placements:
   - ref: U1
     value: RP2040
     package: "QFN-56 7x7 mm"
-    x_mm: 20.0
-    y_mm: 12.5
+    x_mm: 24.0
+    y_mm: 17.0
     rotation_deg: 270
-    w_mm: 9.0
-    h_mm: 9.0
+    w_mm: 8.4
+    h_mm: 8.4
   - ref: U2
     value: W25Q128JVSIQ
     package: "SOIC-8"
-    x_mm: 32.0
-    y_mm: 12.0
-    w_mm: 6.0
-    h_mm: 7.0
-    rotation_deg: 90
+    x_mm: 33.0
+    y_mm: 14.0
+    w_mm: 7.5
+    h_mm: 5.5
+    rotation_deg: 0
   - ref: U3
     value: CH345T
     package: "SSOP-20"
-    x_mm: 44.0
+    x_mm: 47.3
     y_mm: 12.5
-    w_mm: 6.0
-    h_mm: 8.0
+    w_mm: 9.6
+    h_mm: 7.8
+    rotation_deg: 0
   - ref: U4
     value: AP2112K-3.3
     package: "SOT-23-5"
-    x_mm: 27.0
-    y_mm: 20.1
-    w_mm: 3.5
+    x_mm: 11.0
+    y_mm: 21.8
+    w_mm: 4.2
     h_mm: 3.5
   - ref: U5
     value: TPS2553DBVR
     package: "SOT-23-6"
-    x_mm: 18.0
-    y_mm: 20.2
-    w_mm: 3.5
+    x_mm: 15.5
+    y_mm: 24.0
+    w_mm: 4.2
     h_mm: 3.5
   - ref: U6
     value: USBLC6-2SC6
     package: "SOT-23-6"
-    x_mm: 22.6
-    y_mm: 20.1
-    w_mm: 3.5
+    x_mm: 29.5
+    y_mm: 23.3
+    w_mm: 4.2
     h_mm: 3.5
   - ref: U7
     value: USBLC6-2SC6
     package: "SOT-23-6"
-    x_mm: 12.9
-    y_mm: 9.6
-    w_mm: 3.0
-    h_mm: 3.0
+    x_mm: 12.0
+    y_mm: 10.3
+    w_mm: 4.2
+    h_mm: 3.5
   - ref: U8
     value: USBLC6-2SC6
     package: "SOT-23-6"
-    x_mm: 37.0
-    y_mm: 9.7
-    w_mm: 3.0
-    h_mm: 3.0
+    x_mm: 39.5
+    y_mm: 10.5
+    w_mm: 4.2
+    h_mm: 3.5
   - ref: X1
     value: 12MHz
     package: "3225-4pin"
-    x_mm: 12.6
-    y_mm: 13.4
-    w_mm: 3.5
-    h_mm: 3.0
+    x_mm: 15.5
+    y_mm: 17.2
+    w_mm: 4.3
+    h_mm: 3.6
   - ref: X2
     value: 12MHz
     package: "3225-4pin"
-    x_mm: 38.8
-    y_mm: 19.4
-    w_mm: 3.5
-    h_mm: 3.0
+    x_mm: 47.5
+    y_mm: 19.5
+    w_mm: 4.3
+    h_mm: 3.6
   - ref: D1
     value: BAT54WS
     package: "SOD-323"
-    x_mm: 23.5
-    y_mm: 5.0
-    w_mm: 2.5
-    h_mm: 1.5
+    x_mm: 9.5
+    y_mm: 2.5
+    w_mm: 2.0
+    h_mm: 3.3
+    rotation_deg: 90
   - ref: D2
     value: BAT54WS
     package: "SOD-323"
-    x_mm: 36.8
-    y_mm: 5.0
-    w_mm: 2.5
-    h_mm: 1.5
+    x_mm: 37.6
+    y_mm: 4.3
+    w_mm: 3.3
+    h_mm: 2.0
   - ref: LED1
     value: "status LED"
     package: "0603"
-    x_mm: 37.0
-    y_mm: 3.0
-    w_mm: 1.6
-    h_mm: 0.8
+    x_mm: 21.8
+    y_mm: 24.7
+    w_mm: 3.0
+    h_mm: 1.6
 
 switches:
   - ref: SW1

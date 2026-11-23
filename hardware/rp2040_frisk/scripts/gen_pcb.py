@@ -75,97 +75,95 @@ PLACEMENT = {
     "J1": (16.5, 2.4, 180),
     "J3": (45.5, 2.4, 180),
     "J2": (31.0, 31.6, 180),
-    "U1": (20.0, 12.5, 270),
-    "U2": (32.0, 12.0, 90),
-    "U3": (44.0, 12.5, 0),
-    "U4": (27.0, 20.1, 0),
-    "U5": (18.0, 20.2, 0),
-    "U6": (22.6, 20.1, 0),
-    "U7": (12.9, 9.6, 0),
-    "U8": (37.0, 9.7, 0),
-    "X1": (12.6, 13.4, 0),
-    "X2": (38.8, 19.4, 0),
-    "D1": (23.05, 5.5, 90),
-    "D2": (38.0, 5.0, 0),
-    "LED1": (35.2, 23.5, 0),
+    # U1 in the middle: QSPI faces right toward U2, USB-A faces down toward J2
+    "U1": (24.0, 17.0, 270),
+    "U2": (33.0, 14.0, 0),
+    "U3": (47.3, 12.5, 0),
+    "U4": (11.0, 21.8, 0),
+    "U5": (15.5, 24.0, 0),
+    "U6": (29.5, 23.3, 0),
+    "U7": (12.0, 10.3, 0),
+    "U8": (39.5, 10.5, 0),
+    "X1": (15.5, 17.2, 0),
+    "X2": (47.5, 19.5, 0),
+    "D1": (9.5, 2.5, 90),
+    "D2": (37.6, 4.3, 0),
+    "LED1": (21.8, 24.7, 0),
     "SW1": (5.2, 9.0, 90),
     "SW2": (5.2, 24.5, 90),
     "SW3": (55.5, 9.0, 270),
     "SW4": (15.0, 31.5, 0),
     "SW6": (31.0, 4.2, 0),
-    # left hand column (J1 / CC / VBUS_PC)
-    "R1": (9.55, 9.5, 90),
-    "R2": (9.55, 12.7, 90),
-    "R5": (11.0, 23.0, 0),
-    "R6": (11.0, 25.2, 0),
-    "C24": (9.5, 5.0, 90),
-    # crystal X1 group and DVDD/IOVDD decoupling
-    "C17": (11.3, 16.8, 90),
-    "R14": (13.7, 16.8, 90),
-    "C3": (11.3, 19.9, 90),
-    "C18": (13.7, 19.9, 90),
-    "C8": (53.7, 24.4, 0),
-    # USB-A series resistors moved into the free pocket floor left of J2
-    "R3": (22.0, 23.6, 90),
-    "R4": (22.0, 26.8, 90),
-    "C14": (31.7, 24.7, 0),
-    # 1uF rails: kept near U1 but out of the U1/U2 QSPI corridor
-    "C1": (25.0, 24.3, 0),
-    "C2": (28.5, 23.5, 0),
-    # TPS2553 support
-    "R10": (16.5, 23.0, 0),
-    "R9": (19.6, 23.0, 0),
-    "R11": (15.0, 26.0, 0),
-    # flash, crystal X2, USB-MIDI series resistors
-    "C16": (36.6, 12.35, 0),
-    "R17": (36.4, 14.05, 0),
-    "R18": (36.4, 15.75, 0),
-    # single column right of U4
-    "R12": (34.2, 17.8, 0),
-    "C4": (31.0, 17.8, 0),
-    "C26": (31.0, 19.47, 0),
-    "R15": (31.0, 21.05, 0),
-    # CH345T + 5V distribution
-    "C20": (43.6, 25.6, 0),
-    "C21": (43.5, 27.4, 0),
-    "C19": (50.0, 11.5, 90),
-    "R16": (50.5, 9.0, 0),
-    "C28": (47.0, 27.4, 0),
-    "C29": (47.0, 29.2, 0),
-    "C30": (50.3, 25.2, 0),
-    # X2 load caps and lower right column
-    "C22": (39.5, 22.05, 0),
-    "C23": (39.55, 23.95, 0),
-    "C11": (42.9, 18.0, 0),
-    "C12": (42.9, 19.9, 0),
-    "C27": (44.5, 32.5, 90),
-    # right hand column
-    "C25": (50.4, 14.2, 0),
-    "C13": (50.0, 31.0, 0),
+    # USB-C series resistors in the free pocket between J1 and SW6
+    "R1": (24.0, 9.0, 90),
+    "R2": (25.7, 8.8, 90),
+    # USB-A series resistors beside U1/USBLC6
+    "R3": (18.3, 20.5, 0),
+    "R4": (19.5, 23.0, 0),
+    # CC pulldowns next to their connector
+    "R5": (21.0, 8.9, 0),
+    "R6": (21.0, 10.6, 0),
     "R7": (53.5, 2.0, 0),
     "R8": (56.7, 2.0, 0),
-    "R19": (8.8, 16.5, 90),
-    "C6": (53.7, 17.6, 0),
-    "C10": (50.4, 19.3, 0),
-    "C9": (53.7, 19.3, 0),
-    "C15": (44.0, 22.0, 0),
-    "C7": (53.7, 21.0, 0),
-    "C5": (50.3, 22.85, 0),
-    # LED series resistor
-    "R13": (32.0, 23.0, 0),
-    # test points: TP1/TP2/TP4/TP5/TP6 in the empty SW5 pocket
-    "TP1": (2.7, 31.3, 0),
-    "TP2": (4.7, 31.3, 0),
-    "TP3": (2.5, 16.0, 0),
-    "TP4": (6.9, 31.3, 0),
-    "TP5": (2.7, 33.4, 0),
-    "TP6": (4.7, 33.4, 0),
-    "TP7": (35.5, 20.5, 0),
-    "TP8": (8.7, 33.5, 0),
-    "TP9": (54.0, 32.5, 0),
-    "TP10": (56.5, 32.5, 0),
-    "TP11": (47.0, 18.0, 0),
-    "TP12": (47.3, 32.3, 0),
+    # TPS2553 support
+    "R9": (16.0, 26.8, 0),
+    "R10": (12.0, 26.6, 0),
+    "R11": (50.5, 24.2, 0),
+    "R12": (46.5, 24.0, 0),
+    "R13": (24.6, 23.5, 270),
+    "R14": (18.7, 15.5, 90),
+    "R15": (38.1, 24.0, 0),
+    "R16": (54.2, 16.4, 0),
+    "R17": (41.5, 14.2, 90),
+    "R18": (41.5, 17.5, 90),
+    "R19": (30.0, 19.5, 0),
+    # 1uF / +1V1 rail next to U1 and U4
+    "C1": (35.0, 24.7, 0),
+    "C2": (34.0, 19.5, 0),
+    "C3": (35.0, 22.3, 0),
+    "C14": (37.1, 19.5, 0),
+    "C15": (38.1, 22.3, 0),
+    # +3V3 decoupling in a two-column grid on the right edge
+    "C4": (57.4, 29.0, 0),
+    "C5": (53.6, 29.0, 0),
+    "C6": (53.6, 19.4, 0),
+    "C7": (57.4, 19.4, 0),
+    "C8": (53.6, 22.6, 0),
+    "C9": (57.4, 22.6, 0),
+    "C10": (53.6, 25.8, 0),
+    "C11": (57.4, 25.8, 0),
+    "C12": (53.6, 32.2, 0),
+    "C13": (57.4, 32.2, 0),
+    "C16": (57.4, 16.2, 0),
+    # crystal load caps and R14/R19
+    "C17": (10.5, 18.2, 90),
+    "C18": (10.8, 14.8, 90),
+    "C19": (43.8, 18.8, 0),
+    # +5V / VBUS bulk in the free lower-right area
+    "C20": (41.0, 26.0, 0),
+    "C21": (45.0, 26.0, 0),
+    "C22": (43.0, 20.5, 0),
+    "C23": (50.0, 22.3, 0),
+    "C24": (23.5, 5.0, 0),
+    "C25": (37.6, 6.5, 0),
+    "C26": (49.0, 29.5, 0),
+    "C27": (41.6, 33.0, 0),
+    "C28": (49.0, 26.0, 0),
+    "C29": (41.0, 29.5, 0),
+    "C30": (45.0, 29.5, 0),
+    # test points: debug TPs around U1, power/GND TPs at the free right edge
+    "TP1": (29.7, 10.2, 0),
+    "TP2": (27.6, 10.2, 0),
+    "TP3": (40.0, 20.2, 0),
+    "TP4": (15.5, 12.4, 0),
+    "TP5": (17.5, 12.4, 0),
+    "TP6": (38.0, 17.0, 0),
+    "TP7": (41.5, 23.0, 0),
+    "TP8": (32.0, 8.8, 0),
+    "TP9": (60.0, 16.2, 0),
+    "TP10": (60.0, 19.4, 0),
+    "TP11": (39.0, 14.0, 0),
+    "TP12": (48.0, 33.6, 0),
 }
 
 # ---------------------------------------------------------------------------
@@ -516,6 +514,46 @@ def route(board, netlist, fps):
                            TOMM(bb.GetRight()), TOMM(bb.GetBottom()),
                            layers or ["F"], clr)
 
+    # Type-C A6/B6 (DP) and A7/B7 (DM) are interleaved at 0.5 mm pitch, so a
+    # pad-to-pad track through the pad row is impossible.  Fan the pairs out
+    # above and below the pad field before anything else claims that copper.
+    for ref in ("J1", "J3"):
+        pins = {}
+        for pad in fps[ref].Pads():
+            if pad.GetNumber() in ("A6", "B6", "A7", "B7"):
+                bb = pad.GetBoundingBox()
+                pins[pad.GetNumber()] = (
+                    TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y),
+                    TOMM(bb.GetTop()), TOMM(bb.GetBottom()),
+                    pad.GetNetname())
+        for pair, above in ((("A6", "B6"), True), (("A7", "B7"), False)):
+            p0, p1 = pins[pair[0]], pins[pair[1]]
+            net = p0[4]
+            y = (min(p0[2], p1[2]) - 0.33 if above
+                 else max(p0[3], p1[3]) + 0.33)
+            for a, b in (((p0[0], p0[1]), (p0[0], y)),
+                         ((p0[0], y), (p1[0], y)),
+                         ((p1[0], y), (p1[0], p1[1]))):
+                router.commit_track(net, "F", a, b, 0.2, 0.0)
+
+        # The four wide VBUS pads sit on two x positions.  Bridge them below
+        # the USB data dogbones so the power net does not have to thread the
+        # 0.5 mm pad field.
+        vbus = {}
+        for pad in fps[ref].Pads():
+            if pad.GetNumber() in ("A4", "A9", "B4", "B9"):
+                bb = pad.GetBoundingBox()
+                x = round(TOMM(bb.GetCenter().x), 4)
+                vbus[x] = (TOMM(bb.GetCenter().y), TOMM(bb.GetBottom()),
+                           pad.GetNetname())
+        xs = sorted(vbus)
+        if len(xs) >= 2:
+            net = vbus[xs[0]][2]
+            yb = max(vbus[x][1] for x in xs) + 1.18
+            for x in xs:
+                router.commit_track(net, "F", (x, vbus[x][0]), (x, yb), 0.8, 0.0)
+            router.commit_track(net, "F", (xs[0], yb), (xs[-1], yb), 0.8, 0.0)
+
 
     def endpoints(net):
         out = []
@@ -555,9 +593,38 @@ def route(board, netlist, fps):
                 break
         return len(connected), len(todo)
 
+    ux, uy = PLACEMENT["U1"][:2]
+    # USB_PC_DP/DM sit on the same QFN side as QSPI.  Escape them inward to
+    # vias inside the package outline, then run on B.Cu to the series resistors,
+    # so they never compete with the QSPI channel.
+    for pin, via_x, via_y in (("47", ux + 2.3, uy + 1.0),
+                              ("46", ux + 2.3, uy + 1.9)):
+        px, py = ux + 3.4375, uy + (1.0 if pin == "47" else 1.4)
+        if pin == "47":
+            router.commit_track("USB_PC_DP_MCU", "F", (px, py),
+                                (via_x, via_y), 0.127, 0.0)
+        else:
+            router.commit_track("USB_PC_DM_MCU", "F", (px, py),
+                                (px - 0.7, py), 0.127, 0.0)
+            router.commit_track("USB_PC_DM_MCU", "F", (px - 0.7, py),
+                                (px - 0.7, via_y), 0.127, 0.0)
+            router.commit_track("USB_PC_DM_MCU", "F", (px - 0.7, via_y),
+                                (via_x, via_y), 0.127, 0.0)
+        net = "USB_PC_DP_MCU" if pin == "47" else "USB_PC_DM_MCU"
+        router.commit_via(net, (via_x, via_y), 0.25, 0.225)
+    router.commit_track("USB_PC_DP_MCU", "B", (ux + 2.3, uy + 1.0),
+                        (24.7, 16.2), 0.2, 0.0)
+    router.commit_track("USB_PC_DP_MCU", "B", (24.7, 16.2),
+                        (24.0, 9.825), 0.2, 0.0)
+    router.commit_track("USB_PC_DM_MCU", "B", (ux + 2.3, uy + 1.9),
+                        (25.6, 16.2), 0.2, 0.0)
+    router.commit_track("USB_PC_DM_MCU", "B", (25.6, 16.2),
+                        (25.7, 9.625), 0.2, 0.0)
+
     # U1 pin 19 is ground: strap it into the exposed pad before routing so the
     # signal escapes have to go around it (it is inside the QFN footprint)
-    router.commit_track("GND", "F", (16.5625, 11.5), (18.45, 11.5), 0.2, 0.0)
+    router.commit_track("GND", "F", (ux - 3.4375, uy - 1.0),
+                        (ux - 1.55, uy - 1.0), 0.2, 0.0)
 
     # Every SMD ground pad needs its own via: there is no F.Cu ground pour.
     gnd_ok = gnd_fail = 0
@@ -573,74 +640,69 @@ def route(board, netlist, fps):
             gnd_fail += 1
     print(f"GND pad vias: {gnd_ok} ok, {gnd_fail} failed", flush=True)
 
-    skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
-    report = {}
+    # The two +3V3 pins on the QFN sides are boxed in once QSPI and USB have
+    # routed.  Give them their plane vias now, before those nets claim space.
+    prerouted_3v3 = set()
+    u1fp = fps["U1"]
+    for pad in u1fp.Pads():
+        pin = pad.GetNumber()
+        if pin not in ("22", "43", "44"):
+            continue
+        bb = pad.GetBoundingBox()
+        p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
+        _tracks, vias = router.connect_to_plane("+3V3", p, 0.127, 0.1, 0.225)
+        if vias:
+            prerouted_3v3.add(("U1", pin))
 
-    def do_net(net, widths=None, via_cost=None):
-        vrad = 0.225 if net in TIGHT_VIA else 0.25
-        if net in skip:
-            return 0, len(endpoints(net)) - 1
-        pts = endpoints(net)
-        if len(pts) < 2:
-            return 0, 0
-        width, clearance = rule_for(net)
-        tries = widths or [width]
-        connected = [0]
-        todo = list(range(1, len(pts)))
-        for w in tries:
-            remaining = []
-            for i in todo:
-                best = min(connected, key=lambda j: math.hypot(
-                    pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
-                vc = via_cost if via_cost is not None else (
-                    60 if net.startswith("QSPI") else 30)
-                if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=vc, max_expand=2000000,
-                                  via_radius=vrad):
-                    connected.append(i)
-                else:
-                    remaining.append(i)
-            todo = remaining
-            if not todo:
-                break
-        return len(connected), len(todo)
+    skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
+    skip |= {"USB_PC_DP_MCU", "USB_PC_DM_MCU"}
+    report = {}
 
     # 1. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
     for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
-    # 1a. core rail and crystals: local, need short clean paths
+    # 2. core rail and crystals: local, need short clean paths
     report["+1V1"] = do_net("+1V1", [0.2, 0.15])
     for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
         report[net] = do_net(net, [0.15, 0.127])
 
-    # 1b. +5V spine and the three VBUS branches, before the signal pairs
+    # 3. USB and CC nets at the three connectors
+    for net in ("USB_PC_DM", "USB_PC_DP",
+                "USB_MIDI_DM_MCU", "USB_MIDI_DP_MCU",
+                "USB_MIDI_DM", "USB_MIDI_DP",
+                "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
+        report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=10)
+
+    # 4. +5V spine and the three VBUS branches
     for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
         w, _ = rule_for(net)
         report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
-    # 1c. long control / debug nets: claim the left and top corridors before
-    #     the USB pairs fill the middle of the board
-    for net in ("SWCLK", "SWDIO", "RUN", "UART0_TX", "UART0_RX",
-                "MIDI_UART_TX", "MIDI_UART_RX", "SW6_RESET", "STATUS_LED",
-                "SW3_SUSTAIN", "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD",
-                "CH345_RST"):
+    # 5. short local nets around U1
+    for net in ("STATUS_LED", "SWCLK", "SWDIO", "RUN",
+                "UART0_TX", "UART0_RX",
+                "USB_A_DP_MCU", "USB_A_DM_MCU",
+                "MIDI_UART_TX", "MIDI_UART_RX",
+                "CH345_RST", "CH345_V3",
+                "TPS_EN", "TPS_ILIM", "TPS_FAULT",
+                "LED_A", "BOOTSEL"):
+        report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=8)
+
+    # 6. switches: fixed THT parts at the board edges.  SW3 is furthest away.
+    for net in ("SW3_SUSTAIN", "SW6_RESET", "SW1_MUTE", "SW2_LYRE"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=6)
 
-    # 2. USB data
-    for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
-                "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
-                "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
-        report[net] = do_net(net, via_cost=20)
-
-    # 5. switches: short local nets
-    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "TPS_EN", "TPS_ILIM",
-                "TPS_FAULT", "CH345_V3", "LED_A", "BOOTSEL"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=15)
+    # 7. USB-A data at J2
+    for net in ("USB_A_DM", "USB_A_DP"):
+        report[net] = do_net(net, via_cost=15)
 
     # +3V3 lives on the In2 plane: stub every pad to a via
     ok = fail = 0
     for ref, pin, pad in by_net.get("+3V3", []):
+        if (ref, pin) in prerouted_3v3:
+            ok += 1
+            continue
         bb = pad.GetBoundingBox()
         p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
         tracks, vias = router.connect_to_plane("+3V3", p, 0.2, 0.127, 0.225)
@@ -677,7 +739,7 @@ def route(board, netlist, fps):
     for dx, dy in ((2.2, 2.2), (-2.2, 2.2), (2.2, -2.2), (-2.2, -2.2),
                    (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6),
                    (3.0, 1.2), (-3.0, -1.2), (1.2, 3.0), (-1.2, -3.0)):
-        gnd_via(20.0 + dx, 12.5 + dy)
+        gnd_via(ux + dx, uy + dy)
     for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 31.5, 34.0):
         for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
                   50.0, 55.0, 60.5):
