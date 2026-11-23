@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check clean
+.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case clean
 
 all: check floorplan tables netlist
 
@@ -19,6 +19,9 @@ tables:
 
 netlist:
 	$(PYTHON) scripts/gen_netlist.py
+
+paper-case:
+	$(PYTHON) hardware/rp2040_frisk/scripts/gen_paper_case.py
 
 KICAD_SCH := hardware/rp2040_frisk/rp2040_frisk.kicad_sch
 KICAD_PCB := hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
