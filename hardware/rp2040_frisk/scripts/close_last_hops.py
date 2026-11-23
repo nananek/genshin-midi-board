@@ -93,7 +93,7 @@ for net in TIGHT:
         for i in todo:
             best = min(connected, key=lambda j: math.hypot(
                 pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
-            if router.connect(net, pts[i], pts[best], w, 0.1, 120000, 400000, 0.25):
+            if router.connect(net, pts[i], pts[best], w, 0.1, 8, 400000, 0.225):
                 connected.append(i)
             else:
                 remaining.append(i)

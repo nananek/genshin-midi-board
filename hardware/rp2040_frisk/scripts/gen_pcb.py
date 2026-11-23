@@ -313,7 +313,7 @@ def new_board():
     ds.m_MinThroughDrill = MM(0.3)
     ds.m_ViasMinAnnularWidth = MM(0.1)
     ds.m_CopperEdgeClearance = MM(EDGE_CLEARANCE)
-    ds.m_HoleClearance = MM(0.25)
+    ds.m_HoleClearance = MM(0.2)
     ds.m_HoleToHoleMin = MM(0.25)
     nc = ds.m_NetSettings.GetDefaultNetclass()
     nc.SetClearance(MM(0.1))
