@@ -91,9 +91,9 @@ def main() -> int:
         checks += 1
         size = fnum(r"\(size ([-\d.]+)\)", block)
         drill = fnum(r"\(drill ([-\d.]+)\)", block)
-        if size != 0.5 or drill not in (0.3, 0.25):
+        if (size, drill) not in ((0.5, 0.3), (0.45, 0.25)):
             failures.append(f"via {i}: size={size}, drill={drill}; "
-                            "only 0.5/0.3 and 0.5/0.25 are allowed")
+                            "only 0.5/0.3 and 0.45/0.25 are allowed")
         if re.search(r"\((blind|micro|buried)\b", block):
             failures.append(f"via {i}: blind/buried/micro via is not allowed")
     if not via_blocks:

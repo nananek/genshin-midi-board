@@ -525,6 +525,7 @@ def route(board, netlist, fps):
         return out
 
     def do_net(net, widths=None, via_cost=None):
+        vrad = 0.225 if net in TIGHT_VIA else 0.25
         if net in skip:
             return 0, len(endpoints(net)) - 1
         pts = endpoints(net)
@@ -542,7 +543,8 @@ def route(board, netlist, fps):
                 vc = via_cost if via_cost is not None else (
                     60 if net.startswith("QSPI") else 30)
                 if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=vc, max_expand=900000):
+                                  via_cost=vc, max_expand=900000,
+                                  via_radius=vrad):
                     connected.append(i)
                 else:
                     remaining.append(i)
@@ -674,10 +676,10 @@ def route(board, netlist, fps):
                 t.SetNet(ni)
                 board.Add(t)
             else:
-                _, p, drill = item
+                _, p, drill, radius = item
                 v = pcbnew.PCB_VIA(board)
                 v.SetPosition(pcbnew.VECTOR2I(MM(p[0]), MM(p[1])))
-                v.SetWidth(MM(0.5))
+                v.SetWidth(MM(2 * radius))
                 v.SetDrill(MM(drill))
                 v.SetViaType(pcbnew.VIATYPE_THROUGH)
                 v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
