@@ -1,7 +1,0 @@
-; Local last-hop clearance relaxation.
-; JLCPCB 4-layer standard supports 0.1 mm trace/space; the global default
-; stays 0.127 mm and only the congested last-hop nets use 0.1 mm.
-(rule "last hop 0.1 mm clearance"
-	(constraint clearance (min 0.1))
-	(condition "A.NetName == 'SWCLK' || A.NetName == 'SWDIO' || A.NetName == 'SW3_SUSTAIN' || A.NetName == 'STATUS_LED' || A.NetName == 'TPS_FAULT' || A.NetName == 'SW6_RESET' || A.NetName == 'VBUS_PC' || A.NetName == 'VBUS_IPAD' || A.NetName == 'VBUS_USB_A' || A.NetName == '+3V3' || A.NetName == 'MIDI_UART_TX' || A.NetName == 'MIDI_UART_RX' || B.NetName == 'SWCLK' || B.NetName == 'SWDIO' || B.NetName == 'SW3_SUSTAIN' || B.NetName == 'STATUS_LED' || B.NetName == 'TPS_FAULT' || B.NetName == 'SW6_RESET' || B.NetName == 'VBUS_PC' || B.NetName == 'VBUS_IPAD' || B.NetName == 'VBUS_USB_A' || B.NetName == '+3V3' || B.NetName == 'MIDI_UART_TX' || B.NetName == 'MIDI_UART_RX'")
-)

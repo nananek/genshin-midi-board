@@ -17,7 +17,7 @@ for fp in b.GetFootprints():
         bb = pad.GetBoundingBox()
         name = pad.GetNetname() or "NC"
         layers = ["F"] + (["B"] if pad.GetLayerSet().Contains(pcbnew.B_Cu) else [])
-        clr = 0.2 if name in ("+5V","VBUS_PC","VBUS_IPAD","VBUS_USB_A") else 0.127
+        clr = 0.1
         if pad.GetDrillSize().x > 0:
             clr = max(clr, 0.35)
         router.add_pad(name, pcbnew.ToMM(bb.GetLeft()), pcbnew.ToMM(bb.GetTop()),
@@ -93,7 +93,7 @@ for net in TIGHT:
         for i in todo:
             best = min(connected, key=lambda j: math.hypot(
                 pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
-            if router.connect(net, pts[i], pts[best], w, 0.1, 8, 400000, 0.225):
+            if router.connect(net, pts[i], pts[best], w, 0.1, 120000, 400000, 0.25):
                 connected.append(i)
             else:
                 remaining.append(i)
