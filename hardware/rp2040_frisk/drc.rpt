@@ -1,24 +1,8 @@
 ** Drc report for rp2040_frisk.kicad_pcb **
-** Created on 2026-11-23T18:10:01 **
+** Created on 2026-11-23T19:09:06 **
 ** Report includes: Errors, Warnings, Exclusions **
 
-** Found 4 DRC violations **
-[shorting_items]: Items shorting two nets (nets USB_PC_DP and VBUS_PC)
-    Local override; error
-    @(13.1375 mm, 8.6500 mm): Pad 6 [USB_PC_DP] of U7 on F.Cu
-    @(14.0500 mm, 8.3500 mm): Track [VBUS_PC] on F.Cu, length 4.9000 mm
-[shorting_items]: Items shorting two nets (nets USB_PC_DP and VBUS_PC)
-    Local override; error
-    @(13.1375 mm, 8.6500 mm): Pad 6 [USB_PC_DP] of U7 on F.Cu
-    @(14.0500 mm, 6.4450 mm): Track [VBUS_PC] on F.Cu, length 1.9050 mm
-[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
-    Rule: board setup solder mask min width; error
-    @(14.0500 mm, 6.4450 mm): Track [VBUS_PC] on F.Cu, length 1.9050 mm
-    @(13.1375 mm, 8.6500 mm): Pad 6 [USB_PC_DP] of U7 on F.Cu
-[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
-    Rule: board setup solder mask min width; error
-    @(14.0500 mm, 8.3500 mm): Track [VBUS_PC] on F.Cu, length 4.9000 mm
-    @(13.1375 mm, 8.6500 mm): Pad 6 [USB_PC_DP] of U7 on F.Cu
+** Found 0 DRC violations **
 
 ** Found 8 unconnected pads **
 [unconnected_items]: Missing connection between items
@@ -31,7 +15,7 @@
     @(20.1750 mm, 8.9000 mm): Pad 1 [CC1_PC] of R5 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(17.2500 mm, 7.5000 mm): Track [USB_PC_DM] on F.Cu, length 1.0550 mm
+    @(16.2500 mm, 7.5000 mm): Track [USB_PC_DM] on F.Cu, length 1.0000 mm
     @(17.5000 mm, 8.5500 mm): Track [USB_PC_DM] on B.Cu, length 0.0707 mm
 [unconnected_items]: Missing connection between items
     Local override; error
