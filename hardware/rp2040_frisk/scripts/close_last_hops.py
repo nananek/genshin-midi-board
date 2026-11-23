@@ -8,8 +8,8 @@ TIGHT = ("+3V3", "VBUS_USB_A", "VBUS_PC", "VBUS_IPAD", "SW6_RESET",
          "MIDI_UART_TX", "MIDI_UART_RX")
 
 b = pcbnew.LoadBoard("/work/hardware/rp2040_frisk/rp2040_frisk.kicad_pcb")
-router = R.Router(57.6, 31.4, cell=0.05)
-router.set_outline([(2,0),(55.6,0),(57.6,2),(57.6,29.4),(55.6,31.4),(2,31.4),(0,29.4),(0,2)])
+router = R.Router(62.0, 35.0, cell=0.05)
+router.set_outline([(2,0),(60,0),(62,2),(62,33),(60,35),(2,35),(0,33),(0,2)])
 pads = {}
 gnd_pads = []
 for fp in b.GetFootprints():

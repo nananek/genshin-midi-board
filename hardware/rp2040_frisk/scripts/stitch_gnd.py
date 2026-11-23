@@ -77,7 +77,7 @@ def main() -> int:
     vias = [t[1] for t in tracks if t[0] == "via"]
 
     def legal(cx, cy):
-        if not (0.8 < cx < 56.8 and 0.8 < cy < 30.6):
+        if not (0.8 < cx < 60.8 and 0.8 < cy < 34.6):
             return False
         for bb, net in all_pads:
             if rect_dist((cx, cy), bb) < 0.45 + 0.05:
@@ -136,7 +136,7 @@ def main() -> int:
             for k in range(24):
                 a = 2 * pi * k / 24
                 cx, cy = x + r * cos(a), y + r * sin(a)
-                if not (0.8 < cx < 56.8 and 0.8 < cy < 30.6):
+                if not (0.8 < cx < 60.8 and 0.8 < cy < 34.6):
                     continue
                 ok = True
                 for bb, net in all_pads:

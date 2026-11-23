@@ -25,8 +25,8 @@ PCB_PATH = ROOT / "rp2040_frisk.kicad_pcb"
 MM = pcbnew.FromMM
 TOMM = pcbnew.ToMM
 
-BOARD_W = 57.6
-BOARD_H = 31.4
+BOARD_W = 62.0
+BOARD_H = 35.0
 CHAMFER = 2.0
 EDGE_CLEARANCE = 0.3
 
@@ -60,7 +60,7 @@ FOOTPRINTS = {
                           "Capacitor_SMD"),
     "C_0805_2012Metric": (KICAD_LIB / "Capacitor_SMD.pretty", "C_0805_2012Metric",
                           "Capacitor_SMD"),
-    "CP_Radial_D6.3mm_P2.5mm": (KICAD_LIB / "Capacitor_SMD.pretty",
+    "C_1210_3225Metric": (KICAD_LIB / "Capacitor_SMD.pretty",
                                 "C_1210_3225Metric", "Capacitor_SMD"),
     "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_frisk"),
     "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_frisk"),
@@ -71,10 +71,10 @@ FOOTPRINTS = {
 # placement (mm, board origin top-left, y down) and rotation
 # ---------------------------------------------------------------------------
 PLACEMENT = {
-    # connectors and the fixed placements from design.yaml
-    "J1": (14.0, 2.4, 180),
-    "J3": (43.0, 2.4, 180),
-    "J2": (29.5, 28.0, 180),
+    # connectors and the fixed placements from design.yaml (62 x 35 mm board)
+    "J1": (16.5, 2.4, 180),
+    "J3": (45.5, 2.4, 180),
+    "J2": (31.0, 31.6, 180),
     "U1": (20.0, 12.5, 270),
     "U2": (32.0, 12.0, 90),
     "U3": (44.0, 12.5, 0),
@@ -85,35 +85,37 @@ PLACEMENT = {
     "U8": (37.0, 9.7, 0),
     "X1": (12.6, 13.4, 0),
     "X2": (38.8, 19.4, 0),
-    "D1": (21.2, 5.0, 0),
-    "D2": (35.8, 5.0, 0),
-    "LED1": (35.4, 3.0, 0),
-    "SW1": (5.2, 8.0, 90),
-    "SW2": (5.2, 22.0, 90),
-    "SW3": (52.4, 8.0, 270),
-    "SW4": (15.0, 27.5, 0),
-    "SW6": (28.8, 4.2, 0),
+    "D1": (23.05, 5.5, 90),
+    "D2": (38.0, 5.0, 0),
+    "LED1": (35.2, 23.5, 0),
+    "SW1": (5.2, 9.0, 90),
+    "SW2": (5.2, 24.5, 90),
+    "SW3": (55.5, 9.0, 270),
+    "SW4": (15.0, 31.5, 0),
+    "SW6": (31.0, 4.2, 0),
     # left hand column (J1 / CC / VBUS_PC)
     "R1": (9.55, 9.5, 90),
     "R2": (9.55, 12.7, 90),
-    "R5": (50.4, 26.9, 0),
-    "R6": (53.7, 26.9, 0),
-    "C24": (9.55, 22.3, 90),
+    "R5": (11.0, 23.0, 0),
+    "R6": (11.0, 25.2, 0),
+    "C24": (9.5, 5.0, 90),
     # crystal X1 group and DVDD/IOVDD decoupling
     "C17": (11.3, 16.8, 90),
     "R14": (13.7, 16.8, 90),
     "C3": (11.3, 19.9, 90),
     "C18": (13.7, 19.9, 90),
     "C8": (53.7, 24.4, 0),
-    # row under the RP2040
-    "R3": (16.05, 17.5, 0),
-    "R4": (19.3, 17.5, 0),
-    "C14": (50.4, 28.6, 0),
-    "C1": (27.8, 17.5, 0),
-    "C2": (25.4, 16.6, 90),
+    # USB-A series resistors moved into the free pocket floor left of J2
+    "R3": (22.0, 23.6, 90),
+    "R4": (22.0, 26.8, 90),
+    "C14": (31.7, 24.7, 0),
+    # 1uF rails: kept near U1 but out of the U1/U2 QSPI corridor
+    "C1": (25.0, 24.3, 0),
+    "C2": (28.5, 23.5, 0),
     # TPS2553 support
     "R10": (16.5, 23.0, 0),
     "R9": (19.6, 23.0, 0),
+    "R11": (15.0, 26.0, 0),
     # flash, crystal X2, USB-MIDI series resistors
     "C16": (36.6, 12.35, 0),
     "R17": (36.4, 14.05, 0),
@@ -126,45 +128,44 @@ PLACEMENT = {
     # CH345T + 5V distribution
     "C20": (43.6, 25.6, 0),
     "C21": (43.5, 27.4, 0),
-    "C19": (43.6, 29.2, 0),
-    "R16": (47.0, 25.6, 0),
+    "C19": (50.0, 11.5, 90),
+    "R16": (50.5, 9.0, 0),
     "C28": (47.0, 27.4, 0),
     "C29": (47.0, 29.2, 0),
     "C30": (50.3, 25.2, 0),
-    "R11": (53.6, 22.7, 0),
     # X2 load caps and lower right column
     "C22": (39.5, 22.05, 0),
     "C23": (39.55, 23.95, 0),
     "C11": (42.9, 18.0, 0),
     "C12": (42.9, 19.9, 0),
-    "C27": (39.6, 28.7, 90),
+    "C27": (44.5, 32.5, 90),
     # right hand column
     "C25": (50.4, 14.2, 0),
-    "C13": (53.7, 14.2, 0),
-    "R7": (50.4, 15.9, 0),
-    "R8": (53.7, 15.9, 0),
-    "R19": (50.4, 17.6, 0),
+    "C13": (50.0, 31.0, 0),
+    "R7": (53.5, 2.0, 0),
+    "R8": (56.7, 2.0, 0),
+    "R19": (8.8, 16.5, 90),
     "C6": (53.7, 17.6, 0),
     "C10": (50.4, 19.3, 0),
     "C9": (53.7, 19.3, 0),
-    "C15": (50.4, 21.0, 0),
+    "C15": (44.0, 22.0, 0),
     "C7": (53.7, 21.0, 0),
     "C5": (50.3, 22.85, 0),
     # LED series resistor
-    "R13": (35.1, 7.0, 0),
-    # test points
-    "TP1": (4.7, 15.0, 0),
-    "TP2": (6.9, 15.0, 0),
-    "TP3": (2.5, 15.0, 0),
-    "TP4": (1.9, 29.4, 0),
-    "TP5": (4.1, 29.4, 0),
-    "TP6": (6.3, 29.4, 0),
+    "R13": (32.0, 23.0, 0),
+    # test points: TP1/TP2/TP4/TP5/TP6 in the empty SW5 pocket
+    "TP1": (2.7, 31.3, 0),
+    "TP2": (4.7, 31.3, 0),
+    "TP3": (2.5, 16.0, 0),
+    "TP4": (6.9, 31.3, 0),
+    "TP5": (2.7, 33.4, 0),
+    "TP6": (4.7, 33.4, 0),
     "TP7": (35.5, 20.5, 0),
-    "TP12": (8.5, 29.4, 0),
-    "TP8": (46.0, 22.0, 0),
-    "TP9": (50.0, 1.3, 0),
-    "TP10": (52.2, 1.3, 0),
-    "TP11": (54.4, 1.3, 0),
+    "TP8": (8.7, 33.5, 0),
+    "TP9": (54.0, 32.5, 0),
+    "TP10": (56.5, 32.5, 0),
+    "TP11": (47.0, 18.0, 0),
+    "TP12": (47.3, 32.3, 0),
 }
 
 # ---------------------------------------------------------------------------
@@ -412,6 +413,7 @@ def add_zones(board):
         z.SetThermalReliefGap(MM(0.2))
         z.SetThermalReliefSpokeWidth(MM(0.3))
         z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+        z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
         o = z.Outline()
         o.NewOutline()
         for (x, y) in poly:
@@ -423,7 +425,7 @@ def add_silk(board):
     txt = pcbnew.PCB_TEXT(board)
     txt.SetText("RP2040 FRISK MIDI BRIDGE  REV A")
     txt.SetLayer(pcbnew.F_SilkS)
-    txt.SetPosition(pcbnew.VECTOR2I(MM(28.8), MM(31.0)))
+    txt.SetPosition(pcbnew.VECTOR2I(MM(31.0), MM(33.6)))
     txt.SetTextSize(pcbnew.VECTOR2I(MM(0.8), MM(0.8)))
     txt.SetTextThickness(MM(0.12))
     board.Add(txt)
@@ -557,57 +559,96 @@ def route(board, netlist, fps):
     # signal escapes have to go around it (it is inside the QFN footprint)
     router.commit_track("GND", "F", (16.5625, 11.5), (18.45, 11.5), 0.2, 0.0)
 
+    # Every SMD ground pad needs its own via: there is no F.Cu ground pour.
+    gnd_ok = gnd_fail = 0
+    for ref, pin, pad in by_net.get("GND", []):
+        if pad.GetLayerSet().Contains(pcbnew.B_Cu):
+            continue
+        bb = pad.GetBoundingBox()
+        p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
+        _tracks, vias = router.connect_to_plane("GND", p, 0.2, 0.1, 0.225)
+        if vias:
+            gnd_ok += 1
+        else:
+            gnd_fail += 1
+    print(f"GND pad vias: {gnd_ok} ok, {gnd_fail} failed", flush=True)
+
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     report = {}
 
+    def do_net(net, widths=None, via_cost=None):
+        vrad = 0.225 if net in TIGHT_VIA else 0.25
+        if net in skip:
+            return 0, len(endpoints(net)) - 1
+        pts = endpoints(net)
+        if len(pts) < 2:
+            return 0, 0
+        width, clearance = rule_for(net)
+        tries = widths or [width]
+        connected = [0]
+        todo = list(range(1, len(pts)))
+        for w in tries:
+            remaining = []
+            for i in todo:
+                best = min(connected, key=lambda j: math.hypot(
+                    pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]))
+                vc = via_cost if via_cost is not None else (
+                    60 if net.startswith("QSPI") else 30)
+                if router.connect(net, pts[i], pts[best], w, clearance,
+                                  via_cost=vc, max_expand=2000000,
+                                  via_radius=vrad):
+                    connected.append(i)
+                else:
+                    remaining.append(i)
+            todo = remaining
+            if not todo:
+                break
+        return len(connected), len(todo)
+
     # 1. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
-    #    (vias only if a net cannot make the fan)
     for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
-    # 1c. core rail: two of its caps sit far right, so it needs a clean run
+    # 1a. core rail and crystals: local, need short clean paths
     report["+1V1"] = do_net("+1V1", [0.2, 0.15])
-
-    # 2. crystals: short, must hug XIN/XOUT
     for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
         report[net] = do_net(net, [0.15, 0.127])
 
-    # 3. USB data
-    for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
-                "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
-                "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
-        report[net] = do_net(net)
-
-    # 3b. power: wide corridors, after the USB pair has its lanes
-    for net in ("VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+5V"):
+    # 1b. +5V spine and the three VBUS branches, before the signal pairs
+    for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
         w, _ = rule_for(net)
         report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
-    # 4. switches and debug pads: they may jog to B.Cu to pass the switch rows
-    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
-                "SWCLK", "SWDIO", "RUN"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=8)
+    # 1c. long control / debug nets: claim the left and top corridors before
+    #     the USB pairs fill the middle of the board
+    for net in ("SWCLK", "SWDIO", "RUN", "UART0_TX", "UART0_RX",
+                "MIDI_UART_TX", "MIDI_UART_RX", "SW6_RESET", "STATUS_LED",
+                "SW3_SUSTAIN", "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD",
+                "CH345_RST"):
+        report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=6)
 
-    for net in ("UART0_TX", "UART0_RX"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=6)
+    # 2. USB data
+    for net in ("USB_PC_DP_MCU", "USB_PC_DM_MCU", "USB_PC_DP", "USB_PC_DM",
+                "USB_A_DP_MCU", "USB_A_DM_MCU", "USB_A_DP", "USB_A_DM",
+                "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU", "USB_MIDI_DP", "USB_MIDI_DM"):
+        report[net] = do_net(net, via_cost=20)
+
+    # 5. switches: short local nets
+    for net in ("SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "TPS_EN", "TPS_ILIM",
+                "TPS_FAULT", "CH345_V3", "LED_A", "BOOTSEL"):
+        report[net] = do_net(net, [0.15, 0.127], via_cost=15)
 
     # +3V3 lives on the In2 plane: stub every pad to a via
     ok = fail = 0
     for ref, pin, pad in by_net.get("+3V3", []):
         bb = pad.GetBoundingBox()
         p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
-        tracks, vias = router.connect_to_plane("+3V3", p, 0.2, 0.127)
+        tracks, vias = router.connect_to_plane("+3V3", p, 0.2, 0.127, 0.225)
         if vias:
             ok += 1
         else:
             fail += 1
     report["+3V3"] = (ok + 1, fail)
-
-    for net in ("CH345_RST", "CH345_V3",
-                "STATUS_LED", "LED_A", "BOOTSEL",
-                "TPS_EN", "TPS_ILIM", "TPS_FAULT",
-                "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
-        report[net] = do_net(net, [0.15, 0.127], via_cost=6)
 
     # stitching vias in whatever free space is left
     stitched = 0
@@ -617,7 +658,7 @@ def route(board, netlist, fps):
 
     def gnd_via(x, y):
         nonlocal stitched
-        if not (0.8 < x < 56.8 and 0.8 < y < 30.6):
+        if not (0.8 < x < 60.8 and 0.8 < y < 34.6):
             return False
         i = router.idx(router.cx(x), router.cy(y))
         bit = 0xFF << (8 * i)
@@ -637,9 +678,9 @@ def route(board, netlist, fps):
                    (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6),
                    (3.0, 1.2), (-3.0, -1.2), (1.2, 3.0), (-1.2, -3.0)):
         gnd_via(20.0 + dx, 12.5 + dy)
-    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 30.5):
+    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 31.5, 34.0):
         for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
-                  50.0, 56.7):
+                  50.0, 55.0, 60.5):
             gnd_via(x, y)
     print(f"GND stitching vias: {stitched}", flush=True)
 
