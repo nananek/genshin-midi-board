@@ -1,5 +1,5 @@
 ** Drc report for rp2040_frisk.kicad_pcb **
-** Created on 2026-11-23T04:40:31 **
+** Created on 2026-11-23T04:56:57 **
 ** Report includes: Errors, Warnings, Exclusions **
 
 ** Found 0 DRC violations **
@@ -15,7 +15,7 @@
     @(19.0000 mm, 15.9375 mm): Pad 33 [+3V3] of U1 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(23.4375 mm, 13.1000 mm): Pad 48 [+3V3] of U1 on F.Cu
+    @(23.4375 mm, 13.1000 mm): Track [+3V3] on F.Cu, length 0.2125 mm
     @(23.4375 mm, 14.7000 mm): Pad 44 [+3V3] of U1 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
@@ -88,7 +88,7 @@
 [unconnected_items]: Missing connection between items
     Local override; error
     @(9.5500 mm, 23.0750 mm): Pad 1 [VBUS_PC] of C24 on F.Cu
-    @(12.9000 mm, 9.4500 mm): Via [VBUS_PC] on F.Cu - B.Cu
+    @(12.9000 mm, 9.4500 mm): Track [VBUS_PC] on F.Cu, length 0.8500 mm
 [unconnected_items]: Missing connection between items
     Local override; error
     @(13.2500 mm, 9.2000 mm): Track [VBUS_PC] on B.Cu, length 0.1000 mm
@@ -99,7 +99,7 @@
     @(52.7750 mm, 22.7000 mm): Pad 1 [TPS_FAULT] of R11 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(39.9000 mm, 7.3000 mm): Track [VBUS_IPAD] on B.Cu, length 0.0500 mm
+    @(39.8500 mm, 7.3000 mm): Track [VBUS_IPAD] on B.Cu, length 2.8284 mm
     @(36.8500 mm, 5.0000 mm): Pad 2 [VBUS_IPAD] of D2 on F.Cu
 [unconnected_items]: Missing connection between items
     Local override; error

@@ -170,9 +170,11 @@ class Router:
     def masks(self, net, width, clearance=MIN_CLEAR, via_radius=VIA_R):
         own = self._own_map(net)
         # the copper stamps already include half a cell of slack
+        bump = 0 if clearance < 0.12 else 1
         r_route = max(1, int((width / 2 + clearance + 0.02
-                              - self.cell * 0.5) / self.cell) + 1)
-        r_via = cells(via_radius + MIN_CLEAR + 0.02 - self.cell * 0.5, self.cell)
+                              - self.cell * 0.5) / self.cell) + bump)
+        r_via = cells(via_radius + clearance + 0.02 - self.cell * 0.5, self.cell) if clearance < 0.12 \
+            else cells(via_radius + MIN_CLEAR + 0.02 - self.cell * 0.5, self.cell)
         edge = int.from_bytes(self.edge_mask(width), "little")
         viamask = int.from_bytes(bytes(self.padguard), "little")
         blocked = []
