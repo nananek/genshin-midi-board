@@ -1,6 +1,6 @@
 # RP2040 Frisk 基板（設計検討）
 
-57.6 × 31.4 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_frisk.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC まで来ていますが、未接続 25 点が残っています。
+62 × 35 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_frisk.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC まで来ていますが、未接続 23 点が残っています。
 
 ## ファイル
 
@@ -16,7 +16,7 @@
 | `sym-lib-table` / `fp-lib-table` | プロジェクトローカルと公式のライブラリ参照 |
 | `lib/` | 公式に無いシンボルとフットプリント（`lib/README.md` 参照） |
 | `erc.rpt` | `kicad-cli sch erc --severity-all` の結果 |
-| `rp2040_frisk.kicad_pcb` | KiCad 10 基板（0 DRC、未接続 25） |
+| `rp2040_frisk.kicad_pcb` | KiCad 10 基板（0 DRC、未接続 23） |
 | `drc.rpt` | `kicad-cli pcb drc --severity-all` の結果 |
 
 ## 再生成
@@ -37,7 +37,7 @@ make erc
 
 ## 外形
 
-- 57.6 × 31.4 mm、t1.6 mm
+- 62 × 35 mm、t1.6 mm
 - 四隅 2 mm の 45° パンチカット
 - 固定穴なし
 

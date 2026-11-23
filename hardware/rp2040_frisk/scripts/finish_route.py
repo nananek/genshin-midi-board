@@ -12,6 +12,7 @@ few nets sitting on that path, and retries.  Ripped nets are queued again.
 from __future__ import annotations
 
 import math
+import os
 import re
 import sys
 from collections import deque
@@ -41,6 +42,8 @@ PROTECTED = {"GND", "+3V3", "+1V1", "+5V", "VBUS_PC", "VBUS_IPAD",
              "VBUS_USB_A", "QSPI_SS", "QSPI_SCLK", "QSPI_SD0", "QSPI_SD1",
              "QSPI_SD2", "QSPI_SD3", "X1_XIN", "X1_XOUT", "X1_XOUT_MCU",
              "X2_XI", "X2_XO"}
+PROTECTED |= {n.strip() for n in os.environ.get("PCB_PROTECT", "").split(",")
+              if n.strip()}
 
 TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
              "STATUS_LED", "UART0_RX", "TPS_FAULT", "USB_MIDI_DP",
@@ -50,12 +53,12 @@ TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
 
 def rule_for(net):
     if net in POWER_WIDTH:
-        return POWER_WIDTH[net], 0.2
+        return POWER_WIDTH[net], 0.1
     if net in PLANE_WIDTH:
-        return PLANE_WIDTH[net], 0.127
+        return PLANE_WIDTH[net], 0.1
     if net in USB_NETS:
-        return 0.2, 0.127
-    return 0.15, 0.127
+        return 0.2, 0.1
+    return 0.15, 0.1
 
 
 def unconnected_nets(report: Path):
@@ -149,7 +152,7 @@ class Finisher:
             ok = 0
             for (x, y, _l) in pts:
                 _t, vias = r.connect_to_plane("+3V3", (x, y, "F"),
-                                              0.2, 0.127, 0.225)
+                                              0.2, 0.1, 0.225)
                 if vias:
                     ok += 1
             return ok == len(pts)
@@ -257,15 +260,21 @@ class Finisher:
         for net in sorted(targets):
             desired[net] = self.desired_paths(net)
             print(f"  {net}: {len(desired[net])} items", flush=True)
+        # A target is routed from scratch; drop its old (partial) copper so it
+        # cannot be written back on top of the new route.
+        for net in targets:
+            self.geom.pop(net, None)
         active = set(self.geom) - targets
         rip = set()
         for net in targets:
             rip |= self.blockers_for(net, desired[net], active)
         rip -= targets
         print("initial rip:", sorted(rip), flush=True)
+        for n in rip:
+            self.geom.pop(n, None)
         active -= rip
         failed = sorted(targets)
-        for rounds in range(6):
+        for rounds in range(int(os.environ.get("PCB_ROUNDS", "2"))):
             r = self.build(active)
             failed_next = []
             order = sorted(failed) + sorted(n for n in rip if n not in failed)
@@ -299,6 +308,9 @@ class Finisher:
             print("rip:", sorted(extra), flush=True)
             for n in extra:
                 self.rip_count[n] = self.rip_count.get(n, 0) + 1
+                # ripped copper is removed from the board; it is only written
+                # back if the net is routed again this round
+                self.geom.pop(n, None)
             active -= extra
             rip = extra
             failed = failed_next
@@ -310,7 +322,7 @@ class Finisher:
             ni = self.board.FindNet(net)
             for item in items:
                 if item[0] == "trk":
-                    _, layer, p0, p1, width = item
+                    _, layer, p0, p1, width = item[:5]
                     t = pcbnew.PCB_TRACK(self.board)
                     t.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(p0[0]), pcbnew.FromMM(p0[1])))
                     t.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(p1[0]), pcbnew.FromMM(p1[1])))
@@ -335,6 +347,8 @@ class Finisher:
 
 def main():
     targets = unconnected_nets(RPT)
+    targets |= {n.strip() for n in os.environ.get("PCB_EXTRA_TARGETS", "").split(",")
+                if n.strip()}
     if not targets:
         print("no unconnected nets")
         return 0

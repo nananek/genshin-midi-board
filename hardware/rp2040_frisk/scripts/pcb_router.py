@@ -187,7 +187,7 @@ class Router:
         return blocked, (viamask & self.full).to_bytes(self.n, "little")
 
     def search(self, blocked, viamask, src, dst, max_expand=400000, via_cost=30,
-               force_layer=None):
+               force_layer=None, relax_corner=False):
         nx, ny, n = self.nx, self.ny, self.n
         sx, sy = self.cx(src[0]), self.cy(src[1])
         dx, dy = self.cx(dst[0]), self.cy(dst[1])
@@ -228,7 +228,7 @@ class Router:
                 ni = jy * nx + jx
                 if bl[ni]:
                     continue
-                if ddx and ddy:
+                if ddx and ddy and not relax_corner:
                     if bl[iy * nx + jx] or bl[jy * nx + ix]:
                         continue
                 ng = g + cost
@@ -299,12 +299,14 @@ class Router:
             self.commit_track(net, lg, (a[0], a[1]), (b[0], b[1]), width, extra)
 
     def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30,
-                max_expand=400000, via_radius=VIA_R, force_layer=None):
+                max_expand=400000, via_radius=VIA_R, force_layer=None,
+                via_gap=0.72, relax_corner=False):
         blocked, viamask = self.masks(net, width, clearance, via_radius)
         for _ in range(4):
             path = self.search(blocked, viamask, src, dst,
                                max_expand=max_expand, via_cost=via_cost,
-                               force_layer=force_layer)
+                               force_layer=force_layer,
+                               relax_corner=relax_corner)
             if path is None:
                 return False
             vias = [(self.cell * ix, self.cell * iy) for lay, ix, iy in path]
@@ -316,12 +318,12 @@ class Router:
                     vl.append((self.cell * ix, self.cell * iy))
                 prev = lay
             clash = [(a, b) for i, a in enumerate(vl) for b in vl[i + 1:]
-                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.72]
+                     if hypot(a[0] - b[0], a[1] - b[1]) < via_gap]
             for a in vl:
                 for other_net, cells in self.via_cells.items():
                     for (cx, cy) in cells:
                         if hypot(a[0] - cx * self.cell,
-                                 a[1] - cy * self.cell) < 0.72:
+                                 a[1] - cy * self.cell) < via_gap:
                             clash.append((a, (cx * self.cell, cy * self.cell)))
             if not clash:
                 break

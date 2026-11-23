@@ -18,8 +18,8 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-PCB = ROOT / "rp2040_frisk.kicad_pcb"
-RPT = ROOT / "drc.rpt"
+PCB = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "rp2040_frisk.kicad_pcb"
+RPT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "drc.rpt"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
@@ -122,9 +122,23 @@ class Repairer:
                     if self.router.connect(net, src, dst, ww, 0.1,
                                            via_cost=vc, max_expand=2500000,
                                            via_radius=0.225,
-                                           force_layer=force):
+                                           force_layer=force,
+                                           via_gap=0.5):
                         self.emit(net, before)
                         return True
+        # Fallback: a plain straight track if the corridor is clear.  This
+        # handles adjacent connector pads where corner rules block the maze.
+        if src[2] == dst[2] and src[2] in ("F", "B"):
+            lay = 0 if src[2] == "F" else 1
+            for ww in width_tries:
+                blocked, _vm = self.router.masks(net, ww, 0.1, 0.225)
+                if self.router._seg_clear(blocked[lay], (src[0], src[1]),
+                                          (dst[0], dst[1])):
+                    self.router.commit_track(net, src[2],
+                                             (src[0], src[1]),
+                                             (dst[0], dst[1]), ww)
+                    self.emit(net, before)
+                    return True
         return False
 
     def emit(self, net, before):
