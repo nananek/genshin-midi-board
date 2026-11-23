@@ -59,7 +59,7 @@ make kicad-check
 
 `make kicad-check` は ERC、DRC、`scripts/check_kicad_pcb.py` を実行します。`check_kicad_pcb.py` は次を機械的に確認します。
 
-- 基板外形が 57.6 × 31.4 mm
+- 基板外形が 62.0 × 35.0 mm
 - 4 層（F.Cu / In1.Cu / In2.Cu / B.Cu）
 - ビアが 0.5/0.3 mm または 0.45/0.25 mm
 - 0.15 / 0.2 mm ドリルがない
