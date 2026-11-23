@@ -489,7 +489,7 @@ def pad_endpoints(fps, netlist):
 def route(board, netlist, fps):
     import pcb_router as R
 
-    router = R.Router(BOARD_W, BOARD_H, cell=0.1)
+    router = R.Router(BOARD_W, BOARD_H, cell=0.05)
     router.set_outline(outline_points())
     by_net = pad_endpoints(fps, netlist)
 
