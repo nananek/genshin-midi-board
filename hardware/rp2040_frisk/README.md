@@ -1,13 +1,13 @@
 # RP2040 Frisk 基板（設計検討）
 
-62.0 × 35.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_frisk.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC まで来ていますが、未接続 23 点が残っています。
+62.0 × 35.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_frisk.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC まで来ていますが、未接続 2 点が残っています。
 
 ## ファイル
 
 | ファイル | 内容 |
 | --- | --- |
 | `design.yaml` | 基板、コネクタ、配置、スイッチ、ピン、BOM、製造ルールの正本 |
-| `netlist.yaml` | 82 部品、53 ネットのピン接続。回路図と PCB の共通ソース |
+| `netlist.yaml` | 77 部品、49 ネットのピン接続。回路図と PCB の共通ソース |
 | `pinmap.csv` | ピン割り当て（`design.yaml` から生成） |
 | `bom.csv` | BOM（`design.yaml` から生成） |
 | `placement.csv` | コネクタと主要部品の配置（`design.yaml` から生成） |

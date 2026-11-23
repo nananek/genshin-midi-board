@@ -5,8 +5,8 @@ components:
     footprint: QFN-56_7x7mm_P0.4mm
     pins:
       '1': +3V3
-      '2': UART0_TX
-      '3': UART0_RX
+      '2': null
+      '3': null
       '4': null
       '5': null
       '6': MIDI_UART_TX
@@ -27,8 +27,8 @@ components:
       '21': X1_XOUT_MCU
       '22': +3V3
       '23': +1V1
-      '24': SWCLK
-      '25': SWDIO
+      '24': null
+      '25': null
       '26': RUN
       '27': null
       '28': null
@@ -562,36 +562,11 @@ components:
     pins:
       '1': X2_XO
       '2': GND
-  TP1:
-    value: UART0_TX
-    footprint: TestPoint_1P
-    pins:
-      '1': UART0_TX
-  TP2:
-    value: UART0_RX
-    footprint: TestPoint_1P
-    pins:
-      '1': UART0_RX
   TP3:
     value: GND
     footprint: TestPoint_1P
     pins:
       '1': GND
-  TP4:
-    value: SWCLK
-    footprint: TestPoint_1P
-    pins:
-      '1': SWCLK
-  TP5:
-    value: SWDIO
-    footprint: TestPoint_1P
-    pins:
-      '1': SWDIO
-  TP6:
-    value: RUN
-    footprint: TestPoint_1P
-    pins:
-      '1': RUN
   TP7:
     value: BOOTSEL
     footprint: TestPoint_1P
@@ -800,7 +775,6 @@ nets:
   RUN:
   - U1.26
   - R19.1
-  - TP6.1
   STATUS_LED:
   - U1.37
   - R13.1
@@ -817,12 +791,6 @@ nets:
   - U1.17
   - SW6.3
   - SW6.4
-  SWCLK:
-  - U1.24
-  - TP4.1
-  SWDIO:
-  - U1.25
-  - TP5.1
   TPS_EN:
   - U5.3
   - SW4.2
@@ -833,12 +801,6 @@ nets:
   TPS_ILIM:
   - U5.4
   - R9.1
-  UART0_RX:
-  - U1.3
-  - TP2.1
-  UART0_TX:
-  - U1.2
-  - TP1.1
   USB_A_DM:
   - U6.3
   - U6.4

@@ -483,7 +483,7 @@ for _i in range(1, 20):
     SYMBOL_OF[f"R{_i}"] = "R"
 for _i in range(1, 31):
     SYMBOL_OF[f"C{_i}"] = "C"
-for _i in range(1, 13):
+for _i in (3, 7, 8, 9, 10, 11, 12):
     SYMBOL_OF[f"TP{_i}"] = "TestPoint"
 
 ROTATION = {
@@ -542,7 +542,7 @@ BLOCKS = [
     ("column2", "QSPI flash, crystal, debug and status", [
         "U2", "X1", "R12", "R13", "R14", "R15", "R19",
         "C17", "C18", "LED1",
-        "TP1", "TP2", "TP3", "TP4", "TP5", "TP6", "TP7", "TP8", "TP9", "TP10",
+        "TP3", "TP7", "TP8", "TP9", "TP10",
     ]),
 ]
 

@@ -152,12 +152,7 @@ PLACEMENT = {
     "C29": (41.0, 29.5, 0),
     "C30": (45.0, 29.5, 0),
     # test points: debug TPs around U1, power/GND TPs at the free right edge
-    "TP1": (29.7, 10.2, 0),
-    "TP2": (27.6, 10.2, 0),
     "TP3": (40.0, 20.2, 0),
-    "TP4": (15.5, 12.4, 0),
-    "TP5": (17.5, 12.4, 0),
-    "TP6": (38.0, 17.0, 0),
     "TP7": (41.5, 23.0, 0),
     "TP8": (32.0, 8.8, 0),
     "TP9": (60.0, 16.2, 0),
@@ -186,13 +181,12 @@ USB_ROUTE_ORDER = [
     "CH345_RST", "CH345_V3", "TPS_EN", "TPS_ILIM", "TPS_FAULT",
     "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
     "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
-    "UART0_TX", "UART0_RX", "SWCLK", "SWDIO",
     "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD",
 ]
 
 
-TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
-             "STATUS_LED", "UART0_RX", "TPS_FAULT", "USB_MIDI_DP",
+TIGHT_VIA = {"SW6_RESET", "RUN", "SW3_SUSTAIN",
+             "STATUS_LED", "TPS_FAULT", "USB_MIDI_DP",
              "USB_MIDI_DM", "CH345_RST", "CC1_PC", "CC1_IPAD", "CC2_IPAD",
              "+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+3V3"}
 
@@ -680,8 +674,7 @@ def route(board, netlist, fps):
         report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
     # 5. short local nets around U1
-    for net in ("STATUS_LED", "SWCLK", "SWDIO", "RUN",
-                "UART0_TX", "UART0_RX",
+    for net in ("STATUS_LED", "RUN",
                 "USB_A_DP_MCU", "USB_A_DM_MCU",
                 "MIDI_UART_TX", "MIDI_UART_RX",
                 "CH345_RST", "CH345_V3",

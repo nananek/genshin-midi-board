@@ -357,18 +357,6 @@ pinmap:
     net: "STATUS_LED"
     destination: "1k -> LED1 -> GND"
     note: "active high"
-  - signal: "debug UART TX"
-    rp2040_pin: 2
-    gpio: 0
-    net: "UART0_TX"
-    destination: "TP1"
-    note: "UART0, 115200 8N1"
-  - signal: "debug UART RX"
-    rp2040_pin: 3
-    gpio: 1
-    net: "UART0_RX"
-    destination: "TP2"
-    note: "UART0, 115200 8N1"
   - signal: "QSPI flash"
     rp2040_pin: "51-56"
     gpio: null
@@ -381,17 +369,11 @@ pinmap:
     net: "XIN/XOUT"
     destination: "Y1 12MHz"
     note: "15 pF load caps, 1k series on XOUT"
-  - signal: "SWD"
-    rp2040_pin: "24/25"
-    gpio: null
-    net: "SWCLK/SWDIO"
-    destination: "TP4/TP5"
-    note: ""
   - signal: "RUN"
     rp2040_pin: 26
     gpio: null
     net: "RUN"
-    destination: "TP6, 10k pull-up to +3V3"
+    destination: "R19 10k pull-up to +3V3"
     note: ""
   - signal: "BOOTSEL"
     rp2040_pin: 56

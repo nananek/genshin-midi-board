@@ -119,8 +119,7 @@ CH345T の水晶負荷容量は現行基板と同じ 22 pF の暫定値です。
 | USB_VDD | pin 48、+3V3、100 nF |
 | ADC_AVDD | pin 43、+3V3、100 nF |
 | TESTEN | pin 19、GND |
-| RUN | pin 26、10 kΩ で +3V3、TP6 |
-| SWD | pin 24/25、TP4/TP5 |
+| RUN | pin 26、R19 10 kΩ で +3V3 |
 | BOOTSEL | QSPI_SS（pin 56）、TP7、1 kΩ 経由で GND に落とす |
 | サーマルパッド | pin 57、GND |
 
@@ -143,12 +142,9 @@ RP2040 のサーマルパッド内にはビアを置きません。F.Cu の GND 
 | サステイン SW3 | 39 | GP27 | SW3_SUSTAIN | SW3 pin 2 |
 | MIDI リセット SW6 | 17 | GP14 | SW6_RESET | SW6 pin 3/4 |
 | ステータス LED | 37 | GP25 | STATUS_LED | 1 kΩ → LED1 → GND |
-| デバッグ UART TX | 2 | GP0 | UART0_TX | TP1 |
-| デバッグ UART RX | 3 | GP1 | UART0_RX | TP2 |
 | QSPI | 51-56 | - | QSPI_* | U2 |
 | 水晶 | 20/21 | - | XIN/XOUT | Y1 |
-| SWD | 24/25 | - | SWCLK/SWDIO | TP4/TP5 |
-| RUN | 26 | - | RUN | TP6 |
+| RUN | 26 | - | RUN | R19 10 kΩ で +3V3 |
 | BOOTSEL | 56 | - | QSPI_SS | TP7 |
 
 GPIO6-11、GPIO15-24 は未使用です。テストパッドか将来の拡張に残します。

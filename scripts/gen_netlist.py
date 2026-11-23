@@ -25,12 +25,12 @@ def add(ref: str, value: str, footprint: str, pins: dict[str, str | None]) -> No
 
 # --- MCU and memory -------------------------------------------------------
 add("U1", "RP2040", "QFN-56_7x7mm_P0.4mm", {
-    "1": "+3V3", "2": "UART0_TX", "3": "UART0_RX", "4": None, "5": None,
+    "1": "+3V3", "2": None, "3": None, "4": None, "5": None,
     "6": "MIDI_UART_TX", "7": "MIDI_UART_RX", "8": None, "9": None,
     "10": "+3V3", "11": None, "12": None, "13": None, "14": None,
     "15": "USB_A_DP_MCU", "16": "USB_A_DM_MCU", "17": "SW6_RESET",
     "18": None, "19": "GND", "20": "X1_XIN", "21": "X1_XOUT_MCU",
-    "22": "+3V3", "23": "+1V1", "24": "SWCLK", "25": "SWDIO", "26": "RUN",
+    "22": "+3V3", "23": "+1V1", "24": None, "25": None, "26": "RUN",
     "27": None, "28": None, "29": None, "30": None, "31": None, "32": None,
     "33": "+3V3", "34": None, "35": None, "36": None, "37": "STATUS_LED",
     "38": None, "39": "SW3_SUSTAIN", "40": "SW1_MUTE", "41": "SW2_LYRE",
@@ -160,8 +160,7 @@ C["C27"]["footprint"] = "C_1210_3225Metric"
 
 # --- test pads ------------------------------------------------------------
 for ref, net in (
-    ("TP1", "UART0_TX"), ("TP2", "UART0_RX"), ("TP3", "GND"),
-    ("TP4", "SWCLK"), ("TP5", "SWDIO"), ("TP6", "RUN"),
+    ("TP3", "GND"),
     ("TP7", "BOOTSEL"), ("TP8", "+3V3"), ("TP9", "+5V"),
     ("TP10", "GND"), ("TP11", "CH345_RST"), ("TP12", "VBUS_USB_A"),
 ):
