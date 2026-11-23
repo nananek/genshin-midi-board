@@ -192,6 +192,12 @@ USB_ROUTE_ORDER = [
 ]
 
 
+TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
+             "STATUS_LED", "UART0_RX", "TPS_FAULT", "USB_MIDI_DP",
+             "USB_MIDI_DM", "CH345_RST", "CC1_PC", "CC1_IPAD", "CC2_IPAD",
+             "+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+3V3"}
+
+
 def rule_for(net):
     if net in POWER_WIDTH:
         return POWER_WIDTH[net], 0.2
@@ -583,9 +589,6 @@ def route(board, netlist, fps):
     for net in ("UART0_TX", "UART0_RX"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=6)
 
-    for net in ("MIDI_UART_TX", "MIDI_UART_RX"):
-        report[net] = do_net(net, [0.15, 0.127])
-
     # +3V3 lives on the In2 plane: stub every pad to a via
     ok = fail = 0
     for ref, pin, pad in by_net.get("+3V3", []):
@@ -671,11 +674,11 @@ def route(board, netlist, fps):
                 t.SetNet(ni)
                 board.Add(t)
             else:
-                _, p = item
+                _, p, drill = item
                 v = pcbnew.PCB_VIA(board)
                 v.SetPosition(pcbnew.VECTOR2I(MM(p[0]), MM(p[1])))
                 v.SetWidth(MM(0.5))
-                v.SetDrill(MM(0.3))
+                v.SetDrill(MM(drill))
                 v.SetViaType(pcbnew.VIATYPE_THROUGH)
                 v.SetLayerPair(pcbnew.F_Cu, pcbnew.B_Cu)
                 v.SetNet(ni)

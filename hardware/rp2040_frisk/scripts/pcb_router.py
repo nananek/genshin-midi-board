@@ -134,7 +134,7 @@ class Router:
         self.stamp_seg(self.copper[lay], p0, p1, width / 2 + extra)
         self.net_geom.setdefault(net, []).append(("trk", layer, p0, p1, width, extra))
 
-    def commit_via(self, net, p):
+    def commit_via(self, net, p, drill=0.3):
         key = (self.cx(p[0]), self.cy(p[1]))
         seen = self.via_cells.setdefault(net, set())
         if key in seen:
@@ -142,7 +142,7 @@ class Router:
         seen.add(key)
         self.stamp_disc(self.copper[0], p[0], p[1], VIA_R)
         self.stamp_disc(self.copper[1], p[0], p[1], VIA_R)
-        self.net_geom.setdefault(net, []).append(("via", p))
+        self.net_geom.setdefault(net, []).append(("via", p, drill))
         return True
 
     def _own_map(self, net):
@@ -304,12 +304,12 @@ class Router:
                     vl.append((self.cell * ix, self.cell * iy))
                 prev = lay
             clash = [(a, b) for i, a in enumerate(vl) for b in vl[i + 1:]
-                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.8]
+                     if hypot(a[0] - b[0], a[1] - b[1]) < 0.72]
             for a in vl:
                 for other_net, cells in self.via_cells.items():
                     for (cx, cy) in cells:
                         if hypot(a[0] - cx * self.cell,
-                                 a[1] - cy * self.cell) < 0.8:
+                                 a[1] - cy * self.cell) < 0.72:
                             clash.append((a, (cx * self.cell, cy * self.cell)))
             if not clash:
                 break
