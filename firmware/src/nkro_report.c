@@ -38,6 +38,11 @@ void nkro_report_init(void) {
 }
 
 void nkro_report_set_sumeru_mode(bool enabled) {
+    if (s_sumeru_mode != enabled) {
+        // The slot lookup depends on the mode.  Clear the report before the
+        // mode changes so a later Note Off cannot miss its old slot.
+        (void)nkro_report_release_all();
+    }
     s_sumeru_mode = enabled;
 }
 

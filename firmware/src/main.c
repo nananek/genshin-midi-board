@@ -42,15 +42,24 @@ static queue_t s_evt_queue;
 // MIDI 側から見た「現在押されているノート」(ミュート中も含め常時更新)。
 static bool s_note_held[128];
 
+// core1 が queue_try_add に失敗したら立てる。core0 が全キー解放に使う。
+static volatile bool s_evt_overflow;
+
+static void enqueue(const midi_evt_t *e) {
+    if (!queue_try_add(&s_evt_queue, e)) {
+        s_evt_overflow = true;
+    }
+}
+
 // ---- midi_host.c (core1) から呼ばれるシーム実装 ----
 void app_on_midi_note(uint8_t note, bool on) {
     midi_evt_t e = { .note = note, .on = on ? 1u : 0u };
-    queue_try_add(&s_evt_queue, &e);
+    enqueue(&e);
 }
 
 void app_on_midi_disconnect(void) {
     midi_evt_t e = { .note = EVT_RELEASE_ALL, .on = 0 };
-    queue_try_add(&s_evt_queue, &e);
+    enqueue(&e);
 }
 
 // ---------------------------------------------------------------------------
@@ -151,6 +160,17 @@ int main(void) {
                 }
             } else {
                 hid_device_set_sumeru_mode(new_sumeru_mode);
+            }
+        }
+
+        // キュー溢れ: Note Off を取りこぼした可能性があるので全キー解放。
+        if (s_evt_overflow) {
+            s_evt_overflow = false;
+            for (int i = 0; i < 128; i++) {
+                s_note_held[i] = false;
+            }
+            if (!hid_mute_is_muted()) {
+                hid_device_release_all();
             }
         }
 
