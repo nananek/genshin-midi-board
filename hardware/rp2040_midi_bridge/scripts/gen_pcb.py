@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Generate hardware/rp2040_frisk/rp2040_frisk.kicad_pcb from netlist.yaml.
+"""Generate hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb from netlist.yaml.
 
 Run inside the KiCad container, e.g.
 
-    ./scripts/kicad.sh python3 hardware/rp2040_frisk/scripts/gen_pcb.py
+    ./scripts/kicad.sh python3 hardware/rp2040_midi_bridge/scripts/gen_pcb.py
 """
 
 from __future__ import annotations
@@ -17,10 +17,10 @@ from pathlib import Path
 import pcbnew
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent          # hardware/rp2040_frisk
-PROJ_LIB = ROOT / "lib" / "rp2040_frisk.pretty"
+ROOT = Path(__file__).resolve().parent.parent          # hardware/rp2040_midi_bridge
+PROJ_LIB = ROOT / "lib" / "rp2040_midi_bridge.pretty"
 KICAD_LIB = Path("/usr/share/kicad/footprints")
-PCB_PATH = ROOT / "rp2040_frisk.kicad_pcb"
+PCB_PATH = ROOT / "rp2040_midi_bridge.kicad_pcb"
 
 MM = pcbnew.FromMM
 TOMM = pcbnew.ToMM
@@ -43,13 +43,13 @@ FOOTPRINTS = {
                             "QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm", "Package_DFN_QFN"),
     "SOIC-8_3.9x4.9mm_P1.27mm": (KICAD_LIB / "Package_SO.pretty",
                                  "SOIC-8_3.9x4.9mm_P1.27mm", "Package_SO"),
-    "SSOP-20_5.3x7.2mm_P0.65mm": (PROJ_LIB, "SSOP-20_5.3x7.2mm_P0.65mm", "rp2040_frisk"),
+    "SSOP-20_5.3x7.2mm_P0.65mm": (PROJ_LIB, "SSOP-20_5.3x7.2mm_P0.65mm", "rp2040_midi_bridge"),
     "SOT-23-5": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-5", "Package_TO_SOT_SMD"),
     "SOT-23-6": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-6", "Package_TO_SOT_SMD"),
     "USB_C_Receptacle_HRO_TYPE-C-31-M-12": (PROJ_LIB,
                                             "USB_C_Receptacle_HRO_TYPE-C-31-M-12",
-                                            "rp2040_frisk"),
-    "USB_A_Neltron_5075AR-04-WH": (PROJ_LIB, "USB_A_Neltron_5075AR-04-WH", "rp2040_frisk"),
+                                            "rp2040_midi_bridge"),
+    "USB_A_Neltron_5075AR-04-WH": (PROJ_LIB, "USB_A_Neltron_5075AR-04-WH", "rp2040_midi_bridge"),
     "Crystal_SMD_3225-4Pin_3.2x2.5mm": (KICAD_LIB / "Crystal.pretty",
                                         "Crystal_SMD_3225-4Pin_3.2x2.5mm", "Crystal"),
     "D_SOD-323": (KICAD_LIB / "Diode_SMD.pretty", "D_SOD-323", "Diode_SMD"),
@@ -62,9 +62,9 @@ FOOTPRINTS = {
                           "Capacitor_SMD"),
     "C_1210_3225Metric": (KICAD_LIB / "Capacitor_SMD.pretty",
                                 "C_1210_3225Metric", "Capacitor_SMD"),
-    "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_frisk"),
-    "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_frisk"),
-    "TestPoint_1P": (PROJ_LIB, "TestPoint_1P", "rp2040_frisk"),
+    "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_midi_bridge"),
+    "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_midi_bridge"),
+    "TestPoint_1P": (PROJ_LIB, "TestPoint_1P", "rp2040_midi_bridge"),
 }
 
 # ---------------------------------------------------------------------------
@@ -248,7 +248,7 @@ PROJECT_TEMPLATE = {
     },
     "boards": [],
     "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
-    "meta": {"filename": "rp2040_frisk.kicad_pro", "project": "rp2040_frisk",
+    "meta": {"filename": "rp2040_midi_bridge.kicad_pro", "project": "rp2040_midi_bridge",
              "version": 3},
     "net_settings": {
         "classes": [{
@@ -415,7 +415,7 @@ def add_zones(board):
 
 def add_silk(board):
     txt = pcbnew.PCB_TEXT(board)
-    txt.SetText("RP2040 FRISK MIDI BRIDGE  REV A")
+    txt.SetText("RP2040 MIDI BRIDGE  REV A")
     txt.SetLayer(pcbnew.F_SilkS)
     txt.SetPosition(pcbnew.VECTOR2I(MM(31.0), MM(33.6)))
     txt.SetTextSize(pcbnew.VECTOR2I(MM(0.8), MM(0.8)))

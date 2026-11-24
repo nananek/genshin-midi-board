@@ -21,7 +21,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-PCB = ROOT / "rp2040_frisk.kicad_pcb"
+PCB = ROOT / "rp2040_midi_bridge.kicad_pcb"
 RPT = ROOT / "drc.rpt"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))

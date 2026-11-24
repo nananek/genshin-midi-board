@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Design-rule checks for the RP2040 frisk board study.
+"""Design-rule checks for the RP2040 MIDI bridge board study.
 
 This is not a KiCad DRC.  It checks the numbers that are easy to lose while
 editing the design: connector spacing, pin conflicts, switch count, via
@@ -16,7 +16,7 @@ from typing import Any
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-DESIGN = ROOT / "hardware" / "rp2040_frisk" / "design.yaml"
+DESIGN = ROOT / "hardware" / "rp2040_midi_bridge" / "design.yaml"
 
 
 class Check:

@@ -4,7 +4,7 @@
 
 Run after plan_a_finish.py, inside the KiCad container:
 
-    ./scripts/kicad.sh python3 hardware/rp2040_frisk/scripts/plan_a_cleanup.py \
+    ./scripts/kicad.sh python3 hardware/rp2040_midi_bridge/scripts/plan_a_cleanup.py \
         [--board path/to/board.kicad_pcb]
 """
 
@@ -19,7 +19,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_BOARD = ROOT / "rp2040_frisk.kicad_pcb"
+DEFAULT_BOARD = ROOT / "rp2040_midi_bridge.kicad_pcb"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the KiCad 10 schematic for the RP2040 frisk MIDI bridge.
+"""Generate the KiCad 10 schematic for the RP2040 MIDI bridge.
 
 The machine-readable netlist (../netlist.yaml) is the single source of truth:
 every component, every pin number and every net name is taken from it.  This
@@ -18,7 +18,7 @@ Run inside the KiCad container:
 
     docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/work" \
         -w /work kicad/kicad:10.0 \
-        python3 hardware/rp2040_frisk/scripts/gen_sch.py
+        python3 hardware/rp2040_midi_bridge/scripts/gen_sch.py
 """
 
 from __future__ import annotations
@@ -33,8 +33,8 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent  # hardware/rp2040_frisk
-PROJECT = "rp2040_frisk"
+ROOT = HERE.parent  # hardware/rp2040_midi_bridge
+PROJECT = "rp2040_midi_bridge"
 LIB_NAME = PROJECT
 SYM_DIR = Path(os.environ.get("KICAD_SYMBOL_DIR", "/usr/share/kicad/symbols"))
 ROOT_UUID = "0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
@@ -529,7 +529,7 @@ BLOCKS = [
         "J3", "U3", "U8", "X2", "R7", "R8", "R16", "R17", "R18",
         "C19", "C22", "C23", "C25", "TP11",
     ]),
-    ("column2", "USB-A host (KORG microKEY2) - PIO-USB", [
+    ("column2", "USB-A host (USB MIDI keyboard) - PIO-USB", [
         "J2", "U6", "U5", "SW4", "R3", "R4", "R9", "R10", "R11",
         "C26", "C27", "TP12",
     ]),
@@ -829,12 +829,12 @@ def main():
            ["uuid", Q(ROOT_UUID)],
            ["paper", Q(paper)],
            ["title_block",
-            ["title", Q("RP2040 Frisk MIDI bridge")],
+            ["title", Q("RP2040 MIDI bridge")],
             ["date", Q("2026-11-23")],
             ["rev", Q("A")],
             ["comment", "1", Q("Board 62.0 x 35.0 mm, 4 layers, 1.6 mm")],
             ["comment", "2", Q("RP2040 PIO-USB host + native USB HID + CH345T USB-MIDI")],
-            ["comment", "3", Q("Generated from hardware/rp2040_frisk/netlist.yaml")]],
+            ["comment", "3", Q("Generated from hardware/rp2040_midi_bridge/netlist.yaml")]],
            ["lib_symbols"] + embedded]
 
     wires, labels, noconnects = [], [], []
@@ -906,11 +906,11 @@ def main():
         "(sym_lib_table\n\t(version 7)\n"
         f'\t(lib (name "{LIB_NAME}")(type "KiCad")'
         f'(uri "${{KIPRJMOD}}/lib/{LIB_NAME}.kicad_sym")(options "")'
-        '(descr "RP2040 frisk project symbols"))\n)\n', encoding="utf-8")
+        '(descr "RP2040 MIDI bridge project symbols"))\n)\n', encoding="utf-8")
 
     fp_entries = [f'\t(lib (name "{LIB_NAME}")(type "KiCad")'
                   f'(uri "${{KIPRJMOD}}/lib/{LIB_NAME}.pretty")(options "")'
-                  '(descr "RP2040 frisk project footprints"))']
+                  '(descr "RP2040 MIDI bridge project footprints"))']
     for libname in OFFICIAL_FP_LIBS:
         fp_entries.append(f'\t(lib (name "{libname}")(type "KiCad")'
                           f'(uri "${{KICAD10_FOOTPRINT_DIR}}/{libname}.pretty")'
@@ -944,7 +944,7 @@ PROJECT_FILE = """{
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "rp2040_frisk.kicad_pro",
+    "filename": "rp2040_midi_bridge.kicad_pro",
     "version": 1
   },
   "net_settings": {

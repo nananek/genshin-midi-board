@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan A finishing pass for the 62 x 35 mm RP2040 frisk board.
+"""Plan A finishing pass for the 62 x 35 mm RP2040 MIDI bridge board.
 
 Committed record of the QSPI_SD0 / SW3_SUSTAIN closure.  It works on the
 existing routed board (it does not regenerate it):
@@ -23,7 +23,7 @@ with os._exit() for the same reason.
 
 Run inside the KiCad container:
 
-    ./scripts/kicad.sh python3 hardware/rp2040_frisk/scripts/plan_a_finish.py \
+    ./scripts/kicad.sh python3 hardware/rp2040_midi_bridge/scripts/plan_a_finish.py \
         [--board path/to/board.kicad_pcb]
 """
 
@@ -38,7 +38,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_BOARD = ROOT / "rp2040_frisk.kicad_pcb"
+DEFAULT_BOARD = ROOT / "rp2040_midi_bridge.kicad_pcb"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 

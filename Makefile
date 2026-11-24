@@ -21,16 +21,16 @@ netlist:
 	$(PYTHON) scripts/gen_netlist.py
 
 paper-case:
-	$(PYTHON) hardware/rp2040_frisk/scripts/gen_paper_case.py
+	$(PYTHON) hardware/rp2040_midi_bridge/scripts/gen_paper_case.py
 
-KICAD_SCH := hardware/rp2040_frisk/rp2040_frisk.kicad_sch
-KICAD_PCB := hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
+KICAD_SCH := hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_sch
+KICAD_PCB := hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb
 KICAD := ./scripts/kicad.sh
 
-PCB_GEN := hardware/rp2040_frisk/scripts/gen_pcb.py
+PCB_GEN := hardware/rp2040_midi_bridge/scripts/gen_pcb.py
 
 sch:
-	$(KICAD) python3 hardware/rp2040_frisk/scripts/gen_sch.py
+	$(KICAD) python3 hardware/rp2040_midi_bridge/scripts/gen_sch.py
 
 pcb:
 	$(KICAD) python3 -u $(PCB_GEN)
@@ -39,13 +39,13 @@ kicad-shell:
 	$(KICAD) bash
 
 erc:
-	$(KICAD) kicad-cli sch erc --severity-all --output hardware/rp2040_frisk/erc.rpt $(KICAD_SCH)
+	$(KICAD) kicad-cli sch erc --severity-all --output hardware/rp2040_midi_bridge/erc.rpt $(KICAD_SCH)
 
 drc:
-	$(KICAD) kicad-cli pcb drc --severity-all --output hardware/rp2040_frisk/drc.rpt $(KICAD_PCB)
+	$(KICAD) kicad-cli pcb drc --severity-all --output hardware/rp2040_midi_bridge/drc.rpt $(KICAD_PCB)
 
 kicad-check: erc drc
 	$(PYTHON) scripts/check_kicad_pcb.py
 
 clean:
-	rm -f hardware/rp2040_frisk/floorplan.svg hardware/rp2040_frisk/erc.rpt hardware/rp2040_frisk/drc.rpt
+	rm -f hardware/rp2040_midi_bridge/floorplan.svg hardware/rp2040_midi_bridge/erc.rpt hardware/rp2040_midi_bridge/drc.rpt

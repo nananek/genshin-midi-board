@@ -15,7 +15,7 @@ from math import hypot
 
 import pcbnew
 
-PCB = "/work/hardware/rp2040_frisk/rp2040_frisk.kicad_pcb"
+PCB = "/work/hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb"
 
 BUS = {
     "QSPI_SS": ("U1", "56", "U2", "1"),

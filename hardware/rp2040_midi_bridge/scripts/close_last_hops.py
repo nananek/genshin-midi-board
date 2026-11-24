@@ -1,5 +1,5 @@
 import sys, math, re
-sys.path.insert(0, "/work/hardware/rp2040_frisk/scripts")
+sys.path.insert(0, "/work/hardware/rp2040_midi_bridge/scripts")
 import pcbnew
 import pcb_router as R
 
@@ -7,7 +7,7 @@ TIGHT = ("+3V3", "VBUS_USB_A", "VBUS_PC", "VBUS_IPAD", "SW6_RESET",
          "SWCLK", "SWDIO", "SW3_SUSTAIN", "STATUS_LED", "TPS_FAULT",
          "MIDI_UART_TX", "MIDI_UART_RX")
 
-b = pcbnew.LoadBoard("/work/hardware/rp2040_frisk/rp2040_frisk.kicad_pcb")
+b = pcbnew.LoadBoard("/work/hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb")
 router = R.Router(62.0, 35.0, cell=0.05)
 router.set_outline([(2,0),(60,0),(62,2),(62,33),(60,35),(2,35),(0,33),(0,2)])
 pads = {}
@@ -62,7 +62,7 @@ def emit(net, before):
 
 # --- GND: strap each isolated pad to the nearest ground via (0.2 mm track)
 iso = []
-for blk in open("/work/hardware/rp2040_frisk/drc.rpt").read().split("[unconnected_items]")[1:]:
+for blk in open("/work/hardware/rp2040_midi_bridge/drc.rpt").read().split("[unconnected_items]")[1:]:
     for m in re.finditer(r"Pad (\S+) \[GND\] of (\S+)", blk):
         iso.append((m.group(2), m.group(1)))
 iso = list(dict.fromkeys(iso))
@@ -105,5 +105,5 @@ for net in TIGHT:
     emit(net, before)
 b.BuildConnectivity()
 pcbnew.ZONE_FILLER(b).Fill(b.Zones())
-pcbnew.SaveBoard("/work/hardware/rp2040_frisk/rp2040_frisk.kicad_pcb", b)
+pcbnew.SaveBoard("/work/hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb", b)
 print("saved")

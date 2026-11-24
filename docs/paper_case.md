@@ -6,7 +6,7 @@
 | --- | --- |
 | [`paper_case_a4.pdf`](paper_case_a4.pdf) | A4 横、1:1 の展開図。印刷するのはこれ |
 | [`paper_case_a4.svg`](paper_case_a4.svg) | 同じ図の 1:1 SVG。画面で確認する用 |
-| [`../hardware/rp2040_frisk/scripts/gen_paper_case.py`](../hardware/rp2040_frisk/scripts/gen_paper_case.py) | 生成スクリプト（標準ライブラリのみ） |
+| [`../hardware/rp2040_midi_bridge/scripts/gen_paper_case.py`](../hardware/rp2040_midi_bridge/scripts/gen_paper_case.py) | 生成スクリプト（標準ライブラリのみ） |
 
 ## 寸法
 
@@ -49,7 +49,7 @@
 | J1 | 後壁（上） | x = 16.5 | 14.0 × 4.5 mm | 1.2–5.7 mm | USB-C（PC / NKRO HID） |
 | J3 | 後壁（上） | x = 45.5 | 14.0 × 4.5 mm | 1.2–5.7 mm | USB-C（iPad / USB-MIDI） |
 | SW6 | 後壁（上） | x = 31.0 | 8.6 × 4.4 mm | 1.8–6.2 mm | タクト本体の逃げ |
-| J2 | 前壁（下） | x = 31.0 | 15.0 × 7.0 mm | 1.2–8.2 mm | USB-A（microKEY2） |
+| J2 | 前壁（下） | x = 31.0 | 15.0 × 7.0 mm | 1.2–8.2 mm | USB-A（MIDI キーボード） |
 | SW4 | 前壁（下） | x = 15.0 | 7.0 × 3.6 mm | 1.8–5.4 mm | スライド（USB-A 給電） |
 | SW1 | 左壁 | y = 9.0 | 7.0 × 3.6 mm | 1.8–5.4 mm | スライド（mute） |
 | SW2 | 左壁 | y = 24.5 | 7.0 × 3.6 mm | 1.8–5.4 mm | スライド（lyre） |
@@ -87,7 +87,7 @@ make paper-case
 または
 
 ```sh
-python3 hardware/rp2040_frisk/scripts/gen_paper_case.py
+python3 hardware/rp2040_midi_bridge/scripts/gen_paper_case.py
 ```
 
 `design.yaml` の基板寸法、コネクタ、スイッチ、LED1 を読みます。基板の寸法や配置を変えたら、このコマンドで PDF と SVG を作り直してください。

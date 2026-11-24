@@ -2,7 +2,7 @@
 """Third finishing pass for plan A: remove the last dangling stubs and route
 the +5V / USB_MIDI_DP islands created by the U8 relocation.
 
-    ./scripts/kicad.sh python3 hardware/rp2040_frisk/scripts/plan_a_cleanup2.py
+    ./scripts/kicad.sh python3 hardware/rp2040_midi_bridge/scripts/plan_a_cleanup2.py
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_BOARD = ROOT / "rp2040_frisk.kicad_pcb"
+DEFAULT_BOARD = ROOT / "rp2040_midi_bridge.kicad_pcb"
 
 TRASH = []
 

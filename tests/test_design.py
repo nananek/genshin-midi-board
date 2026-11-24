@@ -8,11 +8,11 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-DESIGN = yaml.safe_load((ROOT / "hardware" / "rp2040_frisk" / "design.yaml").read_text(encoding="utf-8"))
+DESIGN = yaml.safe_load((ROOT / "hardware" / "rp2040_midi_bridge" / "design.yaml").read_text(encoding="utf-8"))
 
 
 class BoardTests(unittest.TestCase):
-    def test_board_is_frisk_sized_four_layer(self) -> None:
+    def test_board_is_62x35_four_layer(self) -> None:
         board = DESIGN["board"]
         self.assertAlmostEqual(board["width_mm"], 62.0, places=3)
         self.assertAlmostEqual(board["height_mm"], 35.0, places=3)
@@ -64,7 +64,7 @@ class BoardTests(unittest.TestCase):
         self.assertEqual(len(pins), len(set(pins)))
         self.assertEqual(len(gpios), len(set(gpios)))
 
-    def test_five_switches_match_the_original_implementation(self) -> None:
+    def test_five_switches_match_the_design(self) -> None:
         switches = {s["ref"]: s for s in DESIGN["switches"]}
         self.assertEqual(set(switches), {"SW1", "SW2", "SW3", "SW4", "SW6"})
         self.assertEqual(sum(1 for s in switches.values() if s["type"] == "slide"), 4)

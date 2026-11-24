@@ -15,7 +15,7 @@ import sys
 
 import pcbnew
 
-PCB = "/work/hardware/rp2040_frisk/rp2040_frisk.kicad_pcb"
+PCB = "/work/hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb"
 VIA_D = 0.45
 VIA_DRILL = 0.25
 CLR = 0.35          # via radius + 0.1 copper clearance

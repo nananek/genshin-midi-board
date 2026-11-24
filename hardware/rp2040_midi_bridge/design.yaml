@@ -1,14 +1,9 @@
 project:
-  name: rp2040_frisk_midi_hid
-  title: "RP2040 Frisk MIDI to NKRO HID + USB-MIDI"
+  name: rp2040_midi_bridge
+  title: "RP2040 MIDI to NKRO HID + USB-MIDI"
   revision: "A"
   status: design-study
   date: "2026-11-23"
-  source_references:
-    - "https://github.com/nananek/waveshare-genshin-midi-keyboard"
-    - "https://github.com/nananek/serial-km-emulator"
-    - "https://github.com/nananek/serial-km-emulator/pull/22"
-    - "https://github.com/nananek/serial-km-emulator/pull/23"
 
 board:
   width_mm: 62.0
@@ -60,8 +55,8 @@ fabrication:
   impedance_control: false
   assembly_side: "top only"
   notes:
-    - "PR #22 の教訓: 0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。通常は 0.5/0.3 mm、最後の 1 本だけ 0.45/0.25 mm を使う。"
-    - "PR #22 の教訓: via covering は tented のままにし、plugged にしない。"
+    - "0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。通常は 0.5/0.3 mm、最後の 1 本だけ 0.45/0.25 mm を使う。"
+    - "via covering は tented のままにし、plugged にしない。"
     - "配線間隔は 0.1 mm、ホール間隔は 0.2 mm、ビア径は 0.45 mm 以上を JLCPCB 4 層の標準範囲として使う。発注画面で確認する。"
     - "Type-C の A7/B7 はパッド内ビアを使わず、ドッグボーンでパッド外の 0.5/0.3 mm ビアへ逃がす。"
     - "QFN-56 のサーマルパッド内にビアを置かない。パッド外のビアと F.Cu の GND で接続する。"
@@ -70,7 +65,7 @@ ports:
   - id: keyboard
     connector: J2
     type: "USB-A host"
-    role: "KORG microKEY2 (USB-MIDI, bus-powered)"
+    role: "USB MIDI keyboard (bus-powered)"
     controller: "RP2040 PIO-USB host"
     pins: "GP12 (D+), GP13 (D-)"
     power: "TPS2553 current-limited 5 V, SW4 manual enable"

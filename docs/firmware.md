@@ -1,8 +1,8 @@
-# ファームウェア移植メモ
+# ファームウェア実装メモ
 
 ## 1. 方針
 
-現行の RP2350 ファームウェアを RP2040 に移します。USB ホスト（PIO-USB）、native USB デバイス（HID）、UART1（CH345T）の構成は同じです。ピンも GP4/5、GP12/13、GP27/28/29 をそのまま使うため、変更はボード定義とスイッチの追加に限られます。
+ファームウェアは RP2040 向けに pico-sdk で実装します。USB ホスト（PIO-USB）、native USB デバイス（HID）、UART1（CH345T）の構成です。ピンは GP4/5、GP12/13、GP27/28/29 を使います。
 
 ## 2. ボード定義
 
@@ -44,7 +44,7 @@ tuh_configure(1, TUH_CFGID_RPI_PIO_USB_CONFIGURATION, &pio_cfg);
 tuh_init(1);
 ```
 
-RP2040 では PIO-USB ホストを rhport 1、native USB デバイスを rhport 0 にします。現行コードの `BOARD_TUH_RHPORT` / `BOARD_TUD_RHPORT` は、ボード定義で次のようにします。
+RP2040 では PIO-USB ホストを rhport 1、native USB デバイスを rhport 0 にします。`config.h` の `BOARD_TUH_RHPORT` / `BOARD_TUD_RHPORT` は次のようにします。
 
 ```c
 #define BOARD_TUH_RHPORT 1
@@ -55,7 +55,7 @@ PIO-USB は 120 MHz を要求します。12 MHz 水晶から `set_sys_clock_khz(
 
 ## 5. スイッチ
 
-現行の `debounced_switch` をそのまま使います。
+`debounced_switch` を使います。
 
 - SW1: `MUTE_SWITCH_PIN 28`
 - SW2: `LYRE_SWITCH_PIN 29`
@@ -92,15 +92,15 @@ GP25 をアクティブ HIGH で点灯させます。状態の例:
 
 UART0 を GP0（TX）/ GP1（RX）、115200 8N1 で使います。`stdio_init_all()` の既定は RP2040 の UART0 です。CH345T は UART1 なので衝突しません。
 
-## 9. 現行コードからの差分
+## 9. 実装上の注意
 
-- `PICO_BOARD` を `pico` またはカスタム RP2040 ボードにする
-- `set_sys_clock_khz(120000, true)` はそのまま
+- `PICO_BOARD` は `pico` またはカスタム RP2040 ボードにする
+- `set_sys_clock_khz(120000, true)` を設定する
 - PIO-USB の rhport を 1、native USB を 0 にする
-- `config.h` に `SUSTAIN_SWITCH_PIN 27`、`MIDI_RESET_BUTTON_PIN 14`、`STATUS_LED_PIN 25` を追加
-- `main.c` にサステインと MIDI リセットのポーリングを追加
-- `usb_descriptors.c` と `nkro_report.c` は変更なし
-- `midi_uart.c` は UART1 GP4/5、31250 のまま
+- `config.h` に `SUSTAIN_SWITCH_PIN 27`、`MIDI_RESET_BUTTON_PIN 14`、`STATUS_LED_PIN 25` を定義する
+- `main.c` にサステインと MIDI リセットのポーリングを追加する
+- `usb_descriptors.c` と `nkro_report.c` はボード非依存を保つ
+- `midi_uart.c` は UART1 GP4/5、31250 を使う
 
 ## 10. 確認事項
 

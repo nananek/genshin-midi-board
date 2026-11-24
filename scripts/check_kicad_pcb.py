@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PCB = ROOT / "hardware" / "rp2040_frisk" / "rp2040_frisk.kicad_pcb"
+PCB = ROOT / "hardware" / "rp2040_midi_bridge" / "rp2040_midi_bridge.kicad_pcb"
 
 
 def blocks(text: str, keyword: str) -> list[str]:
