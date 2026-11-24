@@ -14,8 +14,8 @@ DESIGN = yaml.safe_load((ROOT / "hardware" / "rp2040_midi_bridge" / "design.yaml
 class BoardTests(unittest.TestCase):
     def test_board_is_62x35_four_layer(self) -> None:
         board = DESIGN["board"]
-        self.assertAlmostEqual(board["width_mm"], 62.0, places=3)
-        self.assertAlmostEqual(board["height_mm"], 35.0, places=3)
+        self.assertAlmostEqual(board["width_mm"], 58.0, places=3)
+        self.assertAlmostEqual(board["height_mm"], 44.0, places=3)
         self.assertEqual(board["layers"], 4)
         self.assertAlmostEqual(board["chamfer_mm"], 2.0, places=3)
 
@@ -64,12 +64,14 @@ class BoardTests(unittest.TestCase):
         self.assertEqual(len(pins), len(set(pins)))
         self.assertEqual(len(gpios), len(set(gpios)))
 
-    def test_five_switches_match_the_design(self) -> None:
+    def test_switches_match_the_design(self) -> None:
         switches = {s["ref"]: s for s in DESIGN["switches"]}
-        self.assertEqual(set(switches), {"SW1", "SW2", "SW3", "SW4", "SW5"})
+        self.assertEqual(set(switches), {"SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7"})
         self.assertEqual(sum(1 for s in switches.values() if s["type"] == "slide"), 4)
-        self.assertEqual(sum(1 for s in switches.values() if s["type"] == "tact"), 1)
+        self.assertEqual(sum(1 for s in switches.values() if s["type"] == "tact"), 3)
         self.assertIsNone(switches["SW4"]["gpio"])
+        self.assertIsNone(switches["SW6"]["gpio"])
+        self.assertIsNone(switches["SW7"]["gpio"])
         self.assertEqual(switches["SW1"]["gpio"], 28)
         self.assertEqual(switches["SW2"]["gpio"], 29)
         self.assertEqual(switches["SW3"]["gpio"], 27)

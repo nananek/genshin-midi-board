@@ -11,7 +11,7 @@ NETLIST = yaml.safe_load((ROOT / "hardware" / "rp2040_midi_bridge" / "netlist.ya
 
 class NetlistTests(unittest.TestCase):
     def test_component_and_net_counts(self) -> None:
-        self.assertEqual(len(NETLIST["components"]), 77)
+        self.assertEqual(len(NETLIST["components"]), 79)
         self.assertEqual(len(NETLIST["nets"]), 49)
 
     def test_every_net_has_at_least_two_pins(self) -> None:
@@ -46,6 +46,8 @@ class NetlistTests(unittest.TestCase):
         self.assertEqual(comps["SW3"]["pins"]["2"], "SW3_SUSTAIN")
         self.assertEqual(comps["SW4"]["pins"]["2"], "TPS_EN")
         self.assertEqual(comps["SW5"]["pins"]["3"], "SW5_RESET")
+        self.assertEqual(comps["SW6"]["pins"]["2"], "BOOTSEL")
+        self.assertEqual(comps["SW7"]["pins"]["2"], "RUN")
 
     def test_rp2040_usb_and_qspi_pins(self) -> None:
         pins = NETLIST["components"]["U1"]["pins"]

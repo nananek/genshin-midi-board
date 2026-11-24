@@ -1,9 +1,9 @@
 PYTHON ?= python3
 
-VERSION ?= v0.0.4
+VERSION ?= v0.1.0
 COMMIT ?= $(shell git rev-parse HEAD)
 
-.PHONY: all check test floorplan tables netlist sch pcb silk kicad-shell erc drc kicad-check paper-case fab clean
+.PHONY: all check test floorplan tables netlist sch pcb silk kicad-shell erc drc kicad-check case-template fab clean
 
 all: check floorplan tables netlist
 
@@ -23,8 +23,9 @@ tables:
 netlist:
 	$(PYTHON) scripts/gen_netlist.py
 
-paper-case:
-	$(PYTHON) hardware/rp2040_midi_bridge/scripts/gen_paper_case.py
+case-template:
+	$(PYTHON) scripts/gen_case_template.py
+	rsvg-convert -f pdf -o docs/case_muji_m_template.pdf docs/case_muji_m_template.svg
 
 KICAD_SCH := hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_sch
 KICAD_PCB := hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb

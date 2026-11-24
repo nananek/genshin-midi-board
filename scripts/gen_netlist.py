@@ -113,6 +113,8 @@ for ref, net in (("SW1", "SW1_MUTE"), ("SW2", "SW2_LYRE"), ("SW3", "SW3_SUSTAIN"
     add(ref, "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": net, "3": "GND"})
 add("SW4", "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": "TPS_EN", "3": "+3V3"})
 add("SW5", "DTS-63-N-V-BLK", "SW_TACT_Akizuki_DTS63", {"1": "GND", "2": "GND", "3": "SW5_RESET", "4": "SW5_RESET"})
+add("SW6", "KMR2 SMD tact", "SW_Push_1P1T-SH_NO_CK_KMR2xxG", {"1": "GND", "2": "BOOTSEL"})
+add("SW7", "KMR2 SMD tact", "SW_Push_1P1T-SH_NO_CK_KMR2xxG", {"1": "GND", "2": "RUN"})
 
 # --- resistors ------------------------------------------------------------
 add("R1", "27R", "R_0603_1608Metric", {"1": "USB_PC_DP_MCU", "2": "USB_PC_DP"})

@@ -1,49 +1,50 @@
 project:
   name: rp2040_midi_bridge
-  title: "RP2040 MIDI to NKRO HID + USB-MIDI"
-  revision: "A"
+  title: RP2040 MIDI to NKRO HID + USB-MIDI
+  revision: B
   status: design-study
-  date: "2026-11-23"
-
+  date: '2026-11-24'
 board:
-  width_mm: 62.0
-  height_mm: 35.0
+  width_mm: 58.0
+  height_mm: 44.0
   thickness_mm: 1.6
   layers: 4
   chamfer_mm: 2.0
-  corner_cut: "45-degree punch cut on all four corners"
-  origin: "top-left"
+  corner_cut: 45-degree punch cut on all four corners
+  origin: top-left
   mounting_holes: []
-  finish: "HASL lead-free"
-  solder_mask: "green"
-  silkscreen: "white"
-
+  finish: HASL lead-free
+  solder_mask: green
+  silkscreen: white
 stackup:
-  - layer: "F.Cu"
-    role: "signal, USB, components, GND pour"
-    copper_oz: 1.0
-  - layer: "In1.Cu"
-    role: "solid GND plane"
-    copper_oz: 0.5
-  - layer: "In2.Cu"
-    role: "+3V3 plane, split only outside the USB/crystal area"
-    copper_oz: 0.5
-  - layer: "B.Cu"
-    role: "signal, GND pour, THT solder side"
-    copper_oz: 1.0
-
+- layer: F.Cu
+  role: signal, USB, components, GND pour
+  copper_oz: 1.0
+- layer: In1.Cu
+  role: solid GND plane
+  copper_oz: 0.5
+- layer: In2.Cu
+  role: +3V3 plane, split only outside the USB/crystal area
+  copper_oz: 0.5
+- layer: B.Cu
+  role: signal, GND pour, THT solder side
+  copper_oz: 1.0
 fabrication:
   vendor: JLCPCB
-  process: "standard 4-layer"
+  process: standard 4-layer
   via_diameter_mm: 0.5
   via_drill_mm: 0.3
-  allowed_via_diameters_mm: [0.5, 0.45]
-  allowed_via_drills_mm: [0.3, 0.25]
+  allowed_via_diameters_mm:
+  - 0.5
+  - 0.45
+  allowed_via_drills_mm:
+  - 0.3
+  - 0.25
   min_trace_mm: 0.1
   min_space_mm: 0.1
   min_hole_clearance_mm: 0.2
   preferred_signal_trace_mm: 0.15
-  power_trace_mm: 0.8
+  power_trace_mm: 0.5
   usb_trace_mm: 0.2
   qfn_escape_trace_mm: 0.127
   via_in_pad: false
@@ -53,483 +54,551 @@ fabrication:
   blind_or_buried_vias: false
   advanced_via_process: false
   impedance_control: false
-  assembly_side: "top only"
+  assembly_side: top only
   notes:
-    - "0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。通常は 0.5/0.3 mm、最後の 1 本だけ 0.45/0.25 mm を使う。"
-    - "via covering は tented のままにし、plugged にしない。"
-    - "配線間隔は 0.1 mm、ホール間隔は 0.2 mm、ビア径は 0.45 mm 以上を JLCPCB 4 層の標準範囲として使う。発注画面で確認する。"
-    - "Type-C の A7/B7 はパッド内ビアを使わず、ドッグボーンでパッド外の 0.5/0.3 mm ビアへ逃がす。"
-    - "QFN-56 のサーマルパッド内にビアを置かない。パッド外のビアと F.Cu の GND で接続する。"
-
+  - 0.15 mm ドリルは JLCPCB の advanced オプションを誘発する。通常は 0.5/0.3 mm、最後の 1 本だけ 0.45/0.25 mm
+    を使う。
+  - via covering は tented のままにし、plugged にしない。
+  - 配線間隔は 0.1 mm、ホール間隔は 0.2 mm、ビア径は 0.45 mm 以上を JLCPCB 4 層の標準範囲として使う。発注画面で確認する。
+  - Type-C の A7/B7 はパッド内ビアを使わず、ドッグボーンでパッド外の 0.5/0.3 mm ビアへ逃がす。
+  - QFN-56 のサーマルパッド内にビアを置かない。パッド外のビアと F.Cu の GND で接続する。
 ports:
-  - id: keyboard
-    connector: J2
-    type: "USB-A host"
-    role: "USB MIDI keyboard (bus-powered)"
-    controller: "RP2040 PIO-USB host"
-    pins: "GP12 (D+), GP13 (D-)"
-    power: "TPS2553 current-limited 5 V, SW4 manual enable"
-  - id: pc
-    connector: J1
-    type: "USB-C device"
-    role: "NKRO HID keyboard to PC"
-    controller: "RP2040 native USB"
-    pins: "USB_DP (pin 47), USB_DM (pin 46)"
-    power: "VBUS sink, 5.1 kOhm Rd on CC1/CC2"
-  - id: ipad
-    connector: J3
-    type: "USB-C device"
-    role: "USB-MIDI device to iPad"
-    controller: "CH345T"
-    pins: "UD+ / UD-"
-    power: "VBUS sink, 5.1 kOhm Rd on CC1/CC2"
-
+- id: keyboard
+  connector: J2
+  type: USB-A host
+  role: USB MIDI keyboard (bus-powered)
+  controller: RP2040 PIO-USB host
+  pins: GP12 (D+), GP13 (D-)
+  power: TPS2553 current-limited 5 V, SW4 manual enable
+- id: pc
+  connector: J1
+  type: USB-C device
+  role: NKRO HID keyboard to PC
+  controller: RP2040 native USB
+  pins: USB_DP (pin 47), USB_DM (pin 46)
+  power: VBUS sink, 5.1 kOhm Rd on CC1/CC2
+- id: ipad
+  connector: J3
+  type: USB-C device
+  role: USB-MIDI device to iPad
+  controller: CH345T
+  pins: UD+ / UD-
+  power: VBUS sink, 5.1 kOhm Rd on CC1/CC2
 connectors:
-  - ref: J1
-    type: "USB-C receptacle"
-    part: "HRO TYPE-C-31-M-12"
-    lcsc: C165948
-    x_mm: 16.5
-    y_mm: 2.4
-    rotation_deg: 180
-    edge: top
-    mouth: up
-    courtyard: [11.18, 0.0, 10.64, 7.67]
-  - ref: J3
-    type: "USB-C receptacle"
-    part: "HRO TYPE-C-31-M-12"
-    lcsc: C165948
-    x_mm: 45.5
-    y_mm: 2.4
-    rotation_deg: 180
-    edge: top
-    mouth: up
-    courtyard: [40.18, 0.0, 10.64, 7.67]
-  - ref: J2
-    type: "USB-A receptacle"
-    part: "Neltron 5075AR-04-WH"
-    lcsc: null
-    x_mm: 31.0
-    y_mm: 31.6
-    rotation_deg: 180
-    edge: bottom
-    mouth: down
-    courtyard: [22.85, 25.6, 16.3, 9.4]
-
+- ref: J1
+  type: USB-C receptacle
+  part: HRO TYPE-C-31-M-12
+  lcsc: C165948
+  x_mm: 15.0
+  y_mm: 2.4
+  rotation_deg: 180
+  edge: top
+  mouth: up
+  courtyard:
+  - 9.68
+  - 0.0
+  - 10.64
+  - 7.67
+- ref: J3
+  type: USB-C receptacle
+  part: HRO TYPE-C-31-M-12
+  lcsc: C165948
+  x_mm: 44.0
+  y_mm: 2.4
+  rotation_deg: 180
+  edge: top
+  mouth: up
+  courtyard:
+  - 38.68
+  - 0.0
+  - 10.64
+  - 7.67
+- ref: J2
+  type: USB-A receptacle
+  part: Neltron 5075AR-04-WH
+  lcsc: null
+  x_mm: 29.0
+  y_mm: 39.4
+  rotation_deg: 180
+  edge: bottom
+  mouth: down
+  courtyard:
+  - 20.85
+  - 33.4
+  - 16.3
+  - 9.4
 placements:
-  - ref: U1
-    value: RP2040
-    package: "QFN-56 7x7 mm"
-    x_mm: 24.0
-    y_mm: 17.0
-    rotation_deg: 270
-    w_mm: 8.4
-    h_mm: 8.4
-  - ref: U2
-    value: W25Q128JVSIQ
-    package: "SOIC-8"
-    x_mm: 34.5
-    y_mm: 14.0
-    w_mm: 7.5
-    h_mm: 5.5
-    rotation_deg: 0
-  - ref: U3
-    value: CH345T
-    package: "SSOP-20"
-    x_mm: 47.3
-    y_mm: 12.5
-    w_mm: 9.6
-    h_mm: 7.8
-    rotation_deg: 0
-  - ref: U4
-    value: AP2112K-3.3
-    package: "SOT-23-5"
-    x_mm: 11.0
-    y_mm: 21.8
-    w_mm: 4.2
-    h_mm: 3.5
-  - ref: U5
-    value: TPS2553DBVR
-    package: "SOT-23-6"
-    x_mm: 15.5
-    y_mm: 24.0
-    w_mm: 4.2
-    h_mm: 3.5
-  - ref: U6
-    value: USBLC6-2SC6
-    package: "SOT-23-6"
-    x_mm: 29.5
-    y_mm: 23.3
-    w_mm: 4.2
-    h_mm: 3.5
-  - ref: U7
-    value: USBLC6-2SC6
-    package: "SOT-23-6"
-    x_mm: 12.0
-    y_mm: 10.3
-    w_mm: 4.2
-    h_mm: 3.5
-  - ref: U8
-    value: USBLC6-2SC6
-    package: "SOT-23-6"
-    x_mm: 40.4
-    y_mm: 10.5
-    w_mm: 4.2
-    h_mm: 3.5
-  - ref: X1
-    value: 12MHz
-    package: "3225-4pin"
-    x_mm: 15.5
-    y_mm: 17.2
-    w_mm: 4.3
-    h_mm: 3.6
-  - ref: X2
-    value: 12MHz
-    package: "3225-4pin"
-    x_mm: 47.5
-    y_mm: 19.5
-    w_mm: 4.3
-    h_mm: 3.6
-  - ref: D1
-    value: BAT54WS
-    package: "SOD-323"
-    x_mm: 9.5
-    y_mm: 2.5
-    w_mm: 2.0
-    h_mm: 3.3
-    rotation_deg: 90
-  - ref: D2
-    value: BAT54WS
-    package: "SOD-323"
-    x_mm: 37.6
-    y_mm: 4.3
-    w_mm: 3.3
-    h_mm: 2.0
-  - ref: LED1
-    value: "status LED"
-    package: "0603"
-    x_mm: 21.8
-    y_mm: 24.7
-    w_mm: 3.0
-    h_mm: 1.6
-
+- ref: U1
+  value: RP2040
+  package: QFN-56 7x7 mm
+  x_mm: 22.5
+  y_mm: 17.0
+  rotation_deg: 270
+  w_mm: 8.4
+  h_mm: 8.4
+- ref: U2
+  value: W25Q128JVSIQ
+  package: SOIC-8
+  x_mm: 33.0
+  y_mm: 14.0
+  w_mm: 7.5
+  h_mm: 5.5
+  rotation_deg: 0
+- ref: U3
+  value: CH345T
+  package: SSOP-20
+  x_mm: 45.8
+  y_mm: 12.5
+  w_mm: 9.6
+  h_mm: 7.8
+  rotation_deg: 0
+- ref: U4
+  value: AP2112K-3.3
+  package: SOT-23-5
+  x_mm: 9.5
+  y_mm: 21.8
+  w_mm: 4.2
+  h_mm: 3.5
+- ref: U5
+  value: TPS2553DBVR
+  package: SOT-23-6
+  x_mm: 14.0
+  y_mm: 24.0
+  w_mm: 4.2
+  h_mm: 3.5
+- ref: U6
+  value: USBLC6-2SC6
+  package: SOT-23-6
+  x_mm: 28.0
+  y_mm: 23.3
+  w_mm: 4.2
+  h_mm: 3.5
+- ref: U7
+  value: USBLC6-2SC6
+  package: SOT-23-6
+  x_mm: 10.5
+  y_mm: 10.3
+  w_mm: 4.2
+  h_mm: 3.5
+- ref: U8
+  value: USBLC6-2SC6
+  package: SOT-23-6
+  x_mm: 38.9
+  y_mm: 10.5
+  w_mm: 4.2
+  h_mm: 3.5
+- ref: X1
+  value: 12MHz
+  package: 3225-4pin
+  x_mm: 14.0
+  y_mm: 17.2
+  w_mm: 4.3
+  h_mm: 3.6
+- ref: X2
+  value: 12MHz
+  package: 3225-4pin
+  x_mm: 46.0
+  y_mm: 19.5
+  w_mm: 4.3
+  h_mm: 3.6
+- ref: D1
+  value: BAT54WS
+  package: SOD-323
+  x_mm: 8.0
+  y_mm: 2.5
+  w_mm: 2.0
+  h_mm: 3.3
+  rotation_deg: 90
+- ref: D2
+  value: BAT54WS
+  package: SOD-323
+  x_mm: 36.1
+  y_mm: 4.3
+  w_mm: 3.3
+  h_mm: 2.0
+- ref: LED1
+  value: status LED
+  package: '0603'
+  x_mm: 20.3
+  y_mm: 24.7
+  w_mm: 3.0
+  h_mm: 1.6
 switches:
-  - ref: SW1
-    part: "NKK 115643 (Akizuki 115643)"
-    type: slide
-    function: "genshin mode / HID mute"
-    gpio: 28
-    net: SW1_MUTE
-    rp2040_pin: 40
-    active: low
-    debounce_ms: 20
-    wiring: "pin2=GP28, pin3=GND, pin1=NC"
-    x_mm: 5.2
-    y_mm: 9.0
-    rotation_deg: 90
-    body: [1.95, 3.9, 6.5, 10.2]
-  - ref: SW2
-    part: "NKK 115643 (Akizuki 115643)"
-    type: slide
-    function: "lyre mode / Sumeru scale"
-    gpio: 29
-    net: SW2_LYRE
-    rp2040_pin: 41
-    active: low
-    debounce_ms: 20
-    wiring: "pin2=GP29, pin3=GND, pin1=NC"
-    x_mm: 5.2
-    y_mm: 24.5
-    rotation_deg: 90
-    body: [1.95, 19.4, 6.5, 10.2]
-  - ref: SW3
-    part: "NKK 115643 (Akizuki 115643)"
-    type: slide
-    function: "sustain / MIDI CC64"
-    gpio: 27
-    net: SW3_SUSTAIN
-    rp2040_pin: 39
-    active: low
-    debounce_ms: 20
-    wiring: "pin2=GP27, pin3=GND, pin1=NC"
-    x_mm: 55.5
-    y_mm: 12.5
-    rotation_deg: 270
-    body: [52.25, 7.4, 6.5, 10.2]
-  - ref: SW4
-    part: "NKK 115643 (Akizuki 115643)"
-    type: slide
-    function: "USB-A VBUS manual enable"
-    gpio: null
-    net: null
-    rp2040_pin: null
-    active: high
-    debounce_ms: 0
-    wiring: "pin2=TPS2553 EN, pin3=+3V3, pin1=NC; 100k pull-down on EN"
-    x_mm: 15.0
-    y_mm: 31.5
-    rotation_deg: 0
-    body: [9.9, 28.25, 10.2, 6.5]
-  - ref: SW5
-    part: "Akizuki DTS-63-N-V-BLK (103647)"
-    type: tact
-    function: "MIDI reset (CC123 + CC121)"
-    gpio: 14
-    net: SW5_RESET
-    rp2040_pin: 17
-    active: low
-    debounce_ms: 20
-    wiring: "pins1/2=GND, pins3/4=GP14"
-    x_mm: 31.0
-    y_mm: 4.2
-    rotation_deg: 0
-    body: [26.7, 0.8, 8.6, 6.8]
-
+- ref: SW1
+  part: NKK 115643 (Akizuki 115643)
+  type: slide
+  function: genshin mode / HID mute
+  gpio: 28
+  net: SW1_MUTE
+  rp2040_pin: 40
+  active: low
+  debounce_ms: 20
+  wiring: pin2=GP28, pin3=GND, pin1=NC
+  x_mm: 3.7
+  y_mm: 9.0
+  rotation_deg: 90
+  body:
+  - 0.45
+  - 3.9
+  - 6.5
+  - 10.2
+- ref: SW2
+  part: NKK 115643 (Akizuki 115643)
+  type: slide
+  function: lyre mode / Sumeru scale
+  gpio: 29
+  net: SW2_LYRE
+  rp2040_pin: 41
+  active: low
+  debounce_ms: 20
+  wiring: pin2=GP29, pin3=GND, pin1=NC
+  x_mm: 3.7
+  y_mm: 24.5
+  rotation_deg: 90
+  body:
+  - 0.45
+  - 19.4
+  - 6.5
+  - 10.2
+- ref: SW3
+  part: NKK 115643 (Akizuki 115643)
+  type: slide
+  function: sustain / MIDI CC64
+  gpio: 27
+  net: SW3_SUSTAIN
+  rp2040_pin: 39
+  active: low
+  debounce_ms: 20
+  wiring: pin2=GP27, pin3=GND, pin1=NC
+  x_mm: 54.0
+  y_mm: 12.5
+  rotation_deg: 270
+  body:
+  - 50.75
+  - 7.4
+  - 6.5
+  - 10.2
+- ref: SW4
+  part: NKK 115643 (Akizuki 115643)
+  type: slide
+  function: USB-A VBUS manual enable
+  gpio: null
+  net: null
+  rp2040_pin: null
+  active: high
+  debounce_ms: 0
+  wiring: pin2=TPS2553 EN, pin3=+3V3, pin1=NC; 100k pull-down on EN
+  x_mm: 13.5
+  y_mm: 40.0
+  rotation_deg: 0
+  body:
+  - 8.4
+  - 36.75
+  - 10.2
+  - 6.5
+- ref: SW5
+  part: Akizuki DTS-63-N-V-BLK (103647)
+  type: tact
+  function: MIDI reset (CC123 + CC121)
+  gpio: 14
+  net: SW5_RESET
+  rp2040_pin: 17
+  active: low
+  debounce_ms: 20
+  wiring: pins1/2=GND, pins3/4=GP14
+  x_mm: 29.0
+  y_mm: 4.2
+  rotation_deg: 0
+  body:
+  - 24.7
+  - 0.8
+  - 8.6
+  - 6.8
+- ref: SW6
+  part: C&K KMR2 SMD tact (C2689528)
+  type: tact
+  function: BOOT (QSPI_SS low)
+  gpio: null
+  net: BOOTSEL
+  rp2040_pin: 56
+  active: low
+  debounce_ms: 20
+  wiring: pin1=GND, pin2=BOOTSEL
+  x_mm: 4.0
+  y_mm: 33.5
+  rotation_deg: 0
+  body:
+  - 1.9
+  - 32.4
+  - 4.2
+  - 2.2
+- ref: SW7
+  part: C&K KMR2 SMD tact (C2689528)
+  type: tact
+  function: RUN reset
+  gpio: null
+  net: RUN
+  rp2040_pin: 26
+  active: low
+  debounce_ms: 0
+  wiring: pin1=GND, pin2=RUN
+  x_mm: 4.0
+  y_mm: 38.0
+  rotation_deg: 0
+  body:
+  - 1.9
+  - 36.9
+  - 4.2
+  - 2.2
 pinmap:
-  - signal: "PIO-USB D+"
-    rp2040_pin: 15
-    gpio: 12
-    net: "USB_A_DP_GP12"
-    destination: "22R -> U6 -> J2 D+"
-    note: "PIO-USB requires D- on D+ + 1"
-  - signal: "PIO-USB D-"
-    rp2040_pin: 16
-    gpio: 13
-    net: "USB_A_DM_GP13"
-    destination: "22R -> U6 -> J2 D-"
-    note: ""
-  - signal: "CH345 MIN (RP2040 TX)"
-    rp2040_pin: 6
-    gpio: 4
-    net: "MIDI_UART_TX"
-    destination: "CH345 pin 4 (MIN)"
-    note: "UART1 TX, 31250 8N1"
-  - signal: "CH345 MOUT (RP2040 RX)"
-    rp2040_pin: 7
-    gpio: 5
-    net: "MIDI_UART_RX"
-    destination: "CH345 pin 3 (MOUT)"
-    note: "UART1 RX, 31250 8N1"
-  - signal: "native USB D+"
-    rp2040_pin: 47
-    gpio: null
-    net: "USB_PC_DP"
-    destination: "27R -> U7 -> J1 D+"
-    note: "RP2040 USB_DP"
-  - signal: "native USB D-"
-    rp2040_pin: 46
-    gpio: null
-    net: "USB_PC_DM"
-    destination: "27R -> U7 -> J1 D-"
-    note: "RP2040 USB_DM"
-  - signal: "mute switch"
-    rp2040_pin: 40
-    gpio: 28
-    net: "SW1_MUTE"
-    destination: "SW1 pin2"
-    note: "internal pull-up, active low"
-  - signal: "lyre switch"
-    rp2040_pin: 41
-    gpio: 29
-    net: "SW2_LYRE"
-    destination: "SW2 pin2"
-    note: "internal pull-up, active low"
-  - signal: "sustain switch"
-    rp2040_pin: 39
-    gpio: 27
-    net: "SW3_SUSTAIN"
-    destination: "SW3 pin2"
-    note: "internal pull-up, active low"
-  - signal: "MIDI reset button"
-    rp2040_pin: 17
-    gpio: 14
-    net: "SW5_RESET"
-    destination: "SW5 pins 3/4"
-    note: "internal pull-up, active low"
-  - signal: "status LED"
-    rp2040_pin: 37
-    gpio: 25
-    net: "STATUS_LED"
-    destination: "1k -> LED1 -> GND"
-    note: "active high"
-  - signal: "QSPI flash"
-    rp2040_pin: "51-56"
-    gpio: null
-    net: "QSPI_*"
-    destination: "U2 W25Q128"
-    note: "dedicated QSPI pins, not GPIO"
-  - signal: "crystal"
-    rp2040_pin: "20/21"
-    gpio: null
-    net: "XIN/XOUT"
-    destination: "Y1 12MHz"
-    note: "15 pF load caps, 1k series on XOUT"
-  - signal: "RUN"
-    rp2040_pin: 26
-    gpio: null
-    net: "RUN"
-    destination: "R19 10k pull-up to +3V3"
-    note: ""
-  - signal: "BOOTSEL"
-    rp2040_pin: 56
-    gpio: null
-    net: "QSPI_SS"
-    destination: "TP7 via 1k to GND when pressed"
-    note: "do not hold low during normal boot"
-
+- signal: PIO-USB D+
+  rp2040_pin: 15
+  gpio: 12
+  net: USB_A_DP_GP12
+  destination: 22R -> U6 -> J2 D+
+  note: PIO-USB requires D- on D+ + 1
+- signal: PIO-USB D-
+  rp2040_pin: 16
+  gpio: 13
+  net: USB_A_DM_GP13
+  destination: 22R -> U6 -> J2 D-
+  note: ''
+- signal: CH345 MIN (RP2040 TX)
+  rp2040_pin: 6
+  gpio: 4
+  net: MIDI_UART_TX
+  destination: CH345 pin 4 (MIN)
+  note: UART1 TX, 31250 8N1
+- signal: CH345 MOUT (RP2040 RX)
+  rp2040_pin: 7
+  gpio: 5
+  net: MIDI_UART_RX
+  destination: CH345 pin 3 (MOUT)
+  note: UART1 RX, 31250 8N1
+- signal: native USB D+
+  rp2040_pin: 47
+  gpio: null
+  net: USB_PC_DP
+  destination: 27R -> U7 -> J1 D+
+  note: RP2040 USB_DP
+- signal: native USB D-
+  rp2040_pin: 46
+  gpio: null
+  net: USB_PC_DM
+  destination: 27R -> U7 -> J1 D-
+  note: RP2040 USB_DM
+- signal: mute switch
+  rp2040_pin: 40
+  gpio: 28
+  net: SW1_MUTE
+  destination: SW1 pin2
+  note: internal pull-up, active low
+- signal: lyre switch
+  rp2040_pin: 41
+  gpio: 29
+  net: SW2_LYRE
+  destination: SW2 pin2
+  note: internal pull-up, active low
+- signal: sustain switch
+  rp2040_pin: 39
+  gpio: 27
+  net: SW3_SUSTAIN
+  destination: SW3 pin2
+  note: internal pull-up, active low
+- signal: MIDI reset button
+  rp2040_pin: 17
+  gpio: 14
+  net: SW5_RESET
+  destination: SW5 pins 3/4
+  note: internal pull-up, active low
+- signal: status LED
+  rp2040_pin: 37
+  gpio: 25
+  net: STATUS_LED
+  destination: 1k -> LED1 -> GND
+  note: active high
+- signal: QSPI flash
+  rp2040_pin: 51-56
+  gpio: null
+  net: QSPI_*
+  destination: U2 W25Q128
+  note: dedicated QSPI pins, not GPIO
+- signal: crystal
+  rp2040_pin: 20/21
+  gpio: null
+  net: XIN/XOUT
+  destination: Y1 12MHz
+  note: 15 pF load caps, 1k series on XOUT
+- signal: RUN
+  rp2040_pin: 26
+  gpio: null
+  net: RUN
+  destination: R19 10k pull-up to +3V3; SW7 to GND
+  note: ''
+- signal: BOOTSEL
+  rp2040_pin: 56
+  gpio: null
+  net: QSPI_SS
+  destination: R15 1k to BOOTSEL; TP7 and SW6 to GND
+  note: do not hold low during normal boot
 bom:
-  - ref: "U1"
-    value: "RP2040"
-    footprint: "QFN-56 7x7 mm"
-    lcsc: "C2040"
-    assembly: SMT
-  - ref: "U2"
-    value: "W25Q128JVSIQ"
-    footprint: "SOIC-8 3.9x4.9 mm"
-    lcsc: "C97521"
-    assembly: SMT
-  - ref: "U3"
-    value: "CH345T"
-    footprint: "SSOP-20 5.3x7.2 mm P0.65"
-    lcsc: "C5246448"
-    assembly: SMT
-  - ref: "U4"
-    value: "AP2112K-3.3TRG1"
-    footprint: "SOT-23-5"
-    lcsc: "C51118"
-    assembly: SMT
-    note: "LCSC 型番は発注前に再確認"
-  - ref: "U5"
-    value: "TPS2553DBVR"
-    footprint: "SOT-23-6"
-    lcsc: "C55266"
-    assembly: SMT
-  - ref: "U6,U7,U8"
-    value: "USBLC6-2SC6"
-    footprint: "SOT-23-6"
-    lcsc: "C7519"
-    assembly: SMT
-  - ref: "D1,D2"
-    value: "BAT54WS"
-    footprint: "SOD-323"
-    lcsc: "C22629"
-    assembly: SMT
-  - ref: "X1,X2"
-    value: "12MHz"
-    footprint: "3225-4pin"
-    lcsc: "C50430"
-    assembly: SMT
-  - ref: "J1,J3"
-    value: "TYPE-C-31-M-12"
-    footprint: "USB-C 16P"
-    lcsc: "C165948"
-    assembly: SMT
-    note: "シェル固定タブは THT。JLCPCB の実装プレビューで向きを確認"
-  - ref: "J2"
-    value: "USB-A 5075AR-04-WH"
-    footprint: "USB-A THT"
-    lcsc: null
-    assembly: THT
-    note: "Akizuki 100160。手はんだ"
-  - ref: "SW1-SW4"
-    value: "NKK 115643"
-    footprint: "SPDT slide 3pin"
-    lcsc: null
-    assembly: THT
-    note: "Akizuki 115643。手はんだ。4 個（SW1/SW2/SW3/SW4）"
-  - ref: "SW5"
-    value: "DTS-63-N-V-BLK"
-    footprint: "tact 4pin"
-    lcsc: null
-    assembly: THT
-    note: "Akizuki 103647。手はんだ"
-  - ref: "R1,R2"
-    value: "27R"
-    footprint: "0603"
-    lcsc: "C25100"
-    assembly: SMT
-  - ref: "R3,R4,R17,R18"
-    value: "22R"
-    footprint: "0603"
-    lcsc: "C23345"
-    assembly: SMT
-    note: "USB-A 側 2 本、CH345T 側 2 本"
-  - ref: "R5,R6,R7,R8"
-    value: "5.1k"
-    footprint: "0603"
-    lcsc: "C23186"
-    assembly: SMT
-  - ref: "R9"
-    value: "52.3k 1%"
-    footprint: "0603"
-    lcsc: "C23198"
-    assembly: SMT
-  - ref: "R10,R11,R16"
-    value: "100k 1%"
-    footprint: "0603"
-    lcsc: "C14675"
-    assembly: SMT
-  - ref: "R12,R19"
-    value: "10k"
-    footprint: "0603"
-    lcsc: "C25744"
-    assembly: SMT
-  - ref: "R13,R14,R15"
-    value: "1k"
-    footprint: "0603"
-    lcsc: "C11702"
-    assembly: SMT
-  - ref: "C3,C6-C16,C19,C20,C24,C25,C26,C29,C30"
-    value: "100nF"
-    footprint: "0603"
-    lcsc: "C14663"
-    assembly: SMT
-  - ref: "C1,C2,C4"
-    value: "1uF"
-    footprint: "0603"
-    lcsc: "C93816"
-    assembly: SMT
-  - ref: "C5,C21,C28"
-    value: "10uF"
-    footprint: "0805"
-    lcsc: "C15850"
-    assembly: SMT
-  - ref: "C17,C18"
-    value: "15pF"
-    footprint: "0603"
-    lcsc: "C1548"
-    assembly: SMT
-  - ref: "C22,C23"
-    value: "22pF"
-    footprint: "0603"
-    lcsc: "C1653"
-    assembly: SMT
-  - ref: "C27"
-    value: "100uF 10V"
-    footprint: "C_1210_3225Metric"
-    lcsc: "C96123"
-    assembly: SMT
-    note: "USB-A VBUS バルク。1210 セラミック。LCSC 型番は発注前に再確認"
-  - ref: "LED1"
-    value: "red 0603"
-    footprint: "0603"
-    lcsc: "C2286"
-    assembly: SMT
-
+- ref: U1
+  value: RP2040
+  footprint: QFN-56 7x7 mm
+  lcsc: C2040
+  assembly: SMT
+- ref: U2
+  value: W25Q128JVSIQ
+  footprint: SOIC-8 3.9x4.9 mm
+  lcsc: C97521
+  assembly: SMT
+- ref: U3
+  value: CH345T
+  footprint: SSOP-20 5.3x7.2 mm P0.65
+  lcsc: C5246448
+  assembly: SMT
+- ref: U4
+  value: AP2112K-3.3TRG1
+  footprint: SOT-23-5
+  lcsc: C51118
+  assembly: SMT
+  note: LCSC 型番は発注前に再確認
+- ref: U5
+  value: TPS2553DBVR
+  footprint: SOT-23-6
+  lcsc: C55266
+  assembly: SMT
+- ref: U6,U7,U8
+  value: USBLC6-2SC6
+  footprint: SOT-23-6
+  lcsc: C7519
+  assembly: SMT
+- ref: D1,D2
+  value: BAT54WS
+  footprint: SOD-323
+  lcsc: C22629
+  assembly: SMT
+- ref: X1,X2
+  value: 12MHz
+  footprint: 3225-4pin
+  lcsc: C50430
+  assembly: SMT
+- ref: J1,J3
+  value: TYPE-C-31-M-12
+  footprint: USB-C 16P
+  lcsc: C165948
+  assembly: SMT
+  note: シェル固定タブは THT。JLCPCB の実装プレビューで向きを確認
+- ref: J2
+  value: USB-A 5075AR-04-WH
+  footprint: USB-A THT
+  lcsc: null
+  assembly: THT
+  note: Akizuki 100160。手はんだ
+- ref: SW1-SW4
+  value: NKK 115643
+  footprint: SPDT slide 3pin
+  lcsc: null
+  assembly: THT
+  note: Akizuki 115643。手はんだ。4 個（SW1/SW2/SW3/SW4）
+- ref: SW5
+  value: DTS-63-N-V-BLK
+  footprint: tact 4pin
+  lcsc: null
+  assembly: THT
+  note: Akizuki 103647。手はんだ。MIDI reset
+- ref: R1,R2
+  value: 27R
+  footprint: '0603'
+  lcsc: C25100
+  assembly: SMT
+- ref: R3,R4,R17,R18
+  value: 22R
+  footprint: '0603'
+  lcsc: C23345
+  assembly: SMT
+  note: USB-A 側 2 本、CH345T 側 2 本
+- ref: R5,R6,R7,R8
+  value: 5.1k
+  footprint: '0603'
+  lcsc: C23186
+  assembly: SMT
+- ref: R9
+  value: 52.3k 1%
+  footprint: '0603'
+  lcsc: C23198
+  assembly: SMT
+- ref: R10,R11,R16
+  value: 100k 1%
+  footprint: '0603'
+  lcsc: C14675
+  assembly: SMT
+- ref: R12,R19
+  value: 10k
+  footprint: '0603'
+  lcsc: C25744
+  assembly: SMT
+- ref: R13,R14,R15
+  value: 1k
+  footprint: '0603'
+  lcsc: C11702
+  assembly: SMT
+- ref: C3,C6-C16,C19,C20,C24,C25,C26,C29,C30
+  value: 100nF
+  footprint: '0603'
+  lcsc: C14663
+  assembly: SMT
+- ref: C1,C2,C4
+  value: 1uF
+  footprint: '0603'
+  lcsc: C93816
+  assembly: SMT
+- ref: C5,C21,C28
+  value: 10uF
+  footprint: 0805
+  lcsc: C15850
+  assembly: SMT
+- ref: C17,C18
+  value: 15pF
+  footprint: '0603'
+  lcsc: C1548
+  assembly: SMT
+- ref: C22,C23
+  value: 22pF
+  footprint: '0603'
+  lcsc: C1653
+  assembly: SMT
+- ref: C27
+  value: 100uF 10V
+  footprint: C_1210_3225Metric
+  lcsc: C96123
+  assembly: SMT
+  note: USB-A VBUS バルク。1210 セラミック。LCSC 型番は発注前に再確認
+- ref: LED1
+  value: red 0603
+  footprint: '0603'
+  lcsc: C2286
+  assembly: SMT
+- ref: SW6,SW7
+  value: KMR2 SMD tact
+  footprint: SMD 4.2x2.2
+  lcsc: C2689528
+  assembly: SMT
+  note: BOOT / RUN。SMT 実装可、手はんだでも可
 rules:
-  - id: "no-advanced-via"
-    text: "0.5 mm diameter / 0.3 mm drill のスルービアだけを使う。0.15 mm ドリル、レーザービア、盲埋め込みビアは使わない。"
-  - id: "no-via-in-pad"
-    text: "SMD パッド内にビアを置かない。Type-C A7/B7 と QFN-56 サーマルパッドはドッグボーンで逃がす。"
-  - id: "tented-not-plugged"
-    text: "ビアは tented のまま。plugged / capped / filled にしない。"
-  - id: "usb-pair"
-    text: "USB D+/D- は同一層を基本とし、長さ差 2 mm 以内。USB-A 側は 22R、native USB は 27R の直列抵抗をコネクタ近傍に置く。"
-  - id: "type-c-spacing"
-    text: "USB-C 2 ポートの中心間距離は 25 mm 以上、コートヤード間の隙間は 15 mm 以上。"
-  - id: "qspi"
-    text: "QSPI は RP2040 から U2 まで 25 mm 以内、等長 2 mm 以内、スタブなし。"
-  - id: "crystal"
-    text: "水晶は XIN/XOUT の近くに置き、GND ガードと短い配線にする。"
-  - id: "thermal"
-    text: "RP2040 のサーマルパッドは F.Cu の GND と接続し、パッド外のビアで In1 GND へ落とす。"
+- id: no-advanced-via
+  text: 0.5 mm diameter / 0.3 mm drill のスルービアだけを使う。0.15 mm ドリル、レーザービア、盲埋め込みビアは使わない。
+- id: no-via-in-pad
+  text: SMD パッド内にビアを置かない。Type-C A7/B7 と QFN-56 サーマルパッドはドッグボーンで逃がす。
+- id: tented-not-plugged
+  text: ビアは tented のまま。plugged / capped / filled にしない。
+- id: usb-pair
+  text: USB D+/D- は同一層を基本とし、長さ差 2 mm 以内。USB-A 側は 22R、native USB は 27R の直列抵抗をコネクタ近傍に置く。
+- id: type-c-spacing
+  text: USB-C 2 ポートの中心間距離は 25 mm 以上、コートヤード間の隙間は 15 mm 以上。
+- id: qspi
+  text: QSPI は RP2040 から U2 まで 25 mm 以内、等長 2 mm 以内、スタブなし。
+- id: crystal
+  text: 水晶は XIN/XOUT の近くに置き、GND ガードと短い配線にする。
+- id: thermal
+  text: RP2040 のサーマルパッドは F.Cu の GND と接続し、パッド外のビアで In1 GND へ落とす。

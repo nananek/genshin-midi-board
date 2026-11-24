@@ -1,22 +1,24 @@
 ref,type,x_mm,y_mm,rotation_deg,edge,role
-J1,USB-C receptacle,16.5,2.4,180,top,USB-C receptacle
-J3,USB-C receptacle,45.5,2.4,180,top,USB-C receptacle
-J2,USB-A receptacle,31.0,31.6,180,bottom,USB-A receptacle
-U1,RP2040,24.0,17.0,270,,QFN-56 7x7 mm
-U2,W25Q128JVSIQ,34.5,14.0,0,,SOIC-8
-U3,CH345T,47.3,12.5,0,,SSOP-20
-U4,AP2112K-3.3,11.0,21.8,0,,SOT-23-5
-U5,TPS2553DBVR,15.5,24.0,0,,SOT-23-6
-U6,USBLC6-2SC6,29.5,23.3,0,,SOT-23-6
-U7,USBLC6-2SC6,12.0,10.3,0,,SOT-23-6
-U8,USBLC6-2SC6,40.4,10.5,0,,SOT-23-6
-X1,12MHz,15.5,17.2,0,,3225-4pin
-X2,12MHz,47.5,19.5,0,,3225-4pin
-D1,BAT54WS,9.5,2.5,90,,SOD-323
-D2,BAT54WS,37.6,4.3,0,,SOD-323
-LED1,status LED,21.8,24.7,0,,0603
-SW1,slide,5.2,9.0,90,,genshin mode / HID mute
-SW2,slide,5.2,24.5,90,,lyre mode / Sumeru scale
-SW3,slide,55.5,12.5,270,,sustain / MIDI CC64
-SW4,slide,15.0,31.5,0,,USB-A VBUS manual enable
-SW5,tact,31.0,4.2,0,,MIDI reset (CC123 + CC121)
+J1,USB-C receptacle,15.0,2.4,180,top,USB-C receptacle
+J3,USB-C receptacle,44.0,2.4,180,top,USB-C receptacle
+J2,USB-A receptacle,29.0,39.4,180,bottom,USB-A receptacle
+U1,RP2040,22.5,17.0,270,,QFN-56 7x7 mm
+U2,W25Q128JVSIQ,33.0,14.0,0,,SOIC-8
+U3,CH345T,45.8,12.5,0,,SSOP-20
+U4,AP2112K-3.3,9.5,21.8,0,,SOT-23-5
+U5,TPS2553DBVR,14.0,24.0,0,,SOT-23-6
+U6,USBLC6-2SC6,28.0,23.3,0,,SOT-23-6
+U7,USBLC6-2SC6,10.5,10.3,0,,SOT-23-6
+U8,USBLC6-2SC6,38.9,10.5,0,,SOT-23-6
+X1,12MHz,14.0,17.2,0,,3225-4pin
+X2,12MHz,46.0,19.5,0,,3225-4pin
+D1,BAT54WS,8.0,2.5,90,,SOD-323
+D2,BAT54WS,36.1,4.3,0,,SOD-323
+LED1,status LED,20.3,24.7,0,,0603
+SW1,slide,3.7,9.0,90,,genshin mode / HID mute
+SW2,slide,3.7,24.5,90,,lyre mode / Sumeru scale
+SW3,slide,54.0,12.5,270,,sustain / MIDI CC64
+SW4,slide,13.5,40.0,0,,USB-A VBUS manual enable
+SW5,tact,29.0,4.2,0,,MIDI reset (CC123 + CC121)
+SW6,tact,4.0,33.5,0,,BOOT (QSPI_SS low)
+SW7,tact,4.0,38.0,0,,RUN reset

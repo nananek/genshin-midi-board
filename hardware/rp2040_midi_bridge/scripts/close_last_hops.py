@@ -8,8 +8,8 @@ TIGHT = ("+3V3", "VBUS_USB_A", "VBUS_PC", "VBUS_IPAD", "SW5_RESET",
          "MIDI_UART_TX", "MIDI_UART_RX")
 
 b = pcbnew.LoadBoard("/work/hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb")
-router = R.Router(62.0, 35.0, cell=0.05)
-router.set_outline([(2,0),(60,0),(62,2),(62,33),(60,35),(2,35),(0,33),(0,2)])
+router = R.Router(58.0, 44.0, cell=0.05)
+router.set_outline([(2,0),(56,0),(58,2),(58,42),(56,44),(2,44),(0,42),(0,2)])
 pads = {}
 gnd_pads = []
 for fp in b.GetFootprints():

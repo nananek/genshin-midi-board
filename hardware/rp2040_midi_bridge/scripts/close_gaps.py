@@ -24,10 +24,10 @@ RPT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "drc.rpt"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 
-W, H = 62.0, 35.0
-OUTLINE = [(2, 0), (60, 0), (62, 2), (62, 33), (60, 35), (2, 35),
-           (0, 33), (0, 2)]
-POWER = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0}
+W, H = 58.0, 44.0
+OUTLINE = [(2, 0), (56, 0), (58, 2), (58, 42), (56, 44), (2, 44),
+           (0, 42), (0, 2)]
+POWER = {"+5V": 0.5, "VBUS_PC": 0.5, "VBUS_IPAD": 0.5, "VBUS_USB_A": 0.8}
 
 
 def width_for(net):

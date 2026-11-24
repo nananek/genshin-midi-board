@@ -2,7 +2,7 @@
 
 USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード、iPad へは USB-MIDI デバイスとして同時に見せる基板の設計案です。
 
-**RP2040（QFN-56）+ CH345T + 4 層基板**の構成です。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。展開図は [docs/paper_case.md](docs/paper_case.md) と [docs/paper_case_a4.pdf](docs/paper_case_a4.pdf) にあります。
+**RP2040（QFN-56）+ CH345T + 4 層基板**の構成です。外形は **58.0 × 44.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは無印良品の PP小物ケース M（外寸 64 × 52 × 20 mm、内寸 60 × 46 × 16.5 mm）を使います。加工手順は [docs/case_muji_m.md](docs/case_muji_m.md)、開口用の 1:1 テンプレートは [docs/case_muji_m_template.pdf](docs/case_muji_m_template.pdf) にあります。
 
 > 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC・未接続 0 です。実機検証はまだです。
 
@@ -12,11 +12,11 @@ USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード
 | --- | --- |
 | MCU | RP2040 QFN-56 |
 | MIDI デバイス側 | CH345T（UART 31250 ↔ USB-MIDI） |
-| 基板 | 62.0 × 35.0 × 1.6 mm、4 層、四隅 2 mm パンチカット |
+| 基板 | 58.0 × 44.0 × 1.6 mm、4 層、四隅 2 mm パンチカット |
 | USB-A | PIO-USB ホスト |
 | USB-C 1 | RP2040 native USB、NKRO HID → PC |
 | USB-C 2 | CH345T、USB-MIDI → iPad |
-| スイッチ | SW1〜SW5（4 × スライド、1 × タクト） |
+| スイッチ | SW1〜SW7（4 × スライド、3 × タクト） |
 | 製造 | JLCPCB、4 層、0.5/0.3 mm ビア（最終ホップは 0.45/0.25 mm）、via-in-pad なし |
 
 ## 構成の要点
@@ -44,7 +44,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 
 ```text
          J1 USB-C (PC)              J3 USB-C (iPad)
-         x=16.5                     x=45.5
+         x=15.0                     x=44.0
     ┌────┐                            ┌────┐
     │    │        SW5 RESET           │    │
     │    │           ●                │    │
@@ -59,15 +59,15 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
     └────┘    (MIDI キーボード)        └────┘
 ```
 
-- 基板: 62.0 × 35.0 mm、t1.6 mm、4 層、四隅 2 mm の 45° パンチカット
-- J1/J3: 上長辺、中心間 **29.0 mm**。コートヤード間の隙間は **18.36 mm**
+- 基板: 58.0 × 44.0 mm、t1.6 mm、4 層、四隅 2 mm の 45° パンチカット
+- J1/J3: 上長辺、中心間 **29.0 mm**
 - J2: 下長辺、USB-A レセプタクル。口は基板外へ出す
-- J1/J3 の口は基板端から外へ出す。紙ケースの上壁に 2 か所、下壁に 1 か所の開口を開ける
+- J1/J3 の口は基板端から外へ出す。ケースの上壁に 2 か所、下壁に 1 か所の開口を開ける
 - Type-C を 10 mm ピッチに寄せるとケーブルの樹脂部が干渉する。今回は同じ失敗を避けるため、29 mm ピッチを確保する
 
 ## スイッチ
 
-スイッチは SW1〜SW5 の 5 個です。
+スイッチは SW1〜SW7 の 7 個です。
 
 | Ref | 部品 | 機能 | 接続 |
 | --- | --- | --- | --- |
@@ -76,8 +76,10 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 | SW3 | NKK 115643 スライド | サステイン（CC64） | GP27 ↔ GND |
 | SW4 | NKK 115643 スライド | USB-A VBUS 手動 ON/OFF | TPS2553 EN 制御 |
 | SW5 | DTS-63-N-V-BLK タクト | MIDI リセット（CC123/CC121） | GP14 ↔ GND |
+| SW6 | C&K KMR2 SMD タクト | BOOT（QSPI_SS を 1k 経由で GND） | QSPI_SS ↔ GND |
+| SW7 | C&K KMR2 SMD タクト | RUN リセット | RUN ↔ GND |
 
-スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW5 は片側 2 ピンを GND、反対側 2 ピンを GP14 に束ねます。
+スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW5 は片側 2 ピンを GND、反対側 2 ピンを GP14 に束ねます。SW6/SW7 は小さな SMD タクトで、ケースの蓋から押します。
 
 ## ファイル構成
 
@@ -88,8 +90,9 @@ docs/design.md                    詳細設計（電源、ピン、回路、配�
 docs/decisions.md                 設計判断と採用理由
 docs/jlcpcb.md                    JLCPCB 向け製造制約と発注チェック
 docs/firmware.md                  ファームウェアの実装メモ
-docs/paper_case.md                紙ケースの印刷・折り手順
-docs/paper_case_a4.pdf            A4 1:1 の紙ケース展開図
+docs/case_muji_m.md               無印 PP小物ケース M の加工手順
+docs/case_muji_m_template.pdf     開口位置の 1:1 テンプレート
+docs/case_muji_m_template.svg     同じテンプレートの SVG
 hardware/rp2040_midi_bridge/design.yaml 設計の単一ソース
 hardware/rp2040_midi_bridge/pinmap.csv  ピン割り当て
 hardware/rp2040_midi_bridge/bom.csv     BOM
@@ -106,6 +109,7 @@ tests/test_design.py              設計制約の単体テスト
 make check          # 設計制約チェック + 単体テスト
 make floorplan      # hardware/rp2040_midi_bridge/floorplan.svg を再生成
 make silk           # 基板名、USB-A のピン名、裏面 QR を更新
+make case-template  # ケース開口の 1:1 PDF / SVG を再生成
 ```
 
 `make check` は次を確認します。
@@ -115,12 +119,12 @@ make silk           # 基板名、USB-A のピン名、裏面 QR を更新
 - ビア径・ドリル径（0.5/0.3 mm と 0.45/0.25 mm、0.15/0.2 mm なし）
 - via-in-pad / plugged via の禁止
 - ピン割り当ての重複
-- スイッチ 5 個の機能と接続
+- スイッチ 7 個の機能と接続
 - BOM の SMT 部品に LCSC 型番があること
 
 ## 製造データの配布
 
-ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.0.4` で、JLCPCB にそのままアップロードできる Gerber ZIP、BOM、CPL を `dist/` に作ります。Gerber ZIP は展開せず PCB のアップロードへ、BOM と CPL は SMT の欄へ個別に渡します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
+ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.1.0` で、JLCPCB にそのままアップロードできる Gerber ZIP、BOM、CPL を `dist/` に作ります。Gerber ZIP は展開せず PCB のアップロードへ、BOM と CPL は SMT の欄へ個別に渡します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
 
 ## ライセンス
 

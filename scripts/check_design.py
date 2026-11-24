@@ -59,8 +59,8 @@ def main() -> int:
 
     board = data["board"]
     W, H = float(board["width_mm"]), float(board["height_mm"])
-    c.near(W, 62.0, 0.001, "board width")
-    c.near(H, 35.0, 0.001, "board height")
+    c.near(W, 58.0, 0.001, "board width")
+    c.near(H, 44.0, 0.001, "board height")
     c.require(int(board["layers"]) == 4, "board is 4 layers")
     c.near(float(board["chamfer_mm"]), 2.0, 0.001, "corner punch cut")
 
@@ -120,8 +120,10 @@ def main() -> int:
     c.require(required_gpios <= set(gpios), "all required GPIOs are assigned")
 
     switches = data["switches"]
-    c.require(len(switches) == 5, "five switches are defined")
-    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW5"}, "SW1..SW4 and SW5 exist")
+    c.require(len(switches) == 7, "seven switches are defined")
+    c.require({s["ref"] for s in switches} ==
+              {"SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7"},
+              "SW1..SW7 exist")
     switch_gpios = [s["gpio"] for s in switches if s["gpio"] is not None]
     c.require(len(switch_gpios) == len(set(switch_gpios)), "switch GPIOs do not collide")
     for s in switches:

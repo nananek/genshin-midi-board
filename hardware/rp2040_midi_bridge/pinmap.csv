@@ -12,5 +12,5 @@ MIDI reset button,17,14,SW5_RESET,SW5 pins 3/4,"internal pull-up, active low"
 status LED,37,25,STATUS_LED,1k -> LED1 -> GND,active high
 QSPI flash,51-56,,QSPI_*,U2 W25Q128,"dedicated QSPI pins, not GPIO"
 crystal,20/21,,XIN/XOUT,Y1 12MHz,"15 pF load caps, 1k series on XOUT"
-RUN,26,,RUN,R19 10k pull-up to +3V3,-
-BOOTSEL,56,,QSPI_SS,TP7 via 1k to GND when pressed,do not hold low during normal boot
+RUN,26,,RUN,R19 10k pull-up to +3V3; SW7 to GND,-
+BOOTSEL,56,,QSPI_SS,R15 1k to BOOTSEL; TP7 and SW6 to GND,do not hold low during normal boot

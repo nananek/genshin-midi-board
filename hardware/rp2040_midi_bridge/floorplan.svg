@@ -1,113 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="884" height="560" viewBox="0 0 884 560">
+<svg xmlns="http://www.w3.org/2000/svg" width="836" height="668" viewBox="0 0 836 668">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <style>text{font-family:'Noto Sans JP','DejaVu Sans',sans-serif;fill:#1a1a1a} .small{font-size:9px} .label{font-size:10px} .title{font-size:16px;font-weight:600} .dim{font-size:9px;fill:#b3261e}</style>
-<polygon points="94.0,70.0 790.0,70.0 814.0,94.0 814.0,466.0 790.0,490.0 94.0,490.0 70.0,466.0 70.0,94.0" fill="#f7f5ef" stroke="#1a1a1a" stroke-width="1.4"/>
-<line x1="130.0" y1="70.0" x2="130.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="190.0" y1="70.0" x2="190.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="250.0" y1="70.0" x2="250.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="310.0" y1="70.0" x2="310.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="370.0" y1="70.0" x2="370.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="430.0" y1="70.0" x2="430.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="490.0" y1="70.0" x2="490.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="550.0" y1="70.0" x2="550.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="610.0" y1="70.0" x2="610.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="670.0" y1="70.0" x2="670.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="730.0" y1="70.0" x2="730.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="790.0" y1="70.0" x2="790.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="130.0" x2="814.0" y2="130.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="190.0" x2="814.0" y2="190.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="250.0" x2="814.0" y2="250.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="310.0" x2="814.0" y2="310.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="370.0" x2="814.0" y2="370.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<line x1="70.0" y1="430.0" x2="814.0" y2="430.0" stroke="#d9d4c7" stroke-width="0.4"/>
-<rect x="204.2" y="70.0" width="127.7" height="92.0" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
-<text x="268.0" y="114.0" text-anchor="middle" class="label">J1 USB-C</text>
-<text x="268.0" y="126.0" text-anchor="middle" class="small">PC / NKRO HID</text>
-<path d="M 256.0 82.0 L 268.0 58.0 L 280.0 82.0" fill="none" stroke="#235789" stroke-width="1.2"/>
-<rect x="552.2" y="70.0" width="127.7" height="92.0" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
-<text x="616.0" y="114.0" text-anchor="middle" class="label">J3 USB-C</text>
-<text x="616.0" y="126.0" text-anchor="middle" class="small">iPad / USB-MIDI</text>
-<path d="M 604.0 82.0 L 616.0 58.0 L 628.0 82.0" fill="none" stroke="#235789" stroke-width="1.2"/>
-<rect x="344.2" y="377.2" width="195.6" height="112.8" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
-<text x="442.0" y="431.6" text-anchor="middle" class="label">J2 USB-A</text>
-<text x="442.0" y="443.6" text-anchor="middle" class="small">MIDI キーボード</text>
-<path d="M 430.0 478.0 L 442.0 502.0 L 454.0 478.0" fill="none" stroke="#235789" stroke-width="1.2"/>
-<rect x="307.6" y="223.6" width="100.8" height="100.8" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="358.0" y="272.0" text-anchor="middle" class="label">U1</text>
-<text x="358.0" y="284.0" text-anchor="middle" class="small">RP2040</text>
-<rect x="439.0" y="205.0" width="90.0" height="66.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="484.0" y="236.0" text-anchor="middle" class="label">U2</text>
-<text x="484.0" y="248.0" text-anchor="middle" class="small">W25Q128</text>
-<rect x="580.0" y="173.2" width="115.2" height="93.6" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="637.6" y="218.0" text-anchor="middle" class="label">U3</text>
-<text x="637.6" y="230.0" text-anchor="middle" class="small">CH345T</text>
-<rect x="176.8" y="310.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="202.0" y="329.6" text-anchor="middle" class="label">U4</text>
-<text x="202.0" y="341.6" text-anchor="middle" class="small">AP2112</text>
-<rect x="230.8" y="337.0" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="256.0" y="356.0" text-anchor="middle" class="label">U5</text>
-<text x="256.0" y="368.0" text-anchor="middle" class="small">TPS2553</text>
-<rect x="398.8" y="328.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="424.0" y="347.6" text-anchor="middle" class="label">U6</text>
-<text x="424.0" y="359.6" text-anchor="middle" class="small">USBLC6</text>
-<rect x="188.8" y="172.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="214.0" y="191.6" text-anchor="middle" class="label">U7</text>
-<text x="214.0" y="203.6" text-anchor="middle" class="small">USBLC6</text>
-<rect x="529.6" y="175.0" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="554.8" y="194.0" text-anchor="middle" class="label">U8</text>
-<text x="554.8" y="206.0" text-anchor="middle" class="small">USBLC6</text>
-<rect x="230.2" y="254.8" width="51.6" height="43.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="256.0" y="274.4" text-anchor="middle" class="label">X1</text>
-<text x="256.0" y="286.4" text-anchor="middle" class="small">12MHz</text>
-<rect x="614.2" y="282.4" width="51.6" height="43.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="640.0" y="302.0" text-anchor="middle" class="label">X2</text>
-<text x="640.0" y="314.0" text-anchor="middle" class="small">12MHz</text>
-<rect x="172.0" y="80.2" width="24.0" height="39.6" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="184.0" y="98.0" text-anchor="middle" class="label">D1</text>
-<text x="184.0" y="110.0" text-anchor="middle" class="small">BAT54</text>
-<rect x="501.4" y="109.6" width="39.6" height="24.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="521.2" y="119.6" text-anchor="middle" class="label">D2</text>
-<text x="521.2" y="131.6" text-anchor="middle" class="small">BAT54</text>
-<rect x="313.6" y="356.8" width="36.0" height="19.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
-<text x="331.6" y="364.4" text-anchor="middle" class="label">LED1</text>
-<text x="331.6" y="376.4" text-anchor="middle" class="small">LED</text>
-<rect x="93.4" y="116.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="132.4" y="176.0" text-anchor="middle" class="label">SW1</text>
-<text x="132.4" y="188.0" text-anchor="middle" class="small">mute</text>
-<line x1="93.4" y1="178.0" x2="69.4" y2="178.0" stroke="#9a5b13" stroke-width="1.6"/>
-<circle cx="69.4" cy="178.0" r="1.5" fill="#9a5b13"/>
-<rect x="93.4" y="302.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="132.4" y="362.0" text-anchor="middle" class="label">SW2</text>
-<text x="132.4" y="374.0" text-anchor="middle" class="small">lyre</text>
-<line x1="93.4" y1="364.0" x2="69.4" y2="364.0" stroke="#9a5b13" stroke-width="1.6"/>
-<circle cx="69.4" cy="364.0" r="1.5" fill="#9a5b13"/>
-<rect x="697.0" y="158.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="736.0" y="218.0" text-anchor="middle" class="label">SW3</text>
-<text x="736.0" y="230.0" text-anchor="middle" class="small">sustain</text>
-<line x1="775.0" y1="220.0" x2="799.0" y2="220.0" stroke="#9a5b13" stroke-width="1.6"/>
-<circle cx="799.0" cy="220.0" r="1.5" fill="#9a5b13"/>
-<rect x="188.8" y="409.0" width="122.4" height="78.0" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="250.0" y="446.0" text-anchor="middle" class="label">SW4</text>
-<text x="250.0" y="458.0" text-anchor="middle" class="small">USB-A PWR</text>
-<line x1="250.0" y1="487.0" x2="250.0" y2="511.0" stroke="#9a5b13" stroke-width="1.6"/>
-<circle cx="250.0" cy="511.0" r="1.5" fill="#9a5b13"/>
-<rect x="390.4" y="79.6" width="103.2" height="81.6" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="442.0" y="118.4" text-anchor="middle" class="label">SW5</text>
-<text x="442.0" y="130.4" text-anchor="middle" class="small">MIDI RESET</text>
-<line x1="268.0" y1="196.0" x2="616.0" y2="196.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="268.0" y1="192.0" x2="268.0" y2="200.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="616.0" y1="192.0" x2="616.0" y2="200.0" stroke="#b3261e" stroke-width="0.8"/>
-<text x="442.0" y="190.0" text-anchor="middle" class="dim">USB-C pitch 29.0 mm</text>
-<line x1="70.0" y1="512.0" x2="814.0" y2="512.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="70.0" y1="507.0" x2="70.0" y2="517.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="814.0" y1="507.0" x2="814.0" y2="517.0" stroke="#b3261e" stroke-width="0.8"/>
-<text x="442.0" y="526.0" text-anchor="middle" class="dim">57.6 mm</text>
-<line x1="836.0" y1="70.0" x2="836.0" y2="490.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="831.0" y1="70.0" x2="841.0" y2="70.0" stroke="#b3261e" stroke-width="0.8"/>
-<line x1="831.0" y1="490.0" x2="841.0" y2="490.0" stroke="#b3261e" stroke-width="0.8"/>
-<text x="850.0" y="280.0" text-anchor="middle" class="dim" transform="rotate(90 850.0 280.0)">31.4 mm</text>
+<polygon points="94.0,70.0 742.0,70.0 766.0,94.0 766.0,574.0 742.0,598.0 94.0,598.0 70.0,574.0 70.0,94.0" fill="#f7f5ef" stroke="#1a1a1a" stroke-width="1.4"/>
+<line x1="130.0" y1="70.0" x2="130.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="190.0" y1="70.0" x2="190.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="250.0" y1="70.0" x2="250.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="310.0" y1="70.0" x2="310.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="370.0" y1="70.0" x2="370.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="430.0" y1="70.0" x2="430.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="490.0" y1="70.0" x2="490.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="550.0" y1="70.0" x2="550.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="610.0" y1="70.0" x2="610.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="670.0" y1="70.0" x2="670.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="730.0" y1="70.0" x2="730.0" y2="598.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="130.0" x2="766.0" y2="130.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="190.0" x2="766.0" y2="190.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="250.0" x2="766.0" y2="250.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="310.0" x2="766.0" y2="310.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="370.0" x2="766.0" y2="370.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="430.0" x2="766.0" y2="430.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="490.0" x2="766.0" y2="490.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<line x1="70.0" y1="550.0" x2="766.0" y2="550.0" stroke="#d9d4c7" stroke-width="0.4"/>
+<rect x="186.2" y="70.0" width="127.7" height="92.0" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
+<text x="250.0" y="114.0" text-anchor="middle" class="label">J1 USB-C</text>
+<text x="250.0" y="126.0" text-anchor="middle" class="small">PC / NKRO HID</text>
+<path d="M 238.0 82.0 L 250.0 58.0 L 262.0 82.0" fill="none" stroke="#235789" stroke-width="1.2"/>
+<rect x="534.2" y="70.0" width="127.7" height="92.0" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
+<text x="598.0" y="114.0" text-anchor="middle" class="label">J3 USB-C</text>
+<text x="598.0" y="126.0" text-anchor="middle" class="small">iPad / USB-MIDI</text>
+<path d="M 586.0 82.0 L 598.0 58.0 L 610.0 82.0" fill="none" stroke="#235789" stroke-width="1.2"/>
+<rect x="320.2" y="470.8" width="195.6" height="112.8" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
+<text x="418.0" y="525.2" text-anchor="middle" class="label">J2 USB-A</text>
+<text x="418.0" y="537.2" text-anchor="middle" class="small">MIDI キーボード</text>
+<path d="M 406.0 586.0 L 418.0 610.0 L 430.0 586.0" fill="none" stroke="#235789" stroke-width="1.2"/>
+<rect x="289.6" y="223.6" width="100.8" height="100.8" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="340.0" y="272.0" text-anchor="middle" class="label">U1</text>
+<text x="340.0" y="284.0" text-anchor="middle" class="small">RP2040</text>
+<rect x="421.0" y="205.0" width="90.0" height="66.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="466.0" y="236.0" text-anchor="middle" class="label">U2</text>
+<text x="466.0" y="248.0" text-anchor="middle" class="small">W25Q128</text>
+<rect x="562.0" y="173.2" width="115.2" height="93.6" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="619.6" y="218.0" text-anchor="middle" class="label">U3</text>
+<text x="619.6" y="230.0" text-anchor="middle" class="small">CH345T</text>
+<rect x="158.8" y="310.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="184.0" y="329.6" text-anchor="middle" class="label">U4</text>
+<text x="184.0" y="341.6" text-anchor="middle" class="small">AP2112</text>
+<rect x="212.8" y="337.0" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="238.0" y="356.0" text-anchor="middle" class="label">U5</text>
+<text x="238.0" y="368.0" text-anchor="middle" class="small">TPS2553</text>
+<rect x="380.8" y="328.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="406.0" y="347.6" text-anchor="middle" class="label">U6</text>
+<text x="406.0" y="359.6" text-anchor="middle" class="small">USBLC6</text>
+<rect x="170.8" y="172.6" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="196.0" y="191.6" text-anchor="middle" class="label">U7</text>
+<text x="196.0" y="203.6" text-anchor="middle" class="small">USBLC6</text>
+<rect x="511.6" y="175.0" width="50.4" height="42.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="536.8" y="194.0" text-anchor="middle" class="label">U8</text>
+<text x="536.8" y="206.0" text-anchor="middle" class="small">USBLC6</text>
+<rect x="212.2" y="254.8" width="51.6" height="43.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="238.0" y="274.4" text-anchor="middle" class="label">X1</text>
+<text x="238.0" y="286.4" text-anchor="middle" class="small">12MHz</text>
+<rect x="596.2" y="282.4" width="51.6" height="43.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="622.0" y="302.0" text-anchor="middle" class="label">X2</text>
+<text x="622.0" y="314.0" text-anchor="middle" class="small">12MHz</text>
+<rect x="154.0" y="80.2" width="24.0" height="39.6" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="166.0" y="98.0" text-anchor="middle" class="label">D1</text>
+<text x="166.0" y="110.0" text-anchor="middle" class="small">BAT54</text>
+<rect x="483.4" y="109.6" width="39.6" height="24.0" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="503.2" y="119.6" text-anchor="middle" class="label">D2</text>
+<text x="503.2" y="131.6" text-anchor="middle" class="small">BAT54</text>
+<rect x="295.6" y="356.8" width="36.0" height="19.2" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
+<text x="313.6" y="364.4" text-anchor="middle" class="label">LED1</text>
+<text x="313.6" y="376.4" text-anchor="middle" class="small">LED</text>
+<rect x="75.4" y="116.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="114.4" y="176.0" text-anchor="middle" class="label">SW1</text>
+<text x="114.4" y="188.0" text-anchor="middle" class="small">mute</text>
+<line x1="75.4" y1="178.0" x2="51.4" y2="178.0" stroke="#9a5b13" stroke-width="1.6"/>
+<circle cx="51.4" cy="178.0" r="1.5" fill="#9a5b13"/>
+<rect x="75.4" y="302.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="114.4" y="362.0" text-anchor="middle" class="label">SW2</text>
+<text x="114.4" y="374.0" text-anchor="middle" class="small">lyre</text>
+<line x1="75.4" y1="364.0" x2="51.4" y2="364.0" stroke="#9a5b13" stroke-width="1.6"/>
+<circle cx="51.4" cy="364.0" r="1.5" fill="#9a5b13"/>
+<rect x="679.0" y="158.8" width="78.0" height="122.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="718.0" y="218.0" text-anchor="middle" class="label">SW3</text>
+<text x="718.0" y="230.0" text-anchor="middle" class="small">sustain</text>
+<line x1="757.0" y1="220.0" x2="781.0" y2="220.0" stroke="#9a5b13" stroke-width="1.6"/>
+<circle cx="781.0" cy="220.0" r="1.5" fill="#9a5b13"/>
+<rect x="170.8" y="511.0" width="122.4" height="78.0" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="232.0" y="548.0" text-anchor="middle" class="label">SW4</text>
+<text x="232.0" y="560.0" text-anchor="middle" class="small">USB-A PWR</text>
+<line x1="232.0" y1="589.0" x2="232.0" y2="613.0" stroke="#9a5b13" stroke-width="1.6"/>
+<circle cx="232.0" cy="613.0" r="1.5" fill="#9a5b13"/>
+<rect x="366.4" y="79.6" width="103.2" height="81.6" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="418.0" y="118.4" text-anchor="middle" class="label">SW5</text>
+<text x="418.0" y="130.4" text-anchor="middle" class="small">MIDI RESET</text>
+<rect x="92.8" y="458.8" width="50.4" height="26.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="118.0" y="470.0" text-anchor="middle" class="label">SW6</text>
+<text x="118.0" y="482.0" text-anchor="middle" class="small">BOOT (QSPI_SS low)</text>
+<rect x="92.8" y="512.8" width="50.4" height="26.4" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
+<text x="118.0" y="524.0" text-anchor="middle" class="label">SW7</text>
+<text x="118.0" y="536.0" text-anchor="middle" class="small">RUN reset</text>
+<line x1="250.0" y1="196.0" x2="598.0" y2="196.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="250.0" y1="192.0" x2="250.0" y2="200.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="598.0" y1="192.0" x2="598.0" y2="200.0" stroke="#b3261e" stroke-width="0.8"/>
+<text x="424.0" y="190.0" text-anchor="middle" class="dim">USB-C pitch 29.0 mm</text>
+<line x1="70.0" y1="620.0" x2="766.0" y2="620.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="70.0" y1="615.0" x2="70.0" y2="625.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="766.0" y1="615.0" x2="766.0" y2="625.0" stroke="#b3261e" stroke-width="0.8"/>
+<text x="418.0" y="634.0" text-anchor="middle" class="dim">57.6 mm</text>
+<line x1="788.0" y1="70.0" x2="788.0" y2="598.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="783.0" y1="70.0" x2="793.0" y2="70.0" stroke="#b3261e" stroke-width="0.8"/>
+<line x1="783.0" y1="598.0" x2="793.0" y2="598.0" stroke="#b3261e" stroke-width="0.8"/>
+<text x="802.0" y="334.0" text-anchor="middle" class="dim" transform="rotate(90 802.0 334.0)">31.4 mm</text>
 <text x="70.0" y="28" class="title">RP2040 MIDI bridge — placement / keep-out study</text>
 <text x="70.0" y="44" class="small">57.6 × 31.4 mm, 4 layers, 2 mm punch cuts. Not a fabrication drawing.</text>
-<text x="70.0" y="534.0" class="small">Blue: connector keep-out. Green: IC. Orange: switch. Red: dimension. Top edge: J1/J3 USB-C (29.0 mm pitch). Bottom edge: J2 USB-A.</text>
+<text x="70.0" y="642.0" class="small">Blue: connector keep-out. Green: IC. Orange: switch. Red: dimension. Top edge: J1/J3 USB-C (29.0 mm pitch). Bottom edge: J2 USB-A.</text>
 </svg>

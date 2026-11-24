@@ -70,6 +70,8 @@ SW4 は GPIO ではなく、TPS2553 の EN を制御する電源スイッチで�
 
 SW5 の処理は、CH345T の RST を叩くのではなく、MIDI メッセージで行います。
 
+SW6（BOOT）は QSPI_SS を 1 kΩ 経由で GND に落とし、SW7（RUN）は RUN を GND に落とします。どちらもファームウェアからは制御しません。
+
 ```c
 for (uint8_t ch = 0; ch < 16; ch++) {
     midi_uart_send_cc(ch, 123, 0); // All Notes Off

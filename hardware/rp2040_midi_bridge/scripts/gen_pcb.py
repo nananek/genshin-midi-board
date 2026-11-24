@@ -27,8 +27,8 @@ PCB_PATH = ROOT / "rp2040_midi_bridge.kicad_pcb"
 MM = pcbnew.FromMM
 TOMM = pcbnew.ToMM
 
-BOARD_W = 62.0
-BOARD_H = 35.0
+BOARD_W = 58.0
+BOARD_H = 44.0
 CHAMFER = 2.0
 EDGE_CLEARANCE = 0.3
 
@@ -66,6 +66,9 @@ FOOTPRINTS = {
                                 "C_1210_3225Metric", "Capacitor_SMD"),
     "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_midi_bridge"),
     "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_midi_bridge"),
+    "SW_Push_1P1T-SH_NO_CK_KMR2xxG": (KICAD_LIB / "Button_Switch_SMD.pretty",
+                                      "SW_Push_1P1T-SH_NO_CK_KMR2xxG",
+                                      "Button_Switch_SMD"),
     "TestPoint_1P": (PROJ_LIB, "TestPoint_1P", "rp2040_midi_bridge"),
 }
 
@@ -73,7 +76,7 @@ FOOTPRINTS = {
 # placement (mm, board origin top-left, y down) and rotation
 # ---------------------------------------------------------------------------
 PLACEMENT = {
-    # connectors and the fixed placements from design.yaml (62 x 35 mm board)
+    # connectors and the fixed placements from design.yaml (old 62 x 35 layout)
     "J1": (16.5, 2.4, 180),
     "J3": (45.5, 2.4, 180),
     "J2": (31.0, 31.6, 180),
@@ -163,6 +166,33 @@ PLACEMENT = {
     "TP12": (48.0, 33.6, 0),
 }
 
+# Revision B: 58 x 44 mm board for the Muji PP small-case M.  Keep the old
+# relative layout, shift the bottom group down, and add the BOOT/RUN buttons.
+_X_SHIFT = -1.5
+_Y_SHIFT_BOTTOM = 7.8
+_SPECIAL_PLACEMENT = {
+    "J1": (15.0, 2.4, 180),
+    "J3": (44.0, 2.4, 180),
+    "J2": (29.0, 39.4, 180),
+    "SW4": (13.5, 40.0, 0),
+    "SW5": (29.0, 4.2, 0),
+    "SW6": (4.0, 33.5, 0),
+    "SW7": (4.0, 38.0, 0),
+    "R1": (22.0, 9.4, 90),
+    "R2": (23.6, 9.4, 90),
+    "TP9": (36.0, 30.0, 0),
+    "TP10": (40.0, 30.0, 0),
+}
+
+def _rebase_placement(ref, x, y, rot):
+    if ref in _SPECIAL_PLACEMENT:
+        return _SPECIAL_PLACEMENT[ref]
+    return (x + _X_SHIFT, y + (_Y_SHIFT_BOTTOM if y > 27.0 else 0.0), rot)
+
+PLACEMENT = {ref: _rebase_placement(ref, *pos)
+             for ref, pos in PLACEMENT.items()}
+PLACEMENT.update(_SPECIAL_PLACEMENT)
+
 # ---------------------------------------------------------------------------
 # net rules
 # ---------------------------------------------------------------------------
@@ -170,7 +200,7 @@ USB_NETS = {n for n in (
     "USB_PC_DP", "USB_PC_DM", "USB_PC_DP_MCU", "USB_PC_DM_MCU",
     "USB_A_DP", "USB_A_DM", "USB_A_DP_MCU", "USB_A_DM_MCU",
     "USB_MIDI_DP", "USB_MIDI_DM", "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU")}
-POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0}
+POWER_WIDTH = {"+5V": 0.5, "VBUS_PC": 0.5, "VBUS_IPAD": 0.5, "VBUS_USB_A": 0.8}
 PLANE_WIDTH = {"+3V3": 0.2, "+1V1": 0.2}
 USB_ROUTE_ORDER = [
     "VBUS_PC", "VBUS_IPAD", "+5V", "VBUS_USB_A", "+1V1",
@@ -434,7 +464,7 @@ def check_placement(board, fps):
     refs = sorted(boxes)
     for i, a in enumerate(refs):
         ax0, ay0, ax1, ay1 = boxes[a]
-        if ref not in ("J1", "J2", "J3") and (
+        if a not in ("J1", "J2", "J3") and (
                 ax0 < -0.01 or ay0 < -0.01 or ax1 > BOARD_W + 0.01 or ay1 > BOARD_H + 0.01):
             print(f"OUTSIDE {a}: {ax0:.2f},{ay0:.2f} - {ax1:.2f},{ay1:.2f}")
         for b in refs[i + 1:]:
@@ -732,9 +762,9 @@ def route(board, netlist, fps):
                    (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6),
                    (3.0, 1.2), (-3.0, -1.2), (1.2, 3.0), (-1.2, -3.0)):
         gnd_via(ux + dx, uy + dy)
-    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 31.5, 34.0):
+    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 43.0):
         for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
-                  50.0, 55.0, 60.5):
+                  50.0, 55.0, 57.0):
             gnd_via(x, y)
     print(f"GND stitching vias: {stitched}", flush=True)
 
