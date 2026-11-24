@@ -509,6 +509,14 @@ def pad_endpoints(fps, netlist):
     return by_net
 
 
+def pad_center(fps, ref, pin):
+    for pad in fps[ref].Pads():
+        if pad.GetNumber() == pin:
+            c = pad.GetBoundingBox().GetCenter()
+            return TOMM(c.x), TOMM(c.y)
+    raise SystemExit(f"no pad {ref}.{pin}")
+
+
 def route(board, netlist, fps):
     import pcb_router as R
 
@@ -635,14 +643,16 @@ def route(board, netlist, fps):
                                 (via_x, via_y), 0.127, 0.0)
         net = "USB_PC_DP_MCU" if pin == "47" else "USB_PC_DM_MCU"
         router.commit_via(net, (via_x, via_y), 0.25, 0.225)
-    router.commit_track("USB_PC_DP_MCU", "B", (ux + 2.3, uy + 1.0),
-                        (24.7, 16.2), 0.2, 0.0)
-    router.commit_track("USB_PC_DP_MCU", "B", (24.7, 16.2),
-                        (24.0, 9.825), 0.2, 0.0)
-    router.commit_track("USB_PC_DM_MCU", "B", (ux + 2.3, uy + 1.9),
-                        (25.6, 16.2), 0.2, 0.0)
-    router.commit_track("USB_PC_DM_MCU", "B", (25.6, 16.2),
-                        (25.7, 9.625), 0.2, 0.0)
+    # Run the rest of each pair to the series resistor on B.Cu and come back to
+    # F.Cu on a via beside the pad.  Reading the pad position keeps this in
+    # sync with the placement table.
+    for net, via_y, ref in (("USB_PC_DP_MCU", uy + 1.0, "R1"),
+                            ("USB_PC_DM_MCU", uy + 1.9, "R2")):
+        px, py = pad_center(fps, ref, "1")
+        if not router.connect(net, (ux + 2.3, via_y, "FB"), (px, py, "F"),
+                              0.2, rule_for(net)[1], via_cost=20,
+                              max_expand=900000, via_radius=0.225):
+            print(f"UNROUTED {net} to {ref}", flush=True)
 
     # U1 pin 19 is ground: strap it into the exposed pad before routing so the
     # signal escapes have to go around it (it is inside the QFN footprint)
@@ -663,19 +673,18 @@ def route(board, netlist, fps):
             gnd_fail += 1
     print(f"GND pad vias: {gnd_ok} ok, {gnd_fail} failed", flush=True)
 
-    # The two +3V3 pins on the QFN sides are boxed in once QSPI and USB have
-    # routed.  Give them their plane vias now, before those nets claim space.
+    # All nine +3V3 pins on U1 get their plane via before QSPI and USB claim
+    # the space around the package.  Doing it at the end leaves pins 33/48/49
+    # boxed in.
     prerouted_3v3 = set()
-    u1fp = fps["U1"]
-    for pad in u1fp.Pads():
-        pin = pad.GetNumber()
-        if pin not in ("22", "43", "44"):
+    for ref, pin, pad in by_net.get("+3V3", []):
+        if ref != "U1":
             continue
         bb = pad.GetBoundingBox()
         p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
         _tracks, vias = router.connect_to_plane("+3V3", p, 0.127, 0.1, 0.225)
         if vias:
-            prerouted_3v3.add(("U1", pin))
+            prerouted_3v3.add((ref, pin))
 
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     skip |= {"USB_PC_DP_MCU", "USB_PC_DM_MCU"}
@@ -685,22 +694,24 @@ def route(board, netlist, fps):
     for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
-    # 2. core rail and crystals: local, need short clean paths
+    # 2. power before the 0.2 mm USB/CC signals: a 0.5 mm VBUS track needs
+    # 0.45 mm of clearance, which no longer fits around the connectors once the
+    # signal nets are in place.
+    for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
+        w, _ = rule_for(net)
+        report[net] = do_net(net, [w, 0.35, 0.25, 0.2], via_cost=25)
+
+    # 3. core rail and crystals: local, need short clean paths
     report["+1V1"] = do_net("+1V1", [0.2, 0.15])
     for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
         report[net] = do_net(net, [0.15, 0.127])
 
-    # 3. USB and CC nets at the three connectors
+    # 4. USB and CC nets at the three connectors
     for net in ("USB_PC_DM", "USB_PC_DP",
                 "USB_MIDI_DM_MCU", "USB_MIDI_DP_MCU",
                 "USB_MIDI_DM", "USB_MIDI_DP",
                 "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=10)
-
-    # 4. +5V spine and the three VBUS branches
-    for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
-        w, _ = rule_for(net)
-        report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
     # 5. short local nets around U1
     for net in ("STATUS_LED", "RUN",

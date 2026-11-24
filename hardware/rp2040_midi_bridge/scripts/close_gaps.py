@@ -11,6 +11,7 @@ free space, so a failure leaves the board as it was.
 from __future__ import annotations
 
 import math
+import os
 import re
 import sys
 from pathlib import Path
@@ -68,7 +69,9 @@ def parse_items(report: Path):
 class Repairer:
     def __init__(self):
         self.board = pcbnew.LoadBoard(str(PCB))
-        self.router = R.Router(W, H, cell=0.05)
+        cell = float(os.environ.get("PCB_CELL", "0.05"))
+        self.clearance = float(os.environ.get("PCB_GAP_CLEAR", "0.13"))
+        self.router = R.Router(W, H, cell=cell)
         self.router.set_outline(OUTLINE)
         for fp in self.board.GetFootprints():
             for pad in fp.Pads():
@@ -119,11 +122,11 @@ class Repairer:
         for ww in width_tries:
             for vc in (4, 12, 30):
                 for force in (None, 0, 1):
-                    if self.router.connect(net, src, dst, ww, 0.1,
+                    if self.router.connect(net, src, dst, ww, self.clearance,
                                            via_cost=vc, max_expand=2500000,
                                            via_radius=0.225,
                                            force_layer=force,
-                                           via_gap=0.5):
+                                           via_gap=0.55):
                         self.emit(net, before)
                         return True
         # Fallback: a plain straight track if the corridor is clear.  This
@@ -131,7 +134,7 @@ class Repairer:
         if src[2] == dst[2] and src[2] in ("F", "B"):
             lay = 0 if src[2] == "F" else 1
             for ww in width_tries:
-                blocked, _vm = self.router.masks(net, ww, 0.1, 0.225)
+                blocked, _vm = self.router.masks(net, ww, self.clearance, 0.225)
                 if self.router._seg_clear(blocked[lay], (src[0], src[1]),
                                           (dst[0], dst[1])):
                     self.router.commit_track(net, src[2],

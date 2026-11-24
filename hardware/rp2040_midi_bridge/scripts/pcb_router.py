@@ -26,6 +26,7 @@ MIN_CLEAR = 0.127    # JLCPCB minimum
 EDGE = 0.3
 VIA_R = 0.25
 DRILL_R = 0.15
+VIA_HOLE_GAP = 0.25  # board setup min_hole_to_hole
 
 
 def cells(mm, cell=0.1):
@@ -45,6 +46,8 @@ class Router:
         self.edge_masks = {}
         self.net_geom = {}
         self.via_cells = {}
+        self.via_points = []                  # (x, y, drill)
+        self.via_guard = 0                    # bitmap of forbidden via centres
         self.expansions = 0
 
     # ---------------------------------------------------------------- helpers
@@ -137,13 +140,22 @@ class Router:
     def commit_via(self, net, p, drill=0.3, radius=VIA_R):
         key = (self.cx(p[0]), self.cy(p[1]))
         seen = self.via_cells.setdefault(net, set())
-        if key in seen:
+        if key in seen or not self.via_site_free(p[0], p[1], drill):
             return False
         seen.add(key)
+        self.via_points.append((p[0], p[1], drill))
+        disc = bytearray(self.n)
+        # conservative guard: 0.3 mm drills at 0.55 mm centres
+        self.stamp_disc(disc, p[0], p[1], 0.3 + VIA_HOLE_GAP)
+        self.via_guard |= int.from_bytes(bytes(disc), "little")
         self.stamp_disc(self.copper[0], p[0], p[1], radius)
         self.stamp_disc(self.copper[1], p[0], p[1], radius)
         self.net_geom.setdefault(net, []).append(("via", p, drill, radius))
         return True
+
+    def via_site_free(self, x, y, drill=0.3):
+        return all(hypot(vx - x, vy - y) >= (drill + vd) / 2 + VIA_HOLE_GAP
+                   for vx, vy, vd in self.via_points)
 
     def _own_map(self, net):
         """Copper of `net` only, as two bytearrays."""
@@ -176,7 +188,7 @@ class Router:
         r_via = cells(via_radius + clearance + 0.02 - self.cell * 0.5, self.cell) if clearance < 0.12 \
             else cells(via_radius + MIN_CLEAR + 0.02 - self.cell * 0.5, self.cell)
         edge = int.from_bytes(self.edge_mask(width), "little")
-        viamask = int.from_bytes(bytes(self.padguard), "little")
+        viamask = int.from_bytes(bytes(self.padguard), "little") | self.via_guard
         blocked = []
         for lay in range(2):
             others = (int.from_bytes(bytes(self.copper[lay]), "little") &
@@ -334,6 +346,9 @@ class Router:
             viamask = bytes(viamask)
         else:
             return False
+        drill = 0.25 if via_radius != VIA_R else 0.3
+        if not all(self.via_site_free(p[0], p[1], drill) for p in vl):
+            return False
         self.emit(net, path, width, src[:2], dst[:2],
                   max(0.0, clearance - MIN_CLEAR), via_radius)
         return True
@@ -371,13 +386,15 @@ class Router:
                 break
         if cands:
             (cx, cy) = min(cands, key=lambda c: c[0])[1]
-            self.commit_track(net, "F", (x, y), (cx, cy), width, extra)
-            self.commit_via(net, (cx, cy), 0.25 if via_radius < VIA_R else 0.3,
-                            via_radius)
-            return [("F", (x, y), (cx, cy), width)], [(cx, cy)]
-        # fallback: A* to any reachable cell where a via is legal
+            if self.commit_via(net, (cx, cy),
+                               0.25 if via_radius < VIA_R else 0.3,
+                               via_radius):
+                self.commit_track(net, "F", (x, y), (cx, cy), width, extra)
+                return [("F", (x, y), (cx, cy), width)], [(cx, cy)]
+            cands = []
+        # fallback: A* to a nearby cell where a via is legal
         goals = []
-        r = 5.0
+        r = 1.6
         for gy in range(max(0, self.cy(y - r)), min(self.ny, self.cy(y + r)) + 1):
             for gx in range(max(0, self.cx(x - r)), min(self.nx, self.cx(x + r)) + 1):
                 i = self.idx(gx, gy)
@@ -391,8 +408,11 @@ class Router:
                                max_expand=120000)
             if path is None:
                 continue
+            if not self.commit_via(net, (gx, gy),
+                                   0.25 if via_radius < VIA_R else 0.3,
+                                   via_radius):
+                continue
             self.emit(net, path, width, pad[:2], (gx, gy), extra)
-            self.commit_via(net, (gx, gy))
             return [("trk", "F", pad[:2], (gx, gy), width, extra)], [(gx, gy)]
         return [], []
 

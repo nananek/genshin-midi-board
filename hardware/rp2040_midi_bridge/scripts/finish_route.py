@@ -346,6 +346,14 @@ class Finisher:
 
 
 def main():
+    global PCB, RPT
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--board", default=str(PCB))
+    ap.add_argument("--report", default=str(RPT))
+    args = ap.parse_args()
+    PCB = Path(args.board)
+    RPT = Path(args.report)
     targets = unconnected_nets(RPT)
     targets |= {n.strip() for n in os.environ.get("PCB_EXTRA_TARGETS", "").split(",")
                 if n.strip()}

@@ -14,8 +14,11 @@ set -euo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 IMAGE=${KICAD_IMAGE:-kicad/kicad:10.0}
 
+RUN_ENV=(-e HOME=/tmp -e PCB_PROTECT -e PCB_EXTRA_TARGETS -e PCB_ROUNDS
+         -e PCB_SKIP_NETS)
+
 if docker run --rm --user "$(id -u):$(id -g)" -v "$ROOT:/work" "$IMAGE" test -w /work >/dev/null 2>&1; then
-  exec docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -e PCB_PROTECT -e PCB_EXTRA_TARGETS -v "$ROOT:/work" -w /work "$IMAGE" "$@"
+  exec docker run --rm --user "$(id -u):$(id -g)" "${RUN_ENV[@]}" -v "$ROOT:/work" -w /work "$IMAGE" "$@"
 else
-  exec docker run --rm --user 0:0 -e HOME=/tmp -e PCB_PROTECT -e PCB_EXTRA_TARGETS -v "$ROOT:/work" -w /work "$IMAGE" "$@"
+  exec docker run --rm --user 0:0 "${RUN_ENV[@]}" -v "$ROOT:/work" -w /work "$IMAGE" "$@"
 fi
