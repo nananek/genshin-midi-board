@@ -477,7 +477,7 @@ SYMBOL_OF = {
     "X1": "Crystal_GND24", "X2": "Crystal_GND24",
     "D1": "D_Schottky", "D2": "D_Schottky", "LED1": "LED",
     "SW1": "SW_SPDT", "SW2": "SW_SPDT", "SW3": "SW_SPDT", "SW4": "SW_SPDT",
-    "SW6": "SW_TACT_4P", "C27": "C_Polarized",
+    "SW5": "SW_TACT_4P", "C27": "C_Polarized",
 }
 for _i in range(1, 20):
     SYMBOL_OF[f"R{_i}"] = "R"
@@ -524,7 +524,7 @@ BLOCKS = [
         "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8",
         "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16",
     ]),
-    ("column1", "Switches", ["SW1", "SW2", "SW3", "SW6"]),
+    ("column1", "Switches", ["SW1", "SW2", "SW3", "SW5"]),
     ("column1", "USB-MIDI device (iPad) - CH345T", [
         "J3", "U3", "U8", "X2", "R7", "R8", "R16", "R17", "R18",
         "C19", "C22", "C23", "C25", "TP11",

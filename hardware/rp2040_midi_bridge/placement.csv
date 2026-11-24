@@ -19,4 +19,4 @@ SW1,slide,5.2,9.0,90,,genshin mode / HID mute
 SW2,slide,5.2,24.5,90,,lyre mode / Sumeru scale
 SW3,slide,55.5,12.5,270,,sustain / MIDI CC64
 SW4,slide,15.0,31.5,0,,USB-A VBUS manual enable
-SW6,tact,31.0,4.2,0,,MIDI reset (CC123 + CC121)
+SW5,tact,31.0,4.2,0,,MIDI reset (CC123 + CC121)

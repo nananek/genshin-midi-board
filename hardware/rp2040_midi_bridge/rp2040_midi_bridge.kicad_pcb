@@ -3748,7 +3748,7 @@
 		(at 31 4.2)
 		(descr "Tactile pushbutton, Akizuki DTS-63-N-V-BLK (通販コード103647). 4-pin THT, 4x dia1.0mm round PTH holes at the corners of a 6.50mm(X) x 4.50mm(Y) rectangle. Body 6.2x6.2mm, height 7mm. Internal pin-pair wiring (which 2 pins are shorted together) is not individually confirmed from the datasheet, so wire defensively: bundle both pins on one side (pad 1/2) to one net and both pins on the other side (pad 3/4) to the other net -- this is electrically correct regardless of the actual internal short pattern. Source: manufacturer datasheet (2026-08-21).")
 		(tags "tactile switch pushbutton THT 4pin")
-		(property "Reference" "SW6"
+		(property "Reference" "SW5"
 			(at 0 -4.6 0)
 			(layer "B.SilkS")
 			(uuid "b829abfd-6e54-4b7b-b634-09eb18ed0f92")
@@ -3870,7 +3870,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "SW6_RESET")
+			(net "SW5_RESET")
 			(uuid "fcfb227d-5b73-4d3e-a354-3c3f6d0adeb1")
 		)
 		(pad "4" thru_hole circle
@@ -3879,7 +3879,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "SW6_RESET")
+			(net "SW5_RESET")
 			(uuid "c2d97329-6777-44c9-91ca-e70d758a57d6")
 		)
 		(embedded_fonts no)
@@ -11894,7 +11894,7 @@
 			(size 0.2 0.875)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "SW6_RESET")
+			(net "SW5_RESET")
 			(uuid "78c87b42-e532-498a-959c-6c974158c160")
 		)
 		(pad "18" smd roundrect
@@ -37601,7 +37601,7 @@
 		(end 34.25 6.45)
 		(width 0.2)
 		(layer "F.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "2f40c0eb-5264-4515-8cc8-1a1150e6adf2")
 	)
 	(segment
@@ -37609,7 +37609,7 @@
 		(end 21.3 15.2)
 		(width 0.127)
 		(layer "F.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "3dd65d43-bbb7-49ec-b4c2-7a713b4b585c")
 	)
 	(segment
@@ -37617,7 +37617,7 @@
 		(end 20.5625 15.2)
 		(width 0.127)
 		(layer "F.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "632fc5b2-1ef3-4c33-ac44-55a0388475ac")
 	)
 	(via
@@ -37625,7 +37625,7 @@
 		(size 0.45)
 		(drill 0.25)
 		(layers "F.Cu" "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "6860c5e2-6f4f-40a7-8be9-455c12d2b883")
 	)
 	(segment
@@ -37633,7 +37633,7 @@
 		(end 23.5 13.85)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "049b4e13-c388-4f02-aaf2-03532cd6c6b0")
 	)
 	(segment
@@ -37641,7 +37641,7 @@
 		(end 24.2 13.55)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "06750286-a359-4f1f-9601-f0550547440b")
 	)
 	(segment
@@ -37649,7 +37649,7 @@
 		(end 23.45 13.9)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "0bf85cd4-0b20-4872-97df-2e07797dd4fa")
 	)
 	(segment
@@ -37657,7 +37657,7 @@
 		(end 22.25 14.45)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "20b49c42-25c6-43e2-afd7-dcd75402e755")
 	)
 	(segment
@@ -37665,7 +37665,7 @@
 		(end 23.8 13.7)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "25cb9c1d-e8b8-4a18-8ffe-5c39820d9d48")
 	)
 	(segment
@@ -37673,7 +37673,7 @@
 		(end 22.3 14.4)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "3001aae9-7311-4dbd-81dc-e114652aa3ce")
 	)
 	(segment
@@ -37681,7 +37681,7 @@
 		(end 23.65 13.8)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "30b63dfb-1c0a-4f00-aaa9-534a6d18c17f")
 	)
 	(segment
@@ -37689,7 +37689,7 @@
 		(end 23.4 13.9)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "33746961-9d4d-405f-a810-ba2394b28670")
 	)
 	(segment
@@ -37697,7 +37697,7 @@
 		(end 22.8 14.2)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "4329af98-c563-4203-be7f-2b4898319896")
 	)
 	(segment
@@ -37705,7 +37705,7 @@
 		(end 32.75 6.8)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "481bedb8-d425-4e1f-8475-01679f4326ce")
 	)
 	(segment
@@ -37713,7 +37713,7 @@
 		(end 24.3 13.45)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "4a428604-7c16-4129-8d73-1609dd687ecf")
 	)
 	(segment
@@ -37721,7 +37721,7 @@
 		(end 23 14.1)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "5cb600bd-bfe8-41a6-a5c2-436bd9d0e5c6")
 	)
 	(segment
@@ -37729,7 +37729,7 @@
 		(end 23.95 13.65)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "62a95acb-5b26-41b0-8695-cd87947e1164")
 	)
 	(segment
@@ -37737,7 +37737,7 @@
 		(end 23.1 14.05)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "63bf6145-29b0-44d9-a535-24f560d9498f")
 	)
 	(segment
@@ -37745,7 +37745,7 @@
 		(end 23.6 13.8)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "6ec285dc-544d-4add-acb3-59316536018f")
 	)
 	(segment
@@ -37753,7 +37753,7 @@
 		(end 22.15 14.45)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "77652ecd-f0e4-465a-a82e-ced712736e91")
 	)
 	(segment
@@ -37761,7 +37761,7 @@
 		(end 24.45 13.45)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "7aa5a935-7744-4078-81b1-c7c6bf613b55")
 	)
 	(segment
@@ -37769,7 +37769,7 @@
 		(end 23.35 13.95)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "7c6eb47a-582b-48b4-8116-e8b7fef6a3ff")
 	)
 	(segment
@@ -37777,7 +37777,7 @@
 		(end 31.15 6.8)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "80e6fedd-2a68-4c21-880b-c864cf65d912")
 	)
 	(segment
@@ -37785,7 +37785,7 @@
 		(end 33.9 6.45)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "8afdd383-3813-446a-bebf-daced66d03af")
 	)
 	(segment
@@ -37793,7 +37793,7 @@
 		(end 22.65 14.25)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "9607038e-bea3-4286-b453-5584943a59ff")
 	)
 	(segment
@@ -37801,7 +37801,7 @@
 		(end 22.95 14.1)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "97b7c11e-fcbf-43aa-a0f9-666188fd2d41")
 	)
 	(segment
@@ -37809,7 +37809,7 @@
 		(end 22.1 14.5)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "98ae4b3d-9d91-4457-b22d-281691771162")
 	)
 	(segment
@@ -37817,7 +37817,7 @@
 		(end 23.15 14)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "99e8c5cd-f2e5-4a14-8aa4-ae734d199fa5")
 	)
 	(segment
@@ -37825,7 +37825,7 @@
 		(end 22.7 14.2)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "9cabbe2b-662f-4986-b62b-5efcb2638a38")
 	)
 	(segment
@@ -37833,7 +37833,7 @@
 		(end 21.45 15.05)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "a184c5e9-c2e1-4cd3-baf1-52417ad659c0")
 	)
 	(segment
@@ -37841,7 +37841,7 @@
 		(end 24.55 13.4)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "a1aabd4f-9e8b-4f05-a7c1-a1e499296455")
 	)
 	(segment
@@ -37849,7 +37849,7 @@
 		(end 24 13.65)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "a3e2f54f-6635-4802-8e5a-06e7c08cb371")
 	)
 	(segment
@@ -37857,7 +37857,7 @@
 		(end 22.35 14.4)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "ae63c187-29be-4206-8293-b37ae912037c")
 	)
 	(segment
@@ -37865,7 +37865,7 @@
 		(end 21.95 14.55)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "b1c03343-5860-48d2-bcbc-3215c6e315e3")
 	)
 	(segment
@@ -37873,7 +37873,7 @@
 		(end 23.9 13.7)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "b2399f82-29e2-4548-8f47-025b7377e661")
 	)
 	(segment
@@ -37881,7 +37881,7 @@
 		(end 22.6 14.25)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "b3073e34-1368-460b-9d8e-83739d5d0212")
 	)
 	(segment
@@ -37889,7 +37889,7 @@
 		(end 22 14.55)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "b7173417-0414-438c-91b1-1788ec0a0899")
 	)
 	(segment
@@ -37897,7 +37897,7 @@
 		(end 24.05 13.6)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "b82bc10a-8fa9-4421-a314-51587041f5e5")
 	)
 	(segment
@@ -37905,7 +37905,7 @@
 		(end 24.1 13.6)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "ba5b92e2-e048-4592-9ea4-16f820ced2a5")
 	)
 	(segment
@@ -37913,7 +37913,7 @@
 		(end 24.15 13.55)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "bad3d005-7601-41bd-8dd0-9fb5678d1c20")
 	)
 	(segment
@@ -37921,7 +37921,7 @@
 		(end 32.8 6.75)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "baf75065-d5a0-46c3-a735-0d17e0a96ca1")
 	)
 	(segment
@@ -37929,7 +37929,7 @@
 		(end 23.25 13.95)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "bdad6f24-6388-4f7d-83a4-155f485f4e51")
 	)
 	(segment
@@ -37937,7 +37937,7 @@
 		(end 24.5 13.4)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "c39644d7-1914-4328-85bb-6257edc6f11a")
 	)
 	(segment
@@ -37945,7 +37945,7 @@
 		(end 22.85 14.15)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "c3e17669-20b4-4c25-a9e7-9e371b0d0ec8")
 	)
 	(segment
@@ -37953,7 +37953,7 @@
 		(end 23.75 13.75)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "c75e99a9-9e10-4b82-a101-f208369f291e")
 	)
 	(segment
@@ -37961,7 +37961,7 @@
 		(end 23.2 14)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "c7b3227e-bbbc-4a3f-8925-c0751ec4ba2c")
 	)
 	(segment
@@ -37969,7 +37969,7 @@
 		(end 22.05 14.5)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "d252d394-edc2-4109-8ff7-0a0497c61215")
 	)
 	(segment
@@ -37977,7 +37977,7 @@
 		(end 22.5 14.3)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "d569813d-9562-4bb2-bc05-9bffadb47d8a")
 	)
 	(segment
@@ -37985,7 +37985,7 @@
 		(end 23.05 14.05)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "db6a839f-f4a4-4c35-9c07-fef98d01f32b")
 	)
 	(segment
@@ -37993,7 +37993,7 @@
 		(end 23.55 13.85)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "de2889f7-a0bd-41ea-ab38-79cb91fa1f17")
 	)
 	(segment
@@ -38001,7 +38001,7 @@
 		(end 22.55 14.3)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "e189cbaa-e232-467f-aea9-b862e78db007")
 	)
 	(segment
@@ -38009,7 +38009,7 @@
 		(end 22.4 14.35)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "e510e0d7-f813-48fe-824e-699e4b85ffcc")
 	)
 	(segment
@@ -38017,7 +38017,7 @@
 		(end 33.6 6.75)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "e9671dbc-9982-4772-88b1-a8c17b587385")
 	)
 	(segment
@@ -38025,7 +38025,7 @@
 		(end 22.45 14.35)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "ec0d4a77-0fbb-4330-8a64-e2e443052228")
 	)
 	(segment
@@ -38033,7 +38033,7 @@
 		(end 22.9 14.15)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "f7488469-5b6f-4fbc-ba1a-45d997714cb3")
 	)
 	(segment
@@ -38041,7 +38041,7 @@
 		(end 23.7 13.75)
 		(width 0.2)
 		(layer "B.Cu")
-		(net "SW6_RESET")
+		(net "SW5_RESET")
 		(uuid "ff2509d0-4419-41bf-8a4e-d7bab6719498")
 	)
 	(segment

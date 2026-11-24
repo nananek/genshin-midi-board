@@ -45,7 +45,7 @@ PROTECTED = {"GND", "+3V3", "+1V1", "+5V", "VBUS_PC", "VBUS_IPAD",
 PROTECTED |= {n.strip() for n in os.environ.get("PCB_PROTECT", "").split(",")
               if n.strip()}
 
-TIGHT_VIA = {"SW6_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
+TIGHT_VIA = {"SW5_RESET", "RUN", "SWCLK", "SWDIO", "SW3_SUSTAIN",
              "STATUS_LED", "UART0_RX", "TPS_FAULT", "USB_MIDI_DP",
              "USB_MIDI_DM", "CH345_RST", "CC1_PC", "CC1_IPAD", "CC2_IPAD",
              "+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+3V3"}

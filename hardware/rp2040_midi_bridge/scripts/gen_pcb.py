@@ -95,8 +95,8 @@ PLACEMENT = {
     "SW2": (5.2, 24.5, 90),
     "SW3": (55.5, 12.5, 270),
     "SW4": (15.0, 31.5, 0),
-    "SW6": (31.0, 4.2, 0),
-    # USB-C series resistors in the free pocket between J1 and SW6
+    "SW5": (31.0, 4.2, 0),
+    # USB-C series resistors in the free pocket between J1 and SW5
     "R1": (24.0, 9.0, 90),
     "R2": (25.7, 8.8, 90),
     # USB-A series resistors beside U1/USBLC6
@@ -181,13 +181,13 @@ USB_ROUTE_ORDER = [
     "MIDI_UART_TX", "MIDI_UART_RX",
     "X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO",
     "CH345_RST", "CH345_V3", "TPS_EN", "TPS_ILIM", "TPS_FAULT",
-    "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW6_RESET",
+    "SW1_MUTE", "SW2_LYRE", "SW3_SUSTAIN", "SW5_RESET",
     "STATUS_LED", "LED_A", "RUN", "BOOTSEL",
     "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD",
 ]
 
 
-TIGHT_VIA = {"SW6_RESET", "RUN", "SW3_SUSTAIN",
+TIGHT_VIA = {"SW5_RESET", "RUN", "SW3_SUSTAIN",
              "STATUS_LED", "TPS_FAULT", "USB_MIDI_DP",
              "USB_MIDI_DM", "CH345_RST", "CC1_PC", "CC1_IPAD", "CC2_IPAD",
              "+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A", "+3V3"}
@@ -682,7 +682,7 @@ def route(board, netlist, fps):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=8)
 
     # 6. switches: fixed THT parts at the board edges.  SW3 is furthest away.
-    for net in ("SW3_SUSTAIN", "SW6_RESET", "SW1_MUTE", "SW2_LYRE"):
+    for net in ("SW3_SUSTAIN", "SW5_RESET", "SW1_MUTE", "SW2_LYRE"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=6)
 
     # 7. USB-A data at J2

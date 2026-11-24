@@ -16,7 +16,7 @@ USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード
 | USB-A | PIO-USB ホスト |
 | USB-C 1 | RP2040 native USB、NKRO HID → PC |
 | USB-C 2 | CH345T、USB-MIDI → iPad |
-| スイッチ | SW1〜SW4 と SW6（4 × スライド、1 × タクト）。SW5 は SW3 に統合 |
+| スイッチ | SW1〜SW5（4 × スライド、1 × タクト） |
 | 製造 | JLCPCB、4 層、0.5/0.3 mm ビア（最終ホップは 0.45/0.25 mm）、via-in-pad なし |
 
 ## 構成の要点
@@ -46,7 +46,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
          J1 USB-C (PC)              J3 USB-C (iPad)
          x=16.5                     x=45.5
     ┌────┐                            ┌────┐
-    │    │        SW6 RESET           │    │
+    │    │        SW5 RESET           │    │
     │    │           ●                │    │
     ├────┴────────────────────────────┴────┤
     │                                       │
@@ -67,7 +67,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 
 ## スイッチ
 
-スイッチは SW1〜SW4 と SW6 の 5 個です。SW5 のサステインは SW3 に統合します。
+スイッチは SW1〜SW5 の 5 個です。
 
 | Ref | 部品 | 機能 | 接続 |
 | --- | --- | --- | --- |
@@ -75,9 +75,9 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 | SW2 | NKK 115643 スライド | 楽器モード（スメール音階） | GP29 ↔ GND |
 | SW3 | NKK 115643 スライド | サステイン（CC64） | GP27 ↔ GND |
 | SW4 | NKK 115643 スライド | USB-A VBUS 手動 ON/OFF | TPS2553 EN 制御 |
-| SW6 | DTS-63-N-V-BLK タクト | MIDI リセット（CC123/CC121） | GP14 ↔ GND |
+| SW5 | DTS-63-N-V-BLK タクト | MIDI リセット（CC123/CC121） | GP14 ↔ GND |
 
-スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW6 は片側 2 ピンを GND、反対側 2 ピンを GP14 に束ねます。
+スライドスイッチは 3 ピン品の中央コモンを GPIO、片側を GND、残りを NC にします。GPIO は内部プルアップ、アクティブ LOW、20 ms デバウンスです。SW5 は片側 2 ピンを GND、反対側 2 ピンを GP14 に束ねます。
 
 ## ファイル構成
 

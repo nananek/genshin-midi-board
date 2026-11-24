@@ -20,7 +20,7 @@ components:
       '14': null
       '15': USB_A_DP_MCU
       '16': USB_A_DM_MCU
-      '17': SW6_RESET
+      '17': SW5_RESET
       '18': null
       '19': GND
       '20': X1_XIN
@@ -260,14 +260,14 @@ components:
       '1': null
       '2': TPS_EN
       '3': +3V3
-  SW6:
+  SW5:
     value: DTS-63-N-V-BLK
     footprint: SW_TACT_Akizuki_DTS63
     pins:
       '1': GND
       '2': GND
-      '3': SW6_RESET
-      '4': SW6_RESET
+      '3': SW5_RESET
+      '4': SW5_RESET
   R1:
     value: 27R
     footprint: R_0603_1608Metric
@@ -703,8 +703,8 @@ nets:
   - SW1.3
   - SW2.3
   - SW3.3
-  - SW6.1
-  - SW6.2
+  - SW5.1
+  - SW5.2
   - R5.2
   - R6.2
   - R7.2
@@ -787,10 +787,10 @@ nets:
   SW3_SUSTAIN:
   - U1.39
   - SW3.2
-  SW6_RESET:
+  SW5_RESET:
   - U1.17
-  - SW6.3
-  - SW6.4
+  - SW5.3
+  - SW5.4
   TPS_EN:
   - U5.3
   - SW4.2

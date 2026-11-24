@@ -3,7 +3,7 @@ sys.path.insert(0, "/work/hardware/rp2040_midi_bridge/scripts")
 import pcbnew
 import pcb_router as R
 
-TIGHT = ("+3V3", "VBUS_USB_A", "VBUS_PC", "VBUS_IPAD", "SW6_RESET",
+TIGHT = ("+3V3", "VBUS_USB_A", "VBUS_PC", "VBUS_IPAD", "SW5_RESET",
          "SWCLK", "SWDIO", "SW3_SUSTAIN", "STATUS_LED", "TPS_FAULT",
          "MIDI_UART_TX", "MIDI_UART_RX")
 

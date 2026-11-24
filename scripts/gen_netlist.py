@@ -28,7 +28,7 @@ add("U1", "RP2040", "QFN-56_7x7mm_P0.4mm", {
     "1": "+3V3", "2": None, "3": None, "4": None, "5": None,
     "6": "MIDI_UART_TX", "7": "MIDI_UART_RX", "8": None, "9": None,
     "10": "+3V3", "11": None, "12": None, "13": None, "14": None,
-    "15": "USB_A_DP_MCU", "16": "USB_A_DM_MCU", "17": "SW6_RESET",
+    "15": "USB_A_DP_MCU", "16": "USB_A_DM_MCU", "17": "SW5_RESET",
     "18": None, "19": "GND", "20": "X1_XIN", "21": "X1_XOUT_MCU",
     "22": "+3V3", "23": "+1V1", "24": None, "25": None, "26": "RUN",
     "27": None, "28": None, "29": None, "30": None, "31": None, "32": None,
@@ -112,7 +112,7 @@ add("LED1", "KT-0603R", "LED_0603_1608Metric", {"1": "GND", "2": "LED_A"})
 for ref, net in (("SW1", "SW1_MUTE"), ("SW2", "SW2_LYRE"), ("SW3", "SW3_SUSTAIN")):
     add(ref, "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": net, "3": "GND"})
 add("SW4", "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": "TPS_EN", "3": "+3V3"})
-add("SW6", "DTS-63-N-V-BLK", "SW_TACT_Akizuki_DTS63", {"1": "GND", "2": "GND", "3": "SW6_RESET", "4": "SW6_RESET"})
+add("SW5", "DTS-63-N-V-BLK", "SW_TACT_Akizuki_DTS63", {"1": "GND", "2": "GND", "3": "SW5_RESET", "4": "SW5_RESET"})
 
 # --- resistors ------------------------------------------------------------
 add("R1", "27R", "R_0603_1608Metric", {"1": "USB_PC_DP_MCU", "2": "USB_PC_DP"})

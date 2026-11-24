@@ -106,7 +106,7 @@ def main() -> None:
         "SW2": "lyre",
         "SW3": "sustain",
         "SW4": "USB-A PWR",
-        "SW6": "MIDI RESET",
+        "SW5": "MIDI RESET",
     }
     for entry in data["switches"]:
         x, y, w, h = (float(v) for v in entry["body"])

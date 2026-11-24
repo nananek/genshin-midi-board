@@ -45,7 +45,7 @@ class NetlistTests(unittest.TestCase):
         self.assertEqual(comps["SW2"]["pins"]["2"], "SW2_LYRE")
         self.assertEqual(comps["SW3"]["pins"]["2"], "SW3_SUSTAIN")
         self.assertEqual(comps["SW4"]["pins"]["2"], "TPS_EN")
-        self.assertEqual(comps["SW6"]["pins"]["3"], "SW6_RESET")
+        self.assertEqual(comps["SW5"]["pins"]["3"], "SW5_RESET")
 
     def test_rp2040_usb_and_qspi_pins(self) -> None:
         pins = NETLIST["components"]["U1"]["pins"]

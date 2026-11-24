@@ -8,7 +8,7 @@ native USB D-,46,,USB_PC_DM,27R -> U7 -> J1 D-,RP2040 USB_DM
 mute switch,40,28,SW1_MUTE,SW1 pin2,"internal pull-up, active low"
 lyre switch,41,29,SW2_LYRE,SW2 pin2,"internal pull-up, active low"
 sustain switch,39,27,SW3_SUSTAIN,SW3 pin2,"internal pull-up, active low"
-MIDI reset button,17,14,SW6_RESET,SW6 pins 3/4,"internal pull-up, active low"
+MIDI reset button,17,14,SW5_RESET,SW5 pins 3/4,"internal pull-up, active low"
 status LED,37,25,STATUS_LED,1k -> LED1 -> GND,active high
 QSPI flash,51-56,,QSPI_*,U2 W25Q128,"dedicated QSPI pins, not GPIO"
 crystal,20/21,,XIN/XOUT,Y1 12MHz,"15 pF load caps, 1k series on XOUT"

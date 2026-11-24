@@ -94,7 +94,7 @@
 <rect x="46.000" y="149.800" width="7.000" height="3.600" fill="none" stroke="#000" stroke-width="0.300"/>
 <text x="47.784" y="155.670" font-size="2.200">SW4</text>
 <rect x="61.200" y="105.800" width="8.600" height="4.400" fill="none" stroke="#000" stroke-width="0.300"/>
-<text x="63.784" y="105.070" font-size="2.200">SW6</text>
+<text x="63.784" y="105.070" font-size="2.200">SW5</text>
 <circle cx="65.500" cy="98.150" r="2.500" fill="none" stroke="#000" stroke-width="0.300"/>
 <line x1="61.800" y1="98.150" x2="62.600" y2="98.150" stroke="#000" stroke-width="0.150"/>
 <line x1="68.400" y1="98.150" x2="69.200" y2="98.150" stroke="#000" stroke-width="0.150"/>
@@ -200,13 +200,13 @@
 <text x="163.000" y="103.800" font-size="2.550">x=15.0</text>
 <text x="195.000" y="103.800" font-size="2.550">7.0 x 3.6</text>
 <text x="215.000" y="103.800" font-size="2.550">1.8-5.4</text>
-<text x="120.000" y="107.050" font-size="2.550">SW6</text>
+<text x="120.000" y="107.050" font-size="2.550">SW5</text>
 <text x="129.000" y="107.050" font-size="2.550">tact</text>
 <text x="145.000" y="107.050" font-size="2.550">back</text>
 <text x="163.000" y="107.050" font-size="2.550">x=31.0</text>
 <text x="195.000" y="107.050" font-size="2.550">8.6 x 4.4</text>
 <text x="215.000" y="107.050" font-size="2.550">1.8-6.2</text>
-<text x="120.000" y="110.300" font-size="2.550">SW6</text>
+<text x="120.000" y="110.300" font-size="2.550">SW5</text>
 <text x="129.000" y="110.300" font-size="2.550">press</text>
 <text x="145.000" y="110.300" font-size="2.550">lid</text>
 <text x="163.000" y="110.300" font-size="2.550">x=31.0 y=4.2</text>

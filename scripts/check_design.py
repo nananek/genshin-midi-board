@@ -121,7 +121,7 @@ def main() -> int:
 
     switches = data["switches"]
     c.require(len(switches) == 5, "five switches are defined")
-    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW6"}, "SW1..SW4 and SW6 exist")
+    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW5"}, "SW1..SW4 and SW5 exist")
     switch_gpios = [s["gpio"] for s in switches if s["gpio"] is not None]
     c.require(len(switch_gpios) == len(set(switch_gpios)), "switch GPIOs do not collide")
     for s in switches:

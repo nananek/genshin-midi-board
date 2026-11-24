@@ -122,7 +122,7 @@ class CaseGeometryTests(unittest.TestCase):
         self.assertEqual(openings["SW2"].wall, "left")
         self.assertEqual(openings["SW3"].wall, "right")
         self.assertEqual(openings["SW4"].wall, "front")
-        self.assertEqual(openings["SW6"].wall, "back")
+        self.assertEqual(openings["SW5"].wall, "back")
         # left/right walls run back to front: net y = 35.5 - board y
         self.assertAlmostEqual(openings["SW1"].along, 26.5, places=6)
         self.assertAlmostEqual(openings["SW2"].along, 11.0, places=6)
@@ -132,10 +132,10 @@ class CaseGeometryTests(unittest.TestCase):
     def test_led_and_reset_press_through_the_lid(self) -> None:
         holes = {h.ref: h for h in CASE.holes}
         self.assertEqual(holes["LED1"].diameter, 3.0)
-        self.assertEqual(holes["SW6"].diameter, 5.0)
+        self.assertEqual(holes["SW5"].diameter, 5.0)
         led = next(p for p in DESIGN["placements"] if p["ref"] == "LED1")
         self.assertAlmostEqual(holes["LED1"].center[0], led["x_mm"] + 0.5, places=6)
-        self.assertAlmostEqual(holes["SW6"].center[0], 31.5, places=6)
+        self.assertAlmostEqual(holes["SW5"].center[0], 31.5, places=6)
         hinge = CASE.d + CASE.h
         for hole in CASE.holes:
             self.assertGreater(hole.center[1], hinge + 2.0,

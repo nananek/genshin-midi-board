@@ -93,7 +93,7 @@
 <line x1="250.0" y1="487.0" x2="250.0" y2="511.0" stroke="#9a5b13" stroke-width="1.6"/>
 <circle cx="250.0" cy="511.0" r="1.5" fill="#9a5b13"/>
 <rect x="390.4" y="79.6" width="103.2" height="81.6" rx="1" fill="#f7e3cd" stroke="#9a5b13" stroke-width="0.8"/>
-<text x="442.0" y="118.4" text-anchor="middle" class="label">SW6</text>
+<text x="442.0" y="118.4" text-anchor="middle" class="label">SW5</text>
 <text x="442.0" y="130.4" text-anchor="middle" class="small">MIDI RESET</text>
 <line x1="268.0" y1="196.0" x2="616.0" y2="196.0" stroke="#b3261e" stroke-width="0.8"/>
 <line x1="268.0" y1="192.0" x2="268.0" y2="200.0" stroke="#b3261e" stroke-width="0.8"/>

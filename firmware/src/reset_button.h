@@ -1,7 +1,7 @@
 #ifndef RESET_BUTTON_H
 #define RESET_BUTTON_H
 
-// MIDI リセットボタン (SW6, GP14) 入力 (ハード依存層)。
+// MIDI リセットボタン (SW5, GP14) 入力 (ハード依存層)。
 // デバウンス本体は debounced_switch を共有する。
 // core0 のメインループからのみ呼ぶこと。
 

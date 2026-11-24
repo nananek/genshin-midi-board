@@ -270,12 +270,12 @@ switches:
     y_mm: 31.5
     rotation_deg: 0
     body: [9.9, 28.25, 10.2, 6.5]
-  - ref: SW6
+  - ref: SW5
     part: "Akizuki DTS-63-N-V-BLK (103647)"
     type: tact
     function: "MIDI reset (CC123 + CC121)"
     gpio: 14
-    net: SW6_RESET
+    net: SW5_RESET
     rp2040_pin: 17
     active: low
     debounce_ms: 20
@@ -343,8 +343,8 @@ pinmap:
   - signal: "MIDI reset button"
     rp2040_pin: 17
     gpio: 14
-    net: "SW6_RESET"
-    destination: "SW6 pins 3/4"
+    net: "SW5_RESET"
+    destination: "SW5 pins 3/4"
     note: "internal pull-up, active low"
   - signal: "status LED"
     rp2040_pin: 37
@@ -437,7 +437,7 @@ bom:
     lcsc: null
     assembly: THT
     note: "Akizuki 115643。手はんだ。4 個（SW1/SW2/SW3/SW4）"
-  - ref: "SW6"
+  - ref: "SW5"
     value: "DTS-63-N-V-BLK"
     footprint: "tact 4pin"
     lcsc: null
