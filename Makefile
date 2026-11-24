@@ -1,11 +1,12 @@
 PYTHON ?= python3
 
-.PHONY: all check test floorplan tables clean
+.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case clean
 
-all: check floorplan tables
+all: check floorplan tables netlist
 
 check:
 	$(PYTHON) scripts/check_design.py
+	$(PYTHON) scripts/check_kicad_pcb.py
 	$(PYTHON) -m unittest discover -s tests -v
 
 test: check
@@ -16,5 +17,35 @@ floorplan:
 tables:
 	$(PYTHON) scripts/export_tables.py
 
+netlist:
+	$(PYTHON) scripts/gen_netlist.py
+
+paper-case:
+	$(PYTHON) hardware/rp2040_frisk/scripts/gen_paper_case.py
+
+KICAD_SCH := hardware/rp2040_frisk/rp2040_frisk.kicad_sch
+KICAD_PCB := hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
+KICAD := ./scripts/kicad.sh
+
+PCB_GEN := hardware/rp2040_frisk/scripts/gen_pcb.py
+
+sch:
+	$(KICAD) python3 hardware/rp2040_frisk/scripts/gen_sch.py
+
+pcb:
+	$(KICAD) python3 -u $(PCB_GEN)
+
+kicad-shell:
+	$(KICAD) bash
+
+erc:
+	$(KICAD) kicad-cli sch erc --severity-all --output hardware/rp2040_frisk/erc.rpt $(KICAD_SCH)
+
+drc:
+	$(KICAD) kicad-cli pcb drc --severity-all --output hardware/rp2040_frisk/drc.rpt $(KICAD_PCB)
+
+kicad-check: erc drc
+	$(PYTHON) scripts/check_kicad_pcb.py
+
 clean:
-	rm -f hardware/rp2040_frisk/floorplan.svg
+	rm -f hardware/rp2040_frisk/floorplan.svg hardware/rp2040_frisk/erc.rpt hardware/rp2040_frisk/drc.rpt

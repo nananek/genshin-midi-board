@@ -1,0 +1,897 @@
+project: rp2040_frisk
+components:
+  U1:
+    value: RP2040
+    footprint: QFN-56_7x7mm_P0.4mm
+    pins:
+      '1': +3V3
+      '2': null
+      '3': null
+      '4': null
+      '5': null
+      '6': MIDI_UART_TX
+      '7': MIDI_UART_RX
+      '8': null
+      '9': null
+      '10': +3V3
+      '11': null
+      '12': null
+      '13': null
+      '14': null
+      '15': USB_A_DP_MCU
+      '16': USB_A_DM_MCU
+      '17': SW6_RESET
+      '18': null
+      '19': GND
+      '20': X1_XIN
+      '21': X1_XOUT_MCU
+      '22': +3V3
+      '23': +1V1
+      '24': null
+      '25': null
+      '26': RUN
+      '27': null
+      '28': null
+      '29': null
+      '30': null
+      '31': null
+      '32': null
+      '33': +3V3
+      '34': null
+      '35': null
+      '36': null
+      '37': STATUS_LED
+      '38': null
+      '39': SW3_SUSTAIN
+      '40': SW1_MUTE
+      '41': SW2_LYRE
+      '42': +3V3
+      '43': +3V3
+      '44': +3V3
+      '45': +1V1
+      '46': USB_PC_DM_MCU
+      '47': USB_PC_DP_MCU
+      '48': +3V3
+      '49': +3V3
+      '50': +1V1
+      '51': QSPI_SD3
+      '52': QSPI_SCLK
+      '53': QSPI_SD0
+      '54': QSPI_SD2
+      '55': QSPI_SD1
+      '56': QSPI_SS
+      '57': GND
+  U2:
+    value: W25Q128JVSIQ
+    footprint: SOIC-8_3.9x4.9mm_P1.27mm
+    pins:
+      '1': QSPI_SS
+      '2': QSPI_SD1
+      '3': QSPI_SD2
+      '4': GND
+      '5': QSPI_SD0
+      '6': QSPI_SCLK
+      '7': QSPI_SD3
+      '8': +3V3
+  U3:
+    value: CH345T
+    footprint: SSOP-20_5.3x7.2mm_P0.65mm
+    pins:
+      '1': CH345_RST
+      '2': null
+      '3': MIDI_UART_RX
+      '4': MIDI_UART_TX
+      '5': CH345_V3
+      '6': USB_MIDI_DP_MCU
+      '7': USB_MIDI_DM_MCU
+      '8': GND
+      '9': X2_XI
+      '10': X2_XO
+      '11': null
+      '12': null
+      '13': null
+      '14': null
+      '15': null
+      '16': null
+      '17': GND
+      '18': null
+      '19': +5V
+      '20': null
+  U4:
+    value: AP2112K-3.3TRG1
+    footprint: SOT-23-5
+    pins:
+      '1': +5V
+      '2': GND
+      '3': +5V
+      '4': null
+      '5': +3V3
+  U5:
+    value: TPS2553DBVR
+    footprint: SOT-23-6
+    pins:
+      '1': +5V
+      '2': GND
+      '3': TPS_EN
+      '4': TPS_ILIM
+      '5': VBUS_USB_A
+      '6': TPS_FAULT
+  U6:
+    value: USBLC6-2SC6
+    footprint: SOT-23-6
+    pins:
+      '1': USB_A_DP
+      '2': GND
+      '3': USB_A_DM
+      '4': USB_A_DM
+      '5': VBUS_USB_A
+      '6': USB_A_DP
+  U7:
+    value: USBLC6-2SC6
+    footprint: SOT-23-6
+    pins:
+      '1': USB_PC_DP
+      '2': GND
+      '3': USB_PC_DM
+      '4': USB_PC_DM
+      '5': VBUS_PC
+      '6': USB_PC_DP
+  U8:
+    value: USBLC6-2SC6
+    footprint: SOT-23-6
+    pins:
+      '1': USB_MIDI_DP
+      '2': GND
+      '3': USB_MIDI_DM
+      '4': USB_MIDI_DM
+      '5': VBUS_IPAD
+      '6': USB_MIDI_DP
+  J1:
+    value: TYPE-C-31-M-12
+    footprint: USB_C_Receptacle_HRO_TYPE-C-31-M-12
+    pins:
+      A1: GND
+      A12: GND
+      B1: GND
+      B12: GND
+      SH: GND
+      A8: null
+      B8: null
+      A4: VBUS_PC
+      A9: VBUS_PC
+      B4: VBUS_PC
+      B9: VBUS_PC
+      A5: CC1_PC
+      B5: CC2_PC
+      A6: USB_PC_DP
+      B6: USB_PC_DP
+      A7: USB_PC_DM
+      B7: USB_PC_DM
+  J3:
+    value: TYPE-C-31-M-12
+    footprint: USB_C_Receptacle_HRO_TYPE-C-31-M-12
+    pins:
+      A1: GND
+      A12: GND
+      B1: GND
+      B12: GND
+      SH: GND
+      A8: null
+      B8: null
+      A4: VBUS_IPAD
+      A9: VBUS_IPAD
+      B4: VBUS_IPAD
+      B9: VBUS_IPAD
+      A5: CC1_IPAD
+      B5: CC2_IPAD
+      A6: USB_MIDI_DP
+      B6: USB_MIDI_DP
+      A7: USB_MIDI_DM
+      B7: USB_MIDI_DM
+  J2:
+    value: USB-A_5075AR-04-WH
+    footprint: USB_A_Neltron_5075AR-04-WH
+    pins:
+      '1': VBUS_USB_A
+      '2': USB_A_DM
+      '3': USB_A_DP
+      '4': GND
+      '5': GND
+      '6': GND
+  X1:
+    value: 12MHz
+    footprint: Crystal_SMD_3225-4Pin_3.2x2.5mm
+    pins:
+      '1': X1_XIN
+      '2': GND
+      '3': X1_XOUT
+      '4': GND
+  X2:
+    value: 12MHz
+    footprint: Crystal_SMD_3225-4Pin_3.2x2.5mm
+    pins:
+      '1': X2_XI
+      '2': GND
+      '3': X2_XO
+      '4': GND
+  D1:
+    value: BAT54WS
+    footprint: D_SOD-323
+    pins:
+      '1': +5V
+      '2': VBUS_PC
+  D2:
+    value: BAT54WS
+    footprint: D_SOD-323
+    pins:
+      '1': +5V
+      '2': VBUS_IPAD
+  LED1:
+    value: KT-0603R
+    footprint: LED_0603_1608Metric
+    pins:
+      '1': GND
+      '2': LED_A
+  SW1:
+    value: NKK_115643
+    footprint: SW_SPDT_NKK_115643_Slide
+    pins:
+      '1': null
+      '2': SW1_MUTE
+      '3': GND
+  SW2:
+    value: NKK_115643
+    footprint: SW_SPDT_NKK_115643_Slide
+    pins:
+      '1': null
+      '2': SW2_LYRE
+      '3': GND
+  SW3:
+    value: NKK_115643
+    footprint: SW_SPDT_NKK_115643_Slide
+    pins:
+      '1': null
+      '2': SW3_SUSTAIN
+      '3': GND
+  SW4:
+    value: NKK_115643
+    footprint: SW_SPDT_NKK_115643_Slide
+    pins:
+      '1': null
+      '2': TPS_EN
+      '3': +3V3
+  SW6:
+    value: DTS-63-N-V-BLK
+    footprint: SW_TACT_Akizuki_DTS63
+    pins:
+      '1': GND
+      '2': GND
+      '3': SW6_RESET
+      '4': SW6_RESET
+  R1:
+    value: 27R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_PC_DP_MCU
+      '2': USB_PC_DP
+  R2:
+    value: 27R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_PC_DM_MCU
+      '2': USB_PC_DM
+  R3:
+    value: 22R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_A_DP_MCU
+      '2': USB_A_DP
+  R4:
+    value: 22R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_A_DM_MCU
+      '2': USB_A_DM
+  R5:
+    value: 5.1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': CC1_PC
+      '2': GND
+  R6:
+    value: 5.1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': CC2_PC
+      '2': GND
+  R7:
+    value: 5.1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': CC1_IPAD
+      '2': GND
+  R8:
+    value: 5.1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': CC2_IPAD
+      '2': GND
+  R9:
+    value: 52.3k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': TPS_ILIM
+      '2': GND
+  R10:
+    value: 100k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': TPS_EN
+      '2': GND
+  R11:
+    value: 100k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': TPS_FAULT
+      '2': +3V3
+  R12:
+    value: 10k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': QSPI_SS
+      '2': +3V3
+  R13:
+    value: 1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': STATUS_LED
+      '2': LED_A
+  R14:
+    value: 1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': X1_XOUT_MCU
+      '2': X1_XOUT
+  R15:
+    value: 1k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': QSPI_SS
+      '2': BOOTSEL
+  R16:
+    value: 100k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': CH345_RST
+      '2': +5V
+  R17:
+    value: 22R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_MIDI_DP_MCU
+      '2': USB_MIDI_DP
+  R18:
+    value: 22R
+    footprint: R_0603_1608Metric
+    pins:
+      '1': USB_MIDI_DM_MCU
+      '2': USB_MIDI_DM
+  R19:
+    value: 10k
+    footprint: R_0603_1608Metric
+    pins:
+      '1': RUN
+      '2': +3V3
+  C1:
+    value: 1uF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C2:
+    value: 1uF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +1V1
+      '2': GND
+  C3:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +1V1
+      '2': GND
+  C4:
+    value: 1uF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C5:
+    value: 10uF
+    footprint: C_0805_2012Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C6:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C7:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C8:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C9:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C10:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C11:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C12:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C13:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C14:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +1V1
+      '2': GND
+  C15:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +1V1
+      '2': GND
+  C16:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +3V3
+      '2': GND
+  C19:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': CH345_V3
+      '2': GND
+  C20:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +5V
+      '2': GND
+  C21:
+    value: 10uF
+    footprint: C_0805_2012Metric
+    pins:
+      '1': +5V
+      '2': GND
+  C24:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': VBUS_PC
+      '2': GND
+  C25:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': VBUS_IPAD
+      '2': GND
+  C26:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': VBUS_USB_A
+      '2': GND
+  C27:
+    value: 100uF
+    footprint: C_1210_3225Metric
+    pins:
+      '1': VBUS_USB_A
+      '2': GND
+  C28:
+    value: 10uF
+    footprint: C_0805_2012Metric
+    pins:
+      '1': +5V
+      '2': GND
+  C29:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +5V
+      '2': GND
+  C30:
+    value: 100nF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': +5V
+      '2': GND
+  C17:
+    value: 15pF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': X1_XIN
+      '2': GND
+  C18:
+    value: 15pF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': X1_XOUT
+      '2': GND
+  C22:
+    value: 22pF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': X2_XI
+      '2': GND
+  C23:
+    value: 22pF
+    footprint: C_0603_1608Metric
+    pins:
+      '1': X2_XO
+      '2': GND
+  TP3:
+    value: GND
+    footprint: TestPoint_1P
+    pins:
+      '1': GND
+  TP7:
+    value: BOOTSEL
+    footprint: TestPoint_1P
+    pins:
+      '1': BOOTSEL
+  TP8:
+    value: +3V3
+    footprint: TestPoint_1P
+    pins:
+      '1': +3V3
+  TP9:
+    value: +5V
+    footprint: TestPoint_1P
+    pins:
+      '1': +5V
+  TP10:
+    value: GND
+    footprint: TestPoint_1P
+    pins:
+      '1': GND
+  TP11:
+    value: CH345_RST
+    footprint: TestPoint_1P
+    pins:
+      '1': CH345_RST
+  TP12:
+    value: VBUS_USB_A
+    footprint: TestPoint_1P
+    pins:
+      '1': VBUS_USB_A
+nets:
+  +1V1:
+  - U1.23
+  - U1.45
+  - U1.50
+  - C2.1
+  - C3.1
+  - C14.1
+  - C15.1
+  +3V3:
+  - U1.1
+  - U1.10
+  - U1.22
+  - U1.33
+  - U1.42
+  - U1.43
+  - U1.44
+  - U1.48
+  - U1.49
+  - U2.8
+  - U4.5
+  - SW4.3
+  - R11.2
+  - R12.2
+  - R19.2
+  - C1.1
+  - C4.1
+  - C5.1
+  - C6.1
+  - C7.1
+  - C8.1
+  - C9.1
+  - C10.1
+  - C11.1
+  - C12.1
+  - C13.1
+  - C16.1
+  - TP8.1
+  +5V:
+  - U3.19
+  - U4.1
+  - U4.3
+  - U5.1
+  - D1.1
+  - D2.1
+  - R16.2
+  - C20.1
+  - C21.1
+  - C28.1
+  - C29.1
+  - C30.1
+  - TP9.1
+  BOOTSEL:
+  - R15.2
+  - TP7.1
+  CC1_IPAD:
+  - J3.A5
+  - R7.1
+  CC1_PC:
+  - J1.A5
+  - R5.1
+  CC2_IPAD:
+  - J3.B5
+  - R8.1
+  CC2_PC:
+  - J1.B5
+  - R6.1
+  CH345_RST:
+  - U3.1
+  - R16.1
+  - TP11.1
+  CH345_V3:
+  - U3.5
+  - C19.1
+  GND:
+  - U1.19
+  - U1.57
+  - U2.4
+  - U3.8
+  - U3.17
+  - U4.2
+  - U5.2
+  - U6.2
+  - U7.2
+  - U8.2
+  - J1.A1
+  - J1.A12
+  - J1.B1
+  - J1.B12
+  - J1.SH
+  - J3.A1
+  - J3.A12
+  - J3.B1
+  - J3.B12
+  - J3.SH
+  - J2.4
+  - J2.5
+  - J2.6
+  - X1.2
+  - X1.4
+  - X2.2
+  - X2.4
+  - LED1.1
+  - SW1.3
+  - SW2.3
+  - SW3.3
+  - SW6.1
+  - SW6.2
+  - R5.2
+  - R6.2
+  - R7.2
+  - R8.2
+  - R9.2
+  - R10.2
+  - C1.2
+  - C2.2
+  - C3.2
+  - C4.2
+  - C5.2
+  - C6.2
+  - C7.2
+  - C8.2
+  - C9.2
+  - C10.2
+  - C11.2
+  - C12.2
+  - C13.2
+  - C14.2
+  - C15.2
+  - C16.2
+  - C19.2
+  - C20.2
+  - C21.2
+  - C24.2
+  - C25.2
+  - C26.2
+  - C27.2
+  - C28.2
+  - C29.2
+  - C30.2
+  - C17.2
+  - C18.2
+  - C22.2
+  - C23.2
+  - TP3.1
+  - TP10.1
+  LED_A:
+  - LED1.2
+  - R13.2
+  MIDI_UART_RX:
+  - U1.7
+  - U3.3
+  MIDI_UART_TX:
+  - U1.6
+  - U3.4
+  QSPI_SCLK:
+  - U1.52
+  - U2.6
+  QSPI_SD0:
+  - U1.53
+  - U2.5
+  QSPI_SD1:
+  - U1.55
+  - U2.2
+  QSPI_SD2:
+  - U1.54
+  - U2.3
+  QSPI_SD3:
+  - U1.51
+  - U2.7
+  QSPI_SS:
+  - U1.56
+  - U2.1
+  - R12.1
+  - R15.1
+  RUN:
+  - U1.26
+  - R19.1
+  STATUS_LED:
+  - U1.37
+  - R13.1
+  SW1_MUTE:
+  - U1.40
+  - SW1.2
+  SW2_LYRE:
+  - U1.41
+  - SW2.2
+  SW3_SUSTAIN:
+  - U1.39
+  - SW3.2
+  SW6_RESET:
+  - U1.17
+  - SW6.3
+  - SW6.4
+  TPS_EN:
+  - U5.3
+  - SW4.2
+  - R10.1
+  TPS_FAULT:
+  - U5.6
+  - R11.1
+  TPS_ILIM:
+  - U5.4
+  - R9.1
+  USB_A_DM:
+  - U6.3
+  - U6.4
+  - J2.2
+  - R4.2
+  USB_A_DM_MCU:
+  - U1.16
+  - R4.1
+  USB_A_DP:
+  - U6.1
+  - U6.6
+  - J2.3
+  - R3.2
+  USB_A_DP_MCU:
+  - U1.15
+  - R3.1
+  USB_MIDI_DM:
+  - U8.3
+  - U8.4
+  - J3.A7
+  - J3.B7
+  - R18.2
+  USB_MIDI_DM_MCU:
+  - U3.7
+  - R18.1
+  USB_MIDI_DP:
+  - U8.1
+  - U8.6
+  - J3.A6
+  - J3.B6
+  - R17.2
+  USB_MIDI_DP_MCU:
+  - U3.6
+  - R17.1
+  USB_PC_DM:
+  - U7.3
+  - U7.4
+  - J1.A7
+  - J1.B7
+  - R2.2
+  USB_PC_DM_MCU:
+  - U1.46
+  - R2.1
+  USB_PC_DP:
+  - U7.1
+  - U7.6
+  - J1.A6
+  - J1.B6
+  - R1.2
+  USB_PC_DP_MCU:
+  - U1.47
+  - R1.1
+  VBUS_IPAD:
+  - U8.5
+  - J3.A4
+  - J3.A9
+  - J3.B4
+  - J3.B9
+  - D2.2
+  - C25.1
+  VBUS_PC:
+  - U7.5
+  - J1.A4
+  - J1.A9
+  - J1.B4
+  - J1.B9
+  - D1.2
+  - C24.1
+  VBUS_USB_A:
+  - U5.5
+  - U6.5
+  - J2.1
+  - C26.1
+  - C27.1
+  - TP12.1
+  X1_XIN:
+  - U1.20
+  - X1.1
+  - C17.1
+  X1_XOUT:
+  - X1.3
+  - R14.2
+  - C18.1
+  X1_XOUT_MCU:
+  - U1.21
+  - R14.1
+  X2_XI:
+  - U3.9
+  - X2.1
+  - C22.1
+  X2_XO:
+  - U3.10
+  - X2.3
+  - C23.1

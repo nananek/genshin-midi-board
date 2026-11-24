@@ -104,9 +104,8 @@ def main() -> None:
     short_switches = {
         "SW1": "mute",
         "SW2": "lyre",
-        "SW3": "spare",
+        "SW3": "sustain",
         "SW4": "USB-A PWR",
-        "SW5": "sustain",
         "SW6": "MIDI RESET",
     }
     for entry in data["switches"]:

@@ -49,9 +49,19 @@ def main() -> None:
             "type": entry["value"],
             "x_mm": entry["x_mm"],
             "y_mm": entry["y_mm"],
-            "rotation_deg": 0,
+            "rotation_deg": entry.get("rotation_deg", 0),
             "edge": "",
             "role": entry["package"],
+        })
+    for entry in DESIGN["switches"]:
+        placement.append({
+            "ref": entry["ref"],
+            "type": entry["type"],
+            "x_mm": entry["x_mm"],
+            "y_mm": entry["y_mm"],
+            "rotation_deg": entry["rotation_deg"],
+            "edge": "",
+            "role": entry["function"],
         })
     write_csv(
         BASE / "placement.csv",

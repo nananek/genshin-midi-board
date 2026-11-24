@@ -59,19 +59,21 @@ def main() -> int:
 
     board = data["board"]
     W, H = float(board["width_mm"]), float(board["height_mm"])
-    c.near(W, 57.6, 0.001, "board width")
-    c.near(H, 31.4, 0.001, "board height")
+    c.near(W, 62.0, 0.001, "board width")
+    c.near(H, 35.0, 0.001, "board height")
     c.require(int(board["layers"]) == 4, "board is 4 layers")
     c.near(float(board["chamfer_mm"]), 2.0, 0.001, "corner punch cut")
 
     fab = data["fabrication"]
-    c.require(float(fab["via_diameter_mm"]) == 0.5, "via diameter is 0.5 mm")
-    c.require(float(fab["via_drill_mm"]) == 0.3, "via drill is 0.3 mm")
+    c.require(float(fab["via_diameter_mm"]) == 0.5, "default via diameter is 0.5 mm")
+    c.require(float(fab["via_drill_mm"]) == 0.3, "default via drill is 0.3 mm")
     c.require(fab["via_in_pad"] is False, "via-in-pad is forbidden")
     c.require(fab["plugged_vias"] is False, "plugged vias are forbidden")
     c.require(fab["advanced_via_process"] is False, "advanced via process is forbidden")
     c.require(0.15 not in [float(v) for v in fab["allowed_via_drills_mm"]], "0.15 mm drill is not allowed")
+    c.require(0.2 not in [float(v) for v in fab["allowed_via_drills_mm"]], "0.2 mm drill is not allowed")
     c.require(0.15 not in [float(v) for v in fab["allowed_via_diameters_mm"]], "0.15 mm via diameter is not allowed")
+    c.require(0.45 in [float(v) for v in fab["allowed_via_diameters_mm"]], "0.45 mm via is allowed")
 
     connectors = {entry["ref"]: entry for entry in data["connectors"]}
     j1, j3, j2 = connectors["J1"], connectors["J3"], connectors["J2"]
@@ -114,12 +116,12 @@ def main() -> int:
             if entry.get("net"):
                 gpio_nets[gpio] = entry["net"]
 
-    required_gpios = {12, 13, 4, 5, 28, 29, 27, 26, 14, 25}
+    required_gpios = {12, 13, 4, 5, 28, 29, 27, 14, 25}
     c.require(required_gpios <= set(gpios), "all required GPIOs are assigned")
 
     switches = data["switches"]
-    c.require(len(switches) == 6, "six switches are defined")
-    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW5", "SW6"}, "SW1..SW6 exist")
+    c.require(len(switches) == 5, "five switches are defined")
+    c.require({s["ref"] for s in switches} == {"SW1", "SW2", "SW3", "SW4", "SW6"}, "SW1..SW4 and SW6 exist")
     switch_gpios = [s["gpio"] for s in switches if s["gpio"] is not None]
     c.require(len(switch_gpios) == len(set(switch_gpios)), "switch GPIOs do not collide")
     for s in switches:
