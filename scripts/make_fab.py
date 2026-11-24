@@ -68,6 +68,16 @@ EXCLUDE_ATTRS = pcbnew.FP_EXCLUDE_FROM_POS_FILES | pcbnew.FP_EXCLUDE_FROM_BOM
 USB_C_FOOTPRINT = "USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 USB_C_POSITION_OFFSET_MM = 1.571
 
+# JLCPCB library orientations that differ from the KiCad footprints.  These
+# were read from the JLCPCB assembly preview; U2, U5 and U1 already line up.
+CPL_ROTATION_OFFSETS = {
+    "U3": 270,  # CH345T, SSOP-20
+    "U4": 270,  # AP2112K, SOT-23-5
+    "U6": 270,  # USBLC6, SOT-23-6
+    "U7": 270,  # USBLC6, SOT-23-6
+    "U8": 270,  # USBLC6, SOT-23-6
+}
+
 
 def fail(message: str) -> None:
     print(f"FAIL {message}", file=sys.stderr)
@@ -175,12 +185,13 @@ def build_cpl(parts: dict[str, dict]) -> list[dict]:
         cpl_y = height - part["y_mm"] + dy
         if not (0.0 <= cpl_x <= width and 0.0 <= cpl_y <= height):
             fail(f"{ref} is outside the board after the CPL correction")
+        rotation = (part["rotation_deg"] + CPL_ROTATION_OFFSETS.get(ref, 0)) % 360
         rows.append({
             "Designator": ref,
             "Mid X": f"{cpl_x:.3f}",
             "Mid Y": f"{cpl_y:.3f}",
             "Layer": part["side"],
-            "Rotation": f"{part['rotation_deg']:.3f}".rstrip("0").rstrip("."),
+            "Rotation": f"{rotation:.3f}".rstrip("0").rstrip("."),
         })
     return rows
 
@@ -251,10 +262,14 @@ Known issues
 ------------
 - 実機未検証の試作です。製造、組立、動作は保証しません。
 - J2、SW1〜SW4、SW6 は手はんだです。BOM と CPL に含まれません。
+- J2 は上面実装です。開口は基板の下辺（外側）を向きます。裏面シルクに
+  VCC / D- / D+ / GND と J2 USB-A (TOP) を表示しています。
 - J1/J3 のシェル固定タブは THT です。SMT 実装のあとに手はんだしてください。
 - J1/J3 の CPL 位置は JLCPCB の USB-C 部品原点に合わせて 1.571 mm 補正しています。
-- CPL の回転は KiCad の値をそのまま出力しています。JLCPCB の実装プレビューで
-  部品の向きを確認してください。
+- CPL の回転は JLCPCB の部品ライブラリに合わせ、U3 / U4 / U6 / U7 / U8 を
+  270° 補正しています。U1 / U2 / U5 は KiCad の値のままです。実装プレビューで
+  最終確認してください。
+- 裏面に基板名とリポジトリ URL の QR コードを配置しています。
 - U4 (AP2112K-3.3TRG1) と C27 (100uF) の LCSC 型番は発注前に再確認してください。
 - 0.15 mm ドリルと via-in-pad は使いません。発注画面の DFM プレビューで確認してください。
 

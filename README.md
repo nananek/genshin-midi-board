@@ -105,6 +105,7 @@ tests/test_design.py              設計制約の単体テスト
 ```sh
 make check          # 設計制約チェック + 単体テスト
 make floorplan      # hardware/rp2040_midi_bridge/floorplan.svg を再生成
+make silk           # 基板名、USB-A のピン名、裏面 QR を更新
 ```
 
 `make check` は次を確認します。
@@ -119,7 +120,7 @@ make floorplan      # hardware/rp2040_midi_bridge/floorplan.svg を再生成
 
 ## 製造データの配布
 
-ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.0.3` で、JLCPCB にそのままアップロードできる Gerber ZIP、BOM、CPL を `dist/` に作ります。Gerber ZIP は展開せず PCB のアップロードへ、BOM と CPL は SMT の欄へ個別に渡します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
+ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.0.4` で、JLCPCB にそのままアップロードできる Gerber ZIP、BOM、CPL を `dist/` に作ります。Gerber ZIP は展開せず PCB のアップロードへ、BOM と CPL は SMT の欄へ個別に渡します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
 
 ## ライセンス
 

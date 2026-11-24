@@ -17,6 +17,8 @@ from pathlib import Path
 import pcbnew
 import yaml
 
+import silk_art
+
 ROOT = Path(__file__).resolve().parent.parent          # hardware/rp2040_midi_bridge
 PROJ_LIB = ROOT / "lib" / "rp2040_midi_bridge.pretty"
 KICAD_LIB = Path("/usr/share/kicad/footprints")
@@ -417,13 +419,7 @@ def add_zones(board):
 
 
 def add_silk(board):
-    txt = pcbnew.PCB_TEXT(board)
-    txt.SetText("RP2040 MIDI BRIDGE  REV A")
-    txt.SetLayer(pcbnew.F_SilkS)
-    txt.SetPosition(pcbnew.VECTOR2I(MM(31.0), MM(33.6)))
-    txt.SetTextSize(pcbnew.VECTOR2I(MM(0.8), MM(0.8)))
-    txt.SetTextThickness(MM(0.12))
-    board.Add(txt)
+    silk_art.add_art(board)
 
 
 # ---------------------------------------------------------------------------

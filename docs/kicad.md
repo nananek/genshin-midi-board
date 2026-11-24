@@ -51,6 +51,12 @@ make drc
 
 DRC は 0 violations / 0 unconnected を目標にします。配線途中で未接続が残る場合は、`drc.rpt` の unconnected 数を記録します。
 
+基板名、J2 のピン名、裏面の QR コードは `make silk` で更新します。`gen_pcb.py` から基板を作り直す場合も、同じ `silk_art.py` を使います。
+
+```sh
+make silk
+```
+
 ## 5. 製造前の監査
 
 ```sh
@@ -98,18 +104,18 @@ USB は Full-Speed なのでインピーダンス制御は必須ではありま�
 make check
 make erc
 make drc
-make fab VERSION=v0.0.3
+make fab VERSION=v0.0.4
 ```
 
 出力は次の 6 ファイルです。
 
 ```text
-dist/rp2040_midi_bridge-v0.0.3-gerber.zip        PCB 用。展開せずアップロードする
-dist/rp2040_midi_bridge-v0.0.3-bom.csv           SMT BOM
-dist/rp2040_midi_bridge-v0.0.3-cpl.csv           SMT CPL
-dist/rp2040_midi_bridge-v0.0.3-README.txt        タグ、コミット、アップロード手順
-dist/rp2040_midi_bridge-v0.0.3-LICENSE           MIT
-dist/rp2040_midi_bridge-v0.0.3-manifest.sha256   上記 5 ファイルの SHA-256
+dist/rp2040_midi_bridge-v0.0.4-gerber.zip        PCB 用。展開せずアップロードする
+dist/rp2040_midi_bridge-v0.0.4-bom.csv           SMT BOM
+dist/rp2040_midi_bridge-v0.0.4-cpl.csv           SMT CPL
+dist/rp2040_midi_bridge-v0.0.4-README.txt        タグ、コミット、アップロード手順
+dist/rp2040_midi_bridge-v0.0.4-LICENSE           MIT
+dist/rp2040_midi_bridge-v0.0.4-manifest.sha256   上記 5 ファイルの SHA-256
 ```
 
 Gerber ZIP は直下に Gerber X2、Excellon ドリル、`.gbrjob` だけを入れます。BOM と CPL は SMT のアップロード欄へ個別に渡します。`dist/` はコミットしません。

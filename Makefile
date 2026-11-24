@@ -1,9 +1,9 @@
 PYTHON ?= python3
 
-VERSION ?= v0.0.3
+VERSION ?= v0.0.4
 COMMIT ?= $(shell git rev-parse HEAD)
 
-.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case fab clean
+.PHONY: all check test floorplan tables netlist sch pcb silk kicad-shell erc drc kicad-check paper-case fab clean
 
 all: check floorplan tables netlist
 
@@ -37,6 +37,9 @@ sch:
 
 pcb:
 	$(KICAD) python3 -u $(PCB_GEN)
+
+silk:
+	$(KICAD) python3 hardware/rp2040_midi_bridge/scripts/update_silk.py
 
 kicad-shell:
 	$(KICAD) bash
