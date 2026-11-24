@@ -89,8 +89,8 @@
 <text x="27.000" y="123.216" font-size="2.200" transform="rotate(-90.0 27.000 123.216)">SW1</text>
 <rect x="28.600" y="133.500" width="3.600" height="7.000" fill="none" stroke="#000" stroke-width="0.300"/>
 <text x="27.000" y="138.716" font-size="2.200" transform="rotate(-90.0 27.000 138.716)">SW2</text>
-<rect x="98.800" y="118.000" width="3.600" height="7.000" fill="none" stroke="#000" stroke-width="0.300"/>
-<text x="105.200" y="123.216" font-size="2.200" transform="rotate(-90.0 105.200 123.216)">SW3</text>
+<rect x="98.800" y="121.500" width="3.600" height="7.000" fill="none" stroke="#000" stroke-width="0.300"/>
+<text x="105.200" y="126.716" font-size="2.200" transform="rotate(-90.0 105.200 126.716)">SW3</text>
 <rect x="46.000" y="149.800" width="7.000" height="3.600" fill="none" stroke="#000" stroke-width="0.300"/>
 <text x="47.784" y="155.670" font-size="2.200">SW4</text>
 <rect x="61.200" y="105.800" width="8.600" height="4.400" fill="none" stroke="#000" stroke-width="0.300"/>
@@ -191,7 +191,7 @@
 <text x="120.000" y="100.550" font-size="2.550">SW3</text>
 <text x="129.000" y="100.550" font-size="2.550">slide</text>
 <text x="145.000" y="100.550" font-size="2.550">right</text>
-<text x="163.000" y="100.550" font-size="2.550">y=9.0</text>
+<text x="163.000" y="100.550" font-size="2.550">y=12.5</text>
 <text x="195.000" y="100.550" font-size="2.550">3.6 x 7.0</text>
 <text x="215.000" y="100.550" font-size="2.550">1.8-5.4</text>
 <text x="120.000" y="103.800" font-size="2.550">SW4</text>
