@@ -1,18 +1,10 @@
 ** Drc report for rp2040_frisk.kicad_pcb **
-** Created on 2026-11-23T19:53:40 **
+** Created on 2026-11-24T05:46:30 **
 ** Report includes: Errors, Warnings, Exclusions **
 
 ** Found 0 DRC violations **
 
-** Found 2 unconnected pads **
-[unconnected_items]: Missing connection between items
-    Local override; error
-    @(27.4375 mm, 15.6000 mm): Pad 53 [QSPI_SD0] of U1 on F.Cu
-    @(35.4750 mm, 15.9050 mm): Pad 5 [QSPI_SD0] of U2 on F.Cu
-[unconnected_items]: Missing connection between items
-    Local override; error
-    @(25.4000 mm, 20.4375 mm): Pad 39 [SW3_SUSTAIN] of U1 on F.Cu
-    @(55.5000 mm, 9.0000 mm): PTH pad 2 [SW3_SUSTAIN] of SW3
+** Found 0 unconnected pads **
 
 ** Found 0 Footprint errors **
 

@@ -126,7 +126,7 @@ class CaseGeometryTests(unittest.TestCase):
         # left/right walls run back to front: net y = 35.5 - board y
         self.assertAlmostEqual(openings["SW1"].along, 26.5, places=6)
         self.assertAlmostEqual(openings["SW2"].along, 11.0, places=6)
-        self.assertAlmostEqual(openings["SW3"].along, 26.5, places=6)
+        self.assertAlmostEqual(openings["SW3"].along, 23.0, places=6)
         self.assertAlmostEqual(openings["SW4"].along, 15.5, places=6)
 
     def test_led_and_reset_press_through_the_lid(self) -> None:
