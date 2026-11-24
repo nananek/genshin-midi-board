@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
-"""Build the tagged-release fabrication package for rp2040_midi_bridge.
+"""Build the JLCPCB-ready release assets for rp2040_midi_bridge.
 
 Run inside the KiCad container so that pcbnew and kicad-cli match the tool
 version used for the design:
 
-    make fab VERSION=v0.1.0
+    make fab VERSION=v0.0.2
 
-The output is dist/rp2040_midi_bridge-v<version>-gerber.zip.  The ZIP layout
-and the release conditions are defined in AGENTS.md section 3.
+The output is a set of separately uploadable files:
+
+    dist/rp2040_midi_bridge-v<version>-gerber.zip   PCB fabrication
+    dist/rp2040_midi_bridge-v<version>-bom.csv      SMT BOM
+    dist/rp2040_midi_bridge-v<version>-cpl.csv      SMT CPL
+    dist/rp2040_midi_bridge-v<version>-README.txt
+    dist/rp2040_midi_bridge-v<version>-LICENSE
+    dist/rp2040_midi_bridge-v<version>-manifest.sha256
+
+The layout and the release conditions are defined in AGENTS.md section 3.
 """
 
 from __future__ import annotations
@@ -42,6 +50,14 @@ GERBER_LAYERS = ",".join([
     "F.Mask", "B.Mask",
     "Edge.Cuts",
 ])
+
+REQUIRED_GERBER_SUFFIXES = {
+    "F_Cu.gbr", "In1_Cu.gbr", "In2_Cu.gbr", "B_Cu.gbr",
+    "F_Mask.gbr", "B_Mask.gbr",
+    "F_Silkscreen.gbr", "B_Silkscreen.gbr",
+    "F_Paste.gbr", "B_Paste.gbr",
+    "Edge_Cuts.gbr",
+}
 
 EXCLUDE_ATTRS = pcbnew.FP_EXCLUDE_FROM_POS_FILES | pcbnew.FP_EXCLUDE_FROM_BOM
 
@@ -196,14 +212,23 @@ Silkscreen:      {BOARD['silkscreen']}
 Corner cut:      {BOARD['chamfer_mm']} mm, 45 degrees, all four corners
 Assembly:        top side SMT only ({smt_count} placements, {tht_count} THT parts hand-soldered)
 
-Contents
---------
-gerbers/         Gerber X2 for copper, mask, silk, paste and Edge.Cuts
-gerbers/*.drl    Excellon drill files
-bom.csv          JLCPCB BOM (SMT parts only)
-cpl.csv          JLCPCB CPL (SMT parts only, coordinates from bottom-left)
-manifest.sha256  SHA-256 of the files in this ZIP
-LICENSE          MIT
+Files
+-----
+{PROJECT}-{version}-gerber.zip       PCB fabrication (upload as-is)
+{PROJECT}-{version}-bom.csv          SMT BOM (upload to the BOM field)
+{PROJECT}-{version}-cpl.csv          SMT CPL (upload to the CPL field)
+{PROJECT}-{version}-README.txt       This file
+{PROJECT}-{version}-LICENSE          MIT
+{PROJECT}-{version}-manifest.sha256  SHA-256 of the other five files
+
+JLCPCB upload
+-------------
+1. PCB: select "Add gerber file" and upload {PROJECT}-{version}-gerber.zip
+   without extracting it.  The ZIP contains Gerber X2, Excellon drill and a
+   .gbrjob file at its root.  BOM and CPL are not inside this ZIP.
+2. SMT: enable SMT assembly, then upload {PROJECT}-{version}-bom.csv as the
+   BOM and {PROJECT}-{version}-cpl.csv as the CPL.
+3. Confirm the part rotations in the assembly preview before ordering.
 
 Known issues
 ------------
@@ -231,16 +256,6 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def write_manifest(staging: Path) -> Path:
-    files = sorted(
-        p for p in staging.rglob("*") if p.is_file() and p.name != "manifest.sha256"
-    )
-    lines = [f"{sha256(p)}  {p.relative_to(staging).as_posix()}" for p in files]
-    path = staging / "manifest.sha256"
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return path
-
-
 def check_drills(gerber_dir: Path) -> list[str]:
     drills = sorted(gerber_dir.glob("*.drl"))
     if not drills:
@@ -258,40 +273,77 @@ def check_drills(gerber_dir: Path) -> list[str]:
     return [f"{d:.2f}" for d in sorted(diameters)]
 
 
-def check_gerbers(gerber_dir: Path) -> int:
-    required_suffixes = {
-        "F_Cu.gbr", "In1_Cu.gbr", "In2_Cu.gbr", "B_Cu.gbr",
-        "F_Mask.gbr", "B_Mask.gbr",
-        "F_Silkscreen.gbr", "B_Silkscreen.gbr",
-        "F_Paste.gbr", "B_Paste.gbr",
-        "Edge_Cuts.gbr",
-    }
-    actual = {p.name for p in gerber_dir.glob("*.gbr")}
-    suffixes = {
-        name[len(PROJECT) + 1:] if name.startswith(f"{PROJECT}-") else name
-        for name in actual
-    }
-    # KiCad may use either the short or the translated silkscreen name.
-    normalized = {name.replace("SilkS", "Silkscreen") for name in suffixes}
-    missing = required_suffixes - normalized
-    if missing:
-        fail(f"missing Gerber layers: {sorted(missing)}")
-    return len(actual)
+def check_gerber_zip(zip_path: Path) -> tuple[int, list[str]]:
+    with zipfile.ZipFile(zip_path) as zf:
+        names = zf.namelist()
+        if any("/" in name or "\\" in name for name in names):
+            fail("the Gerber ZIP must be flat; remove subdirectories")
+        if any(Path(name).name != name or name.startswith(".") for name in names):
+            fail("the Gerber ZIP contains an unexpected path or dot file")
+        forbidden = {"bom.csv", "cpl.csv", "README.txt", "LICENSE", "manifest.sha256"}
+        if forbidden & set(names):
+            fail("BOM, CPL, README, LICENSE or manifest leaked into the Gerber ZIP")
+        allowed = {".gbr", ".drl", ".gbrjob"}
+        for name in names:
+            if Path(name).suffix.lower() not in allowed:
+                fail(f"unexpected file in the Gerber ZIP: {name}")
+
+        suffixes = {
+            name[len(PROJECT) + 1:] if name.startswith(f"{PROJECT}-") else name
+            for name in names
+            if name.lower().endswith(".gbr")
+        }
+        normalized = {name.replace("SilkS", "Silkscreen") for name in suffixes}
+        missing = REQUIRED_GERBER_SUFFIXES - normalized
+        if missing:
+            fail(f"missing Gerber layers: {sorted(missing)}")
+
+        diameters: set[float] = set()
+        for name in names:
+            if not name.lower().endswith(".drl"):
+                continue
+            text = zf.read(name).decode("utf-8", errors="replace")
+            for m in re.finditer(r"^T\d+C([0-9.]+)", text, re.MULTILINE):
+                diameters.add(float(m.group(1)))
+        if not diameters:
+            fail("the Gerber ZIP has no drill hits")
+        for diameter in sorted(diameters):
+            if abs(diameter - 0.15) < 1e-9:
+                fail("a 0.15 mm drill is in the Gerber ZIP")
+            if diameter < 0.25:
+                fail(f"{diameter} mm drill is below the supported 0.25 mm minimum")
+        return sum(name.lower().endswith(".gbr") for name in names), [
+            f"{d:.2f}" for d in sorted(diameters)
+        ]
 
 
-def normalize_text(text: str) -> str:
-    return unicodedata.normalize("NFC", text)
+def write_manifest(assets: list[Path], path: Path) -> None:
+    lines = [f"{sha256(asset)}  {asset.name}" for asset in assets]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def verify_manifest(manifest: Path, assets: list[Path]) -> None:
+    lines = manifest.read_text(encoding="utf-8").splitlines()
+    by_name = {asset.name: asset for asset in assets}
+    if len(lines) != len(assets):
+        fail("manifest.sha256 does not cover every release asset")
+    for line in lines:
+        digest, name = line.split("  ", 1)
+        if name not in by_name:
+            fail(f"manifest entry {name} is not a release asset")
+        if sha256(by_name[name]) != digest:
+            fail(f"manifest digest mismatch for {name}")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--version", required=True, help="release tag, for example v0.1.0")
+    parser.add_argument("--version", required=True, help="release tag, for example v0.0.2")
     parser.add_argument("--commit", required=True, help="commit hash the tag points at")
     args = parser.parse_args()
 
     version = args.version
     if not re.fullmatch(r"v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version):
-        fail(f"--version must look like v0.1.0, got {version!r}")
+        fail(f"--version must look like v0.0.2, got {version!r}")
     if not re.fullmatch(r"[0-9a-f]{40}", args.commit):
         fail(f"--commit must be a full 40-character hash, got {args.commit!r}")
     if not PCB.exists():
@@ -347,44 +399,49 @@ def main() -> int:
     readme = render_readme(
         version, args.commit, generated, kicad_version(), len(smt_refs), len(tht_refs)
     )
-    (staging / "README.txt").write_text(normalize_text(readme), encoding="utf-8")
+    (staging / "README.txt").write_text(unicodedata.normalize("NFC", readme), encoding="utf-8")
 
-    gerber_count = check_gerbers(gerber_dir)
-    drill_sizes = check_drills(gerber_dir)
-    manifest = write_manifest(staging)
+    check_drills(gerber_dir)
 
-    zip_path = DIST / f"{PROJECT}-{version}-gerber.zip"
-    if zip_path.exists():
-        zip_path.unlink()
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
-        for path in sorted(staging.rglob("*")):
+    # The Gerber ZIP is uploaded as-is: flat, with only fabrication files.
+    gerber_zip = DIST / f"{PROJECT}-{version}-gerber.zip"
+    if gerber_zip.exists():
+        gerber_zip.unlink()
+    with zipfile.ZipFile(gerber_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+        for path in sorted(gerber_dir.iterdir()):
             if path.is_file():
-                zf.write(path, path.relative_to(staging).as_posix())
+                zf.write(path, path.name)
 
-    with zipfile.ZipFile(zip_path) as zf:
-        names = set(zf.namelist())
-        for required in ("bom.csv", "cpl.csv", "README.txt", "LICENSE", "manifest.sha256"):
-            if required not in names:
-                fail(f"{required} is missing from {zip_path.name}")
-        if any(name.startswith("/") or ".." in Path(name).parts for name in names):
-            fail("ZIP contains an absolute path or a parent traversal")
-        manifest_lines = zf.read("manifest.sha256").decode("utf-8").splitlines()
-        for line in manifest_lines:
-            digest, rel = line.split("  ", 1)
-            if rel not in names:
-                fail(f"manifest entry {rel} is not in the ZIP")
-            if hashlib.sha256(zf.read(rel)).hexdigest() != digest:
-                fail(f"manifest digest mismatch for {rel}")
-        if "manifest.sha256" not in names:
-            fail("manifest.sha256 is missing from the ZIP")
+    assets = [
+        gerber_zip,
+        DIST / f"{PROJECT}-{version}-bom.csv",
+        DIST / f"{PROJECT}-{version}-cpl.csv",
+        DIST / f"{PROJECT}-{version}-README.txt",
+        DIST / f"{PROJECT}-{version}-LICENSE",
+    ]
+    shutil.copy2(staging / "bom.csv", assets[1])
+    shutil.copy2(staging / "cpl.csv", assets[2])
+    shutil.copy2(staging / "README.txt", assets[3])
+    shutil.copy2(staging / "LICENSE", assets[4])
+
+    gerber_count, drill_sizes = check_gerber_zip(gerber_zip)
+    manifest = DIST / f"{PROJECT}-{version}-manifest.sha256"
+    write_manifest(assets, manifest)
+    verify_manifest(manifest, assets)
 
     print()
-    print(f"wrote {zip_path.relative_to(ROOT)}")
+    print(f"wrote {gerber_zip.relative_to(ROOT)}")
+    print(f"wrote {assets[1].relative_to(ROOT)}")
+    print(f"wrote {assets[2].relative_to(ROOT)}")
+    print(f"wrote {assets[3].relative_to(ROOT)}")
+    print(f"wrote {assets[4].relative_to(ROOT)}")
+    print(f"wrote {manifest.relative_to(ROOT)}")
     print(f"  SMT placements: {len(smt_refs)}")
     print(f"  THT (hand solder, not in BOM/CPL): {len(tht_refs)} -> {', '.join(sorted(tht_refs))}")
-    print(f"  Gerber files: {gerber_count}")
+    print(f"  Gerber files in ZIP: {gerber_count}")
     print(f"  Drill diameters (mm): {', '.join(drill_sizes)}")
-    print(f"  SHA-256: {sha256(zip_path)}")
+    for asset in assets:
+        print(f"  {asset.name}  {sha256(asset)}")
     return 0
 
 

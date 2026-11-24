@@ -119,7 +119,7 @@ make floorplan      # hardware/rp2040_midi_bridge/floorplan.svg を再生成
 
 ## 製造データの配布
 
-ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.1.0` で `dist/rp2040_midi_bridge-v0.1.0-gerber.zip` を作ります。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
+ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。`make fab VERSION=v0.0.2` で、JLCPCB にそのままアップロードできる Gerber ZIP、BOM、CPL を `dist/` に作ります。Gerber ZIP は展開せず PCB のアップロードへ、BOM と CPL は SMT の欄へ個別に渡します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
 
 ## ライセンス
 

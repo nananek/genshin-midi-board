@@ -92,16 +92,27 @@ USB は Full-Speed なのでインピーダンス制御は必須ではありま�
 
 ## 8. 発注データ
 
-タグを打つコミットで `make fab` を実行すると、リリース添付用の ZIP を作ります。
+タグを打つコミットで `make fab` を実行すると、JLCPCB にそのままアップロードできるファイル一式を作ります。
 
 ```sh
 make check
 make erc
 make drc
-make fab VERSION=v0.1.0
+make fab VERSION=v0.0.2
 ```
 
-出力は `dist/rp2040_midi_bridge-v0.1.0-gerber.zip` です。中身は `gerbers/`（Gerber X2 と Excellon ドリル）、`bom.csv`、`cpl.csv`、`manifest.sha256`、`README.txt`、`LICENSE` です。`dist/` はコミットしません。配布条件と ZIP の構成は [AGENTS.md](../AGENTS.md) の 3 節を参照してください。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
+出力は次の 6 ファイルです。
+
+```text
+dist/rp2040_midi_bridge-v0.0.2-gerber.zip        PCB 用。展開せずアップロードする
+dist/rp2040_midi_bridge-v0.0.2-bom.csv           SMT BOM
+dist/rp2040_midi_bridge-v0.0.2-cpl.csv           SMT CPL
+dist/rp2040_midi_bridge-v0.0.2-README.txt        タグ、コミット、アップロード手順
+dist/rp2040_midi_bridge-v0.0.2-LICENSE           MIT
+dist/rp2040_midi_bridge-v0.0.2-manifest.sha256   上記 5 ファイルの SHA-256
+```
+
+Gerber ZIP は直下に Gerber X2、Excellon ドリル、`.gbrjob` だけを入れます。BOM と CPL は SMT のアップロード欄へ個別に渡します。`dist/` はコミットしません。配布条件と構成は [AGENTS.md](../AGENTS.md) の 3 節を参照してください。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
 
 ## 9. 注意
 

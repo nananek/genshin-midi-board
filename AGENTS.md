@@ -52,22 +52,35 @@ make paper-case   # 紙ケースの PDF / SVG
 
 ### 3.3 配布物の構成
 
-1 つの ZIP に次を入れます。
+JLCPCB にそのままアップロードできる単位で配布します。BOM と CPL を Gerber ZIP に混ぜません。
 
 ```text
 rp2040_midi_bridge-v<version>-gerber.zip
-  gerbers/                 Gerber X2（全層）
-  gerbers/*.drl            Excellon ドリル（PTH / NPTH）
-  bom.csv                  JLCPCB 形式の BOM
-  cpl.csv                  JLCPCB 形式の CPL
-  manifest.sha256          上記ファイルの SHA-256
-  README.txt               リビジョン、コミット、KiCad 版、層構成、既知の問題
-  LICENSE                  MIT
+  Gerber X2（F.Cu / In1.Cu / In2.Cu / B.Cu、マスク、シルク、ペースト、Edge.Cuts）
+  Excellon ドリル（PTH / NPTH）
+  Gerber job file（.gbrjob）
+
+rp2040_midi_bridge-v<version>-bom.csv
+  JLCPCB BOM。ヘッダーは Comment,Designator,Footprint,LCSC Part #。
+
+rp2040_midi_bridge-v<version>-cpl.csv
+  JLCPCB CPL。ヘッダーは Designator,Mid X,Mid Y,Layer,Rotation。
+
+rp2040_midi_bridge-v<version>-README.txt
+  タグ、コミット、KiCad 版、基板仕様、アップロード手順、既知の問題。
+
+rp2040_midi_bridge-v<version>-LICENSE
+  MIT。
+
+rp2040_midi_bridge-v<version>-manifest.sha256
+  上記 5 ファイルの SHA-256。
 ```
 
-- ファイル名は `rp2040_midi_bridge-v<version>-gerber.zip` に固定します。
-- `README.txt` には、タグ名、コミットハッシュ、KiCad のバージョン、基板仕様（62.0 × 35.0 × 1.6 mm、4 層）、既知の問題を書きます。
-- `manifest.sha256` は ZIP を作る直前に生成し、ZIP の中身と一致させます。
+- Gerber ZIP は展開せず、JLCPCB の PCB アップロードへそのまま渡せる形にします。ZIP 直下に Gerber とドリルだけを置き、`gerbers/` などのサブディレクトリを作りません。BOM、CPL、README、LICENSE、manifest は入れません。
+- BOM と CPL は SMT のアップロード欄へ個別に渡します。ZIP に同梱しません。
+- ファイル名は上記に固定します。`gerber.zip` の名前は変えません。
+- `README.txt` には、タグ名、コミットハッシュ、KiCad のバージョン、基板仕様（62.0 × 35.0 × 1.6 mm、4 層）、JLCPCB へのアップロード手順、既知の問題を書きます。
+- `manifest.sha256` はリリース添付ファイルを作った直後に生成し、添付する 5 ファイルと一致させます。
 - 配布物にローカルパス、ユーザー名、ホスト名、VM 固有のパスを入れません。
 
 ### 3.4 ライセンス

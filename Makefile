@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-VERSION ?= v0.1.0
+VERSION ?= v0.0.2
 COMMIT ?= $(shell git rev-parse HEAD)
 
 .PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case fab clean
