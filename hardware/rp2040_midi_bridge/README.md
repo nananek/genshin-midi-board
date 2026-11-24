@@ -1,6 +1,12 @@
 # RP2040 MIDI bridge 基板（設計検討）
 
-58.0 × 44.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_midi_bridge.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC・未接続 0 です。
+58.0 × 44.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_midi_bridge.kicad_sch` にあり、ERC 0 で通ります。PCB は外形と配置まで更新済みで、配線は未完了です。
+
+## 状態
+
+- 外形、配置、回路図、ネットリストは revision B（58.0 × 44.0 mm）で更新済み
+- PCB の配線は未完了。`drc.rpt`（2026-11-24 時点）は 874 violations / 未接続 22
+- 配線が終わるまでガーバー、BOM、CPL は配布しない
 
 ## ファイル
 
@@ -16,7 +22,7 @@
 | `sym-lib-table` / `fp-lib-table` | プロジェクトローカルと公式のライブラリ参照 |
 | `lib/` | 公式に無いシンボルとフットプリント（`lib/README.md` 参照） |
 | `erc.rpt` | `kicad-cli sch erc --severity-all` の結果 |
-| `rp2040_midi_bridge.kicad_pcb` | KiCad 10 基板（0 DRC、未接続 0） |
+| `rp2040_midi_bridge.kicad_pcb` | KiCad 10 基板（配線途中。DRC 結果は `drc.rpt`） |
 | `drc.rpt` | `kicad-cli pcb drc --severity-all` の結果 |
 
 ## 再生成
