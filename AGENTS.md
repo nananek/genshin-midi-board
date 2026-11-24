@@ -78,6 +78,7 @@ rp2040_midi_bridge-v<version>-manifest.sha256
 
 - Gerber ZIP は展開せず、JLCPCB の PCB アップロードへそのまま渡せる形にします。ZIP 直下に Gerber とドリルだけを置き、`gerbers/` などのサブディレクトリを作りません。BOM、CPL、README、LICENSE、manifest は入れません。
 - BOM と CPL は SMT のアップロード欄へ個別に渡します。ZIP に同梱しません。
+- Gerber、ドリル、CPL は基板左下のドリル/配置原点を共有します。`gen_pcb.py` は原点を (0, 35) に設定し、`make fab` は Gerber を `--use-drill-file-origin`、ドリルを `--drill-origin plot` で出力します。原点がずれた CPL を配布しません。
 - ファイル名は上記に固定します。`gerber.zip` の名前は変えません。
 - `README.txt` には、タグ名、コミットハッシュ、KiCad のバージョン、基板仕様（62.0 × 35.0 × 1.6 mm、4 層）、JLCPCB へのアップロード手順、既知の問題を書きます。
 - `manifest.sha256` はリリース添付ファイルを作った直後に生成し、添付する 5 ファイルと一致させます。

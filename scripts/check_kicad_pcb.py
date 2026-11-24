@@ -79,6 +79,11 @@ def main() -> int:
     else:
         failures.append("no Edge.Cuts outline found")
 
+    # Drill/place origin shared by Gerbers, drill files and the JLCPCB CPL.
+    checks += 1
+    if "(aux_axis_origin 0 35)" not in text:
+        failures.append("drill/place origin must be at the bottom-left corner (0, 35)")
+
     # Copper layer count.
     copper = re.findall(r'\((?:\d+) "(F\.Cu|In\d+\.Cu|B\.Cu)"', text)
     checks += 1

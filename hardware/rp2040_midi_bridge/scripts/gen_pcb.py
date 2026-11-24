@@ -300,6 +300,9 @@ def new_board():
     board.SetCopperLayerCount(4)
     ds = board.GetDesignSettings()
     ds.SetBoardThickness(MM(1.6))
+    # Put the drill/place origin at the bottom-left corner so the Gerbers,
+    # drill files and JLCPCB CPL share one coordinate system.
+    ds.SetAuxOrigin(pcbnew.VECTOR2I(0, MM(BOARD_H)))
     ds.m_MinClearance = MM(0.1)
     ds.m_TrackMinWidth = MM(0.127)
     ds.m_ViasMinSize = MM(0.5)

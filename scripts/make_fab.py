@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import math
 import re
 import shutil
 import subprocess
@@ -60,6 +61,12 @@ REQUIRED_GERBER_SUFFIXES = {
 }
 
 EXCLUDE_ATTRS = pcbnew.FP_EXCLUDE_FROM_POS_FILES | pcbnew.FP_EXCLUDE_FROM_BOM
+
+# JLCPCB's part library origin for this USB-C receptacle sits 1.571 mm behind
+# the KiCad footprint origin, measured along the connector axis.  Compensate so
+# the connector body lands where the board expects it.
+USB_C_FOOTPRINT = "USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+USB_C_POSITION_OFFSET_MM = 1.571
 
 
 def fail(message: str) -> None:
@@ -157,10 +164,20 @@ def build_cpl(parts: dict[str, dict]) -> list[dict]:
             fail(f"{ref} is outside the {width} x {height} mm board")
         # KiCad's Y axis points down from the top-left board origin.  JLCPCB
         # wants millimetres from the bottom-left corner with Y pointing up.
-        cpl_y = height - part["y_mm"]
+        # The drill/place origin is set to that corner in gen_pcb.py, and the
+        # Gerbers and drill files are plotted with the same origin.
+        dx = dy = 0.0
+        if part["footprint"] == USB_C_FOOTPRINT:
+            rad = math.radians(part["rotation_deg"])
+            dx = -USB_C_POSITION_OFFSET_MM * math.sin(rad)
+            dy = USB_C_POSITION_OFFSET_MM * math.cos(rad)
+        cpl_x = part["x_mm"] + dx
+        cpl_y = height - part["y_mm"] + dy
+        if not (0.0 <= cpl_x <= width and 0.0 <= cpl_y <= height):
+            fail(f"{ref} is outside the board after the CPL correction")
         rows.append({
             "Designator": ref,
-            "Mid X": f"{part['x_mm']:.3f}",
+            "Mid X": f"{cpl_x:.3f}",
             "Mid Y": f"{cpl_y:.3f}",
             "Layer": part["side"],
             "Rotation": f"{part['rotation_deg']:.3f}".rstrip("0").rstrip("."),
@@ -235,6 +252,7 @@ Known issues
 - 実機未検証の試作です。製造、組立、動作は保証しません。
 - J2、SW1〜SW4、SW6 は手はんだです。BOM と CPL に含まれません。
 - J1/J3 のシェル固定タブは THT です。SMT 実装のあとに手はんだしてください。
+- J1/J3 の CPL 位置は JLCPCB の USB-C 部品原点に合わせて 1.571 mm 補正しています。
 - CPL の回転は KiCad の値をそのまま出力しています。JLCPCB の実装プレビューで
   部品の向きを確認してください。
 - U4 (AP2112K-3.3TRG1) と C27 (100uF) の LCSC 型番は発注前に再確認してください。
@@ -350,6 +368,14 @@ def main() -> int:
         fail(f"{PCB.relative_to(ROOT)} does not exist")
 
     board = pcbnew.LoadBoard(str(PCB))
+    aux = board.GetDesignSettings().GetAuxOrigin()
+    expected_aux_y = pcbnew.FromMM(float(BOARD["height_mm"]))
+    if aux.x != 0 or abs(aux.y - expected_aux_y) > 1:
+        fail(
+            "drill/place origin is "
+            f"({aux.x / 1_000_000:.3f}, {aux.y / 1_000_000:.3f}) mm; "
+            f"expected (0, {BOARD['height_mm']})"
+        )
     parts = pcb_parts(board)
     bom_rows, smt_refs, tht_refs = build_bom(parts)
     cpl_rows = build_cpl(parts)
@@ -378,13 +404,14 @@ def main() -> int:
         "--output", str(gerber_dir),
         "--layers", GERBER_LAYERS,
         "--no-protel-ext",
+        "--use-drill-file-origin",
         str(PCB),
     ])
     run([
         "kicad-cli", "pcb", "export", "drill",
         "--output", str(gerber_dir),
         "--format", "excellon",
-        "--drill-origin", "absolute",
+        "--drill-origin", "plot",
         "--excellon-zeros-format", "decimal",
         "--excellon-units", "mm",
         "--excellon-separate-th",
