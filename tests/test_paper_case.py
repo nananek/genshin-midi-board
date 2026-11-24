@@ -9,7 +9,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-GENERATOR = ROOT / "hardware" / "rp2040_frisk" / "scripts" / "gen_paper_case.py"
+GENERATOR = ROOT / "hardware" / "rp2040_midi_bridge" / "scripts" / "gen_paper_case.py"
 PDF = ROOT / "docs" / "paper_case_a4.pdf"
 SVG = ROOT / "docs" / "paper_case_a4.svg"
 
@@ -26,7 +26,7 @@ def _load_generator():
 
 gen = _load_generator()
 DESIGN = yaml.safe_load(
-    (ROOT / "hardware" / "rp2040_frisk" / "design.yaml").read_text(encoding="utf-8"))
+    (ROOT / "hardware" / "rp2040_midi_bridge" / "design.yaml").read_text(encoding="utf-8"))
 CASE = gen.build_case(gen.read_design())
 
 

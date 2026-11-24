@@ -5,15 +5,15 @@
 	(uuid "0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11")
 	(paper "A1")
 	(title_block
-		(title "RP2040 Frisk MIDI bridge")
+		(title "RP2040 MIDI bridge")
 		(date "2026-11-23")
 		(rev "A")
 		(comment 1 "Board 62.0 x 35.0 mm, 4 layers, 1.6 mm")
 		(comment 2 "RP2040 PIO-USB host + native USB HID + CH345T USB-MIDI")
-		(comment 3 "Generated from hardware/rp2040_frisk/netlist.yaml")
+		(comment 3 "Generated from hardware/rp2040_midi_bridge/netlist.yaml")
 	)
 	(lib_symbols
-		(symbol "rp2040_frisk:+1V1"
+		(symbol "rp2040_midi_bridge:+1V1"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -144,7 +144,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:+3V3"
+		(symbol "rp2040_midi_bridge:+3V3"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -286,7 +286,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:+5V"
+		(symbol "rp2040_midi_bridge:+5V"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -428,7 +428,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:AP2112K-3.3"
+		(symbol "rp2040_midi_bridge:AP2112K-3.3"
 			(pin_names
 				(offset 0.254)
 			)
@@ -622,7 +622,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:C"
+		(symbol "rp2040_midi_bridge:C"
 			(pin_numbers
 				(hide yes)
 			)
@@ -779,7 +779,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:CH345T"
+		(symbol "rp2040_midi_bridge:CH345T"
 			(pin_names
 				(offset 1.016)
 			)
@@ -1218,7 +1218,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:Crystal_GND24"
+		(symbol "rp2040_midi_bridge:Crystal_GND24"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -1512,7 +1512,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:D_Schottky"
+		(symbol "rp2040_midi_bridge:D_Schottky"
 			(pin_numbers
 				(hide yes)
 			)
@@ -1687,7 +1687,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:GND"
+		(symbol "rp2040_midi_bridge:GND"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -1807,7 +1807,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:LED"
+		(symbol "rp2040_midi_bridge:LED"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2021,7 +2021,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:PWR_FLAG"
+		(symbol "rp2040_midi_bridge:PWR_FLAG"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -2141,7 +2141,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:R"
+		(symbol "rp2040_midi_bridge:R"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2281,7 +2281,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:RP2040"
+		(symbol "rp2040_midi_bridge:RP2040"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -3435,7 +3435,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:SW_SPDT"
+		(symbol "rp2040_midi_bridge:SW_SPDT"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -3626,7 +3626,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:SW_TACT_4P"
+		(symbol "rp2040_midi_bridge:SW_TACT_4P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -3777,7 +3777,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:TPS2553DBVR"
+		(symbol "rp2040_midi_bridge:TPS2553DBVR"
 			(pin_names
 				(offset 1.016)
 			)
@@ -3964,7 +3964,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:TestPoint"
+		(symbol "rp2040_midi_bridge:TestPoint"
 			(pin_numbers
 				(hide yes)
 			)
@@ -4087,7 +4087,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:USBLC6-2SC6"
+		(symbol "rp2040_midi_bridge:USBLC6-2SC6"
 			(pin_names
 				(hide yes)
 			)
@@ -4585,7 +4585,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:USB_A_6P"
+		(symbol "rp2040_midi_bridge:USB_A_6P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -4772,7 +4772,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:USB_C_Receptacle_USB2.0_16P"
+		(symbol "rp2040_midi_bridge:USB_C_Receptacle_USB2.0_16P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -5495,7 +5495,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:VBUS_IPAD"
+		(symbol "rp2040_midi_bridge:VBUS_IPAD"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -5626,7 +5626,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:VBUS_PC"
+		(symbol "rp2040_midi_bridge:VBUS_PC"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -5757,7 +5757,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:VBUS_USB_A"
+		(symbol "rp2040_midi_bridge:VBUS_USB_A"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -5888,7 +5888,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_frisk:W25Q128JVS"
+		(symbol "rp2040_midi_bridge:W25Q128JVS"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6132,7 +6132,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:RP2040")
+		(lib_id "rp2040_midi_bridge:RP2040")
 		(at 54.61 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6356,7 +6356,7 @@
 			(uuid "f4b4e0b9-0e92-55e2-8720-04e808cee0aa")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U1")
 					(unit 1)
@@ -6365,7 +6365,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 52.07 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6413,7 +6413,7 @@
 			(uuid "72aade7c-54dd-5655-a770-8c0eff38c54d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR001")
 					(unit 1)
@@ -6422,7 +6422,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 25.4 64.77 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6470,7 +6470,7 @@
 			(uuid "f1d762f9-5326-58cb-94e3-494c3d21112d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR002")
 					(unit 1)
@@ -6479,7 +6479,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 67.31 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6527,7 +6527,7 @@
 			(uuid "a5866386-f3c8-5b66-9c7b-d3ff1e3f7537")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR003")
 					(unit 1)
@@ -6536,7 +6536,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 44.45 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6584,7 +6584,7 @@
 			(uuid "f3f1d03d-a169-58a3-9106-5790d2ce81d4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR004")
 					(unit 1)
@@ -6593,7 +6593,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 57.15 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6641,7 +6641,7 @@
 			(uuid "f3039a57-be01-5c13-a6d3-e7b51ffd2af9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR005")
 					(unit 1)
@@ -6650,7 +6650,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 62.23 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6698,7 +6698,7 @@
 			(uuid "2d54ff4e-f8bf-5f96-bab7-d56f2b9e15fe")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR006")
 					(unit 1)
@@ -6707,7 +6707,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 41.91 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6755,7 +6755,7 @@
 			(uuid "95e79879-87c1-5527-8b46-599b95df2dfc")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR007")
 					(unit 1)
@@ -6764,7 +6764,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 54.61 144.78 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6812,7 +6812,7 @@
 			(uuid "28fe18a8-0f55-572c-9ef2-9782739c1f65")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR008")
 					(unit 1)
@@ -6821,7 +6821,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:W25Q128JVS")
+		(lib_id "rp2040_midi_bridge:W25Q128JVS")
 		(at 452.12 287.02 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6898,7 +6898,7 @@
 			(uuid "d50456b4-af9d-540c-bba1-f7f5d6e2f9fe")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U2")
 					(unit 1)
@@ -6907,7 +6907,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 452.12 303.53 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6955,7 +6955,7 @@
 			(uuid "63171c8e-4792-5833-98f7-a76795174a89")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR009")
 					(unit 1)
@@ -6964,7 +6964,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 452.12 270.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7012,7 +7012,7 @@
 			(uuid "d4881e49-67be-57bf-b695-2768fff9d753")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR010")
 					(unit 1)
@@ -7021,7 +7021,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:CH345T")
+		(lib_id "rp2040_midi_bridge:CH345T")
 		(at 93.98 250.19 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7046,7 +7046,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SSOP-20_5.3x7.2mm_P0.65mm"
+		(property "Footprint" "rp2040_midi_bridge:SSOP-20_5.3x7.2mm_P0.65mm"
 			(at 93.98 250.19 0)
 			(hide yes)
 			(effects
@@ -7134,7 +7134,7 @@
 			(uuid "2c6f3f03-dae9-54a5-9995-4b04bce306eb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U3")
 					(unit 1)
@@ -7143,7 +7143,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 77.47 256.54 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7191,7 +7191,7 @@
 			(uuid "c6754119-f472-53fd-b43a-3b241c5122c8")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR011")
 					(unit 1)
@@ -7200,7 +7200,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 110.49 241.3 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7248,7 +7248,7 @@
 			(uuid "c117738f-46d4-5a19-b733-4aefd8d5568a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR012")
 					(unit 1)
@@ -7257,7 +7257,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 110.49 246.38 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7305,7 +7305,7 @@
 			(uuid "21b96bfb-142a-5bf2-8a7f-dff3676b5ae1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR013")
 					(unit 1)
@@ -7314,7 +7314,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:AP2112K-3.3")
+		(lib_id "rp2040_midi_bridge:AP2112K-3.3")
 		(at 480.06 214.63 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7382,7 +7382,7 @@
 			(uuid "bf699bdc-21c7-5ebb-8561-c3e1bdb501f1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U4")
 					(unit 1)
@@ -7391,7 +7391,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 468.63 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7439,7 +7439,7 @@
 			(uuid "4c9a8af4-6b33-55ed-901f-ba061dbe24b5")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR014")
 					(unit 1)
@@ -7448,7 +7448,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 480.06 226.06 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7496,7 +7496,7 @@
 			(uuid "6140f5cd-b378-5a4a-b68e-b6709747f6bf")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR015")
 					(unit 1)
@@ -7505,7 +7505,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 468.63 214.63 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7553,7 +7553,7 @@
 			(uuid "52e3cef4-378b-5981-9c3f-6a1a37fa928c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR016")
 					(unit 1)
@@ -7562,7 +7562,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 491.49 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7610,7 +7610,7 @@
 			(uuid "51d12e9c-f7f7-5804-b4b6-1f1a39b9e9e4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR017")
 					(unit 1)
@@ -7619,7 +7619,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TPS2553DBVR")
+		(lib_id "rp2040_midi_bridge:TPS2553DBVR")
 		(at 530.86 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7690,7 +7690,7 @@
 			(uuid "9d24135d-ffd4-5b69-a0f9-68253857fbb8")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U5")
 					(unit 1)
@@ -7699,7 +7699,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 516.89 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7747,7 +7747,7 @@
 			(uuid "28d71e59-e7d2-511c-88e5-29d3b387dff4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR018")
 					(unit 1)
@@ -7756,7 +7756,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 516.89 44.45 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7804,7 +7804,7 @@
 			(uuid "6b02153e-5cd7-5eda-a8c8-9970bd569c33")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR019")
 					(unit 1)
@@ -7813,7 +7813,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 544.83 44.45 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7861,7 +7861,7 @@
 			(uuid "5231827b-de11-5735-bd9f-b59c5a4e4761")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR020")
 					(unit 1)
@@ -7870,7 +7870,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USBLC6-2SC6")
+		(lib_id "rp2040_midi_bridge:USBLC6-2SC6")
 		(at 483.87 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7941,7 +7941,7 @@
 			(uuid "f861204b-e4c7-5b07-8f46-12e7e188d39a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U6")
 					(unit 1)
@@ -7950,7 +7950,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 483.87 66.04 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7998,7 +7998,7 @@
 			(uuid "ff8a7684-ede4-502c-92bc-ead7763ca060")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR021")
 					(unit 1)
@@ -8007,7 +8007,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 483.87 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8055,7 +8055,7 @@
 			(uuid "3b6ef706-c89d-5cd0-8857-4c081733d5dd")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR022")
 					(unit 1)
@@ -8064,7 +8064,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USBLC6-2SC6")
+		(lib_id "rp2040_midi_bridge:USBLC6-2SC6")
 		(at 495.3 147.32 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8135,7 +8135,7 @@
 			(uuid "2a197756-f85b-572a-be19-d4fcb0b3732d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U7")
 					(unit 1)
@@ -8144,7 +8144,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 495.3 158.75 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8192,7 +8192,7 @@
 			(uuid "27089860-3c7a-5ace-a74c-9f4f9ff5f4a7")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR023")
 					(unit 1)
@@ -8201,7 +8201,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_PC")
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
 		(at 495.3 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8249,7 +8249,7 @@
 			(uuid "ce818804-8bf6-5b0c-a5c9-e6e298381f4e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR024")
 					(unit 1)
@@ -8258,7 +8258,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USBLC6-2SC6")
+		(lib_id "rp2040_midi_bridge:USBLC6-2SC6")
 		(at 147.32 252.73 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8329,7 +8329,7 @@
 			(uuid "748c003d-4c00-59e3-9ad3-38d2c18b183e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "U8")
 					(unit 1)
@@ -8338,7 +8338,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 147.32 264.16 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8386,7 +8386,7 @@
 			(uuid "fff2a417-8474-542b-8416-e696fbe14478")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR025")
 					(unit 1)
@@ -8395,7 +8395,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_IPAD")
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
 		(at 147.32 243.84 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8443,7 +8443,7 @@
 			(uuid "c451b823-181c-5eac-aaa9-1d23caf8e3b9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR026")
 					(unit 1)
@@ -8452,7 +8452,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USB_C_Receptacle_USB2.0_16P")
+		(lib_id "rp2040_midi_bridge:USB_C_Receptacle_USB2.0_16P")
 		(at 439.42 149.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8477,7 +8477,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+		(property "Footprint" "rp2040_midi_bridge:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 			(at 439.42 149.86 0)
 			(hide yes)
 			(effects
@@ -8556,7 +8556,7 @@
 			(uuid "5203efc4-976b-5148-a1ea-df82211ac10b")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "J1")
 					(unit 1)
@@ -8565,7 +8565,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 439.42 176.53 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8613,7 +8613,7 @@
 			(uuid "a4d47aaa-ecd9-50ac-8261-4192419fd139")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR027")
 					(unit 1)
@@ -8622,7 +8622,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_PC")
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
 		(at 458.47 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8670,7 +8670,7 @@
 			(uuid "c512fc45-66e7-52cf-b6d3-87f9a49884d3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR028")
 					(unit 1)
@@ -8679,7 +8679,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 431.8 176.53 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8727,7 +8727,7 @@
 			(uuid "d7e04e4d-5c95-5dbc-bbc3-b135b5abde30")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR029")
 					(unit 1)
@@ -8736,7 +8736,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USB_C_Receptacle_USB2.0_16P")
+		(lib_id "rp2040_midi_bridge:USB_C_Receptacle_USB2.0_16P")
 		(at 22.86 255.27 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8761,7 +8761,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+		(property "Footprint" "rp2040_midi_bridge:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 			(at 22.86 255.27 0)
 			(hide yes)
 			(effects
@@ -8840,7 +8840,7 @@
 			(uuid "e06d3945-d523-5462-b7b2-922ddc4f3b2f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "J3")
 					(unit 1)
@@ -8849,7 +8849,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 22.86 281.94 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8897,7 +8897,7 @@
 			(uuid "08bafebf-05f2-58a1-b77d-99374bf21fd9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR030")
 					(unit 1)
@@ -8906,7 +8906,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_IPAD")
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
 		(at 41.91 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8954,7 +8954,7 @@
 			(uuid "c014c27b-6195-5745-83cb-6eeb10e9084f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR031")
 					(unit 1)
@@ -8963,7 +8963,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 15.24 281.94 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9011,7 +9011,7 @@
 			(uuid "76f638f9-b87a-5520-8955-2abf8135a472")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR032")
 					(unit 1)
@@ -9020,7 +9020,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:USB_A_6P")
+		(lib_id "rp2040_midi_bridge:USB_A_6P")
 		(at 448.31 46.99 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9045,7 +9045,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:USB_A_Neltron_5075AR-04-WH"
+		(property "Footprint" "rp2040_midi_bridge:USB_A_Neltron_5075AR-04-WH"
 			(at 448.31 46.99 0)
 			(hide yes)
 			(effects
@@ -9082,7 +9082,7 @@
 			(uuid "97be7936-8885-5f3f-b03f-56199d7b27d2")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "J2")
 					(unit 1)
@@ -9091,7 +9091,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 436.88 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9139,7 +9139,7 @@
 			(uuid "87cfcc15-3e55-5740-80fc-798f1063896d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR033")
 					(unit 1)
@@ -9148,7 +9148,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 436.88 49.53 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9196,7 +9196,7 @@
 			(uuid "9763a207-9821-5530-a305-d3f1fd45dc66")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR034")
 					(unit 1)
@@ -9205,7 +9205,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 436.88 52.07 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9253,7 +9253,7 @@
 			(uuid "e10fa5ca-8010-5af8-902c-75e11c80f9e9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR035")
 					(unit 1)
@@ -9262,7 +9262,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 436.88 54.61 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9310,7 +9310,7 @@
 			(uuid "4498c3b5-df89-506b-a12c-256fab89d051")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR036")
 					(unit 1)
@@ -9319,7 +9319,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:Crystal_GND24")
+		(lib_id "rp2040_midi_bridge:Crystal_GND24")
 		(at 482.6 265.43 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9384,7 +9384,7 @@
 			(uuid "ca2c4379-0637-535e-8676-1a293b8099dc")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "X1")
 					(unit 1)
@@ -9393,7 +9393,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 482.6 274.32 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9441,7 +9441,7 @@
 			(uuid "29b77aed-4430-58a6-ac55-6a3e7542ae60")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR037")
 					(unit 1)
@@ -9450,7 +9450,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:Crystal_GND24")
+		(lib_id "rp2040_midi_bridge:Crystal_GND24")
 		(at 187.96 238.76 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9515,7 +9515,7 @@
 			(uuid "eeb59e6d-0d6d-5ce6-8cfe-066e63f31ead")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "X2")
 					(unit 1)
@@ -9524,7 +9524,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 187.96 247.65 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9572,7 +9572,7 @@
 			(uuid "4b6c648d-2922-5d28-9a12-03b6a69a87cb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR038")
 					(unit 1)
@@ -9581,7 +9581,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:D_Schottky")
+		(lib_id "rp2040_midi_bridge:D_Schottky")
 		(at 433.07 223.52 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9640,7 +9640,7 @@
 			(uuid "232097cf-cd20-5479-9124-4ce200378cbe")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "D1")
 					(unit 1)
@@ -9649,7 +9649,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 433.07 231.14 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9697,7 +9697,7 @@
 			(uuid "fa245e4c-b877-590f-9ecd-93f22c777273")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR039")
 					(unit 1)
@@ -9706,7 +9706,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_PC")
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
 		(at 433.07 215.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9754,7 +9754,7 @@
 			(uuid "7820a586-1edd-5ba8-911c-2a38fb3f5c8f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR040")
 					(unit 1)
@@ -9763,7 +9763,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:D_Schottky")
+		(lib_id "rp2040_midi_bridge:D_Schottky")
 		(at 449.58 223.52 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9822,7 +9822,7 @@
 			(uuid "cb76db3d-1f5a-52e8-93a4-31ec7c1095e4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "D2")
 					(unit 1)
@@ -9831,7 +9831,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 449.58 231.14 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9879,7 +9879,7 @@
 			(uuid "cab6dd36-336a-5fe1-8984-be1dc450c72a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR041")
 					(unit 1)
@@ -9888,7 +9888,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_IPAD")
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
 		(at 449.58 215.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9936,7 +9936,7 @@
 			(uuid "ed4aa34f-a46b-505d-b171-e5055edf20e4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR042")
 					(unit 1)
@@ -9945,7 +9945,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:LED")
+		(lib_id "rp2040_midi_bridge:LED")
 		(at 775.97 275.59 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10004,7 +10004,7 @@
 			(uuid "63d8715b-ea98-5660-93f7-dac6924c2cd4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "LED1")
 					(unit 1)
@@ -10013,7 +10013,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 775.97 283.21 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10061,7 +10061,7 @@
 			(uuid "3003ac3f-7b27-5a0a-b6ee-19b7d473c865")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR043")
 					(unit 1)
@@ -10070,7 +10070,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:SW_SPDT")
+		(lib_id "rp2040_midi_bridge:SW_SPDT")
 		(at 29.21 205.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10095,7 +10095,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+		(property "Footprint" "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 			(at 29.21 205.74 0)
 			(hide yes)
 			(effects
@@ -10123,7 +10123,7 @@
 			(uuid "4764c579-10a7-5972-a5b5-df99efda152b")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "SW1")
 					(unit 1)
@@ -10132,7 +10132,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 38.1 208.28 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10180,7 +10180,7 @@
 			(uuid "6d8abd4b-866a-5c73-baba-534772dccc9a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR044")
 					(unit 1)
@@ -10189,7 +10189,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:SW_SPDT")
+		(lib_id "rp2040_midi_bridge:SW_SPDT")
 		(at 71.12 205.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10214,7 +10214,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+		(property "Footprint" "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 			(at 71.12 205.74 0)
 			(hide yes)
 			(effects
@@ -10242,7 +10242,7 @@
 			(uuid "61926952-d4cd-5db9-9530-6878544d88f2")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "SW2")
 					(unit 1)
@@ -10251,7 +10251,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 80.01 208.28 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10299,7 +10299,7 @@
 			(uuid "a1f2bcd7-78af-59c9-b3b4-4f3437ac10e2")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR045")
 					(unit 1)
@@ -10308,7 +10308,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:SW_SPDT")
+		(lib_id "rp2040_midi_bridge:SW_SPDT")
 		(at 116.84 205.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10333,7 +10333,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+		(property "Footprint" "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 			(at 116.84 205.74 0)
 			(hide yes)
 			(effects
@@ -10361,7 +10361,7 @@
 			(uuid "a7ce7f3b-9c89-5d93-a5e0-c6ddea1d7cfd")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "SW3")
 					(unit 1)
@@ -10370,7 +10370,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 125.73 208.28 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10418,7 +10418,7 @@
 			(uuid "b6cec87f-2f69-5218-9306-85e1846c4b40")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR046")
 					(unit 1)
@@ -10427,7 +10427,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:SW_SPDT")
+		(lib_id "rp2040_midi_bridge:SW_SPDT")
 		(at 576.58 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10452,7 +10452,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+		(property "Footprint" "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 			(at 576.58 41.91 0)
 			(hide yes)
 			(effects
@@ -10480,7 +10480,7 @@
 			(uuid "93531736-cadb-5dc7-9c18-6267a47e94c3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "SW4")
 					(unit 1)
@@ -10489,7 +10489,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 585.47 44.45 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10537,7 +10537,7 @@
 			(uuid "5a47b375-0492-5fd9-9c77-91d34a0b2966")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR047")
 					(unit 1)
@@ -10546,7 +10546,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:SW_TACT_4P")
+		(lib_id "rp2040_midi_bridge:SW_TACT_4P")
 		(at 160.02 207.01 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10571,7 +10571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:SW_TACT_Akizuki_DTS63"
+		(property "Footprint" "rp2040_midi_bridge:SW_TACT_Akizuki_DTS63"
 			(at 160.02 207.01 0)
 			(hide yes)
 			(effects
@@ -10602,7 +10602,7 @@
 			(uuid "aaf5a114-1c1c-5c39-9b93-beb78d3aa2b0")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "SW6")
 					(unit 1)
@@ -10611,7 +10611,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 147.32 205.74 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10659,7 +10659,7 @@
 			(uuid "a0062611-f5d2-5c85-9f8e-fd4c265a5ff3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR048")
 					(unit 1)
@@ -10668,7 +10668,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 147.32 208.28 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10716,7 +10716,7 @@
 			(uuid "82c0119c-5204-5ab6-9d79-4a408d35d9b1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR049")
 					(unit 1)
@@ -10725,7 +10725,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 542.29 130.81 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10784,7 +10784,7 @@
 			(uuid "5987b11e-e468-5562-9555-8f7d44de0736")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R1")
 					(unit 1)
@@ -10793,7 +10793,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 589.28 130.81 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10852,7 +10852,7 @@
 			(uuid "c6f952b9-b3d4-5bff-a03b-376674b4a646")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R2")
 					(unit 1)
@@ -10861,7 +10861,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 622.3 38.1 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10920,7 +10920,7 @@
 			(uuid "3ce5d603-cf13-59a7-9ac4-c3f8ccc84c9c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R3")
 					(unit 1)
@@ -10929,7 +10929,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 666.75 38.1 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10988,7 +10988,7 @@
 			(uuid "f17ac776-0b79-596b-91c1-952a055c1e14")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R4")
 					(unit 1)
@@ -10997,7 +10997,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 628.65 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11056,7 +11056,7 @@
 			(uuid "43f7f23d-d532-5f7f-b9e6-96e212933d16")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R5")
 					(unit 1)
@@ -11065,7 +11065,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 636.27 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11113,7 +11113,7 @@
 			(uuid "29668603-38ed-5503-9d56-3cc69bec62c7")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR050")
 					(unit 1)
@@ -11122,7 +11122,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 665.48 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11181,7 +11181,7 @@
 			(uuid "c75e16ac-ecd8-55ae-ba62-e231b431a9f0")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R6")
 					(unit 1)
@@ -11190,7 +11190,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 673.1 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11238,7 +11238,7 @@
 			(uuid "f2f2a69e-55ca-56aa-a8b1-291840645595")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR051")
 					(unit 1)
@@ -11247,7 +11247,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 224.79 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11306,7 +11306,7 @@
 			(uuid "341ef723-a999-5729-a066-3e8fa10a0a39")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R7")
 					(unit 1)
@@ -11315,7 +11315,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 232.41 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11363,7 +11363,7 @@
 			(uuid "e19ecc50-e836-5b2d-94f1-214ac177f749")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR052")
 					(unit 1)
@@ -11372,7 +11372,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 264.16 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11431,7 +11431,7 @@
 			(uuid "d2fd1751-065d-5be2-a58f-7fe6a85dd893")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R8")
 					(unit 1)
@@ -11440,7 +11440,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 271.78 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11488,7 +11488,7 @@
 			(uuid "7b148580-a1c3-573d-a221-a1e744ec8b2f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR053")
 					(unit 1)
@@ -11497,7 +11497,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 706.12 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11556,7 +11556,7 @@
 			(uuid "b4527e28-ac3f-58b7-af4b-a3c150da33e3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R9")
 					(unit 1)
@@ -11565,7 +11565,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 713.74 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11613,7 +11613,7 @@
 			(uuid "6a892063-0804-59bb-9aaa-29bec1882464")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR054")
 					(unit 1)
@@ -11622,7 +11622,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 742.95 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11681,7 +11681,7 @@
 			(uuid "fccd8f0e-9bef-5f1b-acaf-60e42133b6ef")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R10")
 					(unit 1)
@@ -11690,7 +11690,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 750.57 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11738,7 +11738,7 @@
 			(uuid "982a7236-70b4-5c16-89af-7f1e2ecfcc93")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR055")
 					(unit 1)
@@ -11747,7 +11747,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 783.59 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11806,7 +11806,7 @@
 			(uuid "734e9875-155d-5c77-8f25-e23884f69366")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R11")
 					(unit 1)
@@ -11815,7 +11815,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 791.21 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11863,7 +11863,7 @@
 			(uuid "76482bae-f72c-5cf1-96e3-0ee803d9606f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR056")
 					(unit 1)
@@ -11872,7 +11872,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 520.7 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11931,7 +11931,7 @@
 			(uuid "6f8f14c8-f923-5b55-a325-56042dea57c9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R12")
 					(unit 1)
@@ -11940,7 +11940,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 528.32 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11988,7 +11988,7 @@
 			(uuid "f2fce9eb-57a7-5875-8670-23ad5af37d83")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR057")
 					(unit 1)
@@ -11997,7 +11997,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 562.61 262.89 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12056,7 +12056,7 @@
 			(uuid "94064471-6606-5c0e-8b6b-85c22f91dd7e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R13")
 					(unit 1)
@@ -12065,7 +12065,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 603.25 262.89 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12124,7 +12124,7 @@
 			(uuid "ce7a6a78-fe55-5a51-9fdf-71bb5043a486")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R14")
 					(unit 1)
@@ -12133,7 +12133,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 640.08 262.89 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12192,7 +12192,7 @@
 			(uuid "2a1a7143-2773-5c92-bd37-eb621f64cf82")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R15")
 					(unit 1)
@@ -12201,7 +12201,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 304.8 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12260,7 +12260,7 @@
 			(uuid "c4900e5a-2e9f-55e7-85d4-a51731cab142")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R16")
 					(unit 1)
@@ -12269,7 +12269,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 312.42 240.03 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12317,7 +12317,7 @@
 			(uuid "01b1bae3-8e93-5b3a-8eaa-3fd213b77e73")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR058")
 					(unit 1)
@@ -12326,7 +12326,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 350.52 236.22 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12385,7 +12385,7 @@
 			(uuid "3f63b301-82bb-51b8-90e8-a822b96dd539")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R17")
 					(unit 1)
@@ -12394,7 +12394,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 35.56 307.34 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12453,7 +12453,7 @@
 			(uuid "bab27ace-bcc6-592b-becc-daff91c2bbad")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R18")
 					(unit 1)
@@ -12462,7 +12462,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:R")
+		(lib_id "rp2040_midi_bridge:R")
 		(at 674.37 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12521,7 +12521,7 @@
 			(uuid "ead783e3-fbd7-5557-89ee-53cda170caba")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "R19")
 					(unit 1)
@@ -12530,7 +12530,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 681.99 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12578,7 +12578,7 @@
 			(uuid "a87bca29-87f6-58b3-82dd-48c6d002020a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR059")
 					(unit 1)
@@ -12587,7 +12587,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 120.65 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12646,7 +12646,7 @@
 			(uuid "a2a19944-db0c-59d5-a899-d3ee3677d3a0")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C1")
 					(unit 1)
@@ -12655,7 +12655,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 113.03 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12703,7 +12703,7 @@
 			(uuid "943567b8-59bb-561f-9437-0d6c7490305a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR060")
 					(unit 1)
@@ -12712,7 +12712,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 128.27 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12760,7 +12760,7 @@
 			(uuid "aaff2ce1-944f-56f7-b2d5-86299f1636a1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR061")
 					(unit 1)
@@ -12769,7 +12769,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 157.48 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12828,7 +12828,7 @@
 			(uuid "3a5725d2-9b2b-5e39-89f3-f5562a0d0322")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C2")
 					(unit 1)
@@ -12837,7 +12837,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 149.86 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12885,7 +12885,7 @@
 			(uuid "47fa2253-543f-5eaf-9cce-2fd0032e1266")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR062")
 					(unit 1)
@@ -12894,7 +12894,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 165.1 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12942,7 +12942,7 @@
 			(uuid "83412d39-7b9f-5b17-8612-074d3667496d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR063")
 					(unit 1)
@@ -12951,7 +12951,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 194.31 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13010,7 +13010,7 @@
 			(uuid "846b991b-2fda-5874-92f0-e6035247347c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C3")
 					(unit 1)
@@ -13019,7 +13019,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 186.69 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13067,7 +13067,7 @@
 			(uuid "d5c77178-6b15-5e40-979f-1bb25b9656f4")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR064")
 					(unit 1)
@@ -13076,7 +13076,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 201.93 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13124,7 +13124,7 @@
 			(uuid "3f7e7d14-dd5d-57c8-b037-aa5b32f043ca")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR065")
 					(unit 1)
@@ -13133,7 +13133,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 231.14 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13192,7 +13192,7 @@
 			(uuid "9aacc043-b48d-519f-940d-9b4e1e7539fa")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C4")
 					(unit 1)
@@ -13201,7 +13201,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 223.52 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13249,7 +13249,7 @@
 			(uuid "22d6ca70-d49c-5698-bf84-161119329e1e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR066")
 					(unit 1)
@@ -13258,7 +13258,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 238.76 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13306,7 +13306,7 @@
 			(uuid "c60cd9c0-e6cc-50bb-84e9-a680710a3195")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR067")
 					(unit 1)
@@ -13315,7 +13315,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 267.97 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13374,7 +13374,7 @@
 			(uuid "5e4a5610-13c3-568e-86e1-fd167d1ed9cf")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C5")
 					(unit 1)
@@ -13383,7 +13383,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 260.35 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13431,7 +13431,7 @@
 			(uuid "bdb5b440-3429-5972-8fee-9e72c7d8b11e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR068")
 					(unit 1)
@@ -13440,7 +13440,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 275.59 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13488,7 +13488,7 @@
 			(uuid "69e1db6c-49fd-535c-8e5c-e7ee1e24ee78")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR069")
 					(unit 1)
@@ -13497,7 +13497,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 304.8 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13547,7 +13547,7 @@
 			(uuid "c58e774e-8a06-52b1-b410-d2b0d8e09f76")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C6")
 					(unit 1)
@@ -13556,7 +13556,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 297.18 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13604,7 +13604,7 @@
 			(uuid "ede98a10-2e27-5427-b528-43c4a1cf1a1a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR070")
 					(unit 1)
@@ -13613,7 +13613,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 312.42 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13661,7 +13661,7 @@
 			(uuid "d66e8dfd-97e8-540e-a704-0603a267a751")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR071")
 					(unit 1)
@@ -13670,7 +13670,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 341.63 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13720,7 +13720,7 @@
 			(uuid "d2625ecc-8ee5-5be8-9582-0f94aaefe235")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C7")
 					(unit 1)
@@ -13729,7 +13729,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 334.01 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13777,7 +13777,7 @@
 			(uuid "a4e2f611-80cc-5234-8ce9-3c8df30c224f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR072")
 					(unit 1)
@@ -13786,7 +13786,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 349.25 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13834,7 +13834,7 @@
 			(uuid "ed58b2b2-080b-53a4-839e-561470d3a6cc")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR073")
 					(unit 1)
@@ -13843,7 +13843,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 378.46 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13893,7 +13893,7 @@
 			(uuid "2e76c5e0-bd42-50e2-b3d2-71c37ec36c08")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C8")
 					(unit 1)
@@ -13902,7 +13902,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 370.84 41.91 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13950,7 +13950,7 @@
 			(uuid "1dce26bd-6115-5fee-b3a9-23ce245da318")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR074")
 					(unit 1)
@@ -13959,7 +13959,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 386.08 41.91 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14007,7 +14007,7 @@
 			(uuid "3664bf46-3686-5c4c-b6e4-39baa8664da9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR075")
 					(unit 1)
@@ -14016,7 +14016,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 26.67 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14066,7 +14066,7 @@
 			(uuid "b030ee5c-3dca-5c5c-b811-ed3b0f77ade6")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C9")
 					(unit 1)
@@ -14075,7 +14075,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 19.05 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14123,7 +14123,7 @@
 			(uuid "cd913666-233a-5c10-9445-5540059ccb37")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR076")
 					(unit 1)
@@ -14132,7 +14132,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 34.29 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14180,7 +14180,7 @@
 			(uuid "2ee830b8-9915-5299-9668-2bb85a3cd939")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR077")
 					(unit 1)
@@ -14189,7 +14189,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 63.5 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14239,7 +14239,7 @@
 			(uuid "3be8233e-f17c-5028-ac0a-fce83d802223")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C10")
 					(unit 1)
@@ -14248,7 +14248,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 55.88 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14296,7 +14296,7 @@
 			(uuid "fe9d7400-4705-5f98-a7c7-f9d3ce2c0191")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR078")
 					(unit 1)
@@ -14305,7 +14305,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 71.12 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14353,7 +14353,7 @@
 			(uuid "4e1680b0-22b1-5e72-a849-044429b411ff")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR079")
 					(unit 1)
@@ -14362,7 +14362,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 100.33 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14412,7 +14412,7 @@
 			(uuid "4c44bc69-d466-528a-9bd7-f7bd5b27cac1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C11")
 					(unit 1)
@@ -14421,7 +14421,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 92.71 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14469,7 +14469,7 @@
 			(uuid "df8bbe03-e0aa-56c8-a794-febf53a1b62c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR080")
 					(unit 1)
@@ -14478,7 +14478,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 107.95 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14526,7 +14526,7 @@
 			(uuid "d033ff95-2532-5415-8db3-9c1e370882bb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR081")
 					(unit 1)
@@ -14535,7 +14535,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 137.16 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14585,7 +14585,7 @@
 			(uuid "b13d3c87-322e-55d9-880a-dd0d66806dbb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C12")
 					(unit 1)
@@ -14594,7 +14594,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 129.54 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14642,7 +14642,7 @@
 			(uuid "26552e8d-34eb-5303-8dfa-b0e39d73f1a0")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR082")
 					(unit 1)
@@ -14651,7 +14651,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 144.78 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14699,7 +14699,7 @@
 			(uuid "d1312fcb-a4ab-53e4-bcc3-5717856aa565")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR083")
 					(unit 1)
@@ -14708,7 +14708,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 173.99 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14758,7 +14758,7 @@
 			(uuid "54621d48-c714-5c14-9327-7828e2e61af2")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C13")
 					(unit 1)
@@ -14767,7 +14767,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 166.37 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14815,7 +14815,7 @@
 			(uuid "7f6378b7-6c0a-516e-a249-7f18096b9812")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR084")
 					(unit 1)
@@ -14824,7 +14824,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 181.61 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14872,7 +14872,7 @@
 			(uuid "473ba53a-0c40-568b-aaa2-29ca5ad75021")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR085")
 					(unit 1)
@@ -14881,7 +14881,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 210.82 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14931,7 +14931,7 @@
 			(uuid "bb458e01-c1f8-5711-b9bf-9bfe653c250e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C14")
 					(unit 1)
@@ -14940,7 +14940,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 203.2 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14988,7 +14988,7 @@
 			(uuid "e0217860-660e-5c61-bba8-b5c2c275c2df")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR086")
 					(unit 1)
@@ -14997,7 +14997,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 218.44 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15045,7 +15045,7 @@
 			(uuid "7f049b46-f5c1-5234-bdec-e73b9f5623b1")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR087")
 					(unit 1)
@@ -15054,7 +15054,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 247.65 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15104,7 +15104,7 @@
 			(uuid "af1b5a4b-d0f2-5b2c-b632-0aacb6f280e6")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C15")
 					(unit 1)
@@ -15113,7 +15113,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+1V1")
+		(lib_id "rp2040_midi_bridge:+1V1")
 		(at 240.03 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15161,7 +15161,7 @@
 			(uuid "53d34df7-bd00-5a4e-aaee-62dd3e17466c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR088")
 					(unit 1)
@@ -15170,7 +15170,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 255.27 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15218,7 +15218,7 @@
 			(uuid "c77ea6ce-76e4-503a-b7e7-4badc4983160")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR089")
 					(unit 1)
@@ -15227,7 +15227,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 284.48 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15277,7 +15277,7 @@
 			(uuid "07ac0dff-9bc2-52b1-8f99-d7485de0add2")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C16")
 					(unit 1)
@@ -15286,7 +15286,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 276.86 173.99 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15334,7 +15334,7 @@
 			(uuid "705f9a15-b2a9-5617-b94e-e4a1bbde0aff")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR090")
 					(unit 1)
@@ -15343,7 +15343,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 292.1 173.99 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15391,7 +15391,7 @@
 			(uuid "5ab89b55-f534-54c5-acfc-cc4bbbb19ef6")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR091")
 					(unit 1)
@@ -15400,7 +15400,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 78.74 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15459,7 +15459,7 @@
 			(uuid "45c2d7a8-1302-59bf-af9e-a95c34a088ba")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C19")
 					(unit 1)
@@ -15468,7 +15468,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 86.36 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15516,7 +15516,7 @@
 			(uuid "92cb9ba6-07a2-5999-b9e3-6702dd069275")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR092")
 					(unit 1)
@@ -15525,7 +15525,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 520.7 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15584,7 +15584,7 @@
 			(uuid "17aca64e-76a8-545b-8216-69bd7bbced82")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C20")
 					(unit 1)
@@ -15593,7 +15593,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 513.08 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15641,7 +15641,7 @@
 			(uuid "653d662d-cc49-57c3-8ddb-32b878f1c6eb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR093")
 					(unit 1)
@@ -15650,7 +15650,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 528.32 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15698,7 +15698,7 @@
 			(uuid "b543e64b-4c3a-5ac1-8a3e-6a43497085fe")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR094")
 					(unit 1)
@@ -15707,7 +15707,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 557.53 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15766,7 +15766,7 @@
 			(uuid "5fd89772-e249-5952-8a73-2845bc07ffc9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C21")
 					(unit 1)
@@ -15775,7 +15775,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 549.91 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15823,7 +15823,7 @@
 			(uuid "313850e0-16a7-5fb0-9125-fd7a71b1414b")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR095")
 					(unit 1)
@@ -15832,7 +15832,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 565.15 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15880,7 +15880,7 @@
 			(uuid "32e1a5a6-5092-5dcb-a622-453840a635e9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR096")
 					(unit 1)
@@ -15889,7 +15889,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 703.58 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15948,7 +15948,7 @@
 			(uuid "5e12f612-de4f-5528-8e03-fe0f481a46ac")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C24")
 					(unit 1)
@@ -15957,7 +15957,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_PC")
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
 		(at 695.96 134.62 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16005,7 +16005,7 @@
 			(uuid "3921fe83-49c4-5121-8113-dc17109aa184")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR097")
 					(unit 1)
@@ -16014,7 +16014,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 711.2 134.62 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16062,7 +16062,7 @@
 			(uuid "54c54b18-a6c7-5ac0-bb5f-84428b6218ca")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR098")
 					(unit 1)
@@ -16071,7 +16071,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 187.96 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16130,7 +16130,7 @@
 			(uuid "b5fadb9f-e44a-50cd-9249-aa8f7e4af3eb")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C25")
 					(unit 1)
@@ -16139,7 +16139,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_IPAD")
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
 		(at 180.34 311.15 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16187,7 +16187,7 @@
 			(uuid "2f21b8e1-e5c4-5ec6-9ad1-0f7249476bda")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR099")
 					(unit 1)
@@ -16196,7 +16196,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 195.58 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16244,7 +16244,7 @@
 			(uuid "83110a59-fd69-5780-8995-d7deea9bb593")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR100")
 					(unit 1)
@@ -16253,7 +16253,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 443.23 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16312,7 +16312,7 @@
 			(uuid "1216d81c-76fe-584c-8382-7e26e6d9fe80")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C26")
 					(unit 1)
@@ -16321,7 +16321,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 435.61 95.25 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16369,7 +16369,7 @@
 			(uuid "03c28e62-a71a-58d0-ba1f-3222a0c4f204")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR101")
 					(unit 1)
@@ -16378,7 +16378,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 450.85 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16426,7 +16426,7 @@
 			(uuid "e1ffba9b-70ff-57e5-a195-0207bb816ca9")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR102")
 					(unit 1)
@@ -16435,7 +16435,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 480.06 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16494,7 +16494,7 @@
 			(uuid "9cf7626d-dde3-5ca0-8d4a-9ef4b61f26e3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C27")
 					(unit 1)
@@ -16503,7 +16503,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 472.44 95.25 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16551,7 +16551,7 @@
 			(uuid "f2f0969d-e4bb-541c-b372-ca0844fae55e")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR103")
 					(unit 1)
@@ -16560,7 +16560,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 487.68 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16608,7 +16608,7 @@
 			(uuid "e93d9cef-bf72-56d3-b2fd-9c0f31e6198c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR104")
 					(unit 1)
@@ -16617,7 +16617,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 594.36 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16676,7 +16676,7 @@
 			(uuid "1c3abe4b-2244-54fa-b01a-1505b9680400")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C28")
 					(unit 1)
@@ -16685,7 +16685,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 586.74 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16733,7 +16733,7 @@
 			(uuid "f1c65d79-27c4-5baf-b236-bf0421feea7f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR105")
 					(unit 1)
@@ -16742,7 +16742,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 601.98 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16790,7 +16790,7 @@
 			(uuid "1f136283-5da5-5a27-a3d4-ae304caf8bb6")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR106")
 					(unit 1)
@@ -16799,7 +16799,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 631.19 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16858,7 +16858,7 @@
 			(uuid "7e26087a-57f2-501c-a087-35bde76fbc3f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C29")
 					(unit 1)
@@ -16867,7 +16867,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 623.57 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16915,7 +16915,7 @@
 			(uuid "9670b982-b0c8-5262-a667-32c9568416a3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR107")
 					(unit 1)
@@ -16924,7 +16924,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 638.81 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16972,7 +16972,7 @@
 			(uuid "f076c09a-3a9b-5a2d-a032-d5eb52952b98")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR108")
 					(unit 1)
@@ -16981,7 +16981,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 668.02 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17040,7 +17040,7 @@
 			(uuid "ccbd7979-5428-5641-97cf-047ab2e40994")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C30")
 					(unit 1)
@@ -17049,7 +17049,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 660.4 212.09 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17097,7 +17097,7 @@
 			(uuid "222e1ece-9b14-5f6c-bcf8-cc4ce2598c60")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR109")
 					(unit 1)
@@ -17106,7 +17106,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 675.64 212.09 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17154,7 +17154,7 @@
 			(uuid "4ce00728-cf34-53d3-8c34-f1508e6f7f58")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR110")
 					(unit 1)
@@ -17163,7 +17163,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 709.93 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17222,7 +17222,7 @@
 			(uuid "029a23a0-d69a-5c8c-8ed4-332a612afa70")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C17")
 					(unit 1)
@@ -17231,7 +17231,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 717.55 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17279,7 +17279,7 @@
 			(uuid "cba15fbd-f54b-5eb4-9d46-6a08d76c2044")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR111")
 					(unit 1)
@@ -17288,7 +17288,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 748.03 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17347,7 +17347,7 @@
 			(uuid "06b9f472-1019-54bf-8978-7a26f9be576f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C18")
 					(unit 1)
@@ -17356,7 +17356,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 755.65 266.7 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17404,7 +17404,7 @@
 			(uuid "a553debd-ae54-504a-a2d1-1ca63431cf3c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR112")
 					(unit 1)
@@ -17413,7 +17413,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 114.3 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17472,7 +17472,7 @@
 			(uuid "ad39a87b-5f11-5e34-990b-4c00625a7612")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C22")
 					(unit 1)
@@ -17481,7 +17481,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 121.92 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17529,7 +17529,7 @@
 			(uuid "3488b81b-ab75-540a-9098-5f4fe4dc122a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR113")
 					(unit 1)
@@ -17538,7 +17538,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:C")
+		(lib_id "rp2040_midi_bridge:C")
 		(at 149.86 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17597,7 +17597,7 @@
 			(uuid "2322cc74-b8d6-5b1c-b5b1-b6118f0baf18")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "C23")
 					(unit 1)
@@ -17606,7 +17606,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 157.48 311.15 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17654,7 +17654,7 @@
 			(uuid "f027d757-02ee-5841-9604-1f5a6a301acf")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR114")
 					(unit 1)
@@ -17663,7 +17663,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 792.48 266.7 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17688,7 +17688,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 792.48 266.7 0)
 			(hide yes)
 			(effects
@@ -17710,7 +17710,7 @@
 			(uuid "f9fa7226-7edc-550d-9081-55c4962cf44a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP3")
 					(unit 1)
@@ -17719,7 +17719,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 792.48 270.51 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17767,7 +17767,7 @@
 			(uuid "8e4ec1a5-30ca-510d-9c10-24ef1dd298ba")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR115")
 					(unit 1)
@@ -17776,7 +17776,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 808.99 266.7 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17801,7 +17801,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 808.99 266.7 0)
 			(hide yes)
 			(effects
@@ -17823,7 +17823,7 @@
 			(uuid "e6cf151d-81b0-5d4f-8b35-f9431f667563")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP7")
 					(unit 1)
@@ -17832,7 +17832,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 824.23 266.7 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17857,7 +17857,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 824.23 266.7 0)
 			(hide yes)
 			(effects
@@ -17879,7 +17879,7 @@
 			(uuid "b40e44a2-3be4-5b5e-a99f-ad4a36180d01")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP8")
 					(unit 1)
@@ -17888,7 +17888,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+3V3")
+		(lib_id "rp2040_midi_bridge:+3V3")
 		(at 824.23 270.51 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17936,7 +17936,7 @@
 			(uuid "15a9e876-0d97-58b4-8175-bdd1db3e189f")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR116")
 					(unit 1)
@@ -17945,7 +17945,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 431.8 332.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17970,7 +17970,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 431.8 332.74 0)
 			(hide yes)
 			(effects
@@ -17992,7 +17992,7 @@
 			(uuid "9f9016d9-d4e3-5c88-8465-b868df0e02fd")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP9")
 					(unit 1)
@@ -18001,7 +18001,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 431.8 336.55 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18049,7 +18049,7 @@
 			(uuid "94d5cd50-76b9-5921-be92-1287104b2e76")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR117")
 					(unit 1)
@@ -18058,7 +18058,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 447.04 332.74 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18083,7 +18083,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 447.04 332.74 0)
 			(hide yes)
 			(effects
@@ -18105,7 +18105,7 @@
 			(uuid "cd2584f4-9697-57f9-b2cc-6c09cce91d43")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP10")
 					(unit 1)
@@ -18114,7 +18114,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 447.04 336.55 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18162,7 +18162,7 @@
 			(uuid "cc48930d-7a10-5e78-bd44-0cf2a2de74de")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR118")
 					(unit 1)
@@ -18171,7 +18171,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 215.9 311.15 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18196,7 +18196,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 215.9 311.15 0)
 			(hide yes)
 			(effects
@@ -18218,7 +18218,7 @@
 			(uuid "6ed45647-afd5-5388-8d5e-c7a38f4fe7fa")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP11")
 					(unit 1)
@@ -18227,7 +18227,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:TestPoint")
+		(lib_id "rp2040_midi_bridge:TestPoint")
 		(at 508 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18252,7 +18252,7 @@
 				)
 			)
 		)
-		(property "Footprint" "rp2040_frisk:TestPoint_1P"
+		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
 			(at 508 95.25 0)
 			(hide yes)
 			(effects
@@ -18274,7 +18274,7 @@
 			(uuid "bee77831-d07a-57c3-b120-1a2a5443a88d")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "TP12")
 					(unit 1)
@@ -18283,7 +18283,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_USB_A")
+		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
 		(at 508 99.06 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18331,7 +18331,7 @@
 			(uuid "a9fd0f50-e496-51ed-aa9c-4c5f5ab1c178")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR119")
 					(unit 1)
@@ -18340,7 +18340,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:+5V")
+		(lib_id "rp2040_midi_bridge:+5V")
 		(at 11.43 354.33 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18388,7 +18388,7 @@
 			(uuid "1b0d1f28-7e38-58f3-8c76-da069f833ee6")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR120")
 					(unit 1)
@@ -18397,7 +18397,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:PWR_FLAG")
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
 		(at 11.43 361.95 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18445,7 +18445,7 @@
 			(uuid "63c35acc-a33c-5505-95b4-754643d46d63")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#FLG01")
 					(unit 1)
@@ -18454,7 +18454,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:GND")
+		(lib_id "rp2040_midi_bridge:GND")
 		(at 59.69 354.33 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18502,7 +18502,7 @@
 			(uuid "c5774295-8c87-5a0b-bc1b-3190f369a14c")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR121")
 					(unit 1)
@@ -18511,7 +18511,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:PWR_FLAG")
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
 		(at 59.69 361.95 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18559,7 +18559,7 @@
 			(uuid "833826d0-d4a7-58ef-a076-3ca26323d1ce")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#FLG02")
 					(unit 1)
@@ -18568,7 +18568,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_PC")
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
 		(at 11.43 378.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18616,7 +18616,7 @@
 			(uuid "7aa8a6a2-0b34-5c94-a041-3ca14f1128c3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR122")
 					(unit 1)
@@ -18625,7 +18625,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:PWR_FLAG")
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
 		(at 11.43 386.08 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18673,7 +18673,7 @@
 			(uuid "1852a4a7-3de5-50ce-8e24-ebe96e7ef43a")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#FLG03")
 					(unit 1)
@@ -18682,7 +18682,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:VBUS_IPAD")
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
 		(at 59.69 378.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18730,7 +18730,7 @@
 			(uuid "d8271937-a687-5fb3-89d5-f4fb6c3478b3")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#PWR123")
 					(unit 1)
@@ -18739,7 +18739,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_frisk:PWR_FLAG")
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
 		(at 59.69 386.08 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -18787,7 +18787,7 @@
 			(uuid "bd1947dd-1e5b-5001-8deb-8be1482cfa00")
 		)
 		(instances
-			(project "rp2040_frisk"
+			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#FLG04")
 					(unit 1)
@@ -18872,7 +18872,7 @@
 		)
 		(uuid "85c8aae9-3b5c-5ed2-a7fb-99612b6d5c5b")
 	)
-	(text "USB-A host (KORG microKEY2) - PIO-USB"
+	(text "USB-A host (USB MIDI keyboard) - PIO-USB"
 		(exclude_from_sim no)
 		(at 428.5 29.01 0)
 		(effects

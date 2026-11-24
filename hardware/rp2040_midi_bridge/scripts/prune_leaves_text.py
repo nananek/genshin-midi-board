@@ -35,7 +35,7 @@ def blocks(text, keyword):
 
 def main():
     D = json.load(open(ROOT / "diag.json"))
-    pcb = ROOT / "rp2040_frisk.kicad_pcb"
+    pcb = ROOT / "rp2040_midi_bridge.kicad_pcb"
     text = pcb.read_text(encoding="utf-8")
     # collect segment records with text offsets
     recs = []

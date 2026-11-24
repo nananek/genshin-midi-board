@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 *.kicad_prl
-hardware/rp2040_frisk/*.kicad_prl
+hardware/rp2040_midi_bridge/*.kicad_prl
 
 # firmware build outputs
 /firmware/build/
@@ -22,3 +22,21 @@ hardware/rp2040_frisk/*.kicad_prl
 /firmware/tests/t_midi_parse
 /firmware/tests/t_nkro_report
 /firmware/tests/t_nkro_report_wrap
+
+# manufacturing data (see AGENTS.md)
+/dist/
+/gerbers/
+/fab/
+/hardware/rp2040_midi_bridge/dist/
+/hardware/rp2040_midi_bridge/gerbers/
+/hardware/rp2040_midi_bridge/fab/
+*.gbr
+*.gbrjob
+*.gtl
+*.gbl
+*.gts
+*.gbs
+*.gto
+*.gbo
+*.drl
+*-gerber.zip

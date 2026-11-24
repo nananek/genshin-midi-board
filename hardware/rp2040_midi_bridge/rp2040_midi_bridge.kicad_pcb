@@ -443,7 +443,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "07aa8bc7-6ac1-400a-bd41-0f9b76bbaa52")
 		(at 39.5 14)
@@ -674,7 +674,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:USB_A_Neltron_5075AR-04-WH"
+	(footprint "rp2040_midi_bridge:USB_A_Neltron_5075AR-04-WH"
 		(layer "F.Cu")
 		(uuid "1b132160-ecf4-4fab-ac9b-63633d41024a")
 		(at 31 31.6 180)
@@ -1273,7 +1273,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+	(footprint "rp2040_midi_bridge:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 		(layer "F.Cu")
 		(uuid "20a6c445-9775-43fe-87c4-4877885e3f4a")
 		(at 45.5 2.4 180)
@@ -2694,7 +2694,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "32240328-2abb-43bc-98e1-23d2214e80ea")
 		(at 60 16.2)
@@ -2778,7 +2778,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "355d6745-dad5-47a9-960f-e6b3d4d14069")
 		(at 41.5 23)
@@ -3741,7 +3741,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:SW_TACT_Akizuki_DTS63"
+	(footprint "rp2040_midi_bridge:SW_TACT_Akizuki_DTS63"
 		(layer "F.Cu")
 		(uuid "55c8c6a0-b99e-4bfa-a561-15dcfd50622d")
 		(at 31 4.2)
@@ -3883,7 +3883,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+	(footprint "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 		(layer "F.Cu")
 		(uuid "581cefd7-b5f5-4393-ba07-5bbb5e016ae3")
 		(at 5.2 9 90)
@@ -4161,7 +4161,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "63a85e87-343b-4b6b-89f6-54c852cd1b4b")
 		(at 32 8.8)
@@ -5779,7 +5779,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+	(footprint "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 		(layer "F.Cu")
 		(uuid "8107a36e-77b1-4f39-9138-edc63c3cc166")
 		(at 5.2 24.5 90)
@@ -7778,7 +7778,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "ad802389-6c8b-4d25-9c8e-803fa0a336cd")
 		(at 40 20.2)
@@ -8744,7 +8744,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+	(footprint "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 		(layer "F.Cu")
 		(uuid "bfa04abe-43c8-4b6f-b27d-63b0d331070e")
 		(at 15 31.5)
@@ -9758,7 +9758,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:SSOP-20_5.3x7.2mm_P0.65mm"
+	(footprint "rp2040_midi_bridge:SSOP-20_5.3x7.2mm_P0.65mm"
 		(layer "F.Cu")
 		(uuid "d0f8072f-47d1-4a61-bf50-794ceaa14f3e")
 		(at 47.3 12.5)
@@ -10789,7 +10789,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "dd88e240-1bcf-416a-aa3e-1e7a384185cb")
 		(at 48 33.6)
@@ -12220,7 +12220,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:SW_SPDT_NKK_115643_Slide"
+	(footprint "rp2040_midi_bridge:SW_SPDT_NKK_115643_Slide"
 		(layer "F.Cu")
 		(uuid "e9cd81e8-00d7-4927-9749-f7c49f9c861e")
 		(at 55.5 12.5 -90)
@@ -13255,7 +13255,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+	(footprint "rp2040_midi_bridge:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 		(layer "F.Cu")
 		(uuid "f5ef0430-7be9-4afd-b918-eb5133871161")
 		(at 16.5 2.4 180)
@@ -13814,7 +13814,7 @@
 			)
 		)
 	)
-	(footprint "rp2040_frisk:TestPoint_1P"
+	(footprint "rp2040_midi_bridge:TestPoint_1P"
 		(layer "F.Cu")
 		(uuid "f9f31fa2-b3b5-4df8-aa76-9f2be85f8b55")
 		(at 60 19.4)
@@ -14126,7 +14126,7 @@
 		(layer "Edge.Cuts")
 		(uuid "3ab38d59-cc7c-488b-9d63-2a1c68f1a948")
 	)
-	(gr_text "RP2040 FRISK MIDI BRIDGE  REV A"
+	(gr_text "RP2040 MIDI BRIDGE  REV A"
 		(at 31 33.6 0)
 		(layer "F.SilkS")
 		(uuid "bf4c3a47-36a6-4298-9099-a370ed388637")

@@ -9,7 +9,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE = ROOT / "hardware" / "rp2040_frisk"
+BASE = ROOT / "hardware" / "rp2040_midi_bridge"
 DESIGN = yaml.safe_load((BASE / "design.yaml").read_text(encoding="utf-8"))
 
 

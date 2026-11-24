@@ -4,13 +4,13 @@
 
 // ===========================================================================
 //  USB デバイスディスクリプタ (native USB = HID キーボード)
-//  レポートレイアウトは RP2350 版から変更しないこと。
+//  レポートレイアウトは固定。変更すると PC 側のキー割り当てが変わる。
 // ===========================================================================
 
 #define USB_VID 0xCAFE // テスト用 (実配布時は正規に取得した VID/PID に置換)
 #define USB_PID 0x4753 // 'G''S'
 #define USB_BCD 0x0200
-#define USB_MAX_POWER_MA 500 // RP2040 + USB-A 接続機器 (microKEY2) を合わせた上流側の申告上限
+#define USB_MAX_POWER_MA 500 // RP2040 + USB-A 接続機器を合わせた上流側の申告上限
 
 static tusb_desc_device_t const desc_device = {
     .bLength            = sizeof(tusb_desc_device_t),

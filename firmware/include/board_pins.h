@@ -1,10 +1,10 @@
 #ifndef BOARD_PINS_H
 #define BOARD_PINS_H
 
-// RP2040 frisk MIDI bridge (design study, revision A)
+// RP2040 MIDI bridge (design study, revision A)
 //
-// The pin names follow the existing RP2350 firmware so that config.h can keep
-// the same names.  RP2040 QSPI uses pins 51-56, not GPIO0-5, so GP0/1 remain
+// The pin names are kept independent of the board so that config.h can use
+// them directly.  RP2040 QSPI uses pins 51-56, not GPIO0-5, so GP0/1 remain
 // available for the debug UART.
 
 #define PIN_USB_HOST_DP 12

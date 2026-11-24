@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-LIB = Path(__file__).resolve().parent.parent / "lib" / "rp2040_frisk.pretty"
+LIB = Path(__file__).resolve().parent.parent / "lib" / "rp2040_midi_bridge.pretty"
 
 COURTYARDS = {
     "USB_A_Neltron_5075AR-04-WH.kicad_mod": (-8.22, -6.08, 8.22, 3.42),

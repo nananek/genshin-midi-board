@@ -18,7 +18,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-PCB = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "rp2040_frisk.kicad_pcb"
+PCB = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "rp2040_midi_bridge.kicad_pcb"
 RPT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "drc.rpt"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))

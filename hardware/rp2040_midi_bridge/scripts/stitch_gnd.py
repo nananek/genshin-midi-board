@@ -17,7 +17,7 @@ from pathlib import Path
 import pcbnew
 
 ROOT = Path(__file__).resolve().parent.parent
-PCB = ROOT / "rp2040_frisk.kicad_pcb"
+PCB = ROOT / "rp2040_midi_bridge.kicad_pcb"
 RPT = ROOT / "drc.rpt"
 
 CLEAR = 0.45        # via copper radius 0.25 + 0.2 clearance

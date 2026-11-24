@@ -14,8 +14,8 @@ from typing import Any
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-DESIGN = ROOT / "hardware" / "rp2040_frisk" / "design.yaml"
-OUT = ROOT / "hardware" / "rp2040_frisk" / "floorplan.svg"
+DESIGN = ROOT / "hardware" / "rp2040_midi_bridge" / "design.yaml"
+OUT = ROOT / "hardware" / "rp2040_midi_bridge" / "floorplan.svg"
 
 SCALE = 12.0
 MARGIN = 70.0
@@ -70,7 +70,7 @@ def main() -> None:
     conn_labels = {
         "J1": ("J1 USB-C", "PC / NKRO HID"),
         "J3": ("J3 USB-C", "iPad / USB-MIDI"),
-        "J2": ("J2 USB-A", "microKEY2"),
+        "J2": ("J2 USB-A", "MIDI キーボード"),
     }
     for entry in data["connectors"]:
         x, y, w, h = (float(v) for v in entry["courtyard"])
@@ -147,7 +147,7 @@ def main() -> None:
     parts.append(f'<text x="{X(W) + 36:.1f}" y="{Y(H / 2):.1f}" text-anchor="middle" class="dim" transform="rotate(90 {X(W) + 36:.1f} {Y(H / 2):.1f})">31.4 mm</text>')
 
     # title and notes
-    parts.append(f'<text x="{MARGIN}" y="28" class="title">RP2040 Frisk MIDI bridge — placement / keep-out study</text>')
+    parts.append(f'<text x="{MARGIN}" y="28" class="title">RP2040 MIDI bridge — placement / keep-out study</text>')
     parts.append(f'<text x="{MARGIN}" y="44" class="small">57.6 × 31.4 mm, 4 layers, 2 mm punch cuts. Not a fabrication drawing.</text>')
     parts.append(f'<text x="{MARGIN}" y="{height - 26:.1f}" class="small">Blue: connector keep-out. Green: IC. Orange: switch. Red: dimension. Top edge: J1/J3 USB-C (29.0 mm pitch). Bottom edge: J2 USB-A.</text>')
     parts.append('</svg>')

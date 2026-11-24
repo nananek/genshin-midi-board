@@ -6,7 +6,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-NETLIST = yaml.safe_load((ROOT / "hardware" / "rp2040_frisk" / "netlist.yaml").read_text(encoding="utf-8"))
+NETLIST = yaml.safe_load((ROOT / "hardware" / "rp2040_midi_bridge" / "netlist.yaml").read_text(encoding="utf-8"))
 
 
 class NetlistTests(unittest.TestCase):

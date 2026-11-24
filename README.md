@@ -1,8 +1,8 @@
-# RP2040 Frisk MIDI → NKRO HID + USB-MIDI
+# RP2040 MIDI → NKRO HID + USB-MIDI
 
-USB MIDI キーボード（KORG microKEY2）を USB-A で受け、PC へは NKRO HID キーボード、iPad へは USB-MIDI デバイスとして同時に見せる基板の設計案です。
+USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード、iPad へは USB-MIDI デバイスとして同時に見せる基板の設計案です。
 
-RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T + 4 層基板**に置き換えます。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。展開図は [docs/paper_case.md](docs/paper_case.md) と [docs/paper_case_a4.pdf](docs/paper_case_a4.pdf) にあります。
+**RP2040（QFN-56）+ CH345T + 4 層基板**の構成です。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。展開図は [docs/paper_case.md](docs/paper_case.md) と [docs/paper_case_a4.pdf](docs/paper_case_a4.pdf) にあります。
 
 > 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC・未接続 0 です。実機検証はまだです。
 
@@ -10,27 +10,25 @@ RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T
 
 | 項目 | 採用 |
 | --- | --- |
-| MCU | RP2040 QFN-56（RP2350A ベアチップから変更） |
+| MCU | RP2040 QFN-56 |
 | MIDI デバイス側 | CH345T（UART 31250 ↔ USB-MIDI） |
 | 基板 | 62.0 × 35.0 × 1.6 mm、4 層、四隅 2 mm パンチカット |
-| USB-A | PIO-USB ホスト（KORG microKEY2） |
+| USB-A | PIO-USB ホスト |
 | USB-C 1 | RP2040 native USB、NKRO HID → PC |
 | USB-C 2 | CH345T、USB-MIDI → iPad |
 | スイッチ | SW1〜SW4 と SW6（4 × スライド、1 × タクト）。SW5 は SW3 に統合 |
 | 製造 | JLCPCB、4 層、0.5/0.3 mm ビア（最終ホップは 0.45/0.25 mm）、via-in-pad なし |
 
-## なぜ RP2040 か
+## 構成の要点
 
-RP2350A の QFN-60 は、今回の 3 ポート + CH345 + スイッチを 4 層でまとめると、QFN の逃げと Type-C の A7/B7 逃げが窮屈になり、via-in-pad や 0.15 mm ドリルに手を伸ばしやすい構成でした。実際、現行の 6 層版は U1 pin22 と J3 A7/B7 に via-in-pad を使っています。
+RP2040 の QFN-56 は 0.4 mm ピッチで、外周パッドを外側へ逃がすだけで全ピンを引き出せます。4 層なら GND プレーンを保ちながら標準ビアだけで配線できます。ファームウェアは pico-sdk で、PIO-USB、native USB、UART1 を使います。
 
-RP2040 の QFN-56 は 0.4 mm ピッチで、外周パッドを外側へ逃がすだけで全ピンを引き出せます。Raspberry Pi Pico は同じ QFN-56 を 2 層で使っており、4 層なら GND プレーンを保ちながら標準ビアだけで配線できます。ファームウェアも pico-sdk のままで、PIO-USB、native USB、UART1 の使い方は RP2350 とほぼ同じです。
-
-詳しい比較は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。
+詳しい設計は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。
 
 ## 3 ポートの構成
 
 ```text
-[KORG microKEY2]
+[USB MIDI キーボード]
       │ USB-A (J2)
       ▼
   PIO-USB host (GP12/13)
@@ -46,7 +44,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 
 ```text
          J1 USB-C (PC)              J3 USB-C (iPad)
-         x=14.0                     x=43.0
+         x=16.5                     x=45.5
     ┌────┐                            ┌────┐
     │    │        SW6 RESET           │    │
     │    │           ●                │    │
@@ -58,18 +56,18 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
     │                                       │
     ├────┬────────────────────────────┬────┤
     │SW4 │        J2 USB-A            │    │
-    └────┘       (microKEY2)          └────┘
+    └────┘    (MIDI キーボード)        └────┘
 ```
 
 - 基板: 62.0 × 35.0 mm、t1.6 mm、4 層、四隅 2 mm の 45° パンチカット
 - J1/J3: 上長辺、中心間 **29.0 mm**。コートヤード間の隙間は **18.36 mm**
 - J2: 下長辺、USB-A レセプタクル。口は基板外へ出す
 - J1/J3 の口は基板端から外へ出す。紙ケースの上壁に 2 か所、下壁に 1 か所の開口を開ける
-- serial-km-emulator の PR #16/#23 では Type-C を 10 mm ピッチに寄せて樹脂部が干渉した。今回は同じ失敗を避けるため、29 mm ピッチを確保する
+- Type-C を 10 mm ピッチに寄せるとケーブルの樹脂部が干渉する。今回は同じ失敗を避けるため、29 mm ピッチを確保する
 
 ## スイッチ
 
-元実装（`rp2350_zero_carrier`）のスイッチ構成を残し、SW5 のサステインは SW3 に統合します。
+スイッチは SW1〜SW4 と SW6 の 5 個です。SW5 のサステインは SW3 に統合します。
 
 | Ref | 部品 | 機能 | 接続 |
 | --- | --- | --- | --- |
@@ -85,16 +83,17 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 
 ```text
 README.md                         この文書
+AGENTS.md                         作業ルール（製造データの配布を含む）
 docs/design.md                    詳細設計（電源、ピン、回路、配置）
-docs/decisions.md                 代替案の比較と採用理由
+docs/decisions.md                 設計判断と採用理由
 docs/jlcpcb.md                    JLCPCB 向け製造制約と発注チェック
-docs/firmware.md                  ファームウェア移植メモ
+docs/firmware.md                  ファームウェアの実装メモ
 docs/paper_case.md                紙ケースの印刷・折り手順
 docs/paper_case_a4.pdf            A4 1:1 の紙ケース展開図
-hardware/rp2040_frisk/design.yaml 設計の単一ソース
-hardware/rp2040_frisk/pinmap.csv  ピン割り当て
-hardware/rp2040_frisk/bom.csv     BOM
-hardware/rp2040_frisk/floorplan.svg 配置検討図（生成物）
+hardware/rp2040_midi_bridge/design.yaml 設計の単一ソース
+hardware/rp2040_midi_bridge/pinmap.csv  ピン割り当て
+hardware/rp2040_midi_bridge/bom.csv     BOM
+hardware/rp2040_midi_bridge/floorplan.svg 配置検討図（生成物）
 firmware/include/board_pins.h     ファームウェア用ボード定義
 scripts/gen_floorplan.py          配置図生成
 scripts/check_design.py           設計制約チェック
@@ -105,7 +104,7 @@ tests/test_design.py              設計制約の単体テスト
 
 ```sh
 make check          # 設計制約チェック + 単体テスト
-make floorplan      # hardware/rp2040_frisk/floorplan.svg を再生成
+make floorplan      # hardware/rp2040_midi_bridge/floorplan.svg を再生成
 ```
 
 `make check` は次を確認します。
@@ -117,3 +116,11 @@ make floorplan      # hardware/rp2040_frisk/floorplan.svg を再生成
 - ピン割り当ての重複
 - スイッチ 5 個の機能と接続
 - BOM の SMT 部品に LCSC 型番があること
+
+## 製造データの配布
+
+ガーバー、ドリル、BOM、CPL は設計データとは分けて扱います。リポジトリにはコミットせず、検証済みのリビジョンだけをリリースとして配布します。手順と禁止事項は [AGENTS.md](AGENTS.md) にまとめています。
+
+## ライセンス
+
+[MIT](LICENSE) です。`hardware/rp2040_midi_bridge/lib/` の KiCad シンボルは公式 KiCad ライブラリ由来で、CC-BY-SA 4.0（設計への利用例外あり）です。製造データの配布条件は [AGENTS.md](AGENTS.md) を参照してください。

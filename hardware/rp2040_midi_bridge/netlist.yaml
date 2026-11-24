@@ -1,4 +1,4 @@
-project: rp2040_frisk
+project: rp2040_midi_bridge
 components:
   U1:
     value: RP2040

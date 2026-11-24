@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the machine-readable netlist for the RP2040 frisk board.
+"""Build the machine-readable netlist for the RP2040 MIDI bridge board.
 
 The design intent lives in design.yaml and docs/design.md.  This file turns
 that intent into an explicit pin-to-net map so that the schematic and PCB
@@ -14,7 +14,7 @@ from typing import Any
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "hardware" / "rp2040_frisk" / "netlist.yaml"
+OUT = ROOT / "hardware" / "rp2040_midi_bridge" / "netlist.yaml"
 
 C: dict[str, dict[str, Any]] = {}
 
@@ -184,7 +184,7 @@ if errors:
     raise SystemExit("\n".join(errors))
 
 data = {
-    "project": "rp2040_frisk",
+    "project": "rp2040_midi_bridge",
     "components": C,
     "nets": dict(sorted(nets.items())),
 }

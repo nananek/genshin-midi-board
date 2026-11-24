@@ -14,10 +14,10 @@ KiCad 10.0.7 を Docker で使います。ホストに KiCad を入れる必要�
 ## 2. プロジェクト
 
 ```text
-hardware/rp2040_frisk/
-  rp2040_frisk.kicad_pro
-  rp2040_frisk.kicad_sch
-  rp2040_frisk.kicad_pcb
+hardware/rp2040_midi_bridge/
+  rp2040_midi_bridge.kicad_pro
+  rp2040_midi_bridge.kicad_sch
+  rp2040_midi_bridge.kicad_pcb
   sym-lib-table
   fp-lib-table
   lib/                    プロジェクト固有のシンボルとフットプリント
@@ -33,8 +33,8 @@ hardware/rp2040_frisk/
 make erc
 # または
 ./scripts/kicad.sh kicad-cli sch erc --severity-all \
-  --output hardware/rp2040_frisk/erc.rpt \
-  hardware/rp2040_frisk/rp2040_frisk.kicad_sch
+  --output hardware/rp2040_midi_bridge/erc.rpt \
+  hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_sch
 ```
 
 ERC は 0 error を目標にします。ライブラリ未読込の警告は、プロジェクトローカルの `sym-lib-table` と `lib/` で解消します。
@@ -45,8 +45,8 @@ ERC は 0 error を目標にします。ライブラリ未読込の警告は、�
 make drc
 # または
 ./scripts/kicad.sh kicad-cli pcb drc --severity-all \
-  --output hardware/rp2040_frisk/drc.rpt \
-  hardware/rp2040_frisk/rp2040_frisk.kicad_pcb
+  --output hardware/rp2040_midi_bridge/drc.rpt \
+  hardware/rp2040_midi_bridge/rp2040_midi_bridge.kicad_pcb
 ```
 
 DRC は 0 violations / 0 unconnected を目標にします。配線途中で未接続が残る場合は、`drc.rpt` の unconnected 数を記録します。
@@ -96,7 +96,7 @@ USB は Full-Speed なのでインピーダンス制御は必須ではありま�
 
 ## 9. 注意
 
-- 0.15 mm ドリルを 1 本でも入れると、JLCPCB の advanced オプションが付きます。PR #22 の教訓です。
+- 0.15 mm ドリルを 1 本でも入れると、JLCPCB の advanced オプションが付きます。以前の試作で実際にオプション料金が付きました。
 - Type-C の A7/B7 はパッド内ビアを使わず、パッド外のビアへドッグボーンで逃がします。
 - RP2040 のサーマルパッド内にビアを置きません。
 - USB-C は 29.0 mm ピッチを維持します。
