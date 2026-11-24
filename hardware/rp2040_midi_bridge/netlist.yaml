@@ -21,7 +21,7 @@ components:
       '15': USB_A_DP_MCU
       '16': USB_A_DM_MCU
       '17': SW5_RESET
-      '18': null
+      '18': SW2_LYRE
       '19': GND
       '20': X1_XIN
       '21': X1_XOUT_MCU
@@ -44,7 +44,7 @@ components:
       '38': null
       '39': SW3_SUSTAIN
       '40': SW1_MUTE
-      '41': SW2_LYRE
+      '41': null
       '42': +3V3
       '43': +3V3
       '44': +3V3
@@ -798,7 +798,7 @@ nets:
   - U1.40
   - SW1.2
   SW2_LYRE:
-  - U1.41
+  - U1.18
   - SW2.2
   SW3_SUSTAIN:
   - U1.39

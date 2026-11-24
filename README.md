@@ -4,7 +4,7 @@ USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード
 
 **RP2040（QFN-56）+ CH345T + 4 層基板**の構成です。外形は **58.0 × 44.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは無印良品の PP小物ケース M（外寸 64 × 52 × 20 mm、内寸 60 × 46 × 16.5 mm）を使います。加工手順は [docs/case_muji_m.md](docs/case_muji_m.md)、開口用の 1:1 テンプレートは [docs/case_muji_m_template.pdf](docs/case_muji_m_template.pdf) にあります。
 
-> revision B（58.0 × 44.0 mm、無印 PP小物ケース M 用）で外形、配置、回路図、PCB の配線を更新しています。回路図は ERC 0、PCB は DRC 0 violations ですが、未接続が 6 箇所残っています。実機検証はまだです。
+> revision B（58.0 × 44.0 mm、無印 PP小物ケース M 用）で外形、配置、回路図、PCB の配線を更新しています。回路図は ERC 0、PCB は DRC 0 violations ですが、未接続が 3 箇所（SW1_MUTE、RUN、MIDI_UART_RX）残っています。実機検証はまだです。
 
 ## 結論
 
@@ -72,7 +72,7 @@ PC と iPad は物理的に別ポートです。PC 側が未接続でも iPad �
 | Ref | 部品 | 機能 | 接続 |
 | --- | --- | --- | --- |
 | SW1 | NKK 115643 スライド | 原神モード（HID ミュート） | GP28 ↔ GND |
-| SW2 | NKK 115643 スライド | 楽器モード（スメール音階） | GP29 ↔ GND |
+| SW2 | NKK 115643 スライド | 楽器モード（スメール音階） | GP15 ↔ GND |
 | SW3 | NKK 115643 スライド | サステイン（CC64） | GP27 ↔ GND |
 | SW4 | NKK 115643 スライド | USB-A VBUS 手動 ON/OFF | TPS2553 EN 制御 |
 | SW5 | DTS-63-N-V-BLK タクト | MIDI リセット（CC123/CC121） | GP14 ↔ GND |
