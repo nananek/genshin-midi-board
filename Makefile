@@ -1,6 +1,9 @@
 PYTHON ?= python3
 
-.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case clean
+VERSION ?= v0.1.0
+COMMIT ?= $(shell git rev-parse HEAD)
+
+.PHONY: all check test floorplan tables netlist sch pcb kicad-shell erc drc kicad-check paper-case fab clean
 
 all: check floorplan tables netlist
 
@@ -46,6 +49,13 @@ drc:
 
 kicad-check: erc drc
 	$(PYTHON) scripts/check_kicad_pcb.py
+
+fab:
+	@test -z "$$(git status --porcelain)" || { \
+		echo "working tree is dirty; commit before building release data" >&2; \
+		exit 1; \
+	}
+	$(KICAD) python3 scripts/make_fab.py --version $(VERSION) --commit $(COMMIT)
 
 clean:
 	rm -f hardware/rp2040_midi_bridge/floorplan.svg hardware/rp2040_midi_bridge/erc.rpt hardware/rp2040_midi_bridge/drc.rpt

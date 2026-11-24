@@ -92,7 +92,16 @@ USB は Full-Speed なのでインピーダンス制御は必須ではありま�
 
 ## 8. 発注データ
 
-ガーバー、ドリル、BOM、CPL の出力は、PCB と回路図が固まってからスクリプト化します。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
+タグを打つコミットで `make fab` を実行すると、リリース添付用の ZIP を作ります。
+
+```sh
+make check
+make erc
+make drc
+make fab VERSION=v0.1.0
+```
+
+出力は `dist/rp2040_midi_bridge-v0.1.0-gerber.zip` です。中身は `gerbers/`（Gerber X2 と Excellon ドリル）、`bom.csv`、`cpl.csv`、`manifest.sha256`、`README.txt`、`LICENSE` です。`dist/` はコミットしません。配布条件と ZIP の構成は [AGENTS.md](../AGENTS.md) の 3 節を参照してください。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
 
 ## 9. 注意
 
