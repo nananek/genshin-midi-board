@@ -931,7 +931,9 @@ def main():
         "(fp_lib_table\n\t(version 7)\n" + "\n".join(fp_entries) + "\n)\n",
         encoding="utf-8")
 
-    (ROOT / f"{PROJECT}.kicad_pro").write_text(PROJECT_FILE, encoding="utf-8")
+    pro = ROOT / f"{PROJECT}.kicad_pro"
+    if not pro.exists():
+        pro.write_text(PROJECT_FILE, encoding="utf-8")
 
     n_nets = len({n for c in components.values() for n in c["pins"].values() if n})
     print(f"wrote {PROJECT}.kicad_sch: {len(items)} symbols, {len(labels)} labels, "

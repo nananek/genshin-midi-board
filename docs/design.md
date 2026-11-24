@@ -138,7 +138,7 @@ RP2040 のサーマルパッド内にはビアを置きません。F.Cu の GND 
 | native USB D+ | 47 | - | USB_PC_DP | 27 Ω → U7 → J1 D+ |
 | native USB D- | 46 | - | USB_PC_DM | 27 Ω → U7 → J1 D- |
 | 原神モード SW1 | 40 | GP28 | SW1_MUTE | SW1 pin 2 |
-| 楽器モード SW2 | 41 | GP29 | SW2_LYRE | SW2 pin 2 |
+| 楽器モード SW2 | 18 | GP15 | SW2_LYRE | SW2 pin 2 |
 | サステイン SW3 | 39 | GP27 | SW3_SUSTAIN | SW3 pin 2 |
 | MIDI リセット SW5 | 17 | GP14 | SW5_RESET | SW5 pin 3/4 |
 | ステータス LED | 37 | GP25 | STATUS_LED | 1 kΩ → LED1 → GND |
@@ -154,7 +154,7 @@ GPIO6-11、GPIO15-24 は未使用です。テストパッドか将来の拡張�
 | Ref | 部品 | 機能 | 接続 | 動作 |
 | --- | --- | --- | --- | --- |
 | SW1 | NKK 115643 | 原神モード | GP28 ↔ GND | ON で NKRO HID をミュート。UART の MIDI は継続 |
-| SW2 | NKK 115643 | 楽器モード | GP29 ↔ GND | ON でスメール音階に切り替え |
+| SW2 | NKK 115643 | 楽器モード | GP15 ↔ GND | ON でスメール音階に切り替え |
 | SW3 | NKK 115643 | サステイン | GP27 ↔ GND | ON で CC64=127、OFF で CC64=0 |
 | SW4 | NKK 115643 | USB-A VBUS | TPS2553 EN | ON で USB-A へ 5 V を供給 |
 | SW5 | DTS-63-N-V-BLK | MIDI リセット | GP14 ↔ GND | 押下で CC123 と CC121 を全チャンネルへ送る |
@@ -270,7 +270,7 @@ AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF セラミックコンデンサ
 
 ## 12. ファームウェア
 
-ファームウェアは RP2040 向けに pico-sdk で実装します。ピン割り当ては GP4/5、GP12/13、GP27/28/29 を使います。GP27 は SW3 のサステイン、GP14 は MIDI リセット、GP25 は LED に使います。GP26 は未使用です。
+ファームウェアは RP2040 向けに pico-sdk で実装します。ピン割り当ては GP4/5、GP12/13、GP15、GP27/28 を使います。GP15 は SW2 の楽器モード、GP27 は SW3 のサステイン、GP14 は MIDI リセット、GP25 は LED に使います。GP26 は未使用です。
 
 ビルドは pico-sdk 2.x の `PICO_BOARD=pico` を基本にし、ボード定義でピンを上書きします。PIO-USB は RP2040 対応の `sekigon-gonnoc/Pico-PIO-USB` を使います。native USB は TinyUSB の HID、CH345T は UART1 の生 MIDI 出力です。
 
@@ -406,7 +406,7 @@ U2 pin8 は +3V3、C16 100 nF。pin4 は GND。
 | Ref | 接続 |
 | --- | --- |
 | SW1 | pin2 → GP28、pin3 → GND、pin1 → NC |
-| SW2 | pin2 → GP29、pin3 → GND、pin1 → NC |
+| SW2 | pin2 → GP15、pin3 → GND、pin1 → NC |
 | SW3 | pin2 → GP27、pin3 → GND、pin1 → NC（サステイン） |
 | SW4 | pin2 → TPS_EN、pin3 → +3V3、pin1 → NC |
 | SW5 | pin1/2 → GND、pin3/4 → GP14 |

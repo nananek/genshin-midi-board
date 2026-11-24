@@ -116,7 +116,7 @@ def main() -> int:
             if entry.get("net"):
                 gpio_nets[gpio] = entry["net"]
 
-    required_gpios = {12, 13, 4, 5, 28, 29, 27, 14, 25}
+    required_gpios = {12, 13, 4, 5, 28, 15, 27, 14, 25}
     c.require(required_gpios <= set(gpios), "all required GPIOs are assigned")
 
     switches = data["switches"]

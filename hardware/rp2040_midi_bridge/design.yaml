@@ -246,12 +246,12 @@ switches:
   part: NKK 115643 (Akizuki 115643)
   type: slide
   function: lyre mode / Sumeru scale
-  gpio: 29
+  gpio: 15
   net: SW2_LYRE
-  rp2040_pin: 41
+  rp2040_pin: 18
   active: low
   debounce_ms: 20
-  wiring: pin2=GP29, pin3=GND, pin1=NC
+  wiring: pin2=GP15, pin3=GND, pin1=NC
   x_mm: 3.7
   y_mm: 24.5
   rotation_deg: 90
@@ -394,8 +394,8 @@ pinmap:
   destination: SW1 pin2
   note: internal pull-up, active low
 - signal: lyre switch
-  rp2040_pin: 41
-  gpio: 29
+  rp2040_pin: 18
+  gpio: 15
   net: SW2_LYRE
   destination: SW2 pin2
   note: internal pull-up, active low

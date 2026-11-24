@@ -58,7 +58,7 @@ PIO-USB は 120 MHz を要求します。12 MHz 水晶から `set_sys_clock_khz(
 `debounced_switch` を使います。
 
 - SW1: `MUTE_SWITCH_PIN 28`
-- SW2: `LYRE_SWITCH_PIN 29`
+- SW2: `LYRE_SWITCH_PIN 15`
 - SW3: `SUSTAIN_SWITCH_PIN 27`
 - SW5: `MIDI_RESET_BUTTON_PIN 14`
 

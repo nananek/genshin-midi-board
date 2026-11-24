@@ -73,7 +73,7 @@ class BoardTests(unittest.TestCase):
         self.assertIsNone(switches["SW6"]["gpio"])
         self.assertIsNone(switches["SW7"]["gpio"])
         self.assertEqual(switches["SW1"]["gpio"], 28)
-        self.assertEqual(switches["SW2"]["gpio"], 29)
+        self.assertEqual(switches["SW2"]["gpio"], 15)
         self.assertEqual(switches["SW3"]["gpio"], 27)
         self.assertEqual(switches["SW5"]["gpio"], 14)
 

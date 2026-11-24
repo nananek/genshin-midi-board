@@ -182,6 +182,12 @@ _SPECIAL_PLACEMENT = {
     "R2": (23.6, 9.4, 90),
     "TP9": (36.0, 30.0, 0),
     "TP10": (40.0, 30.0, 0),
+    # Rotate the USBLC6 so pins 1 and 6 sit on the same side and the DP pair
+    # can bridge under the package.
+    "U8": (38.9, 10.5, 90),
+    # Keep the USB-A series resistors out of the SW2 corridor along the bottom
+    "R3": (29.0, 30.0, 0),
+    "R4": (30.0, 31.8, 0),
 }
 
 def _rebase_placement(ref, x, y, rot):
@@ -690,7 +696,11 @@ def route(board, netlist, fps):
     skip |= {"USB_PC_DP_MCU", "USB_PC_DM_MCU"}
     report = {}
 
-    # 1. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
+    # 1. SW2 crosses the whole left half of the board to U1 pin 18; give it
+    # the corridor first, otherwise the later nets box it in.
+    report["SW2_LYRE"] = do_net("SW2_LYRE", [0.2, 0.15, 0.127], via_cost=8)
+
+    # 2. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
     for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
@@ -723,7 +733,7 @@ def route(board, netlist, fps):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=8)
 
     # 6. switches: fixed THT parts at the board edges.  SW3 is furthest away.
-    for net in ("SW3_SUSTAIN", "SW5_RESET", "SW1_MUTE", "SW2_LYRE"):
+    for net in ("SW3_SUSTAIN", "SW5_RESET", "SW1_MUTE"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=6)
 
     # 7. USB-A data at J2
