@@ -4,7 +4,7 @@ USB MIDI キーボード（KORG microKEY2）を USB-A で受け、PC へは NKRO
 
 RP2350A ベアチップ + 6 層基板の構成を、**RP2040（QFN-56）+ CH345T + 4 層基板**に置き換えます。外形は **62.0 × 35.0 mm**、四隅 2 mm の 45° パンチカットです。USB-C は長辺に 29.0 mm ピッチで離し、樹脂部が干渉しない余裕を確保します。ケースは A4 から作る紙ケース（内寸 63 × 36 × 9 mm）を想定しています。展開図は [docs/paper_case.md](docs/paper_case.md) と [docs/paper_case_a4.pdf](docs/paper_case_a4.pdf) にあります。
 
-> 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC ですが、未接続 2 点が残っています。実機検証はまだです。
+> 回路図と PCB の初期版を追加しました。回路図は ERC 0、PCB は 4 層で 0 DRC・未接続 0 です。実機検証はまだです。
 
 ## 結論
 

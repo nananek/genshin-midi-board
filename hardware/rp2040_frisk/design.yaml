@@ -133,7 +133,7 @@ placements:
   - ref: U2
     value: W25Q128JVSIQ
     package: "SOIC-8"
-    x_mm: 33.0
+    x_mm: 34.5
     y_mm: 14.0
     w_mm: 7.5
     h_mm: 5.5
@@ -177,7 +177,7 @@ placements:
   - ref: U8
     value: USBLC6-2SC6
     package: "SOT-23-6"
-    x_mm: 39.5
+    x_mm: 40.4
     y_mm: 10.5
     w_mm: 4.2
     h_mm: 3.5
@@ -258,9 +258,9 @@ switches:
     debounce_ms: 20
     wiring: "pin2=GP27, pin3=GND, pin1=NC"
     x_mm: 55.5
-    y_mm: 9.0
+    y_mm: 12.5
     rotation_deg: 270
-    body: [52.25, 3.9, 6.5, 10.2]
+    body: [52.25, 7.4, 6.5, 10.2]
   - ref: SW4
     part: "NKK 115643 (Akizuki 115643)"
     type: slide
