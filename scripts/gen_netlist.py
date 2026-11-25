@@ -160,14 +160,6 @@ add("C22", "22pF", "C_0603_1608Metric", {"1": "X2_XI", "2": "GND"})
 add("C23", "22pF", "C_0603_1608Metric", {"1": "X2_XO", "2": "GND"})
 C["C27"]["footprint"] = "C_1210_3225Metric"
 
-# --- test pads ------------------------------------------------------------
-for ref, net in (
-    ("TP3", "GND"),
-    ("TP7", "BOOTSEL"), ("TP8", "+3V3"), ("TP9", "+5V"),
-    ("TP10", "GND"), ("TP11", "CH345_RST"), ("TP12", "VBUS_USB_A"),
-):
-    add(ref, net, "TestPoint_1P", {"1": net})
-
 # --- derive nets ----------------------------------------------------------
 nets: dict[str, list[str]] = {}
 for ref, comp in C.items():

@@ -493,8 +493,7 @@ for _i in range(1, 20):
     SYMBOL_OF[f"R{_i}"] = "R"
 for _i in range(1, 31):
     SYMBOL_OF[f"C{_i}"] = "C"
-for _i in (3, 7, 8, 9, 10, 11, 12):
-    SYMBOL_OF[f"TP{_i}"] = "TestPoint"
+
 
 ROTATION = {
     ref: (90 if sym in ("R", "C", "C_Polarized", "D_Schottky", "LED") else 0)
@@ -539,11 +538,11 @@ BLOCKS = [
     ("column1", "Switches", ["SW1", "SW2", "SW3", "SW5", "SW6", "SW7"]),
     ("column1", "USB-MIDI device (iPad) - CH345T", [
         "J3", "U3", "U8", "X2", "R7", "R8", "R16", "R17", "R18",
-        "C19", "C22", "C23", "C25", "TP11",
+        "C19", "C22", "C23", "C25",
     ]),
     ("column2", "USB-A host (USB MIDI keyboard) - PIO-USB", [
         "J2", "U6", "U5", "SW4", "R3", "R4", "R9", "R10", "R11",
-        "C26", "C27", "TP12",
+        "C26", "C27",
     ]),
     ("column2", "USB-C device (PC) - native USB / NKRO HID", [
         "J1", "U7", "R1", "R2", "R5", "R6", "C24",
@@ -554,7 +553,6 @@ BLOCKS = [
     ("column2", "QSPI flash, crystal, debug and status", [
         "U2", "X1", "R12", "R13", "R14", "R15", "R19",
         "C17", "C18", "LED1",
-        "TP3", "TP7", "TP8", "TP9", "TP10",
     ]),
 ]
 

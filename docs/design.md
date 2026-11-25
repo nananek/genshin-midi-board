@@ -64,7 +64,7 @@ RP2040 の PIO-USB をホストとして使います。D+ は GP12、D- は GP13
 - J2 VBUS に 100 uF（C27）と 100 nF（C26）
 - TPS2553 の ILIM は 52.3 kΩ（500 mA 設定）
 - TPS2553 の EN は 100 kΩ で GND にプルダウンし、SW4 で +3V3 に接続
-- FAULT は 100 kΩ で +3V3 にプルアップし、テストパッドへ出す
+- FAULT は 100 kΩ で +3V3 にプルアップする
 
 USB MIDI キーボードは USB バスパワーで動作するクラスコンプライアント機器を想定しています。PIO-USB ホストの VBUS は 5 V、500 mA 制限で十分です。
 
@@ -88,7 +88,7 @@ CH345T を UART 31250 と USB-MIDI のブリッジとして使います。
 
 | CH345T pin | 機能 | 接続 |
 | --- | --- | --- |
-| 1 | RST | 10 kΩ で +5V にプルアップ、TP11 へ【要確認】 |
+| 1 | RST | 10 kΩ で +5V にプルアップ【要確認】 |
 | 3 | MOUT | RP2040 GP5（UART1 RX） |
 | 4 | MIN | RP2040 GP4（UART1 TX） |
 | 5 | V3 | 100 nF → GND |
@@ -102,7 +102,7 @@ CH345T を UART 31250 と USB-MIDI のブリッジとして使います。
 
 J3 の CC1/CC2 は各 5.1 kΩ で GND に落とします。J3 VBUS は D2 経由で +5V に入れ、CH345T の電源にします。
 
-CH345T のリセット極性をデータシートで確認し、発注前に確定してください。この設計では、10 kΩ プルアップとテストパッドを置き、必要ならテストパッドで GND に落とせる形にしています。
+CH345T のリセット極性をデータシートで確認し、発注前に確定してください。この設計では、10 kΩ で +5V にプルアップしています。
 
 CH345T の水晶負荷容量は 22 pF の暫定値です。データシート推奨値で確定します。
 
@@ -120,7 +120,7 @@ CH345T の水晶負荷容量は 22 pF の暫定値です。データシート推
 | ADC_AVDD | pin 43、+3V3、100 nF |
 | TESTEN | pin 19、GND |
 | RUN | pin 26、R19 10 kΩ で +3V3 |
-| BOOTSEL | QSPI_SS（pin 56）、TP7、1 kΩ 経由で GND に落とす |
+| BOOTSEL | QSPI_SS（pin 56）、1 kΩ 経由で GND に落とす |
 | サーマルパッド | pin 57、GND |
 
 QSPI は RP2040 の専用ピン（51-56）を使います。GPIO0-5 は QSPI に使われません。QSPI の配線は 25 mm 以内、等長 2 mm 以内、スタブなしにします。
@@ -145,9 +145,9 @@ RP2040 のサーマルパッド内にはビアを置きません。F.Cu の GND 
 | QSPI | 51-56 | - | QSPI_* | U2 |
 | 水晶 | 20/21 | - | XIN/XOUT | Y1 |
 | RUN | 26 | - | RUN | R19 10 kΩ で +3V3、SW7 で GND |
-| BOOTSEL | 56 | - | QSPI_SS | TP7、SW6 で GND（R15 1 kΩ 経由） |
+| BOOTSEL | 56 | - | QSPI_SS | SW6 で GND（R15 1 kΩ 経由） |
 
-GPIO6-11、GPIO15-24 は未使用です。テストパッドか将来の拡張に残します。
+GPIO6-11、GPIO15-24 は未使用です。将来の拡張用に残します。
 
 ## 9. スイッチ
 
@@ -368,7 +368,7 @@ R17/R18 は CH345T 側の 22 Ω です。USB-A 側の R3/R4 と合わせて 22 �
 
 | ピン | 接続 |
 | --- | --- |
-| 1 RST | R16 100 kΩ → +5V、TP11 |
+| 1 RST | R16 100 kΩ → +5V |
 | 3 MOUT | U1 pin7（GP5、UART1 RX） |
 | 4 MIN | U1 pin6（GP4、UART1 TX） |
 | 5 V3 | C19 100 nF → GND |
@@ -389,7 +389,7 @@ R17/R18 は CH345T 側の 22 Ω です。USB-A 側の R3/R4 と合わせて 22 �
 | pin53 QSPI_SD0 | pin5 DI/IO0 | |
 | pin54 QSPI_SD2 | pin3 WP/IO2 | |
 | pin55 QSPI_SD1 | pin2 DO/IO1 | |
-| pin56 QSPI_SS | pin1 CS | R12 10 kΩ → +3V3、TP7 は 1 kΩ 経由で GND |
+| pin56 QSPI_SS | pin1 CS | R12 10 kΩ → +3V3、SW6 は 1 kΩ 経由で GND |
 
 U2 pin8 は +3V3、C16 100 nF。pin4 は GND。
 

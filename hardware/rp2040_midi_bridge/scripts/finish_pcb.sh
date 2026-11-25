@@ -58,6 +58,14 @@ for round in 1 2 3 4 5; do
     fi
     mv "$repaired" "$PCB"
     rm -f "${PCB%.kicad_pcb}.repaired.kicad_pro" "${PCB%.kicad_pcb}.repaired.kicad_prl"
+    drc
+    report
+    [ "$(count "unconnected pads")" -eq 0 ] && exit 0
+  fi
+
+  if [ "$(count "unconnected pads")" -gt 0 ]; then
+    python3 "$HERE/scripts/finish_midi_rx.py" "$PCB" "$RPT" >"$LOG" 2>&1 || true
+    tail -1 "$LOG"
   fi
 done
 

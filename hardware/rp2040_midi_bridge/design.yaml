@@ -439,7 +439,7 @@ pinmap:
   rp2040_pin: 56
   gpio: null
   net: QSPI_SS
-  destination: R15 1k to BOOTSEL; TP7 and SW6 to GND
+  destination: R15 1k to BOOTSEL; SW6 to GND
   note: do not hold low during normal boot
 bom:
 - ref: U1

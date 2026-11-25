@@ -116,7 +116,7 @@ PLACEMENT = {
     "R11": (50.5, 24.2, 0),
     "R12": (46.5, 24.0, 0),
     "R13": (24.6, 23.5, 270),
-    "R14": (18.7, 15.5, 90),
+    "R14": (18.7, 15.5, 270),
     "R15": (38.1, 24.0, 0),
     "R16": (54.2, 5.0, 0),
     "R17": (41.5, 14.2, 90),
@@ -157,13 +157,6 @@ PLACEMENT = {
     "C29": (41.0, 29.5, 0),
     "C30": (45.0, 29.5, 0),
     # test points: debug TPs around U1, power/GND TPs at the free right edge
-    "TP3": (40.0, 20.2, 0),
-    "TP7": (41.5, 23.0, 0),
-    "TP8": (32.0, 8.8, 0),
-    "TP9": (60.0, 16.2, 0),
-    "TP10": (60.0, 19.4, 0),
-    "TP11": (39.5, 14.0, 0),
-    "TP12": (48.0, 33.6, 0),
 }
 
 # Revision B: 58 x 44 mm board for the Muji PP small-case M.  Keep the old
@@ -180,8 +173,6 @@ _SPECIAL_PLACEMENT = {
     "SW7": (4.0, 38.0, 0),
     "R1": (22.0, 9.4, 90),
     "R2": (23.6, 9.4, 90),
-    "TP9": (36.0, 30.0, 0),
-    "TP10": (40.0, 30.0, 0),
     # Rotate the USBLC6 so pins 1 and 6 sit on the same side and the DP pair
     # can bridge under the package.
     "U8": (38.9, 10.5, 90),
