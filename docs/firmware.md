@@ -58,7 +58,7 @@ PIO-USB は 120 MHz を要求します。12 MHz 水晶から `set_sys_clock_khz(
 `debounced_switch` を使います。
 
 - SW1: `MUTE_SWITCH_PIN 28`
-- SW2: `LYRE_SWITCH_PIN 29`
+- SW2: `LYRE_SWITCH_PIN 15`
 - SW3: `SUSTAIN_SWITCH_PIN 27`
 - SW5: `MIDI_RESET_BUTTON_PIN 14`
 
@@ -69,6 +69,8 @@ SW4 は GPIO ではなく、TPS2553 の EN を制御する電源スイッチで�
 ## 6. MIDI リセット
 
 SW5 の処理は、CH345T の RST を叩くのではなく、MIDI メッセージで行います。
+
+SW6（BOOT）は QSPI_SS を 1 kΩ 経由で GND に落とし、SW7（RUN）は RUN を GND に落とします。どちらもファームウェアからは制御しません。
 
 ```c
 for (uint8_t ch = 0; ch < 16; ch++) {

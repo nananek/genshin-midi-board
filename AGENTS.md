@@ -4,7 +4,7 @@
 
 ## 1. プロジェクトの前提
 
-- RP2040 + CH345T の 4 層基板、RP2040 ファームウェア、A4 紙ケースの設計検討リポジトリです。
+- RP2040 + CH345T の 4 層基板、RP2040 ファームウェア、無印 PP小物ケース M 用の設計検討リポジトリです。
 - 設計値の正本は `hardware/rp2040_midi_bridge/design.yaml` です。回路図、PCB、ピン表、BOM、配置は生成物なので、手で直す前に生成元を直します。
 - 生成と検証は次で行います。
 
@@ -15,7 +15,7 @@ make drc          # PCB DRC
 make tables       # pinmap.csv / bom.csv / placement.csv
 make netlist      # netlist.yaml
 make floorplan    # floorplan.svg
-make paper-case   # 紙ケースの PDF / SVG
+make case-template # ケース開口の 1:1 PDF / SVG
 ```
 
 - 製造データを作る前に、`make check`、ERC 0、DRC 0 violations / 0 unconnected を通します。
@@ -78,9 +78,9 @@ rp2040_midi_bridge-v<version>-manifest.sha256
 
 - Gerber ZIP は展開せず、JLCPCB の PCB アップロードへそのまま渡せる形にします。ZIP 直下に Gerber とドリルだけを置き、`gerbers/` などのサブディレクトリを作りません。BOM、CPL、README、LICENSE、manifest は入れません。
 - BOM と CPL は SMT のアップロード欄へ個別に渡します。ZIP に同梱しません。
-- Gerber、ドリル、CPL は基板左下のドリル/配置原点を共有します。`gen_pcb.py` は原点を (0, 35) に設定し、`make fab` は Gerber を `--use-drill-file-origin`、ドリルを `--drill-origin plot` で出力します。原点がずれた CPL を配布しません。
+- Gerber、ドリル、CPL は基板左下のドリル/配置原点を共有します。`gen_pcb.py` は原点を (0, 44) に設定し、`make fab` は Gerber を `--use-drill-file-origin`、ドリルを `--drill-origin plot` で出力します。原点がずれた CPL を配布しません。
 - ファイル名は上記に固定します。`gerber.zip` の名前は変えません。
-- `README.txt` には、タグ名、コミットハッシュ、KiCad のバージョン、基板仕様（62.0 × 35.0 × 1.6 mm、4 層）、JLCPCB へのアップロード手順、既知の問題を書きます。
+- `README.txt` には、タグ名、コミットハッシュ、KiCad のバージョン、基板仕様（58.0 × 44.0 × 1.6 mm、4 層）、JLCPCB へのアップロード手順、既知の問題を書きます。
 - `manifest.sha256` はリリース添付ファイルを作った直後に生成し、添付する 5 ファイルと一致させます。
 - 配布物にローカルパス、ユーザー名、ホスト名、VM 固有のパスを入れません。
 

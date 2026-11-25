@@ -1,13 +1,19 @@
 # RP2040 MIDI bridge 基板（設計検討）
 
-62.0 × 35.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_midi_bridge.kicad_sch` にあり、ERC 0 で通ります。PCB は 4 層・0 DRC・未接続 0 です。
+58.0 × 44.0 mm、4 層、RP2040 + CH345T の設計検討データです。回路図は `rp2040_midi_bridge.kicad_sch` にあり、ERC 0 で通ります。PCB は revision B の配置で配線済みです。
+
+## 状態
+
+- 外形、配置、回路図、ネットリスト、配線は revision B（58.0 × 44.0 mm）で更新済み
+- `drc.rpt`（2026-11-25 時点）は 0 DRC violations / 未接続 0
+- ガーバー、BOM、CPL は製造前に `make check`、ERC、DRC を通してから生成する
 
 ## ファイル
 
 | ファイル | 内容 |
 | --- | --- |
 | `design.yaml` | 基板、コネクタ、配置、スイッチ、ピン、BOM、製造ルールの正本 |
-| `netlist.yaml` | 77 部品、49 ネットのピン接続。回路図と PCB の共通ソース |
+| `netlist.yaml` | 72 部品、49 ネットのピン接続。回路図と PCB の共通ソース |
 | `pinmap.csv` | ピン割り当て（`design.yaml` から生成） |
 | `bom.csv` | BOM（`design.yaml` から生成） |
 | `placement.csv` | コネクタと主要部品の配置（`design.yaml` から生成） |
@@ -16,7 +22,7 @@
 | `sym-lib-table` / `fp-lib-table` | プロジェクトローカルと公式のライブラリ参照 |
 | `lib/` | 公式に無いシンボルとフットプリント（`lib/README.md` 参照） |
 | `erc.rpt` | `kicad-cli sch erc --severity-all` の結果 |
-| `rp2040_midi_bridge.kicad_pcb` | KiCad 10 基板（0 DRC、未接続 0） |
+| `rp2040_midi_bridge.kicad_pcb` | KiCad 10 基板（DRC 0 violations、未接続 0） |
 | `drc.rpt` | `kicad-cli pcb drc --severity-all` の結果 |
 
 ## 再生成
@@ -37,7 +43,7 @@ make erc
 
 ## 外形
 
-- 62.0 × 35.0 mm、t1.6 mm
+- 58.0 × 44.0 mm、t1.6 mm
 - 四隅 2 mm の 45° パンチカット
 - 固定穴なし
 
@@ -45,11 +51,11 @@ make erc
 
 | Ref | 種類 | 位置 | 役割 |
 | --- | --- | --- | --- |
-| J1 | USB-C | 上辺 x=16.5 | PC / NKRO HID |
-| J3 | USB-C | 上辺 x=45.5 | iPad / USB-MIDI |
-| J2 | USB-A | 下辺 x=31.0 | MIDI キーボード |
+| J1 | USB-C | 上辺 x=15.0 | PC / NKRO HID |
+| J3 | USB-C | 上辺 x=44.0 | iPad / USB-MIDI |
+| J2 | USB-A | 下辺 x=29.0 | MIDI キーボード |
 
-J1/J3 の中心間は 29.0 mm、コートヤード間は 18.36 mm です。Type-C ケーブルの樹脂部が干渉しない余裕を確保しています。ケースは内寸 63 × 36 × 9 mm の紙ケースで、展開図は [../../docs/paper_case.md](../../docs/paper_case.md) にあります。
+J1/J3 の中心間は 29.0 mm です。Type-C ケーブルの樹脂部が干渉しない余裕を確保しています。ケースは無印 PP小物ケース M（内寸 60 × 46 × 16.5 mm）で、加工手順は [../../docs/case_muji_m.md](../../docs/case_muji_m.md) にあります。
 
 ## 注意
 

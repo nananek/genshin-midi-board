@@ -29,11 +29,11 @@ add("U1", "RP2040", "QFN-56_7x7mm_P0.4mm", {
     "6": "MIDI_UART_TX", "7": "MIDI_UART_RX", "8": None, "9": None,
     "10": "+3V3", "11": None, "12": None, "13": None, "14": None,
     "15": "USB_A_DP_MCU", "16": "USB_A_DM_MCU", "17": "SW5_RESET",
-    "18": None, "19": "GND", "20": "X1_XIN", "21": "X1_XOUT_MCU",
+    "18": "SW2_LYRE", "19": "GND", "20": "X1_XIN", "21": "X1_XOUT_MCU",
     "22": "+3V3", "23": "+1V1", "24": None, "25": None, "26": "RUN",
     "27": None, "28": None, "29": None, "30": None, "31": None, "32": None,
     "33": "+3V3", "34": None, "35": None, "36": None, "37": "STATUS_LED",
-    "38": None, "39": "SW3_SUSTAIN", "40": "SW1_MUTE", "41": "SW2_LYRE",
+    "38": None, "39": "SW3_SUSTAIN", "40": "SW1_MUTE", "41": None,
     "42": "+3V3", "43": "+3V3", "44": "+3V3", "45": "+1V1",
     "46": "USB_PC_DM_MCU", "47": "USB_PC_DP_MCU", "48": "+3V3", "49": "+3V3",
     "50": "+1V1", "51": "QSPI_SD3", "52": "QSPI_SCLK", "53": "QSPI_SD0",
@@ -113,6 +113,8 @@ for ref, net in (("SW1", "SW1_MUTE"), ("SW2", "SW2_LYRE"), ("SW3", "SW3_SUSTAIN"
     add(ref, "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": net, "3": "GND"})
 add("SW4", "NKK_115643", "SW_SPDT_NKK_115643_Slide", {"1": None, "2": "TPS_EN", "3": "+3V3"})
 add("SW5", "DTS-63-N-V-BLK", "SW_TACT_Akizuki_DTS63", {"1": "GND", "2": "GND", "3": "SW5_RESET", "4": "SW5_RESET"})
+add("SW6", "KMR2 SMD tact", "SW_Push_1P1T-SH_NO_CK_KMR2xxG", {"1": "GND", "2": "BOOTSEL"})
+add("SW7", "KMR2 SMD tact", "SW_Push_1P1T-SH_NO_CK_KMR2xxG", {"1": "GND", "2": "RUN"})
 
 # --- resistors ------------------------------------------------------------
 add("R1", "27R", "R_0603_1608Metric", {"1": "USB_PC_DP_MCU", "2": "USB_PC_DP"})
@@ -157,14 +159,6 @@ add("C18", "15pF", "C_0603_1608Metric", {"1": "X1_XOUT", "2": "GND"})
 add("C22", "22pF", "C_0603_1608Metric", {"1": "X2_XI", "2": "GND"})
 add("C23", "22pF", "C_0603_1608Metric", {"1": "X2_XO", "2": "GND"})
 C["C27"]["footprint"] = "C_1210_3225Metric"
-
-# --- test pads ------------------------------------------------------------
-for ref, net in (
-    ("TP3", "GND"),
-    ("TP7", "BOOTSEL"), ("TP8", "+3V3"), ("TP9", "+5V"),
-    ("TP10", "GND"), ("TP11", "CH345_RST"), ("TP12", "VBUS_USB_A"),
-):
-    add(ref, net, "TestPoint_1P", {"1": net})
 
 # --- derive nets ----------------------------------------------------------
 nets: dict[str, list[str]] = {}

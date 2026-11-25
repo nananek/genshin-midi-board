@@ -27,8 +27,8 @@ PCB_PATH = ROOT / "rp2040_midi_bridge.kicad_pcb"
 MM = pcbnew.FromMM
 TOMM = pcbnew.ToMM
 
-BOARD_W = 62.0
-BOARD_H = 35.0
+BOARD_W = 58.0
+BOARD_H = 44.0
 CHAMFER = 2.0
 EDGE_CLEARANCE = 0.3
 
@@ -66,6 +66,9 @@ FOOTPRINTS = {
                                 "C_1210_3225Metric", "Capacitor_SMD"),
     "SW_SPDT_NKK_115643_Slide": (PROJ_LIB, "SW_SPDT_NKK_115643_Slide", "rp2040_midi_bridge"),
     "SW_TACT_Akizuki_DTS63": (PROJ_LIB, "SW_TACT_Akizuki_DTS63", "rp2040_midi_bridge"),
+    "SW_Push_1P1T-SH_NO_CK_KMR2xxG": (KICAD_LIB / "Button_Switch_SMD.pretty",
+                                      "SW_Push_1P1T-SH_NO_CK_KMR2xxG",
+                                      "Button_Switch_SMD"),
     "TestPoint_1P": (PROJ_LIB, "TestPoint_1P", "rp2040_midi_bridge"),
 }
 
@@ -73,7 +76,7 @@ FOOTPRINTS = {
 # placement (mm, board origin top-left, y down) and rotation
 # ---------------------------------------------------------------------------
 PLACEMENT = {
-    # connectors and the fixed placements from design.yaml (62 x 35 mm board)
+    # connectors and the fixed placements from design.yaml (old 62 x 35 layout)
     "J1": (16.5, 2.4, 180),
     "J3": (45.5, 2.4, 180),
     "J2": (31.0, 31.6, 180),
@@ -113,7 +116,7 @@ PLACEMENT = {
     "R11": (50.5, 24.2, 0),
     "R12": (46.5, 24.0, 0),
     "R13": (24.6, 23.5, 270),
-    "R14": (18.7, 15.5, 90),
+    "R14": (18.7, 15.5, 270),
     "R15": (38.1, 24.0, 0),
     "R16": (54.2, 5.0, 0),
     "R17": (41.5, 14.2, 90),
@@ -154,14 +157,38 @@ PLACEMENT = {
     "C29": (41.0, 29.5, 0),
     "C30": (45.0, 29.5, 0),
     # test points: debug TPs around U1, power/GND TPs at the free right edge
-    "TP3": (40.0, 20.2, 0),
-    "TP7": (41.5, 23.0, 0),
-    "TP8": (32.0, 8.8, 0),
-    "TP9": (60.0, 16.2, 0),
-    "TP10": (60.0, 19.4, 0),
-    "TP11": (39.5, 14.0, 0),
-    "TP12": (48.0, 33.6, 0),
 }
+
+# Revision B: 58 x 44 mm board for the Muji PP small-case M.  Keep the old
+# relative layout, shift the bottom group down, and add the BOOT/RUN buttons.
+_X_SHIFT = -1.5
+_Y_SHIFT_BOTTOM = 7.8
+_SPECIAL_PLACEMENT = {
+    "J1": (15.0, 2.4, 180),
+    "J3": (44.0, 2.4, 180),
+    "J2": (29.0, 39.4, 180),
+    "SW4": (13.5, 40.0, 0),
+    "SW5": (29.0, 4.2, 0),
+    "SW6": (4.0, 33.5, 0),
+    "SW7": (4.0, 38.0, 0),
+    "R1": (22.0, 9.4, 90),
+    "R2": (23.6, 9.4, 90),
+    # Rotate the USBLC6 so pins 1 and 6 sit on the same side and the DP pair
+    # can bridge under the package.
+    "U8": (38.9, 10.5, 90),
+    # Keep the USB-A series resistors out of the SW2 corridor along the bottom
+    "R3": (29.0, 30.0, 0),
+    "R4": (30.0, 31.8, 0),
+}
+
+def _rebase_placement(ref, x, y, rot):
+    if ref in _SPECIAL_PLACEMENT:
+        return _SPECIAL_PLACEMENT[ref]
+    return (x + _X_SHIFT, y + (_Y_SHIFT_BOTTOM if y > 27.0 else 0.0), rot)
+
+PLACEMENT = {ref: _rebase_placement(ref, *pos)
+             for ref, pos in PLACEMENT.items()}
+PLACEMENT.update(_SPECIAL_PLACEMENT)
 
 # ---------------------------------------------------------------------------
 # net rules
@@ -170,7 +197,7 @@ USB_NETS = {n for n in (
     "USB_PC_DP", "USB_PC_DM", "USB_PC_DP_MCU", "USB_PC_DM_MCU",
     "USB_A_DP", "USB_A_DM", "USB_A_DP_MCU", "USB_A_DM_MCU",
     "USB_MIDI_DP", "USB_MIDI_DM", "USB_MIDI_DP_MCU", "USB_MIDI_DM_MCU")}
-POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0}
+POWER_WIDTH = {"+5V": 0.5, "VBUS_PC": 0.5, "VBUS_IPAD": 0.5, "VBUS_USB_A": 0.8}
 PLANE_WIDTH = {"+3V3": 0.2, "+1V1": 0.2}
 USB_ROUTE_ORDER = [
     "VBUS_PC", "VBUS_IPAD", "+5V", "VBUS_USB_A", "+1V1",
@@ -434,7 +461,7 @@ def check_placement(board, fps):
     refs = sorted(boxes)
     for i, a in enumerate(refs):
         ax0, ay0, ax1, ay1 = boxes[a]
-        if ref not in ("J1", "J2", "J3") and (
+        if a not in ("J1", "J2", "J3") and (
                 ax0 < -0.01 or ay0 < -0.01 or ax1 > BOARD_W + 0.01 or ay1 > BOARD_H + 0.01):
             print(f"OUTSIDE {a}: {ax0:.2f},{ay0:.2f} - {ax1:.2f},{ay1:.2f}")
         for b in refs[i + 1:]:
@@ -477,6 +504,14 @@ def pad_endpoints(fps, netlist):
                 continue
             by_net.setdefault(net, []).append((ref, pin, pad))
     return by_net
+
+
+def pad_center(fps, ref, pin):
+    for pad in fps[ref].Pads():
+        if pad.GetNumber() == pin:
+            c = pad.GetBoundingBox().GetCenter()
+            return TOMM(c.x), TOMM(c.y)
+    raise SystemExit(f"no pad {ref}.{pin}")
 
 
 def route(board, netlist, fps):
@@ -605,14 +640,16 @@ def route(board, netlist, fps):
                                 (via_x, via_y), 0.127, 0.0)
         net = "USB_PC_DP_MCU" if pin == "47" else "USB_PC_DM_MCU"
         router.commit_via(net, (via_x, via_y), 0.25, 0.225)
-    router.commit_track("USB_PC_DP_MCU", "B", (ux + 2.3, uy + 1.0),
-                        (24.7, 16.2), 0.2, 0.0)
-    router.commit_track("USB_PC_DP_MCU", "B", (24.7, 16.2),
-                        (24.0, 9.825), 0.2, 0.0)
-    router.commit_track("USB_PC_DM_MCU", "B", (ux + 2.3, uy + 1.9),
-                        (25.6, 16.2), 0.2, 0.0)
-    router.commit_track("USB_PC_DM_MCU", "B", (25.6, 16.2),
-                        (25.7, 9.625), 0.2, 0.0)
+    # Run the rest of each pair to the series resistor on B.Cu and come back to
+    # F.Cu on a via beside the pad.  Reading the pad position keeps this in
+    # sync with the placement table.
+    for net, via_y, ref in (("USB_PC_DP_MCU", uy + 1.0, "R1"),
+                            ("USB_PC_DM_MCU", uy + 1.9, "R2")):
+        px, py = pad_center(fps, ref, "1")
+        if not router.connect(net, (ux + 2.3, via_y, "FB"), (px, py, "F"),
+                              0.2, rule_for(net)[1], via_cost=20,
+                              max_expand=900000, via_radius=0.225):
+            print(f"UNROUTED {net} to {ref}", flush=True)
 
     # U1 pin 19 is ground: strap it into the exposed pad before routing so the
     # signal escapes have to go around it (it is inside the QFN footprint)
@@ -633,44 +670,49 @@ def route(board, netlist, fps):
             gnd_fail += 1
     print(f"GND pad vias: {gnd_ok} ok, {gnd_fail} failed", flush=True)
 
-    # The two +3V3 pins on the QFN sides are boxed in once QSPI and USB have
-    # routed.  Give them their plane vias now, before those nets claim space.
+    # All nine +3V3 pins on U1 get their plane via before QSPI and USB claim
+    # the space around the package.  Doing it at the end leaves pins 33/48/49
+    # boxed in.
     prerouted_3v3 = set()
-    u1fp = fps["U1"]
-    for pad in u1fp.Pads():
-        pin = pad.GetNumber()
-        if pin not in ("22", "43", "44"):
+    for ref, pin, pad in by_net.get("+3V3", []):
+        if ref != "U1":
             continue
         bb = pad.GetBoundingBox()
         p = (TOMM(bb.GetCenter().x), TOMM(bb.GetCenter().y), "F")
         _tracks, vias = router.connect_to_plane("+3V3", p, 0.127, 0.1, 0.225)
         if vias:
-            prerouted_3v3.add(("U1", pin))
+            prerouted_3v3.add((ref, pin))
 
     skip = {n.strip() for n in os.environ.get("PCB_SKIP_NETS", "").split(",") if n.strip()}
     skip |= {"USB_PC_DP_MCU", "USB_PC_DM_MCU"}
     report = {}
 
-    # 1. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
+    # 1. SW2 crosses the whole left half of the board to U1 pin 18; give it
+    # the corridor first, otherwise the later nets box it in.
+    report["SW2_LYRE"] = do_net("SW2_LYRE", [0.2, 0.15, 0.127], via_cost=8)
+
+    # 2. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
     for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
-    # 2. core rail and crystals: local, need short clean paths
+    # 2. power before the 0.2 mm USB/CC signals: a 0.5 mm VBUS track needs
+    # 0.45 mm of clearance, which no longer fits around the connectors once the
+    # signal nets are in place.
+    for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
+        w, _ = rule_for(net)
+        report[net] = do_net(net, [w, 0.35, 0.25, 0.2], via_cost=25)
+
+    # 3. core rail and crystals: local, need short clean paths
     report["+1V1"] = do_net("+1V1", [0.2, 0.15])
     for net in ("X1_XIN", "X1_XOUT_MCU", "X1_XOUT", "X2_XI", "X2_XO"):
         report[net] = do_net(net, [0.15, 0.127])
 
-    # 3. USB and CC nets at the three connectors
+    # 4. USB and CC nets at the three connectors
     for net in ("USB_PC_DM", "USB_PC_DP",
                 "USB_MIDI_DM_MCU", "USB_MIDI_DP_MCU",
                 "USB_MIDI_DM", "USB_MIDI_DP",
                 "CC1_PC", "CC2_PC", "CC1_IPAD", "CC2_IPAD"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=10)
-
-    # 4. +5V spine and the three VBUS branches
-    for net in ("+5V", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
-        w, _ = rule_for(net)
-        report[net] = do_net(net, [w, 0.8, 0.6, 0.5, 0.35, 0.25], via_cost=8)
 
     # 5. short local nets around U1
     for net in ("STATUS_LED", "RUN",
@@ -682,7 +724,7 @@ def route(board, netlist, fps):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=8)
 
     # 6. switches: fixed THT parts at the board edges.  SW3 is furthest away.
-    for net in ("SW3_SUSTAIN", "SW5_RESET", "SW1_MUTE", "SW2_LYRE"):
+    for net in ("SW3_SUSTAIN", "SW5_RESET", "SW1_MUTE"):
         report[net] = do_net(net, [0.2, 0.15, 0.127], via_cost=6)
 
     # 7. USB-A data at J2
@@ -732,9 +774,9 @@ def route(board, netlist, fps):
                    (2.6, 0.0), (-2.6, 0.0), (0.0, 2.6), (0.0, -2.6),
                    (3.0, 1.2), (-3.0, -1.2), (1.2, 3.0), (-1.2, -3.0)):
         gnd_via(ux + dx, uy + dy)
-    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 31.5, 34.0):
+    for y in (0.9, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 43.0):
         for x in (0.9, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0,
-                  50.0, 55.0, 60.5):
+                  50.0, 55.0, 57.0):
             gnd_via(x, y)
     print(f"GND stitching vias: {stitched}", flush=True)
 

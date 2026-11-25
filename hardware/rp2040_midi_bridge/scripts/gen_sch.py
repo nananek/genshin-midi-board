@@ -402,6 +402,15 @@ def custom_symbols():
         "SW_TACT_4P", "SW", tact, 10.16, 6.35,
         description="Push button, 4 pins (1-2 and 3-4 internally paired)")
 
+    # 2-pin tact switch (C&K KMR2 for BOOT/RUN)
+    push2 = [
+        ("1", "1", "passive", "L", 0.0),
+        ("2", "2", "passive", "R", 0.0),
+    ]
+    syms["SW_PUSH_2P"] = make_symbol(
+        "SW_PUSH_2P", "SW", push2, 7.62, 5.08,
+        description="Push button, 2 pins")
+
     # supply rails the official power library does not carry
     for rail in ("+1V1", "VBUS_PC", "VBUS_IPAD", "VBUS_USB_A"):
         syms[rail] = power_symbol(rail)
@@ -477,14 +486,14 @@ SYMBOL_OF = {
     "X1": "Crystal_GND24", "X2": "Crystal_GND24",
     "D1": "D_Schottky", "D2": "D_Schottky", "LED1": "LED",
     "SW1": "SW_SPDT", "SW2": "SW_SPDT", "SW3": "SW_SPDT", "SW4": "SW_SPDT",
-    "SW5": "SW_TACT_4P", "C27": "C_Polarized",
+    "SW5": "SW_TACT_4P", "SW6": "SW_PUSH_2P", "SW7": "SW_PUSH_2P",
+    "C27": "C_Polarized",
 }
 for _i in range(1, 20):
     SYMBOL_OF[f"R{_i}"] = "R"
 for _i in range(1, 31):
     SYMBOL_OF[f"C{_i}"] = "C"
-for _i in (3, 7, 8, 9, 10, 11, 12):
-    SYMBOL_OF[f"TP{_i}"] = "TestPoint"
+
 
 ROTATION = {
     ref: (90 if sym in ("R", "C", "C_Polarized", "D_Schottky", "LED") else 0)
@@ -506,6 +515,8 @@ FOOTPRINT = {
     "LED_0603_1608Metric": "LED_SMD:LED_0603_1608Metric",
     "SW_SPDT_NKK_115643_Slide": f"{LIB_NAME}:SW_SPDT_NKK_115643_Slide",
     "SW_TACT_Akizuki_DTS63": f"{LIB_NAME}:SW_TACT_Akizuki_DTS63",
+    "SW_Push_1P1T-SH_NO_CK_KMR2xxG":
+        "Button_Switch_SMD:SW_Push_1P1T-SH_NO_CK_KMR2xxG",
     "R_0603_1608Metric": "Resistor_SMD:R_0603_1608Metric",
     "C_0603_1608Metric": "Capacitor_SMD:C_0603_1608Metric",
     "C_0805_2012Metric": "Capacitor_SMD:C_0805_2012Metric",
@@ -514,7 +525,7 @@ FOOTPRINT = {
     "TestPoint_1P": f"{LIB_NAME}:TestPoint_1P",
 }
 
-OFFICIAL_FP_LIBS = ["Capacitor_SMD", "Capacitor_THT", "Crystal", "Diode_SMD",
+OFFICIAL_FP_LIBS = ["Button_Switch_SMD", "Capacitor_SMD", "Capacitor_THT", "Crystal", "Diode_SMD",
                     "LED_SMD", "Package_DFN_QFN", "Package_SO",
                     "Package_TO_SOT_SMD", "Resistor_SMD"]
 
@@ -524,14 +535,14 @@ BLOCKS = [
         "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8",
         "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16",
     ]),
-    ("column1", "Switches", ["SW1", "SW2", "SW3", "SW5"]),
+    ("column1", "Switches", ["SW1", "SW2", "SW3", "SW5", "SW6", "SW7"]),
     ("column1", "USB-MIDI device (iPad) - CH345T", [
         "J3", "U3", "U8", "X2", "R7", "R8", "R16", "R17", "R18",
-        "C19", "C22", "C23", "C25", "TP11",
+        "C19", "C22", "C23", "C25",
     ]),
     ("column2", "USB-A host (USB MIDI keyboard) - PIO-USB", [
         "J2", "U6", "U5", "SW4", "R3", "R4", "R9", "R10", "R11",
-        "C26", "C27", "TP12",
+        "C26", "C27",
     ]),
     ("column2", "USB-C device (PC) - native USB / NKRO HID", [
         "J1", "U7", "R1", "R2", "R5", "R6", "C24",
@@ -542,7 +553,6 @@ BLOCKS = [
     ("column2", "QSPI flash, crystal, debug and status", [
         "U2", "X1", "R12", "R13", "R14", "R15", "R19",
         "C17", "C18", "LED1",
-        "TP3", "TP7", "TP8", "TP9", "TP10",
     ]),
 ]
 
@@ -832,7 +842,7 @@ def main():
             ["title", Q("RP2040 MIDI bridge")],
             ["date", Q("2026-11-23")],
             ["rev", Q("A")],
-            ["comment", "1", Q("Board 62.0 x 35.0 mm, 4 layers, 1.6 mm")],
+            ["comment", "1", Q("Board 58.0 x 44.0 mm, 4 layers, 1.6 mm")],
             ["comment", "2", Q("RP2040 PIO-USB host + native USB HID + CH345T USB-MIDI")],
             ["comment", "3", Q("Generated from hardware/rp2040_midi_bridge/netlist.yaml")]],
            ["lib_symbols"] + embedded]
@@ -919,7 +929,9 @@ def main():
         "(fp_lib_table\n\t(version 7)\n" + "\n".join(fp_entries) + "\n)\n",
         encoding="utf-8")
 
-    (ROOT / f"{PROJECT}.kicad_pro").write_text(PROJECT_FILE, encoding="utf-8")
+    pro = ROOT / f"{PROJECT}.kicad_pro"
+    if not pro.exists():
+        pro.write_text(PROJECT_FILE, encoding="utf-8")
 
     n_nets = len({n for c in components.values() for n in c["pins"].values() if n})
     print(f"wrote {PROJECT}.kicad_sch: {len(items)} symbols, {len(labels)} labels, "

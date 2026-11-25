@@ -27,12 +27,12 @@ RPT = ROOT / "drc.rpt"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 
-W, H = 62.0, 35.0
-OUTLINE = [(2, 0), (60, 0), (62, 2), (62, 33), (60, 35), (2, 35),
-           (0, 33), (0, 2)]
+W, H = 58.0, 44.0
+OUTLINE = [(2, 0), (56, 0), (58, 2), (58, 42), (56, 44), (2, 44),
+           (0, 42), (0, 2)]
 
-POWER_WIDTH = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8,
-               "VBUS_USB_A": 1.0}
+POWER_WIDTH = {"+5V": 0.5, "VBUS_PC": 0.5, "VBUS_IPAD": 0.5,
+               "VBUS_USB_A": 0.8}
 PLANE_WIDTH = {"+3V3": 0.2, "+1V1": 0.2}
 USB_NETS = {n for n in (
     "USB_PC_DP", "USB_PC_DM", "USB_PC_DP_MCU", "USB_PC_DM_MCU",
@@ -346,6 +346,14 @@ class Finisher:
 
 
 def main():
+    global PCB, RPT
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--board", default=str(PCB))
+    ap.add_argument("--report", default=str(RPT))
+    args = ap.parse_args()
+    PCB = Path(args.board)
+    RPT = Path(args.report)
     targets = unconnected_nets(RPT)
     targets |= {n.strip() for n in os.environ.get("PCB_EXTRA_TARGETS", "").split(",")
                 if n.strip()}

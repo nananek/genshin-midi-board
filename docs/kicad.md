@@ -55,6 +55,7 @@ DRC は 0 violations / 0 unconnected を目標にします。配線途中で未�
 
 ```sh
 make silk
+make case-template
 ```
 
 ## 5. 製造前の監査
@@ -65,7 +66,7 @@ make kicad-check
 
 `make kicad-check` は ERC、DRC、`scripts/check_kicad_pcb.py` を実行します。`check_kicad_pcb.py` は次を機械的に確認します。
 
-- 基板外形が 62.0 × 35.0 mm
+- 基板外形が 58.0 × 44.0 mm
 - 4 層（F.Cu / In1.Cu / In2.Cu / B.Cu）
 - ビアが 0.5/0.3 mm または 0.45/0.25 mm
 - 0.15 / 0.2 mm ドリルがない
@@ -104,23 +105,23 @@ USB は Full-Speed なのでインピーダンス制御は必須ではありま�
 make check
 make erc
 make drc
-make fab VERSION=v0.0.4
+make fab VERSION=v0.1.0
 ```
 
 出力は次の 6 ファイルです。
 
 ```text
-dist/rp2040_midi_bridge-v0.0.4-gerber.zip        PCB 用。展開せずアップロードする
-dist/rp2040_midi_bridge-v0.0.4-bom.csv           SMT BOM
-dist/rp2040_midi_bridge-v0.0.4-cpl.csv           SMT CPL
-dist/rp2040_midi_bridge-v0.0.4-README.txt        タグ、コミット、アップロード手順
-dist/rp2040_midi_bridge-v0.0.4-LICENSE           MIT
-dist/rp2040_midi_bridge-v0.0.4-manifest.sha256   上記 5 ファイルの SHA-256
+dist/rp2040_midi_bridge-v0.1.0-gerber.zip        PCB 用。展開せずアップロードする
+dist/rp2040_midi_bridge-v0.1.0-bom.csv           SMT BOM
+dist/rp2040_midi_bridge-v0.1.0-cpl.csv           SMT CPL
+dist/rp2040_midi_bridge-v0.1.0-README.txt        タグ、コミット、アップロード手順
+dist/rp2040_midi_bridge-v0.1.0-LICENSE           MIT
+dist/rp2040_midi_bridge-v0.1.0-manifest.sha256   上記 5 ファイルの SHA-256
 ```
 
 Gerber ZIP は直下に Gerber X2、Excellon ドリル、`.gbrjob` だけを入れます。BOM と CPL は SMT のアップロード欄へ個別に渡します。`dist/` はコミットしません。
 
-Gerber、ドリル、CPL は基板左下のドリル/配置原点を共有します。`gen_pcb.py` が原点を (0, 35) に設定し、`make fab` は Gerber を `--use-drill-file-origin`、ドリルを `--drill-origin plot` で出力します。J1/J3 の CPL は JLCPCB の USB-C 部品原点に合わせて 1.571 mm 補正しています。配布条件と構成は [AGENTS.md](../AGENTS.md) の 3 節を参照してください。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
+Gerber、ドリル、CPL は基板左下のドリル/配置原点を共有します。`gen_pcb.py` が原点を (0, 44) に設定し、`make fab` は Gerber を `--use-drill-file-origin`、ドリルを `--drill-origin plot` で出力します。J1/J3 の CPL は JLCPCB の USB-C 部品原点に合わせて 1.571 mm 補正しています。配布条件と構成は [AGENTS.md](../AGENTS.md) の 3 節を参照してください。JLCPCB のチェック項目は [jlcpcb.md](jlcpcb.md) にあります。
 
 ## 9. 注意
 

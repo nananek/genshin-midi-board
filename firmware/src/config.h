@@ -177,13 +177,13 @@
 // ---------------------------------------------------------------------------
 //  楽器モードスイッチ (任意)
 //  ON にすると古びたライアー (スメール音階) 用のマッピングを使う。
-//  既定配線: GP29 ↔ GND をトグルスイッチで開閉 (内部プルアップ)。
+//  既定配線: GP15 ↔ GND をトグルスイッチで開閉 (内部プルアップ)。
 // ---------------------------------------------------------------------------
 #ifndef LYRE_SWITCH_ENABLE
 #define LYRE_SWITCH_ENABLE 1
 #endif
 #ifndef LYRE_SWITCH_PIN
-#define LYRE_SWITCH_PIN 29
+#define LYRE_SWITCH_PIN 15
 #endif
 #ifndef LYRE_SWITCH_ACTIVE_LEVEL
 #define LYRE_SWITCH_ACTIVE_LEVEL 0

@@ -3,7 +3,7 @@
 
 This is a text-level audit, not a replacement for kicad-cli DRC.  It catches
 the mistakes that cost money at JLCPCB: 0.15 mm drills, via-in-pad, plugged
-vias, blind/buried vias, and a board that is not 62.0 x 35.0 mm.
+vias, blind/buried vias, and a board that is not 58.0 x 44.0 mm.
 """
 
 from __future__ import annotations
@@ -74,15 +74,15 @@ def main() -> int:
     if xs and ys:
         checks += 1
         w, h = max(xs) - min(xs), max(ys) - min(ys)
-        if abs(w - 62.0) > 0.05 or abs(h - 35.0) > 0.05:
-            failures.append(f"board outline is {w:.2f} x {h:.2f} mm, expected 62.0 x 35.0")
+        if abs(w - 58.0) > 0.05 or abs(h - 44.0) > 0.05:
+            failures.append(f"board outline is {w:.2f} x {h:.2f} mm, expected 58.0 x 44.0")
     else:
         failures.append("no Edge.Cuts outline found")
 
     # Drill/place origin shared by Gerbers, drill files and the JLCPCB CPL.
     checks += 1
-    if "(aux_axis_origin 0 35)" not in text:
-        failures.append("drill/place origin must be at the bottom-left corner (0, 35)")
+    if "(aux_axis_origin 0 44)" not in text:
+        failures.append("drill/place origin must be at the bottom-left corner (0, 44)")
 
     # Copper layer count.
     copper = re.findall(r'\((?:\d+) "(F\.Cu|In\d+\.Cu|B\.Cu)"', text)

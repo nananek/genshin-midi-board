@@ -11,6 +11,7 @@ free space, so a failure leaves the board as it was.
 from __future__ import annotations
 
 import math
+import os
 import re
 import sys
 from pathlib import Path
@@ -24,10 +25,10 @@ RPT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "drc.rpt"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 
-W, H = 62.0, 35.0
-OUTLINE = [(2, 0), (60, 0), (62, 2), (62, 33), (60, 35), (2, 35),
-           (0, 33), (0, 2)]
-POWER = {"+5V": 0.8, "VBUS_PC": 0.8, "VBUS_IPAD": 0.8, "VBUS_USB_A": 1.0}
+W, H = 58.0, 44.0
+OUTLINE = [(2, 0), (56, 0), (58, 2), (58, 42), (56, 44), (2, 44),
+           (0, 42), (0, 2)]
+POWER = {"+5V": 0.5, "VBUS_PC": 0.5, "VBUS_IPAD": 0.5, "VBUS_USB_A": 0.8}
 
 
 def width_for(net):
@@ -68,7 +69,9 @@ def parse_items(report: Path):
 class Repairer:
     def __init__(self):
         self.board = pcbnew.LoadBoard(str(PCB))
-        self.router = R.Router(W, H, cell=0.05)
+        cell = float(os.environ.get("PCB_CELL", "0.05"))
+        self.clearance = float(os.environ.get("PCB_GAP_CLEAR", "0.13"))
+        self.router = R.Router(W, H, cell=cell)
         self.router.set_outline(OUTLINE)
         for fp in self.board.GetFootprints():
             for pad in fp.Pads():
@@ -119,11 +122,11 @@ class Repairer:
         for ww in width_tries:
             for vc in (4, 12, 30):
                 for force in (None, 0, 1):
-                    if self.router.connect(net, src, dst, ww, 0.1,
+                    if self.router.connect(net, src, dst, ww, self.clearance,
                                            via_cost=vc, max_expand=2500000,
                                            via_radius=0.225,
                                            force_layer=force,
-                                           via_gap=0.5):
+                                           via_gap=0.55):
                         self.emit(net, before)
                         return True
         # Fallback: a plain straight track if the corridor is clear.  This
@@ -131,7 +134,7 @@ class Repairer:
         if src[2] == dst[2] and src[2] in ("F", "B"):
             lay = 0 if src[2] == "F" else 1
             for ww in width_tries:
-                blocked, _vm = self.router.masks(net, ww, 0.1, 0.225)
+                blocked, _vm = self.router.masks(net, ww, self.clearance, 0.225)
                 if self.router._seg_clear(blocked[lay], (src[0], src[1]),
                                           (dst[0], dst[1])):
                     self.router.commit_track(net, src[2],

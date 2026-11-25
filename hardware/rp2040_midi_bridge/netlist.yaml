@@ -21,7 +21,7 @@ components:
       '15': USB_A_DP_MCU
       '16': USB_A_DM_MCU
       '17': SW5_RESET
-      '18': null
+      '18': SW2_LYRE
       '19': GND
       '20': X1_XIN
       '21': X1_XOUT_MCU
@@ -44,7 +44,7 @@ components:
       '38': null
       '39': SW3_SUSTAIN
       '40': SW1_MUTE
-      '41': SW2_LYRE
+      '41': null
       '42': +3V3
       '43': +3V3
       '44': +3V3
@@ -268,6 +268,18 @@ components:
       '2': GND
       '3': SW5_RESET
       '4': SW5_RESET
+  SW6:
+    value: KMR2 SMD tact
+    footprint: SW_Push_1P1T-SH_NO_CK_KMR2xxG
+    pins:
+      '1': GND
+      '2': BOOTSEL
+  SW7:
+    value: KMR2 SMD tact
+    footprint: SW_Push_1P1T-SH_NO_CK_KMR2xxG
+    pins:
+      '1': GND
+      '2': RUN
   R1:
     value: 27R
     footprint: R_0603_1608Metric
@@ -562,41 +574,6 @@ components:
     pins:
       '1': X2_XO
       '2': GND
-  TP3:
-    value: GND
-    footprint: TestPoint_1P
-    pins:
-      '1': GND
-  TP7:
-    value: BOOTSEL
-    footprint: TestPoint_1P
-    pins:
-      '1': BOOTSEL
-  TP8:
-    value: +3V3
-    footprint: TestPoint_1P
-    pins:
-      '1': +3V3
-  TP9:
-    value: +5V
-    footprint: TestPoint_1P
-    pins:
-      '1': +5V
-  TP10:
-    value: GND
-    footprint: TestPoint_1P
-    pins:
-      '1': GND
-  TP11:
-    value: CH345_RST
-    footprint: TestPoint_1P
-    pins:
-      '1': CH345_RST
-  TP12:
-    value: VBUS_USB_A
-    footprint: TestPoint_1P
-    pins:
-      '1': VBUS_USB_A
 nets:
   +1V1:
   - U1.23
@@ -634,7 +611,6 @@ nets:
   - C12.1
   - C13.1
   - C16.1
-  - TP8.1
   +5V:
   - U3.19
   - U4.1
@@ -648,10 +624,9 @@ nets:
   - C28.1
   - C29.1
   - C30.1
-  - TP9.1
   BOOTSEL:
+  - SW6.2
   - R15.2
-  - TP7.1
   CC1_IPAD:
   - J3.A5
   - R7.1
@@ -667,7 +642,6 @@ nets:
   CH345_RST:
   - U3.1
   - R16.1
-  - TP11.1
   CH345_V3:
   - U3.5
   - C19.1
@@ -705,6 +679,8 @@ nets:
   - SW3.3
   - SW5.1
   - SW5.2
+  - SW6.1
+  - SW7.1
   - R5.2
   - R6.2
   - R7.2
@@ -741,8 +717,6 @@ nets:
   - C18.2
   - C22.2
   - C23.2
-  - TP3.1
-  - TP10.1
   LED_A:
   - LED1.2
   - R13.2
@@ -774,6 +748,7 @@ nets:
   - R15.1
   RUN:
   - U1.26
+  - SW7.2
   - R19.1
   STATUS_LED:
   - U1.37
@@ -782,7 +757,7 @@ nets:
   - U1.40
   - SW1.2
   SW2_LYRE:
-  - U1.41
+  - U1.18
   - SW2.2
   SW3_SUSTAIN:
   - U1.39
@@ -875,7 +850,6 @@ nets:
   - J2.1
   - C26.1
   - C27.1
-  - TP12.1
   X1_XIN:
   - U1.20
   - X1.1

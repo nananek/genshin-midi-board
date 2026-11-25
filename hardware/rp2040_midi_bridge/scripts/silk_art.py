@@ -14,20 +14,20 @@ import pcbnew
 MM = pcbnew.FromMM
 
 BOARD_NAME = "RP2040 MIDI BRIDGE  REV A"
-BOARD_NAME_POS = (31.0, 9.5)
+BOARD_NAME_POS = (29.0, 9.5)
 BOARD_NAME_SIZE = 0.8
 
 J2_LABEL = "J2 USB-A (TOP)"
-J2_LABEL_POS = (31.0, 29.0)
+J2_LABEL_POS = (29.0, 35.5)
 J2_LABEL_SIZE = 0.8
 
 J2_PIN_LABELS = (
-    ("VCC", 34.5),
-    ("D-", 32.0),
-    ("D+", 30.0),
-    ("GND", 27.5),
+    ("VCC", 32.5),
+    ("D-", 30.0),
+    ("D+", 28.0),
+    ("GND", 25.5),
 )
-J2_PIN_LABEL_Y = 33.9
+J2_PIN_LABEL_Y = 38.0
 J2_PIN_LABEL_SIZE = 0.8
 J2_PIN_LABEL_THICKNESS = 0.12
 
@@ -35,7 +35,7 @@ J2_PIN_LABEL_THICKNESS = 0.12
 LEGACY_LABELS = {"VBUS", "VCC", "D-", "D+", "GND", J2_LABEL}
 
 QR_REPO_URL = "https://github.com/nananek/genshin-midi-board"
-QR_CENTER = (31.0, 17.5)
+QR_CENTER = (29.0, 17.5)
 QR_MODULE_MM = 0.30
 QR_QUIET_MODULES = 4
 

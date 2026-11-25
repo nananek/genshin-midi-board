@@ -23,9 +23,9 @@ DEFAULT_BOARD = ROOT / "rp2040_midi_bridge.kicad_pcb"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pcb_router as R  # noqa: E402
 
-W, H = 62.0, 35.0
-OUTLINE = [(2, 0), (60, 0), (62, 2), (62, 33), (60, 35), (2, 35),
-           (0, 33), (0, 2)]
+W, H = 58.0, 44.0
+OUTLINE = [(2, 0), (56, 0), (58, 2), (58, 42), (56, 44), (2, 44),
+           (0, 42), (0, 2)]
 CLEARANCE = 0.1
 TRASH = []
 
