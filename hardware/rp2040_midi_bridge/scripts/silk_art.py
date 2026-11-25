@@ -19,16 +19,16 @@ BOARD_NAME_POS = (29.0, 9.5)
 BOARD_NAME_SIZE = 0.8
 
 J2_LABEL = "J2 USB-A (TOP)"
-J2_LABEL_POS = (29.0, 27.5)
+J2_LABEL_POS = (29.0, 33.0)
 J2_LABEL_SIZE = 0.8
 
 J2_PIN_LABELS = (
-    ("VCC", 32.5),
-    ("D-", 30.0),
-    ("D+", 28.0),
-    ("GND", 25.5),
+    ("GND", 32.5),
+    ("D+", 30.0),
+    ("D-", 28.0),
+    ("VBUS", 25.5),
 )
-J2_PIN_LABEL_Y = 29.5
+J2_PIN_LABEL_Y = 38.0
 J2_PIN_LABEL_SIZE = 0.8
 J2_PIN_LABEL_THICKNESS = 0.12
 
