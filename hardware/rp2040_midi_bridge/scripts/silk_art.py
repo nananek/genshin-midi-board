@@ -4,7 +4,8 @@ The board name and the USB-A pin labels go on the back side so the connector
 body cannot hide them.  The back side also carries a QR code for the repository
 URL.  The QR code is drawn as a white silkscreen field with the dark modules
 left as bare solder mask, so a normal (dark-on-light) scanner can read it from
-the bottom of the board.
+the bottom of the board.  The BOOT and RUN tact switches get their function
+labels on the front silk, next to the switch reference designators.
 """
 
 from __future__ import annotations
@@ -18,7 +19,7 @@ BOARD_NAME_POS = (29.0, 9.5)
 BOARD_NAME_SIZE = 0.8
 
 J2_LABEL = "J2 USB-A (TOP)"
-J2_LABEL_POS = (29.0, 35.5)
+J2_LABEL_POS = (29.0, 33.0)
 J2_LABEL_SIZE = 0.8
 
 J2_PIN_LABELS = (
@@ -31,8 +32,15 @@ J2_PIN_LABEL_Y = 38.0
 J2_PIN_LABEL_SIZE = 0.8
 J2_PIN_LABEL_THICKNESS = 0.12
 
+# Function labels for the BOOT (SW6) and RUN (SW7) tact switches.  They sit to
+# the right of the switches, clear of SW4 and the J2 connector body.
+SW_LABELS = (("BOOT", 8.6, 33.2), ("RUN", 8.6, 37.4))
+SW_LABEL_SIZE = 0.8
+SW_LABEL_THICKNESS = 0.12
+
 # Labels from earlier revisions that remove_art() must also clean up.
 LEGACY_LABELS = {"VBUS", "VCC", "D-", "D+", "GND", J2_LABEL}
+SW_LABEL_TEXTS = {label for label, _, _ in SW_LABELS}
 
 QR_REPO_URL = "https://github.com/nananek/genshin-midi-board"
 QR_CENTER = (29.0, 17.5)
@@ -133,6 +141,8 @@ def remove_art(board: pcbnew.BOARD) -> None:
                 board.Remove(item)
             elif item.GetLayer() == pcbnew.B_SilkS and item.GetText() in LEGACY_LABELS:
                 board.Remove(item)
+            elif item.GetLayer() == pcbnew.F_SilkS and item.GetText() in SW_LABEL_TEXTS:
+                board.Remove(item)
         elif isinstance(item, pcbnew.PCB_SHAPE):
             if item.GetLayer() != pcbnew.B_SilkS:
                 continue
@@ -155,6 +165,9 @@ def add_art(board: pcbnew.BOARD) -> None:
     for label, x_mm in J2_PIN_LABELS:
         _add_text(board, label, x_mm, J2_PIN_LABEL_Y, J2_PIN_LABEL_SIZE,
                   J2_PIN_LABEL_THICKNESS, pcbnew.B_SilkS, mirrored=True)
+    for label, x_mm, y_mm in SW_LABELS:
+        _add_text(board, label, x_mm, y_mm, SW_LABEL_SIZE,
+                  SW_LABEL_THICKNESS, pcbnew.F_SilkS, mirrored=False)
 
     # Draw white (silk) cells for the light modules and the quiet zone.  The
     # dark modules stay as bare green solder mask.  Columns are mirrored so the

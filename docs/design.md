@@ -340,7 +340,7 @@ AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF セラミックコンデンサ
 | TPS_ILIM | U5 ILIM、R9 52.3 kΩ → GND |
 | TPS_FAULT | U5 FAULT、R11 100 kΩ → +3V3、TP |
 
-J2 のシェル pin5/6 は GND です。
+J2 のシェル pin5/6 は GND です。2 つのシェル穴（2-ø2.3 mm、13.14 mm 間隔）は信号ピン列から開口と反対側へ 2.70 mm の位置にあります。
 
 ### PC 側 USB-C
 
