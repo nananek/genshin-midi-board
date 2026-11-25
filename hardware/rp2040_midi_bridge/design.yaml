@@ -117,15 +117,15 @@ connectors:
   part: Neltron 5075AR-04-WH
   lcsc: null
   x_mm: 29.0
-  y_mm: 39.4
+  y_mm: 31.1
   rotation_deg: 180
   edge: bottom
   mouth: down
   courtyard:
   - 20.85
-  - 33.4
+  - 30.6
   - 16.3
-  - 9.4
+  - 13.4
 placements:
 - ref: U1
   value: RP2040

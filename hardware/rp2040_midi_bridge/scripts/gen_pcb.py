@@ -166,7 +166,7 @@ _Y_SHIFT_BOTTOM = 7.8
 _SPECIAL_PLACEMENT = {
     "J1": (15.0, 2.4, 180),
     "J3": (44.0, 2.4, 180),
-    "J2": (29.0, 39.4, 180),
+    "J2": (29.0, 31.1, 180),
     "SW4": (13.5, 40.0, 0),
     "SW5": (29.0, 4.2, 0),
     "SW6": (4.0, 33.5, 0),
@@ -177,8 +177,8 @@ _SPECIAL_PLACEMENT = {
     # can bridge under the package.
     "U8": (38.9, 10.5, 90),
     # Keep the USB-A series resistors out of the SW2 corridor along the bottom
-    "R3": (29.0, 30.0, 0),
-    "R4": (30.0, 31.8, 0),
+    "R3": (27.0, 27.5, 0),
+    "R4": (29.0, 29.0, 0),
 }
 
 def _rebase_placement(ref, x, y, rot):

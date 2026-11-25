@@ -30,9 +30,9 @@
 <text x="598.0" y="114.0" text-anchor="middle" class="label">J3 USB-C</text>
 <text x="598.0" y="126.0" text-anchor="middle" class="small">iPad / USB-MIDI</text>
 <path d="M 586.0 82.0 L 598.0 58.0 L 610.0 82.0" fill="none" stroke="#235789" stroke-width="1.2"/>
-<rect x="320.2" y="470.8" width="195.6" height="112.8" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
-<text x="418.0" y="525.2" text-anchor="middle" class="label">J2 USB-A</text>
-<text x="418.0" y="537.2" text-anchor="middle" class="small">MIDI キーボード</text>
+<rect x="320.2" y="437.2" width="195.6" height="160.8" rx="1" fill="#dbe7f5" stroke="#235789" stroke-width="0.8"/>
+<text x="418.0" y="515.6" text-anchor="middle" class="label">J2 USB-A</text>
+<text x="418.0" y="527.6" text-anchor="middle" class="small">MIDI キーボード</text>
 <path d="M 406.0 586.0 L 418.0 610.0 L 430.0 586.0" fill="none" stroke="#235789" stroke-width="1.2"/>
 <rect x="289.6" y="223.6" width="100.8" height="100.8" rx="1" fill="#e2efdf" stroke="#3f6b3a" stroke-width="0.8"/>
 <text x="340.0" y="272.0" text-anchor="middle" class="label">U1</text>

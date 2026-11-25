@@ -16,12 +16,12 @@ def shell_pads(text: str) -> dict[str, float]:
 
 
 class J2FootprintTests(unittest.TestCase):
-    def test_shell_pegs_are_inward_of_the_signal_row(self) -> None:
+    def test_shell_pegs_are_on_the_opening_side(self) -> None:
         pads = shell_pads(LIB.read_text(encoding="utf-8"))
         self.assertEqual(set(pads), {"5", "6"})
         for y in pads.values():
-            self.assertAlmostEqual(y, 2.7, places=3,
-                                   msg="J2 shell pegs must sit 2.7 mm on the board side")
+            self.assertAlmostEqual(y, -2.7, places=3,
+                                   msg="J2 shell pegs must sit 2.7 mm on the opening side")
 
     def test_board_uses_the_same_shell_peg_side(self) -> None:
         board = PCB.read_text(encoding="utf-8")
@@ -30,7 +30,7 @@ class J2FootprintTests(unittest.TestCase):
         pads = shell_pads(board[start:end])
         self.assertEqual(set(pads), {"5", "6"})
         for y in pads.values():
-            self.assertAlmostEqual(y, 2.7, places=3)
+            self.assertAlmostEqual(y, -2.7, places=3)
 
     def test_boot_and_run_are_labelled_on_the_front_silk(self) -> None:
         board = PCB.read_text(encoding="utf-8")

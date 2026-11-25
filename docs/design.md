@@ -180,11 +180,11 @@ SW4 は USB-A の VBUS を直接切らず、TPS2553 の EN を制御します。
 | --- | --- | --- | --- | --- |
 | J1 | USB-C | (15.0, 2.4) | 口は上 | PC / NKRO HID |
 | J3 | USB-C | (44.0, 2.4) | 口は上 | iPad / USB-MIDI |
-| J2 | USB-A | (29.0, 39.4) | 口は下、180° | MIDI キーボード |
+| J2 | USB-A | (29.0, 31.1) | 口は下、180° | MIDI キーボード |
 
 J1 と J3 の中心間は 29.0 mm です。Type-C を 10 mm ピッチにすると、2 本のケーブルの樹脂部が干渉します。今回は 29 mm ピッチを確保し、同じ失敗を避けます。
 
-USB-C の口は基板端から外へ出るため、ケースの上壁に 2 か所の開口を開けます。J2 は下壁に 1 か所です。加工位置は [case_muji_m.md](case_muji_m.md) と [case_muji_m_template.pdf](case_muji_m_template.pdf) にあります。
+USB-C の口は基板端から外へ出るため、ケースの上壁に 2 か所の開口を開けます。J2 の開口は基板端に合わせ、下壁に 1 か所の開口を開けます。加工位置は [case_muji_m.md](case_muji_m.md) と [case_muji_m_template.pdf](case_muji_m_template.pdf) にあります。
 
 ### スイッチ
 
@@ -340,7 +340,7 @@ AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF セラミックコンデンサ
 | TPS_ILIM | U5 ILIM、R9 52.3 kΩ → GND |
 | TPS_FAULT | U5 FAULT、R11 100 kΩ → +3V3、TP |
 
-J2 のシェル pin5/6 は GND です。2 つのシェル穴（2-ø2.3 mm、13.14 mm 間隔）は信号ピン列から開口と反対側へ 2.70 mm の位置にあります。
+J2 のシェル pin5/6 は GND です。2 つのシェル穴（2-ø2.3 mm、13.14 mm 間隔）は信号ピン列から開口側へ 2.70 mm の位置にあります。
 
 ### PC 側 USB-C
 

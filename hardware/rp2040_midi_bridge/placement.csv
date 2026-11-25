@@ -1,7 +1,7 @@
 ref,type,x_mm,y_mm,rotation_deg,edge,role
 J1,USB-C receptacle,15.0,2.4,180,top,USB-C receptacle
 J3,USB-C receptacle,44.0,2.4,180,top,USB-C receptacle
-J2,USB-A receptacle,29.0,39.4,180,bottom,USB-A receptacle
+J2,USB-A receptacle,29.0,31.1,180,bottom,USB-A receptacle
 U1,RP2040,22.5,17.0,270,,QFN-56 7x7 mm
 U2,W25Q128JVSIQ,33.0,14.0,0,,SOIC-8
 U3,CH345T,45.8,12.5,0,,SSOP-20
