@@ -1,7 +1,6 @@
 project:
   name: rp2040_midi_bridge
   title: RP2040 MIDI to NKRO HID + USB-MIDI
-  revision: B
   status: design-study
   date: '2026-11-24'
 board:

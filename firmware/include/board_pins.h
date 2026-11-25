@@ -1,7 +1,7 @@
 #ifndef BOARD_PINS_H
 #define BOARD_PINS_H
 
-// RP2040 MIDI bridge (design study, revision A)
+// RP2040 MIDI bridge (design study)
 //
 // The pin names are kept independent of the board so that config.h can use
 // them directly.  RP2040 QSPI uses pins 51-56, not GPIO0-5, so GP0/1 remain
