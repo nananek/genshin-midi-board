@@ -106,13 +106,13 @@ RP2040 の QFN-56 は 0.4 mm ピッチです。パッド間に配線を通さず
 | U6-U8 | USBLC6-2SC6 | SOT-23-6 | C7519 |
 | J1/J3 | TYPE-C-31-M-12 | USB-C 16P | C165948 |
 | SW6/SW7 | KMR2 SMD tact | 4.2 × 2.2 mm | C2689528 |
+| C27 | 100 uF 1210 セラミック | 3225 metric | C96123 |
 
 ### 手はんだ（THT）
 
 - J2: USB-A 5075AR-04-WH（Akizuki 100160）
 - SW1-SW4: NKK 115643（Akizuki 115643）
 - SW5: DTS-63-N-V-BLK（Akizuki 103647）
-- C27: 100 uF 1210 セラミックコンデンサ
 
 USB-C の J1/J3 は SMT パッドと THT のシェル固定タブを持ちます。JLCPCB の SMT 実装リストに C165948 が含まれているため、SMT で発注できます。シェルタブの半田が不安なら、手はんだを追加します。
 

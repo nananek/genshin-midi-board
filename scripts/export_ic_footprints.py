@@ -182,12 +182,15 @@ def main() -> None:
         for note in notes:
             lines.append(f"- {note}")
         lines.append("")
-    lines.append(
-        "U2 のフットプリントが W25Q128JVSIQ の 208-mil パッケージと一致していない。"
-        "`SOIC-8_5.3x5.3mm_P1.27mm` を使う。"
-        if any(note.startswith("U2:") for note in notes)
-        else "すべての IC のフットプリントがデータシートのパッケージと一致している。"
-    )
+    if any(note.startswith("U2:") for note in notes):
+        lines.append(
+            "U2 のフットプリントが W25Q128JVSIQ の 208-mil パッケージと一致していない。"
+            "`SOIC-8_5.3x5.3mm_P1.27mm` を使う。"
+        )
+    elif notes:
+        lines.append("上記の IC はデータシートのパッケージと一致していない。")
+    else:
+        lines.append("すべての IC のフットプリントがデータシートのパッケージと一致している。")
     lines.append("")
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"wrote {OUT}")

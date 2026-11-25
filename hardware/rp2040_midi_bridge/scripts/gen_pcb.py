@@ -82,7 +82,7 @@ PLACEMENT = {
     "J2": (31.0, 31.6, 180),
     # U1 in the middle: QSPI faces right toward U2, USB-A faces down toward J2
     "U1": (24.0, 17.0, 270),
-    "U2": (33.0, 14.0, 0),
+    "U2": (34.5, 15.6, 0),
     "U3": (47.3, 12.5, 0),
     "U4": (11.0, 21.8, 0),
     "U5": (15.5, 24.0, 0),
@@ -698,9 +698,9 @@ def route(board, netlist, fps, fast=False):
     report["SW2_LYRE"] = do_net("SW2_LYRE", [0.2, 0.15, 0.127], via_cost=8)
 
     # 2. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first.
-    # Route SD0 first: with the 208-mil flash package it is the net that needs
-    # the gap between U2 pads 3 and 4, and the later nets otherwise take it.
-    for net in ("QSPI_SD0", "QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2"):
+    # Route the left-hand pads first so the fan-out stays short; the right-hand
+    # nets then use the space below the flash package.
+    for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
     # 2. power before the 0.2 mm USB/CC signals: a 0.5 mm VBUS track needs

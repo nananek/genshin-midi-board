@@ -62,7 +62,7 @@ U2 は W25Q128JVSIQ の 208-mil パッケージに `SOIC-8_5.3x5.3mm_P1.27mm` �
 
 ## CPL の回転値
 
-`make fab` の `CPL_ROTATION_OFFSETS` で補正する。v0.0.10 の値は次のとおり。
+`make fab` の `CPL_ROTATION_OFFSETS` で補正する。現在の値は次のとおり。
 
 | Ref | 基板回転 | CPL | 補正 |
 | --- | ---: | ---: | ---: |
@@ -81,4 +81,4 @@ U2 は W25Q128JVSIQ の 208-mil パッケージに `SOIC-8_5.3x5.3mm_P1.27mm` �
 | SW6/SW7 | 0° | 0° | 0° |
 | C27 | 0° | 0° | 0° |
 
-U5 は v0.0.9 まで CPL 0° だった。v0.0.10 で 180° に補正している。
+U5 は TPS2553 の pin1 = IN に合わせて、CPL を 0° から 180° に補正している。

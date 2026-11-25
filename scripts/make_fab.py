@@ -69,9 +69,9 @@ USB_C_FOOTPRINT = "USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 USB_C_POSITION_OFFSET_MM = 1.571
 
 # JLCPCB library orientations that differ from the KiCad footprints.  These
-# were read from the JLCPCB assembly preview and checked against the reviewed
-# CPL of the completed waveshare board; U1 already lines up.  The TPS2553
-# library orientation is 180 degrees from the KiCad SOT-23-6 footprint.
+# were read from the JLCPCB assembly preview for this board; U1 already lines
+# up.  The TPS2553 library orientation is 180 degrees from the KiCad SOT-23-6
+# footprint (pin 1 = IN).
 CPL_ROTATION_OFFSETS = {
     "U2": 270,  # W25Q128, SOIC-8
     "U3": 270,  # CH345T, SSOP-20
