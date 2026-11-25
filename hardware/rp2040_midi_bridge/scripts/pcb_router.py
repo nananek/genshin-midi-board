@@ -114,7 +114,7 @@ class Router:
 
     # -------------------------------------------------------------- geometry
     def set_outline(self, points):
-        for width in (0.127, 0.15, 0.2, 0.25, 0.35, 0.5, 0.8, 1.0):
+        for width in (0.1, 0.127, 0.15, 0.2, 0.25, 0.35, 0.5, 0.8, 1.0):
             mask = bytearray(self.n)
             for a, b in zip(points, points[1:] + points[:1]):
                 self.stamp_seg(mask, a, b, EDGE + width / 2 + 0.02)
