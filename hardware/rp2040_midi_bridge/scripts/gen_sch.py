@@ -503,7 +503,7 @@ ROTATION = {
 # netlist footprint -> KiCad footprint field (names without ":" live in lib/)
 FOOTPRINT = {
     "QFN-56_7x7mm_P0.4mm": "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm",
-    "SOIC-8_3.9x4.9mm_P1.27mm": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+    "SOIC-8_5.3x5.3mm_P1.27mm": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
     "SSOP-20_5.3x7.2mm_P0.65mm": f"{LIB_NAME}:SSOP-20_5.3x7.2mm_P0.65mm",
     "SOT-23-5": "Package_TO_SOT_SMD:SOT-23-5",
     "SOT-23-6": "Package_TO_SOT_SMD:SOT-23-6",

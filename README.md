@@ -23,7 +23,7 @@ USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード
 
 RP2040 の QFN-56 は 0.4 mm ピッチで、外周パッドを外側へ逃がすだけで全ピンを引き出せます。4 層なら GND プレーンを保ちながら標準ビアだけで配線できます。ファームウェアは pico-sdk で、PIO-USB、native USB、UART1 を使います。
 
-詳しい設計は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。
+詳しい設計は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。データシートとフットプリントの照合は [docs/datasheets.md](docs/datasheets.md) にまとめています。
 
 ## 3 ポートの構成
 

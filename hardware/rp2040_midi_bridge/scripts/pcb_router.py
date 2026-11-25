@@ -199,7 +199,7 @@ class Router:
         return blocked, (viamask & self.full).to_bytes(self.n, "little")
 
     def search(self, blocked, viamask, src, dst, max_expand=400000, via_cost=30,
-               force_layer=None, relax_corner=False):
+               force_layer=None, relax_corner=False, heuristic_weight=1.0):
         nx, ny, n = self.nx, self.ny, self.n
         sx, sy = self.cx(src[0]), self.cy(src[1])
         dx, dy = self.cx(dst[0]), self.cy(dst[1])
@@ -216,7 +216,8 @@ class Router:
         for lay in src_layers:
             start = lay * n + self.idx(sx, sy)
             gdist[start] = 0.0
-            heapq.heappush(heap, (hypot(sx - dx, sy - dy), 0.0, start))
+            heapq.heappush(heap, (hypot(sx - dx, sy - dy) * heuristic_weight,
+                                  0.0, start))
         nb = ((1, 0, 1.0), (-1, 0, 1.0), (0, 1, 1.0), (0, -1, 1.0),
               (1, 1, 1.4142), (1, -1, 1.4142), (-1, 1, 1.4142), (-1, -1, 1.4142))
         expand = 0
@@ -248,7 +249,8 @@ class Router:
                 if ng < gdist[ncur]:
                     gdist[ncur] = ng
                     prev[ncur] = cur
-                    heapq.heappush(heap, (ng + hypot(jx - dx, jy - dy), ng, ncur))
+                    heapq.heappush(heap, (ng + heuristic_weight * hypot(jx - dx, jy - dy),
+                                          ng, ncur))
             other = 1 - lay
             if (force_layer is None and not blocked[other][cell]
                     and not viamask[cell]):
@@ -257,7 +259,8 @@ class Router:
                 if ng < gdist[ncur]:
                     gdist[ncur] = ng
                     prev[ncur] = cur
-                    heapq.heappush(heap, (ng + hypot(ix - dx, iy - dy), ng, ncur))
+                    heapq.heappush(heap, (ng + heuristic_weight * hypot(ix - dx, iy - dy),
+                                          ng, ncur))
         self.expansions += expand
         return None
 
@@ -312,13 +315,14 @@ class Router:
 
     def connect(self, net, src, dst, width, clearance=MIN_CLEAR, via_cost=30,
                 max_expand=400000, via_radius=VIA_R, force_layer=None,
-                via_gap=0.72, relax_corner=False):
+                via_gap=0.72, relax_corner=False, heuristic_weight=1.0):
         blocked, viamask = self.masks(net, width, clearance, via_radius)
         for _ in range(4):
             path = self.search(blocked, viamask, src, dst,
                                max_expand=max_expand, via_cost=via_cost,
                                force_layer=force_layer,
-                               relax_corner=relax_corner)
+                               relax_corner=relax_corner,
+                               heuristic_weight=heuristic_weight)
             if path is None:
                 return False
             vias = [(self.cell * ix, self.cell * iy) for lay, ix, iy in path]

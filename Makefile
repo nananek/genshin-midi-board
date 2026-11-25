@@ -3,7 +3,7 @@ PYTHON ?= python3
 VERSION ?= v0.1.0
 COMMIT ?= $(shell git rev-parse HEAD)
 
-.PHONY: all check test floorplan tables netlist sch pcb finish silk kicad-shell erc drc kicad-check case-template fab clean
+.PHONY: all check test floorplan tables netlist ic-footprints sch pcb pcb-fast finish silk kicad-shell erc drc kicad-check case-template fab clean
 
 all: check floorplan tables netlist
 
@@ -16,6 +16,9 @@ test: check
 
 floorplan:
 	$(PYTHON) scripts/gen_floorplan.py
+
+ic-footprints:
+	$(KICAD) python3 scripts/export_ic_footprints.py
 
 tables:
 	$(PYTHON) scripts/export_tables.py
@@ -38,6 +41,9 @@ sch:
 
 pcb:
 	$(KICAD) python3 -u $(PCB_GEN)
+
+pcb-fast:
+	$(KICAD) python3 -u $(PCB_GEN) --fast
 
 finish:
 	$(KICAD) bash hardware/rp2040_midi_bridge/scripts/finish_pcb.sh

@@ -43,8 +43,8 @@ LAYER_B = pcbnew.B_Cu
 FOOTPRINTS = {
     "QFN-56_7x7mm_P0.4mm": (KICAD_LIB / "Package_DFN_QFN.pretty",
                             "QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm", "Package_DFN_QFN"),
-    "SOIC-8_3.9x4.9mm_P1.27mm": (KICAD_LIB / "Package_SO.pretty",
-                                 "SOIC-8_3.9x4.9mm_P1.27mm", "Package_SO"),
+    "SOIC-8_5.3x5.3mm_P1.27mm": (KICAD_LIB / "Package_SO.pretty",
+                                 "SOIC-8_5.3x5.3mm_P1.27mm", "Package_SO"),
     "SSOP-20_5.3x7.2mm_P0.65mm": (PROJ_LIB, "SSOP-20_5.3x7.2mm_P0.65mm", "rp2040_midi_bridge"),
     "SOT-23-5": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-5", "Package_TO_SOT_SMD"),
     "SOT-23-6": (KICAD_LIB / "Package_TO_SOT_SMD.pretty", "SOT-23-6", "Package_TO_SOT_SMD"),
@@ -82,7 +82,7 @@ PLACEMENT = {
     "J2": (31.0, 31.6, 180),
     # U1 in the middle: QSPI faces right toward U2, USB-A faces down toward J2
     "U1": (24.0, 17.0, 270),
-    "U2": (34.5, 14.0, 0),
+    "U2": (33.0, 14.0, 0),
     "U3": (47.3, 12.5, 0),
     "U4": (11.0, 21.8, 0),
     "U5": (15.5, 24.0, 0),
@@ -178,7 +178,7 @@ _SPECIAL_PLACEMENT = {
     "U8": (38.9, 10.5, 90),
     # Keep the USB-A series resistors out of the SW2 corridor along the bottom
     "R3": (27.0, 27.5, 0),
-    "R4": (29.0, 29.0, 0),
+    "R4": (29.0, 29.1, 0),
 }
 
 def _rebase_placement(ref, x, y, rot):
@@ -514,11 +514,15 @@ def pad_center(fps, ref, pin):
     raise SystemExit(f"no pad {ref}.{pin}")
 
 
-def route(board, netlist, fps):
+def route(board, netlist, fps, fast=False):
     import pcb_router as R
 
     router = R.Router(BOARD_W, BOARD_H, cell=0.05)
     router.set_outline(outline_points())
+    # A* on the 0.05 mm grid is the slow part.  The fast mode caps the search
+    # and weights the heuristic; it trades a slightly longer route for speed.
+    max_expand = 250000 if fast else 900000
+    heuristic_weight = 1.3 if fast else 1.0
     by_net = pad_endpoints(fps, netlist)
 
     # every pad is an obstacle, including unconnected ones
@@ -611,8 +615,9 @@ def route(board, netlist, fps):
                 vc = via_cost if via_cost is not None else (
                     60 if net.startswith("QSPI") else 30)
                 if router.connect(net, pts[i], pts[best], w, clearance,
-                                  via_cost=vc, max_expand=900000,
-                                  via_radius=vrad):
+                                  via_cost=vc, max_expand=max_expand,
+                                  via_radius=vrad,
+                                  heuristic_weight=heuristic_weight):
                     connected.append(i)
                 else:
                     remaining.append(i)
@@ -648,7 +653,8 @@ def route(board, netlist, fps):
         px, py = pad_center(fps, ref, "1")
         if not router.connect(net, (ux + 2.3, via_y, "FB"), (px, py, "F"),
                               0.2, rule_for(net)[1], via_cost=20,
-                              max_expand=900000, via_radius=0.225):
+                              max_expand=max_expand, via_radius=0.225,
+                              heuristic_weight=heuristic_weight):
             print(f"UNROUTED {net} to {ref}", flush=True)
 
     # U1 pin 19 is ground: strap it into the exposed pad before routing so the
@@ -691,8 +697,10 @@ def route(board, netlist, fps):
     # the corridor first, otherwise the later nets box it in.
     report["SW2_LYRE"] = do_net("SW2_LYRE", [0.2, 0.15, 0.127], via_cost=8)
 
-    # 2. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first
-    for net in ("QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2", "QSPI_SD0"):
+    # 2. QSPI flash bus: six nets between U1 and U2, nested fan, F.Cu first.
+    # Route SD0 first: with the 208-mil flash package it is the net that needs
+    # the gap between U2 pads 3 and 4, and the later nets otherwise take it.
+    for net in ("QSPI_SD0", "QSPI_SS", "QSPI_SD3", "QSPI_SD1", "QSPI_SCLK", "QSPI_SD2"):
         report[net] = do_net(net, [0.15, 0.127], via_cost=45)
 
     # 2. power before the 0.2 mm USB/CC signals: a 0.5 mm VBUS track needs
@@ -914,6 +922,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--check-placement", action="store_true")
     ap.add_argument("--no-route", action="store_true")
+    ap.add_argument("--fast", action="store_true",
+                    help="cap the A* search and weight the heuristic")
     ap.add_argument("--out", default=str(PCB_PATH))
     args = ap.parse_args(argv)
 
@@ -928,7 +938,7 @@ def main(argv=None):
         return 1 if bad else 0
 
     if not args.no_route:
-        route(board, netlist, fps)
+        route(board, netlist, fps, fast=args.fast)
 
     add_zones(board)
     add_silk(board)

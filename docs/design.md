@@ -266,6 +266,8 @@ USB は Full-Speed（12 Mbps）なのでインピーダンス制御は必須で�
 | SW5 | DTS-63-N-V-BLK | - | THT |
 | SW6/SW7 | KMR2 SMD tact | C2689528 | SMT |
 
+データシートとフットプリントの照合は [datasheets.md](datasheets.md) と [ic_footprints.md](ic_footprints.md) にあります。
+
 AP2112K-3.3TRG1 の LCSC 型番と C27 の 100 uF セラミックコンデンサは発注前に再確認します。
 
 ## 12. ファームウェア

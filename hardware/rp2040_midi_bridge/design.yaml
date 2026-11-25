@@ -448,7 +448,7 @@ bom:
   assembly: SMT
 - ref: U2
   value: W25Q128JVSIQ
-  footprint: SOIC-8 3.9x4.9 mm
+  footprint: SOIC-8 5.3x5.3 mm
   lcsc: C97521
   assembly: SMT
 - ref: U3
