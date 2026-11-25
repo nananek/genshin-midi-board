@@ -574,41 +574,6 @@ components:
     pins:
       '1': X2_XO
       '2': GND
-  TP3:
-    value: GND
-    footprint: TestPoint_1P
-    pins:
-      '1': GND
-  TP7:
-    value: BOOTSEL
-    footprint: TestPoint_1P
-    pins:
-      '1': BOOTSEL
-  TP8:
-    value: +3V3
-    footprint: TestPoint_1P
-    pins:
-      '1': +3V3
-  TP9:
-    value: +5V
-    footprint: TestPoint_1P
-    pins:
-      '1': +5V
-  TP10:
-    value: GND
-    footprint: TestPoint_1P
-    pins:
-      '1': GND
-  TP11:
-    value: CH345_RST
-    footprint: TestPoint_1P
-    pins:
-      '1': CH345_RST
-  TP12:
-    value: VBUS_USB_A
-    footprint: TestPoint_1P
-    pins:
-      '1': VBUS_USB_A
 nets:
   +1V1:
   - U1.23
@@ -646,7 +611,6 @@ nets:
   - C12.1
   - C13.1
   - C16.1
-  - TP8.1
   +5V:
   - U3.19
   - U4.1
@@ -660,11 +624,9 @@ nets:
   - C28.1
   - C29.1
   - C30.1
-  - TP9.1
   BOOTSEL:
   - SW6.2
   - R15.2
-  - TP7.1
   CC1_IPAD:
   - J3.A5
   - R7.1
@@ -680,7 +642,6 @@ nets:
   CH345_RST:
   - U3.1
   - R16.1
-  - TP11.1
   CH345_V3:
   - U3.5
   - C19.1
@@ -756,8 +717,6 @@ nets:
   - C18.2
   - C22.2
   - C23.2
-  - TP3.1
-  - TP10.1
   LED_A:
   - LED1.2
   - R13.2
@@ -891,7 +850,6 @@ nets:
   - J2.1
   - C26.1
   - C27.1
-  - TP12.1
   X1_XIN:
   - U1.20
   - X1.1

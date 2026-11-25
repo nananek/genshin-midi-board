@@ -4079,129 +4079,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rp2040_midi_bridge:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "rp2040_midi_bridge:USBLC6-2SC6"
 			(pin_names
 				(hide yes)
@@ -6937,7 +6814,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:W25Q128JVS")
-		(at 452.12 287.02 0)
+		(at 452.12 279.4 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6946,7 +6823,7 @@
 		(fields_autoplaced yes)
 		(uuid "25f15d5c-ffff-5cac-80ce-7367cfe2e012")
 		(property "Reference" "U2"
-			(at 452.12 260.69 0)
+			(at 452.12 253.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6954,7 +6831,7 @@
 			)
 		)
 		(property "Value" "W25Q128JVSIQ"
-			(at 452.12 314.35 0)
+			(at 452.12 306.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6962,7 +6839,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 452.12 287.02 0)
+			(at 452.12 279.4 0)
 			(hide yes)
 			(effects
 				(font
@@ -6971,7 +6848,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv_dtr%20revc%2003272018%20plus.pdf"
-			(at 452.12 287.02 0)
+			(at 452.12 279.4 0)
 			(hide yes)
 			(effects
 				(font
@@ -6980,7 +6857,7 @@
 			)
 		)
 		(property "LCSC" "C97521"
-			(at 452.12 287.02 0)
+			(at 452.12 279.4 0)
 			(hide yes)
 			(effects
 				(font
@@ -7023,7 +6900,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 452.12 303.53 180)
+		(at 452.12 295.91 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7032,7 +6909,7 @@
 		(fields_autoplaced yes)
 		(uuid "b85439ea-8fac-5083-a2bb-80f52d5e58a6")
 		(property "Reference" "#PWR009"
-			(at 452.12 309.88 0)
+			(at 452.12 302.26 0)
 			(hide yes)
 			(effects
 				(font
@@ -7041,7 +6918,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 452.12 301.03 0)
+			(at 452.12 293.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7049,7 +6926,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 452.12 303.53 0)
+			(at 452.12 295.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -7058,7 +6935,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 452.12 303.53 0)
+			(at 452.12 295.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -7080,7 +6957,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+3V3")
-		(at 452.12 270.51 0)
+		(at 452.12 262.89 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7089,7 +6966,7 @@
 		(fields_autoplaced yes)
 		(uuid "e83b7bc3-a7ef-5def-987b-78c5398492be")
 		(property "Reference" "#PWR010"
-			(at 452.12 276.86 0)
+			(at 452.12 269.24 0)
 			(hide yes)
 			(effects
 				(font
@@ -7098,7 +6975,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 452.12 268.01 0)
+			(at 452.12 260.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7106,7 +6983,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 452.12 270.51 0)
+			(at 452.12 262.89 0)
 			(hide yes)
 			(effects
 				(font
@@ -7115,7 +6992,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 452.12 270.51 0)
+			(at 452.12 262.89 0)
 			(hide yes)
 			(effects
 				(font
@@ -7430,7 +7307,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:AP2112K-3.3")
-		(at 480.06 214.63 0)
+		(at 480.06 207.01 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7439,7 +7316,7 @@
 		(fields_autoplaced yes)
 		(uuid "6284e3a8-8dad-59cf-b9bb-c86ca395eae3")
 		(property "Reference" "U4"
-			(at 480.06 205.89 0)
+			(at 480.06 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7447,7 +7324,7 @@
 			)
 		)
 		(property "Value" "AP2112K-3.3TRG1"
-			(at 480.06 236.88 0)
+			(at 480.06 229.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7455,7 +7332,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-			(at 480.06 214.63 0)
+			(at 480.06 207.01 0)
 			(hide yes)
 			(effects
 				(font
@@ -7464,7 +7341,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2112.pdf"
-			(at 480.06 214.63 0)
+			(at 480.06 207.01 0)
 			(hide yes)
 			(effects
 				(font
@@ -7473,7 +7350,7 @@
 			)
 		)
 		(property "LCSC" "C51118"
-			(at 480.06 214.63 0)
+			(at 480.06 207.01 0)
 			(hide yes)
 			(effects
 				(font
@@ -7507,7 +7384,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 468.63 212.09 270)
+		(at 468.63 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7516,7 +7393,7 @@
 		(fields_autoplaced yes)
 		(uuid "920ca37d-2467-5d8d-b452-2a5f4dc9dc9c")
 		(property "Reference" "#PWR014"
-			(at 468.63 218.44 0)
+			(at 468.63 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -7525,7 +7402,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 468.63 209.59 0)
+			(at 468.63 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7533,7 +7410,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 468.63 212.09 0)
+			(at 468.63 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -7542,7 +7419,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 468.63 212.09 0)
+			(at 468.63 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -7564,7 +7441,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 480.06 226.06 180)
+		(at 480.06 218.44 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7573,7 +7450,7 @@
 		(fields_autoplaced yes)
 		(uuid "673fb887-093a-5fb6-87d6-31b574f0f729")
 		(property "Reference" "#PWR015"
-			(at 480.06 232.41 0)
+			(at 480.06 224.79 0)
 			(hide yes)
 			(effects
 				(font
@@ -7582,7 +7459,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 480.06 223.56 0)
+			(at 480.06 215.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7590,7 +7467,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 480.06 226.06 0)
+			(at 480.06 218.44 0)
 			(hide yes)
 			(effects
 				(font
@@ -7599,7 +7476,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 480.06 226.06 0)
+			(at 480.06 218.44 0)
 			(hide yes)
 			(effects
 				(font
@@ -7621,7 +7498,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 468.63 214.63 270)
+		(at 468.63 207.01 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7630,7 +7507,7 @@
 		(fields_autoplaced yes)
 		(uuid "1d83bfc6-d3ae-5a5e-b4c5-a9e1a0d57b6b")
 		(property "Reference" "#PWR016"
-			(at 468.63 220.98 0)
+			(at 468.63 213.36 0)
 			(hide yes)
 			(effects
 				(font
@@ -7639,7 +7516,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 468.63 212.13 0)
+			(at 468.63 204.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7647,7 +7524,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 468.63 214.63 0)
+			(at 468.63 207.01 0)
 			(hide yes)
 			(effects
 				(font
@@ -7656,7 +7533,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 468.63 214.63 0)
+			(at 468.63 207.01 0)
 			(hide yes)
 			(effects
 				(font
@@ -7678,7 +7555,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+3V3")
-		(at 491.49 212.09 90)
+		(at 491.49 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7687,7 +7564,7 @@
 		(fields_autoplaced yes)
 		(uuid "2d9dfc6a-f721-512a-b8ed-f0d46333a3a5")
 		(property "Reference" "#PWR017"
-			(at 491.49 218.44 0)
+			(at 491.49 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -7696,7 +7573,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 491.49 209.59 0)
+			(at 491.49 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7704,7 +7581,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 491.49 212.09 0)
+			(at 491.49 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -7713,7 +7590,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 491.49 212.09 0)
+			(at 491.49 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -8180,7 +8057,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:USBLC6-2SC6")
-		(at 495.3 147.32 0)
+		(at 495.3 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8189,7 +8066,7 @@
 		(fields_autoplaced yes)
 		(uuid "a1e3f7f5-e475-588a-b7a4-97d16fb4564e")
 		(property "Reference" "U7"
-			(at 495.3 128.61 0)
+			(at 495.3 120.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8197,7 +8074,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 495.3 169.57 0)
+			(at 495.3 161.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8205,7 +8082,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
-			(at 495.3 147.32 0)
+			(at 495.3 139.7 0)
 			(hide yes)
 			(effects
 				(font
@@ -8214,7 +8091,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.st.com/resource/en/datasheet/usblc6-2.pdf"
-			(at 495.3 147.32 0)
+			(at 495.3 139.7 0)
 			(hide yes)
 			(effects
 				(font
@@ -8223,7 +8100,7 @@
 			)
 		)
 		(property "LCSC" "C7519"
-			(at 495.3 147.32 0)
+			(at 495.3 139.7 0)
 			(hide yes)
 			(effects
 				(font
@@ -8260,7 +8137,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 495.3 158.75 180)
+		(at 495.3 151.13 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -8269,7 +8146,7 @@
 		(fields_autoplaced yes)
 		(uuid "b0c1e44d-e71b-57db-a7dd-4c4c76047f80")
 		(property "Reference" "#PWR023"
-			(at 495.3 165.1 0)
+			(at 495.3 157.48 0)
 			(hide yes)
 			(effects
 				(font
@@ -8278,7 +8155,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 495.3 156.25 0)
+			(at 495.3 148.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8286,7 +8163,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 495.3 158.75 0)
+			(at 495.3 151.13 0)
 			(hide yes)
 			(effects
 				(font
@@ -8295,7 +8172,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 495.3 158.75 0)
+			(at 495.3 151.13 0)
 			(hide yes)
 			(effects
 				(font
@@ -8317,7 +8194,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:VBUS_PC")
-		(at 495.3 138.43 0)
+		(at 495.3 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -8326,7 +8203,7 @@
 		(fields_autoplaced yes)
 		(uuid "fd601011-e820-565e-a969-0ca8f6f72298")
 		(property "Reference" "#PWR024"
-			(at 495.3 144.78 0)
+			(at 495.3 137.16 0)
 			(hide yes)
 			(effects
 				(font
@@ -8335,7 +8212,7 @@
 			)
 		)
 		(property "Value" "VBUS_PC"
-			(at 495.3 135.93 0)
+			(at 495.3 128.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8343,7 +8220,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 495.3 138.43 0)
+			(at 495.3 130.81 0)
 			(hide yes)
 			(effects
 				(font
@@ -8352,7 +8229,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 495.3 138.43 0)
+			(at 495.3 130.81 0)
 			(hide yes)
 			(effects
 				(font
@@ -8568,7 +8445,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:USB_C_Receptacle_USB2.0_16P")
-		(at 439.42 149.86 0)
+		(at 439.42 142.24 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8577,7 +8454,7 @@
 		(fields_autoplaced yes)
 		(uuid "ff4e73c5-0b8e-50aa-89d4-26d7a8c832b0")
 		(property "Reference" "J1"
-			(at 439.42 128.42 0)
+			(at 439.42 120.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8585,7 +8462,7 @@
 			)
 		)
 		(property "Value" "TYPE-C-31-M-12"
-			(at 439.42 187.35 0)
+			(at 439.42 179.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8593,7 +8470,7 @@
 			)
 		)
 		(property "Footprint" "rp2040_midi_bridge:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
-			(at 439.42 149.86 0)
+			(at 439.42 142.24 0)
 			(hide yes)
 			(effects
 				(font
@@ -8602,7 +8479,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 439.42 149.86 0)
+			(at 439.42 142.24 0)
 			(hide yes)
 			(effects
 				(font
@@ -8611,7 +8488,7 @@
 			)
 		)
 		(property "LCSC" "C165948"
-			(at 439.42 149.86 0)
+			(at 439.42 142.24 0)
 			(hide yes)
 			(effects
 				(font
@@ -8681,7 +8558,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 439.42 176.53 180)
+		(at 439.42 168.91 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -8690,7 +8567,7 @@
 		(fields_autoplaced yes)
 		(uuid "74ec0dc8-6348-50eb-b66c-4e87ea51a21b")
 		(property "Reference" "#PWR027"
-			(at 439.42 182.88 0)
+			(at 439.42 175.26 0)
 			(hide yes)
 			(effects
 				(font
@@ -8699,7 +8576,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 439.42 174.03 0)
+			(at 439.42 166.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8707,7 +8584,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 439.42 176.53 0)
+			(at 439.42 168.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -8716,7 +8593,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 439.42 176.53 0)
+			(at 439.42 168.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -8738,7 +8615,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:VBUS_PC")
-		(at 458.47 134.62 90)
+		(at 458.47 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -8747,7 +8624,7 @@
 		(fields_autoplaced yes)
 		(uuid "95d7b2e2-c33e-52e7-bf83-f4c8f74de1ec")
 		(property "Reference" "#PWR028"
-			(at 458.47 140.97 0)
+			(at 458.47 133.35 0)
 			(hide yes)
 			(effects
 				(font
@@ -8756,7 +8633,7 @@
 			)
 		)
 		(property "Value" "VBUS_PC"
-			(at 458.47 132.12 0)
+			(at 458.47 124.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8764,7 +8641,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 458.47 134.62 0)
+			(at 458.47 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -8773,7 +8650,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 458.47 134.62 0)
+			(at 458.47 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -8795,7 +8672,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 431.8 176.53 180)
+		(at 431.8 168.91 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -8804,7 +8681,7 @@
 		(fields_autoplaced yes)
 		(uuid "2e2bd496-7396-5df6-8f82-3e7f157def3a")
 		(property "Reference" "#PWR029"
-			(at 431.8 182.88 0)
+			(at 431.8 175.26 0)
 			(hide yes)
 			(effects
 				(font
@@ -8813,7 +8690,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 431.8 174.03 0)
+			(at 431.8 166.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8821,7 +8698,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 431.8 176.53 0)
+			(at 431.8 168.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -8830,7 +8707,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 431.8 176.53 0)
+			(at 431.8 168.91 0)
 			(hide yes)
 			(effects
 				(font
@@ -9435,7 +9312,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:Crystal_GND24")
-		(at 482.6 265.43 0)
+		(at 482.6 257.81 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9444,7 +9321,7 @@
 		(fields_autoplaced yes)
 		(uuid "2ce51a88-7081-5e01-aafc-8f54912d7643")
 		(property "Reference" "X1"
-			(at 482.6 259.674 0)
+			(at 482.6 252.054 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9452,7 +9329,7 @@
 			)
 		)
 		(property "Value" "12MHz"
-			(at 482.6 285.14 0)
+			(at 482.6 277.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9460,7 +9337,7 @@
 			)
 		)
 		(property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
-			(at 482.6 265.43 0)
+			(at 482.6 257.81 0)
 			(hide yes)
 			(effects
 				(font
@@ -9469,7 +9346,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 482.6 265.43 0)
+			(at 482.6 257.81 0)
 			(hide yes)
 			(effects
 				(font
@@ -9478,7 +9355,7 @@
 			)
 		)
 		(property "LCSC" "C50430"
-			(at 482.6 265.43 0)
+			(at 482.6 257.81 0)
 			(hide yes)
 			(effects
 				(font
@@ -9509,7 +9386,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 482.6 274.32 180)
+		(at 482.6 266.7 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -9518,7 +9395,7 @@
 		(fields_autoplaced yes)
 		(uuid "0a2c7ce5-6fd9-51a2-8a29-427933a5d61d")
 		(property "Reference" "#PWR037"
-			(at 482.6 280.67 0)
+			(at 482.6 273.05 0)
 			(hide yes)
 			(effects
 				(font
@@ -9527,7 +9404,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 482.6 271.82 0)
+			(at 482.6 264.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9535,7 +9412,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 482.6 274.32 0)
+			(at 482.6 266.7 0)
 			(hide yes)
 			(effects
 				(font
@@ -9544,7 +9421,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 482.6 274.32 0)
+			(at 482.6 266.7 0)
 			(hide yes)
 			(effects
 				(font
@@ -9697,7 +9574,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:D_Schottky")
-		(at 433.07 223.52 90)
+		(at 433.07 215.9 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9706,7 +9583,7 @@
 		(fields_autoplaced yes)
 		(uuid "4d39fdd7-dab0-5af6-b07f-a743d7583bad")
 		(property "Reference" "D1"
-			(at 433.07 206.08 0)
+			(at 433.07 198.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9714,7 +9591,7 @@
 			)
 		)
 		(property "Value" "BAT54WS"
-			(at 433.07 241.96 0)
+			(at 433.07 234.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9722,7 +9599,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-323"
-			(at 433.07 223.52 0)
+			(at 433.07 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9731,7 +9608,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 433.07 223.52 0)
+			(at 433.07 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9740,7 +9617,7 @@
 			)
 		)
 		(property "LCSC" "C22629"
-			(at 433.07 223.52 0)
+			(at 433.07 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9765,7 +9642,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 433.07 231.14 180)
+		(at 433.07 223.52 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -9774,7 +9651,7 @@
 		(fields_autoplaced yes)
 		(uuid "3ef1d495-685f-5950-b414-3682d787eac8")
 		(property "Reference" "#PWR039"
-			(at 433.07 237.49 0)
+			(at 433.07 229.87 0)
 			(hide yes)
 			(effects
 				(font
@@ -9783,7 +9660,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 433.07 228.64 0)
+			(at 433.07 221.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9791,7 +9668,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 433.07 231.14 0)
+			(at 433.07 223.52 0)
 			(hide yes)
 			(effects
 				(font
@@ -9800,7 +9677,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 433.07 231.14 0)
+			(at 433.07 223.52 0)
 			(hide yes)
 			(effects
 				(font
@@ -9822,7 +9699,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:VBUS_PC")
-		(at 433.07 215.9 0)
+		(at 433.07 208.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -9831,7 +9708,7 @@
 		(fields_autoplaced yes)
 		(uuid "26dde30c-ef3c-553b-b685-97e88e625156")
 		(property "Reference" "#PWR040"
-			(at 433.07 222.25 0)
+			(at 433.07 214.63 0)
 			(hide yes)
 			(effects
 				(font
@@ -9840,7 +9717,7 @@
 			)
 		)
 		(property "Value" "VBUS_PC"
-			(at 433.07 213.4 0)
+			(at 433.07 205.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9848,7 +9725,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 433.07 215.9 0)
+			(at 433.07 208.28 0)
 			(hide yes)
 			(effects
 				(font
@@ -9857,7 +9734,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 433.07 215.9 0)
+			(at 433.07 208.28 0)
 			(hide yes)
 			(effects
 				(font
@@ -9879,7 +9756,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:D_Schottky")
-		(at 449.58 223.52 90)
+		(at 449.58 215.9 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9888,7 +9765,7 @@
 		(fields_autoplaced yes)
 		(uuid "1a17724a-8b58-578e-bc95-7f33cf429f9a")
 		(property "Reference" "D2"
-			(at 449.58 206.08 0)
+			(at 449.58 198.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9896,7 +9773,7 @@
 			)
 		)
 		(property "Value" "BAT54WS"
-			(at 449.58 241.96 0)
+			(at 449.58 234.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9904,7 +9781,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-323"
-			(at 449.58 223.52 0)
+			(at 449.58 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9913,7 +9790,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 449.58 223.52 0)
+			(at 449.58 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9922,7 +9799,7 @@
 			)
 		)
 		(property "LCSC" "C22629"
-			(at 449.58 223.52 0)
+			(at 449.58 215.9 0)
 			(hide yes)
 			(effects
 				(font
@@ -9947,7 +9824,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 449.58 231.14 180)
+		(at 449.58 223.52 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -9956,7 +9833,7 @@
 		(fields_autoplaced yes)
 		(uuid "0dd640f8-0e84-5abb-a608-93075de37dfe")
 		(property "Reference" "#PWR041"
-			(at 449.58 237.49 0)
+			(at 449.58 229.87 0)
 			(hide yes)
 			(effects
 				(font
@@ -9965,7 +9842,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 449.58 228.64 0)
+			(at 449.58 221.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9973,7 +9850,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 449.58 231.14 0)
+			(at 449.58 223.52 0)
 			(hide yes)
 			(effects
 				(font
@@ -9982,7 +9859,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 449.58 231.14 0)
+			(at 449.58 223.52 0)
 			(hide yes)
 			(effects
 				(font
@@ -10004,7 +9881,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
-		(at 449.58 215.9 0)
+		(at 449.58 208.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -10013,7 +9890,7 @@
 		(fields_autoplaced yes)
 		(uuid "b8e704c1-4940-5cfc-b044-4267a7e4e4d9")
 		(property "Reference" "#PWR042"
-			(at 449.58 222.25 0)
+			(at 449.58 214.63 0)
 			(hide yes)
 			(effects
 				(font
@@ -10022,7 +9899,7 @@
 			)
 		)
 		(property "Value" "VBUS_IPAD"
-			(at 449.58 213.4 0)
+			(at 449.58 205.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10030,7 +9907,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 449.58 215.9 0)
+			(at 449.58 208.28 0)
 			(hide yes)
 			(effects
 				(font
@@ -10039,7 +9916,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 449.58 215.9 0)
+			(at 449.58 208.28 0)
 			(hide yes)
 			(effects
 				(font
@@ -10061,7 +9938,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:LED")
-		(at 775.97 275.59 90)
+		(at 775.97 267.97 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10070,7 +9947,7 @@
 		(fields_autoplaced yes)
 		(uuid "7b2717d7-84f9-5230-9c0f-c7c5e7ddaef2")
 		(property "Reference" "LED1"
-			(at 775.97 260.17 0)
+			(at 775.97 252.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10078,7 +9955,7 @@
 			)
 		)
 		(property "Value" "KT-0603R"
-			(at 775.97 294.03 0)
+			(at 775.97 286.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10086,7 +9963,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 775.97 275.59 0)
+			(at 775.97 267.97 0)
 			(hide yes)
 			(effects
 				(font
@@ -10095,7 +9972,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 775.97 275.59 0)
+			(at 775.97 267.97 0)
 			(hide yes)
 			(effects
 				(font
@@ -10104,7 +9981,7 @@
 			)
 		)
 		(property "LCSC" "C2286"
-			(at 775.97 275.59 0)
+			(at 775.97 267.97 0)
 			(hide yes)
 			(effects
 				(font
@@ -10129,7 +10006,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 775.97 283.21 180)
+		(at 775.97 275.59 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -10138,7 +10015,7 @@
 		(fields_autoplaced yes)
 		(uuid "1386a2bb-d12c-5760-bd80-fe653a46d818")
 		(property "Reference" "#PWR043"
-			(at 775.97 289.56 0)
+			(at 775.97 281.94 0)
 			(hide yes)
 			(effects
 				(font
@@ -10147,7 +10024,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 775.97 280.71 0)
+			(at 775.97 273.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10155,7 +10032,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 775.97 283.21 0)
+			(at 775.97 275.59 0)
 			(hide yes)
 			(effects
 				(font
@@ -10164,7 +10041,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 775.97 283.21 0)
+			(at 775.97 275.59 0)
 			(hide yes)
 			(effects
 				(font
@@ -11091,7 +10968,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 542.29 130.81 90)
+		(at 542.29 123.19 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11100,7 +10977,7 @@
 		(fields_autoplaced yes)
 		(uuid "8667082a-9ea8-51d9-853f-3e12122b82fa")
 		(property "Reference" "R1"
-			(at 542.29 127.594 0)
+			(at 542.29 119.974 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11108,7 +10985,7 @@
 			)
 		)
 		(property "Value" "27R"
-			(at 542.29 135.026 0)
+			(at 542.29 127.406 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11116,7 +10993,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 542.29 130.81 0)
+			(at 542.29 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11125,7 +11002,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 542.29 130.81 0)
+			(at 542.29 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11134,7 +11011,7 @@
 			)
 		)
 		(property "LCSC" "C25100"
-			(at 542.29 130.81 0)
+			(at 542.29 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11159,7 +11036,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 589.28 130.81 90)
+		(at 589.28 123.19 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11168,7 +11045,7 @@
 		(fields_autoplaced yes)
 		(uuid "22569ca4-6847-5159-a599-41651ab1296c")
 		(property "Reference" "R2"
-			(at 589.28 127.594 0)
+			(at 589.28 119.974 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11176,7 +11053,7 @@
 			)
 		)
 		(property "Value" "27R"
-			(at 589.28 135.026 0)
+			(at 589.28 127.406 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11184,7 +11061,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 589.28 130.81 0)
+			(at 589.28 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11193,7 +11070,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 589.28 130.81 0)
+			(at 589.28 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11202,7 +11079,7 @@
 			)
 		)
 		(property "LCSC" "C25100"
-			(at 589.28 130.81 0)
+			(at 589.28 123.19 0)
 			(hide yes)
 			(effects
 				(font
@@ -11363,7 +11240,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 628.65 134.62 90)
+		(at 628.65 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11372,7 +11249,7 @@
 		(fields_autoplaced yes)
 		(uuid "bae9c4d1-fbda-51ff-aca6-d0ebd62e1d0a")
 		(property "Reference" "R5"
-			(at 628.65 128.42 0)
+			(at 628.65 120.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11380,7 +11257,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 628.65 141.82 0)
+			(at 628.65 134.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11388,7 +11265,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 628.65 134.62 0)
+			(at 628.65 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11397,7 +11274,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 628.65 134.62 0)
+			(at 628.65 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11406,7 +11283,7 @@
 			)
 		)
 		(property "LCSC" "C23186"
-			(at 628.65 134.62 0)
+			(at 628.65 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11431,7 +11308,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 636.27 134.62 90)
+		(at 636.27 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11440,7 +11317,7 @@
 		(fields_autoplaced yes)
 		(uuid "8fca01a6-4cd6-5884-abcd-4cb6bed072f2")
 		(property "Reference" "#PWR052"
-			(at 636.27 140.97 0)
+			(at 636.27 133.35 0)
 			(hide yes)
 			(effects
 				(font
@@ -11449,7 +11326,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 636.27 132.12 0)
+			(at 636.27 124.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11457,7 +11334,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 636.27 134.62 0)
+			(at 636.27 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11466,7 +11343,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 636.27 134.62 0)
+			(at 636.27 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11488,7 +11365,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 665.48 134.62 90)
+		(at 665.48 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11497,7 +11374,7 @@
 		(fields_autoplaced yes)
 		(uuid "d00890aa-451f-537d-8283-a533c6eac328")
 		(property "Reference" "R6"
-			(at 665.48 128.42 0)
+			(at 665.48 120.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11505,7 +11382,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 665.48 141.82 0)
+			(at 665.48 134.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11513,7 +11390,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 665.48 134.62 0)
+			(at 665.48 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11522,7 +11399,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 665.48 134.62 0)
+			(at 665.48 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11531,7 +11408,7 @@
 			)
 		)
 		(property "LCSC" "C23186"
-			(at 665.48 134.62 0)
+			(at 665.48 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11556,7 +11433,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 673.1 134.62 90)
+		(at 673.1 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11565,7 +11442,7 @@
 		(fields_autoplaced yes)
 		(uuid "bb129dcd-62b3-50e9-a8d0-d1eaa41fe96f")
 		(property "Reference" "#PWR053"
-			(at 673.1 140.97 0)
+			(at 673.1 133.35 0)
 			(hide yes)
 			(effects
 				(font
@@ -11574,7 +11451,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 673.1 132.12 0)
+			(at 673.1 124.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11582,7 +11459,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 673.1 134.62 0)
+			(at 673.1 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -11591,7 +11468,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 673.1 134.62 0)
+			(at 673.1 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -12238,7 +12115,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 520.7 266.7 90)
+		(at 520.7 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12247,7 +12124,7 @@
 		(fields_autoplaced yes)
 		(uuid "fe9faf26-ae31-551a-8cb1-4e489db3d6c7")
 		(property "Reference" "R12"
-			(at 520.7 260.5 0)
+			(at 520.7 252.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12255,7 +12132,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 520.7 273.9 0)
+			(at 520.7 266.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12263,7 +12140,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 520.7 266.7 0)
+			(at 520.7 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12272,7 +12149,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 520.7 266.7 0)
+			(at 520.7 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12281,7 +12158,7 @@
 			)
 		)
 		(property "LCSC" "C25744"
-			(at 520.7 266.7 0)
+			(at 520.7 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12306,7 +12183,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+3V3")
-		(at 528.32 266.7 90)
+		(at 528.32 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -12315,7 +12192,7 @@
 		(fields_autoplaced yes)
 		(uuid "f75c53bc-2db1-53fa-8064-97dd81dff90c")
 		(property "Reference" "#PWR059"
-			(at 528.32 273.05 0)
+			(at 528.32 265.43 0)
 			(hide yes)
 			(effects
 				(font
@@ -12324,7 +12201,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 528.32 264.2 0)
+			(at 528.32 256.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12332,7 +12209,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 528.32 266.7 0)
+			(at 528.32 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12341,7 +12218,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 528.32 266.7 0)
+			(at 528.32 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12363,7 +12240,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 562.61 262.89 90)
+		(at 562.61 255.27 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12372,7 +12249,7 @@
 		(fields_autoplaced yes)
 		(uuid "f6716c40-9b95-56f7-b39a-2e4d2b008f97")
 		(property "Reference" "R13"
-			(at 562.61 259.674 0)
+			(at 562.61 252.054 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12380,7 +12257,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 562.61 267.106 0)
+			(at 562.61 259.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12388,7 +12265,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 562.61 262.89 0)
+			(at 562.61 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12397,7 +12274,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 562.61 262.89 0)
+			(at 562.61 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12406,7 +12283,7 @@
 			)
 		)
 		(property "LCSC" "C11702"
-			(at 562.61 262.89 0)
+			(at 562.61 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12431,7 +12308,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 603.25 262.89 90)
+		(at 603.25 255.27 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12440,7 +12317,7 @@
 		(fields_autoplaced yes)
 		(uuid "27aaba81-c30f-5740-bd61-650ea5a71e88")
 		(property "Reference" "R14"
-			(at 603.25 259.674 0)
+			(at 603.25 252.054 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12448,7 +12325,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 603.25 267.106 0)
+			(at 603.25 259.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12456,7 +12333,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 603.25 262.89 0)
+			(at 603.25 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12465,7 +12342,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 603.25 262.89 0)
+			(at 603.25 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12474,7 +12351,7 @@
 			)
 		)
 		(property "LCSC" "C11702"
-			(at 603.25 262.89 0)
+			(at 603.25 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12499,7 +12376,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 640.08 262.89 90)
+		(at 640.08 255.27 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12508,7 +12385,7 @@
 		(fields_autoplaced yes)
 		(uuid "d81cbd06-6d63-59df-bcdb-a5de1ebb753b")
 		(property "Reference" "R15"
-			(at 640.08 259.674 0)
+			(at 640.08 252.054 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12516,7 +12393,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 640.08 267.106 0)
+			(at 640.08 259.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12524,7 +12401,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 640.08 262.89 0)
+			(at 640.08 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12533,7 +12410,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 640.08 262.89 0)
+			(at 640.08 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12542,7 +12419,7 @@
 			)
 		)
 		(property "LCSC" "C11702"
-			(at 640.08 262.89 0)
+			(at 640.08 255.27 0)
 			(hide yes)
 			(effects
 				(font
@@ -12828,7 +12705,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:R")
-		(at 674.37 266.7 90)
+		(at 674.37 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12837,7 +12714,7 @@
 		(fields_autoplaced yes)
 		(uuid "267274cc-cea0-52aa-bf15-7b4baf3a9533")
 		(property "Reference" "R19"
-			(at 674.37 260.5 0)
+			(at 674.37 252.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12845,7 +12722,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 674.37 273.9 0)
+			(at 674.37 266.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12853,7 +12730,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 674.37 266.7 0)
+			(at 674.37 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12862,7 +12739,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 674.37 266.7 0)
+			(at 674.37 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12871,7 +12748,7 @@
 			)
 		)
 		(property "LCSC" "C25744"
-			(at 674.37 266.7 0)
+			(at 674.37 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12896,7 +12773,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+3V3")
-		(at 681.99 266.7 90)
+		(at 681.99 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -12905,7 +12782,7 @@
 		(fields_autoplaced yes)
 		(uuid "affd3b1f-fc8b-51ca-b8f9-c786a8bc0360")
 		(property "Reference" "#PWR061"
-			(at 681.99 273.05 0)
+			(at 681.99 265.43 0)
 			(hide yes)
 			(effects
 				(font
@@ -12914,7 +12791,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 681.99 264.2 0)
+			(at 681.99 256.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12922,7 +12799,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 681.99 266.7 0)
+			(at 681.99 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -12931,7 +12808,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 681.99 266.7 0)
+			(at 681.99 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -15891,7 +15768,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 520.7 212.09 90)
+		(at 520.7 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15900,7 +15777,7 @@
 		(fields_autoplaced yes)
 		(uuid "8460f063-2674-5d30-b635-fbe526cece69")
 		(property "Reference" "C20"
-			(at 520.7 205.89 0)
+			(at 520.7 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15908,7 +15785,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 520.7 219.29 0)
+			(at 520.7 211.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15916,7 +15793,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 520.7 212.09 0)
+			(at 520.7 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -15925,7 +15802,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 520.7 212.09 0)
+			(at 520.7 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -15934,7 +15811,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 520.7 212.09 0)
+			(at 520.7 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -15959,7 +15836,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 513.08 212.09 270)
+		(at 513.08 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -15968,7 +15845,7 @@
 		(fields_autoplaced yes)
 		(uuid "3563c04e-e5ff-5783-9e50-d91e189383ab")
 		(property "Reference" "#PWR095"
-			(at 513.08 218.44 0)
+			(at 513.08 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -15977,7 +15854,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 513.08 209.59 0)
+			(at 513.08 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15985,7 +15862,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 513.08 212.09 0)
+			(at 513.08 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -15994,7 +15871,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 513.08 212.09 0)
+			(at 513.08 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16016,7 +15893,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 528.32 212.09 90)
+		(at 528.32 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16025,7 +15902,7 @@
 		(fields_autoplaced yes)
 		(uuid "8f41598c-ee5a-5053-aead-40adf413943e")
 		(property "Reference" "#PWR096"
-			(at 528.32 218.44 0)
+			(at 528.32 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -16034,7 +15911,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 528.32 209.59 0)
+			(at 528.32 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16042,7 +15919,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 528.32 212.09 0)
+			(at 528.32 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16051,7 +15928,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 528.32 212.09 0)
+			(at 528.32 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16073,7 +15950,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 557.53 212.09 90)
+		(at 557.53 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16082,7 +15959,7 @@
 		(fields_autoplaced yes)
 		(uuid "57bd9e57-6f30-5563-963c-342b0319a7c8")
 		(property "Reference" "C21"
-			(at 557.53 205.89 0)
+			(at 557.53 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16090,7 +15967,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 557.53 219.29 0)
+			(at 557.53 211.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16098,7 +15975,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 557.53 212.09 0)
+			(at 557.53 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16107,7 +15984,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 557.53 212.09 0)
+			(at 557.53 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16116,7 +15993,7 @@
 			)
 		)
 		(property "LCSC" "C15850"
-			(at 557.53 212.09 0)
+			(at 557.53 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16141,7 +16018,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 549.91 212.09 270)
+		(at 549.91 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16150,7 +16027,7 @@
 		(fields_autoplaced yes)
 		(uuid "0e42fbaa-277c-5269-9331-4f055977df44")
 		(property "Reference" "#PWR097"
-			(at 549.91 218.44 0)
+			(at 549.91 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -16159,7 +16036,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 549.91 209.59 0)
+			(at 549.91 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16167,7 +16044,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 549.91 212.09 0)
+			(at 549.91 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16176,7 +16053,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 549.91 212.09 0)
+			(at 549.91 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16198,7 +16075,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 565.15 212.09 90)
+		(at 565.15 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16207,7 +16084,7 @@
 		(fields_autoplaced yes)
 		(uuid "ee1c1e6e-e671-5dad-898b-ed8ca3cdf397")
 		(property "Reference" "#PWR098"
-			(at 565.15 218.44 0)
+			(at 565.15 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -16216,7 +16093,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 565.15 209.59 0)
+			(at 565.15 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16224,7 +16101,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 565.15 212.09 0)
+			(at 565.15 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16233,7 +16110,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 565.15 212.09 0)
+			(at 565.15 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -16255,7 +16132,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 703.58 134.62 90)
+		(at 703.58 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16264,7 +16141,7 @@
 		(fields_autoplaced yes)
 		(uuid "652b7651-f6bc-59f0-94c7-76ccdff7b110")
 		(property "Reference" "C24"
-			(at 703.58 128.42 0)
+			(at 703.58 120.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16272,7 +16149,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 703.58 141.82 0)
+			(at 703.58 134.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16280,7 +16157,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 703.58 134.62 0)
+			(at 703.58 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16289,7 +16166,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 703.58 134.62 0)
+			(at 703.58 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16298,7 +16175,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 703.58 134.62 0)
+			(at 703.58 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16323,7 +16200,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:VBUS_PC")
-		(at 695.96 134.62 270)
+		(at 695.96 127 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16332,7 +16209,7 @@
 		(fields_autoplaced yes)
 		(uuid "202c5e5a-ad7f-5405-93b9-e42f7036342e")
 		(property "Reference" "#PWR099"
-			(at 695.96 140.97 0)
+			(at 695.96 133.35 0)
 			(hide yes)
 			(effects
 				(font
@@ -16341,7 +16218,7 @@
 			)
 		)
 		(property "Value" "VBUS_PC"
-			(at 695.96 132.12 0)
+			(at 695.96 124.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16349,7 +16226,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 695.96 134.62 0)
+			(at 695.96 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16358,7 +16235,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 695.96 134.62 0)
+			(at 695.96 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16380,7 +16257,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 711.2 134.62 90)
+		(at 711.2 127 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16389,7 +16266,7 @@
 		(fields_autoplaced yes)
 		(uuid "c883ce00-520e-5318-9248-6747839df86d")
 		(property "Reference" "#PWR100"
-			(at 711.2 140.97 0)
+			(at 711.2 133.35 0)
 			(hide yes)
 			(effects
 				(font
@@ -16398,7 +16275,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 711.2 132.12 0)
+			(at 711.2 124.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16406,7 +16283,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 711.2 134.62 0)
+			(at 711.2 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16415,7 +16292,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 711.2 134.62 0)
+			(at 711.2 127 0)
 			(hide yes)
 			(effects
 				(font
@@ -16983,7 +16860,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 594.36 212.09 90)
+		(at 594.36 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16992,7 +16869,7 @@
 		(fields_autoplaced yes)
 		(uuid "ccdd9edd-348f-529e-9be7-eb2016f11dbc")
 		(property "Reference" "C28"
-			(at 594.36 205.89 0)
+			(at 594.36 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17000,7 +16877,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 594.36 219.29 0)
+			(at 594.36 211.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17008,7 +16885,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 594.36 212.09 0)
+			(at 594.36 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17017,7 +16894,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 594.36 212.09 0)
+			(at 594.36 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17026,7 +16903,7 @@
 			)
 		)
 		(property "LCSC" "C15850"
-			(at 594.36 212.09 0)
+			(at 594.36 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17051,7 +16928,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 586.74 212.09 270)
+		(at 586.74 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17060,7 +16937,7 @@
 		(fields_autoplaced yes)
 		(uuid "fdbdac24-62b7-5a59-90c9-c3924d0815d8")
 		(property "Reference" "#PWR107"
-			(at 586.74 218.44 0)
+			(at 586.74 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17069,7 +16946,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 586.74 209.59 0)
+			(at 586.74 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17077,7 +16954,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 586.74 212.09 0)
+			(at 586.74 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17086,7 +16963,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 586.74 212.09 0)
+			(at 586.74 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17108,7 +16985,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 601.98 212.09 90)
+		(at 601.98 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17117,7 +16994,7 @@
 		(fields_autoplaced yes)
 		(uuid "3ebe61c6-54b9-5d9f-bf9a-240c3cbfb350")
 		(property "Reference" "#PWR108"
-			(at 601.98 218.44 0)
+			(at 601.98 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17126,7 +17003,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 601.98 209.59 0)
+			(at 601.98 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17134,7 +17011,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 601.98 212.09 0)
+			(at 601.98 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17143,7 +17020,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 601.98 212.09 0)
+			(at 601.98 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17165,7 +17042,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 631.19 212.09 90)
+		(at 631.19 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17174,7 +17051,7 @@
 		(fields_autoplaced yes)
 		(uuid "0a701114-283c-5d07-aa0f-730993fa4301")
 		(property "Reference" "C29"
-			(at 631.19 205.89 0)
+			(at 631.19 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17182,7 +17059,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 631.19 219.29 0)
+			(at 631.19 211.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17190,7 +17067,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 631.19 212.09 0)
+			(at 631.19 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17199,7 +17076,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 631.19 212.09 0)
+			(at 631.19 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17208,7 +17085,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 631.19 212.09 0)
+			(at 631.19 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17233,7 +17110,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 623.57 212.09 270)
+		(at 623.57 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17242,7 +17119,7 @@
 		(fields_autoplaced yes)
 		(uuid "03bbc122-2939-5275-829e-9adfcb78bc6e")
 		(property "Reference" "#PWR109"
-			(at 623.57 218.44 0)
+			(at 623.57 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17251,7 +17128,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 623.57 209.59 0)
+			(at 623.57 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17259,7 +17136,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 623.57 212.09 0)
+			(at 623.57 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17268,7 +17145,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 623.57 212.09 0)
+			(at 623.57 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17290,7 +17167,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 638.81 212.09 90)
+		(at 638.81 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17299,7 +17176,7 @@
 		(fields_autoplaced yes)
 		(uuid "d5ed2222-3c53-5fa8-8624-81a1aa9c23ba")
 		(property "Reference" "#PWR110"
-			(at 638.81 218.44 0)
+			(at 638.81 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17308,7 +17185,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 638.81 209.59 0)
+			(at 638.81 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17316,7 +17193,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 638.81 212.09 0)
+			(at 638.81 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17325,7 +17202,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 638.81 212.09 0)
+			(at 638.81 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17347,7 +17224,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 668.02 212.09 90)
+		(at 668.02 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17356,7 +17233,7 @@
 		(fields_autoplaced yes)
 		(uuid "233b0ea0-f810-5296-a98e-c408b9874d84")
 		(property "Reference" "C30"
-			(at 668.02 205.89 0)
+			(at 668.02 198.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17364,7 +17241,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 668.02 219.29 0)
+			(at 668.02 211.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17372,7 +17249,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 668.02 212.09 0)
+			(at 668.02 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17381,7 +17258,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 668.02 212.09 0)
+			(at 668.02 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17390,7 +17267,7 @@
 			)
 		)
 		(property "LCSC" "C14663"
-			(at 668.02 212.09 0)
+			(at 668.02 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17415,7 +17292,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:+5V")
-		(at 660.4 212.09 270)
+		(at 660.4 204.47 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17424,7 +17301,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b346af6-9624-5da4-85f3-ffd514e28c70")
 		(property "Reference" "#PWR111"
-			(at 660.4 218.44 0)
+			(at 660.4 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17433,7 +17310,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 660.4 209.59 0)
+			(at 660.4 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17441,7 +17318,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 660.4 212.09 0)
+			(at 660.4 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17450,7 +17327,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 660.4 212.09 0)
+			(at 660.4 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17472,7 +17349,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 675.64 212.09 90)
+		(at 675.64 204.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17481,7 +17358,7 @@
 		(fields_autoplaced yes)
 		(uuid "4be422ea-e350-565d-93c1-19212336cfa2")
 		(property "Reference" "#PWR112"
-			(at 675.64 218.44 0)
+			(at 675.64 210.82 0)
 			(hide yes)
 			(effects
 				(font
@@ -17490,7 +17367,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 675.64 209.59 0)
+			(at 675.64 201.97 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17498,7 +17375,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 675.64 212.09 0)
+			(at 675.64 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17507,7 +17384,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 675.64 212.09 0)
+			(at 675.64 204.47 0)
 			(hide yes)
 			(effects
 				(font
@@ -17529,7 +17406,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 709.93 266.7 90)
+		(at 709.93 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17538,7 +17415,7 @@
 		(fields_autoplaced yes)
 		(uuid "d5e078b2-88e5-573b-ae76-4136a1b29b9b")
 		(property "Reference" "C17"
-			(at 709.93 260.5 0)
+			(at 709.93 252.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17546,7 +17423,7 @@
 			)
 		)
 		(property "Value" "15pF"
-			(at 709.93 273.9 0)
+			(at 709.93 266.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17554,7 +17431,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 709.93 266.7 0)
+			(at 709.93 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17563,7 +17440,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 709.93 266.7 0)
+			(at 709.93 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17572,7 +17449,7 @@
 			)
 		)
 		(property "LCSC" "C1548"
-			(at 709.93 266.7 0)
+			(at 709.93 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17597,7 +17474,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 717.55 266.7 90)
+		(at 717.55 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17606,7 +17483,7 @@
 		(fields_autoplaced yes)
 		(uuid "6426a1d0-888f-5061-8a81-8eff86128c21")
 		(property "Reference" "#PWR113"
-			(at 717.55 273.05 0)
+			(at 717.55 265.43 0)
 			(hide yes)
 			(effects
 				(font
@@ -17615,7 +17492,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 717.55 264.2 0)
+			(at 717.55 256.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17623,7 +17500,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 717.55 266.7 0)
+			(at 717.55 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17632,7 +17509,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 717.55 266.7 0)
+			(at 717.55 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17654,7 +17531,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:C")
-		(at 748.03 266.7 90)
+		(at 748.03 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17663,7 +17540,7 @@
 		(fields_autoplaced yes)
 		(uuid "6d2d5716-32dc-5c8f-a623-956ad3b61780")
 		(property "Reference" "C18"
-			(at 748.03 260.5 0)
+			(at 748.03 252.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17671,7 +17548,7 @@
 			)
 		)
 		(property "Value" "15pF"
-			(at 748.03 273.9 0)
+			(at 748.03 266.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17679,7 +17556,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 748.03 266.7 0)
+			(at 748.03 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17688,7 +17565,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 748.03 266.7 0)
+			(at 748.03 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17697,7 +17574,7 @@
 			)
 		)
 		(property "LCSC" "C1548"
-			(at 748.03 266.7 0)
+			(at 748.03 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17722,7 +17599,7 @@
 	)
 	(symbol
 		(lib_id "rp2040_midi_bridge:GND")
-		(at 755.65 266.7 90)
+		(at 755.65 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -17731,7 +17608,7 @@
 		(fields_autoplaced yes)
 		(uuid "5dc3fb19-0030-5734-b6b0-49966041ca1f")
 		(property "Reference" "#PWR114"
-			(at 755.65 273.05 0)
+			(at 755.65 265.43 0)
 			(hide yes)
 			(effects
 				(font
@@ -17740,7 +17617,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 755.65 264.2 0)
+			(at 755.65 256.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17748,7 +17625,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 755.65 266.7 0)
+			(at 755.65 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -17757,7 +17634,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 755.65 266.7 0)
+			(at 755.65 259.08 0)
 			(hide yes)
 			(effects
 				(font
@@ -18028,33 +17905,34 @@
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 792.48 266.7 0)
+		(lib_id "rp2040_midi_bridge:+5V")
+		(at 427.99 332.74 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0953be6b-a8d4-537d-8102-d5d6945a6839")
-		(property "Reference" "TP3"
-			(at 792.48 260.436 0)
+		(property "Reference" "#PWR117"
+			(at 427.99 339.09 0)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 792.48 281.33 0)
+		(property "Value" "+5V"
+			(at 427.99 330.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 792.48 266.7 0)
+		(property "Footprint" ""
+			(at 427.99 332.74 0)
 			(hide yes)
 			(effects
 				(font
@@ -18063,7 +17941,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 792.48 266.7 0)
+			(at 427.99 332.74 0)
 			(hide yes)
 			(effects
 				(font
@@ -18077,24 +17955,24 @@
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP3")
+					(reference "#PWR117")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:GND")
-		(at 792.48 270.51 180)
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
+		(at 427.99 340.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "5ff799b0-7ca9-593b-8c17-1557d47b5ae5")
-		(property "Reference" "#PWR117"
-			(at 792.48 276.86 0)
+		(uuid "3bdb1a50-bbb1-50d7-a018-f9fc1110eeb5")
+		(property "Reference" "#FLG01"
+			(at 427.99 346.71 0)
 			(hide yes)
 			(effects
 				(font
@@ -18102,8 +17980,8 @@
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 792.48 268.01 0)
+		(property "Value" "PWR_FLAG"
+			(at 427.99 337.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18111,7 +17989,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 792.48 270.51 0)
+			(at 427.99 340.36 0)
 			(hide yes)
 			(effects
 				(font
@@ -18120,7 +17998,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 792.48 270.51 0)
+			(at 427.99 340.36 0)
 			(hide yes)
 			(effects
 				(font
@@ -18129,45 +18007,46 @@
 			)
 		)
 		(pin "1"
-			(uuid "9d68eb92-d27f-593d-adf7-c0ba200fe1f9")
+			(uuid "5ff799b0-7ca9-593b-8c17-1557d47b5ae5")
 		)
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR117")
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 808.99 266.7 0)
+		(lib_id "rp2040_midi_bridge:GND")
+		(at 476.25 332.74 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f5aae3f8-155a-573a-98f9-ecbb99fd0db2")
-		(property "Reference" "TP7"
-			(at 808.99 260.436 0)
+		(property "Reference" "#PWR118"
+			(at 476.25 339.09 0)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "BOOTSEL"
-			(at 808.99 281.55 0)
+		(property "Value" "GND"
+			(at 476.25 330.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 808.99 266.7 0)
+		(property "Footprint" ""
+			(at 476.25 332.74 0)
 			(hide yes)
 			(effects
 				(font
@@ -18176,7 +18055,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 808.99 266.7 0)
+			(at 476.25 332.74 0)
 			(hide yes)
 			(effects
 				(font
@@ -18190,40 +18069,41 @@
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP7")
+					(reference "#PWR118")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 824.23 266.7 0)
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
+		(at 476.25 340.36 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7ab52c82-78f8-50b2-a38c-21461f417850")
-		(property "Reference" "TP8"
-			(at 824.23 260.436 0)
+		(uuid "0dfbb579-7643-5f73-aa50-aa9195425738")
+		(property "Reference" "#FLG02"
+			(at 476.25 346.71 0)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 824.23 281.33 0)
+		(property "Value" "PWR_FLAG"
+			(at 476.25 337.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 824.23 266.7 0)
+		(property "Footprint" ""
+			(at 476.25 340.36 0)
 			(hide yes)
 			(effects
 				(font
@@ -18232,7 +18112,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 824.23 266.7 0)
+			(at 476.25 340.36 0)
 			(hide yes)
 			(effects
 				(font
@@ -18241,29 +18121,29 @@
 			)
 		)
 		(pin "1"
-			(uuid "661bd296-5d47-5b09-9bab-86957d1dae29")
+			(uuid "600493d3-6602-5966-bc72-af8063fb6439")
 		)
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP8")
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:+3V3")
-		(at 824.23 270.51 180)
+		(lib_id "rp2040_midi_bridge:VBUS_PC")
+		(at 427.99 356.87 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "e3db34f3-6e66-581e-b829-4ec75b6406b9")
-		(property "Reference" "#PWR118"
-			(at 824.23 276.86 0)
+		(uuid "661bd296-5d47-5b09-9bab-86957d1dae29")
+		(property "Reference" "#PWR119"
+			(at 427.99 363.22 0)
 			(hide yes)
 			(effects
 				(font
@@ -18271,8 +18151,8 @@
 				)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 824.23 268.01 0)
+		(property "Value" "VBUS_PC"
+			(at 427.99 354.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18280,7 +18160,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 824.23 270.51 0)
+			(at 427.99 356.87 0)
 			(hide yes)
 			(effects
 				(font
@@ -18289,7 +18169,64 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 824.23 270.51 0)
+			(at 427.99 356.87 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bb03cd37-2fe6-58ad-962e-d2ca784997d3")
+		)
+		(instances
+			(project "rp2040_midi_bridge"
+				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
+					(reference "#PWR119")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
+		(at 427.99 364.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e3db34f3-6e66-581e-b829-4ec75b6406b9")
+		(property "Reference" "#FLG03"
+			(at 427.99 370.84 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 427.99 361.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 427.99 364.49 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 427.99 364.49 0)
 			(hide yes)
 			(effects
 				(font
@@ -18303,40 +18240,41 @@
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR118")
+					(reference "#FLG03")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 431.8 332.74 0)
+		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
+		(at 476.25 356.87 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "61327fdf-d671-5c20-a062-cbfbe80880e3")
-		(property "Reference" "TP9"
-			(at 431.8 326.476 0)
+		(uuid "4576f3b9-568f-5398-a4db-e18a4fa21a62")
+		(property "Reference" "#PWR120"
+			(at 476.25 363.22 0)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "+5V"
-			(at 431.8 347.37 0)
+		(property "Value" "VBUS_IPAD"
+			(at 476.25 354.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 431.8 332.74 0)
+		(property "Footprint" ""
+			(at 476.25 356.87 0)
 			(hide yes)
 			(effects
 				(font
@@ -18345,7 +18283,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 431.8 332.74 0)
+			(at 476.25 356.87 0)
 			(hide yes)
 			(effects
 				(font
@@ -18354,20 +18292,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "4576f3b9-568f-5398-a4db-e18a4fa21a62")
+			(uuid "60245b36-9d5c-51b0-bc1a-7e8c760cef0c")
 		)
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP9")
+					(reference "#PWR120")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "rp2040_midi_bridge:+5V")
-		(at 431.8 336.55 180)
+		(lib_id "rp2040_midi_bridge:PWR_FLAG")
+		(at 476.25 364.49 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18375,8 +18313,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b392c67d-d180-55ad-944c-f0d44f9384f6")
-		(property "Reference" "#PWR119"
-			(at 431.8 342.9 0)
+		(property "Reference" "#FLG04"
+			(at 476.25 370.84 0)
 			(hide yes)
 			(effects
 				(font
@@ -18384,8 +18322,8 @@
 				)
 			)
 		)
-		(property "Value" "+5V"
-			(at 431.8 334.05 0)
+		(property "Value" "PWR_FLAG"
+			(at 476.25 361.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18393,7 +18331,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 431.8 336.55 0)
+			(at 476.25 364.49 0)
 			(hide yes)
 			(effects
 				(font
@@ -18402,7 +18340,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 431.8 336.55 0)
+			(at 476.25 364.49 0)
 			(hide yes)
 			(effects
 				(font
@@ -18416,744 +18354,6 @@
 		(instances
 			(project "rp2040_midi_bridge"
 				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR119")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 447.04 332.74 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e8ebfeb6-34e9-5bd6-9b2a-81fb2a205c45")
-		(property "Reference" "TP10"
-			(at 447.04 326.476 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 447.04 347.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 447.04 332.74 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 447.04 332.74 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "addee1a1-926d-5702-a10a-f429dc4efabc")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:GND")
-		(at 447.04 336.55 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26a054cf-a848-5a45-be79-89f047eae8b9")
-		(property "Reference" "#PWR120"
-			(at 447.04 342.9 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 447.04 334.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 447.04 336.55 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 447.04 336.55 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a330929d-11fa-5038-a640-0b318d763a8f")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR120")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 215.9 311.15 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "72109ee0-ea1e-5a3c-8e89-da376d145f48")
-		(property "Reference" "TP11"
-			(at 215.9 304.886 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CH345_RST"
-			(at 215.9 328.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 215.9 311.15 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 215.9 311.15 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3efc2c34-e449-544b-ac67-7aa8a111a5fb")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:TestPoint")
-		(at 508 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "28f561e6-941e-5c14-905f-f679b1697f9e")
-		(property "Reference" "TP12"
-			(at 508 88.986 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS_USB_A"
-			(at 508 109.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "rp2040_midi_bridge:TestPoint_1P"
-			(at 508 95.25 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 508 95.25 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ac56d43e-efdd-5885-9f56-3723ccf1a9d2")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "TP12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:VBUS_USB_A")
-		(at 508 99.06 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5cccc50c-0236-5aac-9861-5024da426db8")
-		(property "Reference" "#PWR121"
-			(at 508 105.41 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS_USB_A"
-			(at 508 96.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 508 99.06 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 508 99.06 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d0949d71-764d-5643-83e6-1e421e2a8b05")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR121")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:+5V")
-		(at 11.43 354.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d5f26093-978d-5727-a435-c485abebdf34")
-		(property "Reference" "#PWR122"
-			(at 11.43 360.68 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 11.43 351.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 11.43 354.33 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 11.43 354.33 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8da27ecf-ab77-59b8-a89f-7346437fa819")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR122")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:PWR_FLAG")
-		(at 11.43 361.95 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0d6c2d93-2486-5b68-8f0f-16da1215aad9")
-		(property "Reference" "#FLG01"
-			(at 11.43 368.3 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 11.43 359.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 11.43 361.95 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 11.43 361.95 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3f74f23e-b69c-5a9e-8e5a-a455d96ab754")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#FLG01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:GND")
-		(at 59.69 354.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b709d164-83d7-5f34-8870-eabfa027cb03")
-		(property "Reference" "#PWR123"
-			(at 59.69 360.68 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 59.69 351.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 354.33 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 354.33 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "42d97404-e7c0-5f96-9190-a69193149e62")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR123")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:PWR_FLAG")
-		(at 59.69 361.95 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f18826d7-6d03-57e5-be44-e4e07fa7360b")
-		(property "Reference" "#FLG02"
-			(at 59.69 368.3 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 59.69 359.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 361.95 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 361.95 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ba58283e-15c5-5f5c-a3a6-8fd3d8c2612d")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:VBUS_PC")
-		(at 11.43 378.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9cae2c79-e35a-59ff-a48a-e9a2474ddd43")
-		(property "Reference" "#PWR124"
-			(at 11.43 384.81 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS_PC"
-			(at 11.43 375.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 11.43 378.46 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 11.43 378.46 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "527f0e6b-9e02-5e9f-b352-7cdbd5e03295")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR124")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:PWR_FLAG")
-		(at 11.43 386.08 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "33fde2e0-b14c-5283-881b-5f591215784c")
-		(property "Reference" "#FLG03"
-			(at 11.43 392.43 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 11.43 383.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 11.43 386.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 11.43 386.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "17bcb712-bd3a-564c-bc79-9adc9ee95156")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:VBUS_IPAD")
-		(at 59.69 378.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "28c0ecac-42ec-59cf-b1a4-3780c41a02cf")
-		(property "Reference" "#PWR125"
-			(at 59.69 384.81 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBUS_IPAD"
-			(at 59.69 375.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 378.46 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 378.46 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "bb65ac3e-010a-5225-859e-2d8ac9b82dd3")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
-					(reference "#PWR125")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "rp2040_midi_bridge:PWR_FLAG")
-		(at 59.69 386.08 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "813111b1-aa2c-5dc5-91b2-4f1943d17c96")
-		(property "Reference" "#FLG04"
-			(at 59.69 392.43 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 59.69 383.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 386.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 386.08 0)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "791cb74c-1e33-52f3-a585-1b7b944c514e")
-		)
-		(instances
-			(project "rp2040_midi_bridge"
-				(path "/0d4a1f52-6a52-4d0e-9c3b-7a1e6f0d2b11"
 					(reference "#FLG04")
 					(unit 1)
 				)
@@ -19162,47 +18362,47 @@
 	)
 	(wire
 		(pts
-			(xy 11.43 354.33)
-			(xy 11.43 361.95)
+			(xy 427.99 332.74)
+			(xy 427.99 340.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d1c82b6a-f00f-5fc6-92f0-9d9078b8edde")
+		(uuid "9d68eb92-d27f-593d-adf7-c0ba200fe1f9")
 	)
 	(wire
 		(pts
-			(xy 59.69 354.33)
-			(xy 59.69 361.95)
+			(xy 476.25 332.74)
+			(xy 476.25 340.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "327314ed-7095-5b63-a7af-eed5a7d27bcc")
+		(uuid "7ab52c82-78f8-50b2-a38c-21461f417850")
 	)
 	(wire
 		(pts
-			(xy 11.43 378.46)
-			(xy 11.43 386.08)
+			(xy 427.99 356.87)
+			(xy 427.99 364.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d8b71455-c5a4-5db8-917d-7e2f83764248")
+		(uuid "61327fdf-d671-5c20-a062-cbfbe80880e3")
 	)
 	(wire
 		(pts
-			(xy 59.69 378.46)
-			(xy 59.69 386.08)
+			(xy 476.25 356.87)
+			(xy 476.25 364.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "74e951c8-1abf-5770-be1b-5d520b13b68f")
+		(uuid "e8ebfeb6-34e9-5bd6-9b2a-81fb2a205c45")
 	)
 	(text "RP2040 core and decoupling"
 		(exclude_from_sim no)
@@ -19213,7 +18413,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "92d029c2-f654-5499-9488-f6540113407e")
+		(uuid "addee1a1-926d-5702-a10a-f429dc4efabc")
 	)
 	(text "Switches"
 		(exclude_from_sim no)
@@ -19224,7 +18424,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "2db51f57-6d77-59ef-ac1b-c6458629c864")
+		(uuid "db4429be-40e4-5e5a-a0ee-15b43ed6100d")
 	)
 	(text "USB-MIDI device (iPad) - CH345T"
 		(exclude_from_sim no)
@@ -19235,7 +18435,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c62f29a9-2a1e-57f0-a9ad-5b5d7b26a0c6")
+		(uuid "26a054cf-a848-5a45-be79-89f047eae8b9")
 	)
 	(text "USB-A host (USB MIDI keyboard) - PIO-USB"
 		(exclude_from_sim no)
@@ -19246,51 +18446,51 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "012de6b7-865b-578f-a244-b67b8a677c0e")
+		(uuid "a330929d-11fa-5038-a640-0b318d763a8f")
 	)
 	(text "USB-C device (PC) - native USB / NKRO HID"
 		(exclude_from_sim no)
-		(at 428.5 121.75 0)
+		(at 428.5 114.13 0)
 		(effects
 			(font
 				(size 2 2)
 			)
 			(justify left bottom)
 		)
-		(uuid "2a0d3316-5e4e-5bb7-80f9-7f941133f27b")
+		(uuid "72109ee0-ea1e-5a3c-8e89-da376d145f48")
 	)
 	(text "Power: VBUS OR-ing and 3V3 LDO"
 		(exclude_from_sim no)
-		(at 428.5 199.25 0)
+		(at 428.5 191.63 0)
 		(effects
 			(font
 				(size 2 2)
 			)
 			(justify left bottom)
 		)
-		(uuid "df7e6561-e4bb-557b-9c3e-7580488ff012")
+		(uuid "3efc2c34-e449-544b-ac67-7aa8a111a5fb")
 	)
 	(text "QSPI flash, crystal, debug and status"
 		(exclude_from_sim no)
-		(at 428.5 253.89 0)
+		(at 428.5 246.27 0)
 		(effects
 			(font
 				(size 2 2)
 			)
 			(justify left bottom)
 		)
-		(uuid "efbcf88c-05ec-5735-8e41-6029c2e3811a")
+		(uuid "8933954b-a742-5b65-b5fb-77e0e5750498")
 	)
 	(text "Power rails with PWR_FLAG"
 		(exclude_from_sim no)
-		(at 12 344.98 0)
+		(at 428.5 323.39 0)
 		(effects
 			(font
 				(size 2 2)
 			)
 			(justify left bottom)
 		)
-		(uuid "b7228015-c039-5982-85c3-7d148132b90a")
+		(uuid "8b32dc7f-14bf-5a88-9c41-96277cda8be8")
 	)
 	(wire
 		(pts
@@ -19602,8 +18802,8 @@
 	)
 	(wire
 		(pts
-			(xy 441.96 279.4)
-			(xy 438.15 279.4)
+			(xy 441.96 271.78)
+			(xy 438.15 271.78)
 		)
 		(stroke
 			(width 0)
@@ -19613,47 +18813,14 @@
 	)
 	(wire
 		(pts
-			(xy 441.96 287.02)
-			(xy 438.15 287.02)
+			(xy 441.96 279.4)
+			(xy 438.15 279.4)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "5d503a59-390c-5d8e-8b60-6ef9985953de")
-	)
-	(wire
-		(pts
-			(xy 441.96 289.56)
-			(xy 438.15 289.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "64168fb4-c127-5bb3-acb9-a9e52459b156")
-	)
-	(wire
-		(pts
-			(xy 452.12 299.72)
-			(xy 452.12 303.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8123ba33-7b05-5573-b837-0a5a743eb0b3")
-	)
-	(wire
-		(pts
-			(xy 441.96 284.48)
-			(xy 438.15 284.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fed44ca0-8985-58de-9a7d-3b8d68010ba7")
 	)
 	(wire
 		(pts
@@ -19664,12 +18831,45 @@
 			(width 0)
 			(type default)
 		)
+		(uuid "64168fb4-c127-5bb3-acb9-a9e52459b156")
+	)
+	(wire
+		(pts
+			(xy 452.12 292.1)
+			(xy 452.12 295.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8123ba33-7b05-5573-b837-0a5a743eb0b3")
+	)
+	(wire
+		(pts
+			(xy 441.96 276.86)
+			(xy 438.15 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fed44ca0-8985-58de-9a7d-3b8d68010ba7")
+	)
+	(wire
+		(pts
+			(xy 441.96 274.32)
+			(xy 438.15 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
 		(uuid "1a224227-0ef5-5665-be30-bd1fc0bf02d6")
 	)
 	(wire
 		(pts
-			(xy 441.96 292.1)
-			(xy 438.15 292.1)
+			(xy 441.96 284.48)
+			(xy 438.15 284.48)
 		)
 		(stroke
 			(width 0)
@@ -19679,8 +18879,8 @@
 	)
 	(wire
 		(pts
-			(xy 452.12 274.32)
-			(xy 452.12 270.51)
+			(xy 452.12 266.7)
+			(xy 452.12 262.89)
 		)
 		(stroke
 			(width 0)
@@ -19811,8 +19011,8 @@
 	)
 	(wire
 		(pts
-			(xy 472.44 212.09)
-			(xy 468.63 212.09)
+			(xy 472.44 204.47)
+			(xy 468.63 204.47)
 		)
 		(stroke
 			(width 0)
@@ -19822,8 +19022,8 @@
 	)
 	(wire
 		(pts
-			(xy 480.06 222.25)
-			(xy 480.06 226.06)
+			(xy 480.06 214.63)
+			(xy 480.06 218.44)
 		)
 		(stroke
 			(width 0)
@@ -19833,8 +19033,8 @@
 	)
 	(wire
 		(pts
-			(xy 472.44 214.63)
-			(xy 468.63 214.63)
+			(xy 472.44 207.01)
+			(xy 468.63 207.01)
 		)
 		(stroke
 			(width 0)
@@ -19844,8 +19044,8 @@
 	)
 	(wire
 		(pts
-			(xy 487.68 212.09)
-			(xy 491.49 212.09)
+			(xy 487.68 204.47)
+			(xy 491.49 204.47)
 		)
 		(stroke
 			(width 0)
@@ -19987,8 +19187,8 @@
 	)
 	(wire
 		(pts
-			(xy 490.22 147.32)
-			(xy 486.41 147.32)
+			(xy 490.22 139.7)
+			(xy 486.41 139.7)
 		)
 		(stroke
 			(width 0)
@@ -19998,8 +19198,8 @@
 	)
 	(wire
 		(pts
-			(xy 495.3 154.94)
-			(xy 495.3 158.75)
+			(xy 495.3 147.32)
+			(xy 495.3 151.13)
 		)
 		(stroke
 			(width 0)
@@ -20009,8 +19209,8 @@
 	)
 	(wire
 		(pts
-			(xy 490.22 149.86)
-			(xy 486.41 149.86)
+			(xy 490.22 142.24)
+			(xy 486.41 142.24)
 		)
 		(stroke
 			(width 0)
@@ -20020,8 +19220,8 @@
 	)
 	(wire
 		(pts
-			(xy 500.38 149.86)
-			(xy 504.19 149.86)
+			(xy 500.38 142.24)
+			(xy 504.19 142.24)
 		)
 		(stroke
 			(width 0)
@@ -20031,8 +19231,8 @@
 	)
 	(wire
 		(pts
-			(xy 495.3 142.24)
-			(xy 495.3 138.43)
+			(xy 495.3 134.62)
+			(xy 495.3 130.81)
 		)
 		(stroke
 			(width 0)
@@ -20042,8 +19242,8 @@
 	)
 	(wire
 		(pts
-			(xy 500.38 147.32)
-			(xy 504.19 147.32)
+			(xy 500.38 139.7)
+			(xy 504.19 139.7)
 		)
 		(stroke
 			(width 0)
@@ -20119,8 +19319,8 @@
 	)
 	(wire
 		(pts
-			(xy 439.42 172.72)
-			(xy 439.42 176.53)
+			(xy 439.42 165.1)
+			(xy 439.42 168.91)
 		)
 		(stroke
 			(width 0)
@@ -20130,14 +19330,36 @@
 	)
 	(wire
 		(pts
-			(xy 454.66 134.62)
-			(xy 458.47 134.62)
+			(xy 454.66 127)
+			(xy 458.47 127)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "867f7243-2d3a-52a9-9ab1-bb1d8d479922")
+	)
+	(wire
+		(pts
+			(xy 454.66 132.08)
+			(xy 458.47 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c77fc812-e646-545e-8231-4f8ca02604a5")
+	)
+	(wire
+		(pts
+			(xy 454.66 144.78)
+			(xy 458.47 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a884c2c-6fc5-5045-b0ea-96741276bc10")
 	)
 	(wire
 		(pts
@@ -20148,18 +19370,18 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c77fc812-e646-545e-8231-4f8ca02604a5")
+		(uuid "d063a054-e1cb-590f-940e-8b06e361e022")
 	)
 	(wire
 		(pts
-			(xy 454.66 152.4)
-			(xy 458.47 152.4)
+			(xy 454.66 134.62)
+			(xy 458.47 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9a884c2c-6fc5-5045-b0ea-96741276bc10")
+		(uuid "ee542dec-bcd3-5e6f-a6a5-ba9aa28b88aa")
 	)
 	(wire
 		(pts
@@ -20170,7 +19392,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d063a054-e1cb-590f-940e-8b06e361e022")
+		(uuid "3b5e4cb6-f6ef-5d85-a634-4938f6f945ec")
 	)
 	(wire
 		(pts
@@ -20181,34 +19403,12 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ee542dec-bcd3-5e6f-a6a5-ba9aa28b88aa")
-	)
-	(wire
-		(pts
-			(xy 454.66 154.94)
-			(xy 458.47 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3b5e4cb6-f6ef-5d85-a634-4938f6f945ec")
-	)
-	(wire
-		(pts
-			(xy 454.66 149.86)
-			(xy 458.47 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
 		(uuid "d1f1bb1a-8176-5e7c-9990-883e03072e01")
 	)
 	(wire
 		(pts
-			(xy 431.8 172.72)
-			(xy 431.8 176.53)
+			(xy 431.8 165.1)
+			(xy 431.8 168.91)
 		)
 		(stroke
 			(width 0)
@@ -20383,8 +19583,8 @@
 	)
 	(wire
 		(pts
-			(xy 478.79 265.43)
-			(xy 474.98 265.43)
+			(xy 478.79 257.81)
+			(xy 474.98 257.81)
 		)
 		(stroke
 			(width 0)
@@ -20394,8 +19594,8 @@
 	)
 	(wire
 		(pts
-			(xy 482.6 270.51)
-			(xy 482.6 274.32)
+			(xy 482.6 262.89)
+			(xy 482.6 266.7)
 		)
 		(stroke
 			(width 0)
@@ -20405,8 +19605,8 @@
 	)
 	(wire
 		(pts
-			(xy 486.41 265.43)
-			(xy 490.22 265.43)
+			(xy 486.41 257.81)
+			(xy 490.22 257.81)
 		)
 		(stroke
 			(width 0)
@@ -20449,8 +19649,8 @@
 	)
 	(wire
 		(pts
-			(xy 433.07 227.33)
-			(xy 433.07 231.14)
+			(xy 433.07 219.71)
+			(xy 433.07 223.52)
 		)
 		(stroke
 			(width 0)
@@ -20460,8 +19660,8 @@
 	)
 	(wire
 		(pts
-			(xy 433.07 219.71)
-			(xy 433.07 215.9)
+			(xy 433.07 212.09)
+			(xy 433.07 208.28)
 		)
 		(stroke
 			(width 0)
@@ -20471,8 +19671,8 @@
 	)
 	(wire
 		(pts
-			(xy 449.58 227.33)
-			(xy 449.58 231.14)
+			(xy 449.58 219.71)
+			(xy 449.58 223.52)
 		)
 		(stroke
 			(width 0)
@@ -20482,8 +19682,8 @@
 	)
 	(wire
 		(pts
-			(xy 449.58 219.71)
-			(xy 449.58 215.9)
+			(xy 449.58 212.09)
+			(xy 449.58 208.28)
 		)
 		(stroke
 			(width 0)
@@ -20493,8 +19693,8 @@
 	)
 	(wire
 		(pts
-			(xy 775.97 279.4)
-			(xy 775.97 283.21)
+			(xy 775.97 271.78)
+			(xy 775.97 275.59)
 		)
 		(stroke
 			(width 0)
@@ -20504,8 +19704,8 @@
 	)
 	(wire
 		(pts
-			(xy 775.97 271.78)
-			(xy 775.97 267.97)
+			(xy 775.97 264.16)
+			(xy 775.97 260.35)
 		)
 		(stroke
 			(width 0)
@@ -20691,8 +19891,8 @@
 	)
 	(wire
 		(pts
-			(xy 538.48 130.81)
-			(xy 534.67 130.81)
+			(xy 538.48 123.19)
+			(xy 534.67 123.19)
 		)
 		(stroke
 			(width 0)
@@ -20702,8 +19902,8 @@
 	)
 	(wire
 		(pts
-			(xy 546.1 130.81)
-			(xy 549.91 130.81)
+			(xy 546.1 123.19)
+			(xy 549.91 123.19)
 		)
 		(stroke
 			(width 0)
@@ -20713,8 +19913,8 @@
 	)
 	(wire
 		(pts
-			(xy 585.47 130.81)
-			(xy 581.66 130.81)
+			(xy 585.47 123.19)
+			(xy 581.66 123.19)
 		)
 		(stroke
 			(width 0)
@@ -20724,8 +19924,8 @@
 	)
 	(wire
 		(pts
-			(xy 593.09 130.81)
-			(xy 596.9 130.81)
+			(xy 593.09 123.19)
+			(xy 596.9 123.19)
 		)
 		(stroke
 			(width 0)
@@ -20779,8 +19979,8 @@
 	)
 	(wire
 		(pts
-			(xy 624.84 134.62)
-			(xy 621.03 134.62)
+			(xy 624.84 127)
+			(xy 621.03 127)
 		)
 		(stroke
 			(width 0)
@@ -20790,8 +19990,8 @@
 	)
 	(wire
 		(pts
-			(xy 632.46 134.62)
-			(xy 636.27 134.62)
+			(xy 632.46 127)
+			(xy 636.27 127)
 		)
 		(stroke
 			(width 0)
@@ -20801,8 +20001,8 @@
 	)
 	(wire
 		(pts
-			(xy 661.67 134.62)
-			(xy 657.86 134.62)
+			(xy 661.67 127)
+			(xy 657.86 127)
 		)
 		(stroke
 			(width 0)
@@ -20812,8 +20012,8 @@
 	)
 	(wire
 		(pts
-			(xy 669.29 134.62)
-			(xy 673.1 134.62)
+			(xy 669.29 127)
+			(xy 673.1 127)
 		)
 		(stroke
 			(width 0)
@@ -20933,8 +20133,8 @@
 	)
 	(wire
 		(pts
-			(xy 516.89 266.7)
-			(xy 513.08 266.7)
+			(xy 516.89 259.08)
+			(xy 513.08 259.08)
 		)
 		(stroke
 			(width 0)
@@ -20944,8 +20144,8 @@
 	)
 	(wire
 		(pts
-			(xy 524.51 266.7)
-			(xy 528.32 266.7)
+			(xy 524.51 259.08)
+			(xy 528.32 259.08)
 		)
 		(stroke
 			(width 0)
@@ -20955,8 +20155,8 @@
 	)
 	(wire
 		(pts
-			(xy 558.8 262.89)
-			(xy 554.99 262.89)
+			(xy 558.8 255.27)
+			(xy 554.99 255.27)
 		)
 		(stroke
 			(width 0)
@@ -20966,8 +20166,8 @@
 	)
 	(wire
 		(pts
-			(xy 566.42 262.89)
-			(xy 570.23 262.89)
+			(xy 566.42 255.27)
+			(xy 570.23 255.27)
 		)
 		(stroke
 			(width 0)
@@ -20977,8 +20177,8 @@
 	)
 	(wire
 		(pts
-			(xy 599.44 262.89)
-			(xy 595.63 262.89)
+			(xy 599.44 255.27)
+			(xy 595.63 255.27)
 		)
 		(stroke
 			(width 0)
@@ -20988,8 +20188,8 @@
 	)
 	(wire
 		(pts
-			(xy 607.06 262.89)
-			(xy 610.87 262.89)
+			(xy 607.06 255.27)
+			(xy 610.87 255.27)
 		)
 		(stroke
 			(width 0)
@@ -20999,8 +20199,8 @@
 	)
 	(wire
 		(pts
-			(xy 636.27 262.89)
-			(xy 632.46 262.89)
+			(xy 636.27 255.27)
+			(xy 632.46 255.27)
 		)
 		(stroke
 			(width 0)
@@ -21010,8 +20210,8 @@
 	)
 	(wire
 		(pts
-			(xy 643.89 262.89)
-			(xy 647.7 262.89)
+			(xy 643.89 255.27)
+			(xy 647.7 255.27)
 		)
 		(stroke
 			(width 0)
@@ -21087,8 +20287,8 @@
 	)
 	(wire
 		(pts
-			(xy 670.56 266.7)
-			(xy 666.75 266.7)
+			(xy 670.56 259.08)
+			(xy 666.75 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21098,8 +20298,8 @@
 	)
 	(wire
 		(pts
-			(xy 678.18 266.7)
-			(xy 681.99 266.7)
+			(xy 678.18 259.08)
+			(xy 681.99 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21483,8 +20683,8 @@
 	)
 	(wire
 		(pts
-			(xy 516.89 212.09)
-			(xy 513.08 212.09)
+			(xy 516.89 204.47)
+			(xy 513.08 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21494,8 +20694,8 @@
 	)
 	(wire
 		(pts
-			(xy 524.51 212.09)
-			(xy 528.32 212.09)
+			(xy 524.51 204.47)
+			(xy 528.32 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21505,8 +20705,8 @@
 	)
 	(wire
 		(pts
-			(xy 553.72 212.09)
-			(xy 549.91 212.09)
+			(xy 553.72 204.47)
+			(xy 549.91 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21516,8 +20716,8 @@
 	)
 	(wire
 		(pts
-			(xy 561.34 212.09)
-			(xy 565.15 212.09)
+			(xy 561.34 204.47)
+			(xy 565.15 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21527,8 +20727,8 @@
 	)
 	(wire
 		(pts
-			(xy 699.77 134.62)
-			(xy 695.96 134.62)
+			(xy 699.77 127)
+			(xy 695.96 127)
 		)
 		(stroke
 			(width 0)
@@ -21538,8 +20738,8 @@
 	)
 	(wire
 		(pts
-			(xy 707.39 134.62)
-			(xy 711.2 134.62)
+			(xy 707.39 127)
+			(xy 711.2 127)
 		)
 		(stroke
 			(width 0)
@@ -21615,8 +20815,8 @@
 	)
 	(wire
 		(pts
-			(xy 590.55 212.09)
-			(xy 586.74 212.09)
+			(xy 590.55 204.47)
+			(xy 586.74 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21626,8 +20826,8 @@
 	)
 	(wire
 		(pts
-			(xy 598.17 212.09)
-			(xy 601.98 212.09)
+			(xy 598.17 204.47)
+			(xy 601.98 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21637,8 +20837,8 @@
 	)
 	(wire
 		(pts
-			(xy 627.38 212.09)
-			(xy 623.57 212.09)
+			(xy 627.38 204.47)
+			(xy 623.57 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21648,8 +20848,8 @@
 	)
 	(wire
 		(pts
-			(xy 635 212.09)
-			(xy 638.81 212.09)
+			(xy 635 204.47)
+			(xy 638.81 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21659,8 +20859,8 @@
 	)
 	(wire
 		(pts
-			(xy 664.21 212.09)
-			(xy 660.4 212.09)
+			(xy 664.21 204.47)
+			(xy 660.4 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21670,8 +20870,8 @@
 	)
 	(wire
 		(pts
-			(xy 671.83 212.09)
-			(xy 675.64 212.09)
+			(xy 671.83 204.47)
+			(xy 675.64 204.47)
 		)
 		(stroke
 			(width 0)
@@ -21681,8 +20881,8 @@
 	)
 	(wire
 		(pts
-			(xy 706.12 266.7)
-			(xy 702.31 266.7)
+			(xy 706.12 259.08)
+			(xy 702.31 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21692,8 +20892,8 @@
 	)
 	(wire
 		(pts
-			(xy 713.74 266.7)
-			(xy 717.55 266.7)
+			(xy 713.74 259.08)
+			(xy 717.55 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21703,8 +20903,8 @@
 	)
 	(wire
 		(pts
-			(xy 744.22 266.7)
-			(xy 740.41 266.7)
+			(xy 744.22 259.08)
+			(xy 740.41 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21714,8 +20914,8 @@
 	)
 	(wire
 		(pts
-			(xy 751.84 266.7)
-			(xy 755.65 266.7)
+			(xy 751.84 259.08)
+			(xy 755.65 259.08)
 		)
 		(stroke
 			(width 0)
@@ -21766,83 +20966,6 @@
 			(type default)
 		)
 		(uuid "75759399-13b2-5239-9ad0-4907f327de8a")
-	)
-	(wire
-		(pts
-			(xy 792.48 266.7)
-			(xy 792.48 270.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3bdb1a50-bbb1-50d7-a018-f9fc1110eeb5")
-	)
-	(wire
-		(pts
-			(xy 808.99 266.7)
-			(xy 808.99 270.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0dfbb579-7643-5f73-aa50-aa9195425738")
-	)
-	(wire
-		(pts
-			(xy 824.23 266.7)
-			(xy 824.23 270.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb03cd37-2fe6-58ad-962e-d2ca784997d3")
-	)
-	(wire
-		(pts
-			(xy 431.8 332.74)
-			(xy 431.8 336.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60245b36-9d5c-51b0-bc1a-7e8c760cef0c")
-	)
-	(wire
-		(pts
-			(xy 447.04 332.74)
-			(xy 447.04 336.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db4429be-40e4-5e5a-a0ee-15b43ed6100d")
-	)
-	(wire
-		(pts
-			(xy 215.9 311.15)
-			(xy 215.9 314.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8933954b-a742-5b65-b5fb-77e0e5750498")
-	)
-	(wire
-		(pts
-			(xy 508 95.25)
-			(xy 508 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5fa39884-c859-5664-b6f9-f346463d7cfc")
 	)
 	(label "MIDI_UART_TX"
 		(at 83.82 67.31 0)
@@ -22045,7 +21168,7 @@
 		(uuid "67b73ba1-b27e-5a19-a2a4-87cc1c02ac3a")
 	)
 	(label "QSPI_SS"
-		(at 438.15 279.4 0)
+		(at 438.15 271.78 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22055,7 +21178,7 @@
 		(uuid "c4f6445c-f340-559b-a17d-24b77d7a5c22")
 	)
 	(label "QSPI_SD1"
-		(at 438.15 287.02 0)
+		(at 438.15 279.4 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22065,7 +21188,7 @@
 		(uuid "fe7ecf0c-75b1-5465-88ad-4adfa53b6610")
 	)
 	(label "QSPI_SD2"
-		(at 438.15 289.56 0)
+		(at 438.15 281.94 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22075,7 +21198,7 @@
 		(uuid "2a69685f-7ff7-543c-945f-4cb03070b5fb")
 	)
 	(label "QSPI_SD0"
-		(at 438.15 284.48 0)
+		(at 438.15 276.86 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22085,7 +21208,7 @@
 		(uuid "c558c27f-2171-57c3-bca2-ba11ab21f5a2")
 	)
 	(label "QSPI_SCLK"
-		(at 438.15 281.94 0)
+		(at 438.15 274.32 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22095,7 +21218,7 @@
 		(uuid "d04c3854-5d0f-5954-928e-ed0a94160f39")
 	)
 	(label "QSPI_SD3"
-		(at 438.15 292.1 0)
+		(at 438.15 284.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22255,7 +21378,7 @@
 		(uuid "37087a73-154e-5991-800a-f2b6f25b268f")
 	)
 	(label "USB_PC_DP"
-		(at 486.41 147.32 0)
+		(at 486.41 139.7 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22265,7 +21388,7 @@
 		(uuid "b741e5d0-e303-52ab-be27-ea195f9e2ce3")
 	)
 	(label "USB_PC_DM"
-		(at 486.41 149.86 0)
+		(at 486.41 142.24 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22275,7 +21398,7 @@
 		(uuid "d4f5be60-4784-55c3-9852-c57ce424b85b")
 	)
 	(label "USB_PC_DM"
-		(at 504.19 149.86 0)
+		(at 504.19 142.24 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22285,7 +21408,7 @@
 		(uuid "93033b5b-c66b-5df9-b2de-cfe855fb151c")
 	)
 	(label "USB_PC_DP"
-		(at 504.19 147.32 0)
+		(at 504.19 139.7 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22335,7 +21458,7 @@
 		(uuid "031de99e-793b-5f16-8a5c-6d1823567abc")
 	)
 	(label "CC1_PC"
-		(at 458.47 139.7 0)
+		(at 458.47 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22345,7 +21468,7 @@
 		(uuid "6fe667ed-900e-5380-ba6f-090eac132f01")
 	)
 	(label "USB_PC_DP"
-		(at 458.47 152.4 0)
+		(at 458.47 144.78 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22355,7 +21478,7 @@
 		(uuid "93437082-99bc-5022-bef3-738fcb4ac01c")
 	)
 	(label "USB_PC_DM"
-		(at 458.47 147.32 0)
+		(at 458.47 139.7 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22365,7 +21488,7 @@
 		(uuid "e4f04a25-1cba-5591-9ae3-d103d1264b43")
 	)
 	(label "CC2_PC"
-		(at 458.47 142.24 0)
+		(at 458.47 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22375,7 +21498,7 @@
 		(uuid "63569be3-07a7-5b55-b9c1-bc5e91c668ba")
 	)
 	(label "USB_PC_DP"
-		(at 458.47 154.94 0)
+		(at 458.47 147.32 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22385,7 +21508,7 @@
 		(uuid "d136d668-84d7-54b1-b17d-69c5c977d763")
 	)
 	(label "USB_PC_DM"
-		(at 458.47 149.86 0)
+		(at 458.47 142.24 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22475,7 +21598,7 @@
 		(uuid "6ad4264c-e69e-58f2-b240-cb8e13074901")
 	)
 	(label "X1_XIN"
-		(at 474.98 265.43 0)
+		(at 474.98 257.81 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22485,7 +21608,7 @@
 		(uuid "1955f071-9957-54ec-b3ae-7f903cd4916e")
 	)
 	(label "X1_XOUT"
-		(at 490.22 265.43 0)
+		(at 490.22 257.81 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22515,7 +21638,7 @@
 		(uuid "1b5b3035-93f1-5e79-abbd-9f929dbc6f95")
 	)
 	(label "LED_A"
-		(at 775.97 267.97 90)
+		(at 775.97 260.35 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22605,7 +21728,7 @@
 		(uuid "6993e161-43cf-5732-b45e-6e60ecc892e3")
 	)
 	(label "USB_PC_DP_MCU"
-		(at 534.67 130.81 0)
+		(at 534.67 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22615,7 +21738,7 @@
 		(uuid "7f8679d0-0295-55ac-a542-6e23e8bfa960")
 	)
 	(label "USB_PC_DP"
-		(at 549.91 130.81 0)
+		(at 549.91 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22625,7 +21748,7 @@
 		(uuid "ef8b6bc5-3eda-5e96-976d-d0609da45b2d")
 	)
 	(label "USB_PC_DM_MCU"
-		(at 581.66 130.81 0)
+		(at 581.66 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22635,7 +21758,7 @@
 		(uuid "57d7e8e7-4fdc-5374-975f-ff3cfe3e14bb")
 	)
 	(label "USB_PC_DM"
-		(at 596.9 130.81 0)
+		(at 596.9 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22685,7 +21808,7 @@
 		(uuid "e4b231e5-83be-50f0-b355-33332d494008")
 	)
 	(label "CC1_PC"
-		(at 621.03 134.62 0)
+		(at 621.03 127 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22695,7 +21818,7 @@
 		(uuid "07cfbe7d-65e7-5da0-84bb-5ba752d85bf4")
 	)
 	(label "CC2_PC"
-		(at 657.86 134.62 0)
+		(at 657.86 127 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22755,7 +21878,7 @@
 		(uuid "5c45b85a-a557-5fc7-b9e7-32cd4b039369")
 	)
 	(label "QSPI_SS"
-		(at 513.08 266.7 0)
+		(at 513.08 259.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22765,7 +21888,7 @@
 		(uuid "31916021-5234-599c-af7c-7f8dccc3b8c6")
 	)
 	(label "STATUS_LED"
-		(at 554.99 262.89 0)
+		(at 554.99 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22775,7 +21898,7 @@
 		(uuid "8cada80e-474f-5872-a1cf-bf0f439eb867")
 	)
 	(label "LED_A"
-		(at 570.23 262.89 0)
+		(at 570.23 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22785,7 +21908,7 @@
 		(uuid "2e3318e9-7bfd-5bd3-95ed-af2d64441d8c")
 	)
 	(label "X1_XOUT_MCU"
-		(at 595.63 262.89 0)
+		(at 595.63 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22795,7 +21918,7 @@
 		(uuid "0dfcc77a-f6a7-526f-81c4-d85498a4cec3")
 	)
 	(label "X1_XOUT"
-		(at 610.87 262.89 0)
+		(at 610.87 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22805,7 +21928,7 @@
 		(uuid "a6f845d2-fd37-55ba-a897-e9b75a93de96")
 	)
 	(label "QSPI_SS"
-		(at 632.46 262.89 0)
+		(at 632.46 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22815,7 +21938,7 @@
 		(uuid "406f1e20-88a5-55ab-9d74-8267b0bbf962")
 	)
 	(label "BOOTSEL"
-		(at 647.7 262.89 0)
+		(at 647.7 255.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22875,7 +21998,7 @@
 		(uuid "ced420f9-3e37-5eeb-b7ae-302ca8b0fc71")
 	)
 	(label "RUN"
-		(at 666.75 266.7 0)
+		(at 666.75 259.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22895,7 +22018,7 @@
 		(uuid "c6656648-9eb6-568a-b676-bdec36ffa45a")
 	)
 	(label "X1_XIN"
-		(at 702.31 266.7 0)
+		(at 702.31 259.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22905,7 +22028,7 @@
 		(uuid "9d6b3663-4732-5041-ac38-ecf0ac3d4fe1")
 	)
 	(label "X1_XOUT"
-		(at 740.41 266.7 0)
+		(at 740.41 259.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -22933,26 +22056,6 @@
 			(justify right bottom)
 		)
 		(uuid "35f0da07-4a3c-5bd7-864f-27db4758d258")
-	)
-	(label "BOOTSEL"
-		(at 808.99 270.51 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "600493d3-6602-5966-bc72-af8063fb6439")
-	)
-	(label "CH345_RST"
-		(at 215.9 314.96 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8b32dc7f-14bf-5a88-9c41-96277cda8be8")
 	)
 	(no_connect
 		(at 80.01 57.15)
@@ -23083,15 +22186,15 @@
 		(uuid "f39c9da6-ac8e-5127-974e-d7567ae30b41")
 	)
 	(no_connect
-		(at 485.14 214.63)
+		(at 485.14 207.01)
 		(uuid "c8d04d25-f3b5-5958-856d-35d70cfe3708")
 	)
 	(no_connect
-		(at 454.66 162.56)
+		(at 454.66 154.94)
 		(uuid "afffdeb6-83d4-5bd6-9b40-ec0a72b37596")
 	)
 	(no_connect
-		(at 454.66 165.1)
+		(at 454.66 157.48)
 		(uuid "6529a82b-d43e-5072-bcf8-d0af8a646154")
 	)
 	(no_connect

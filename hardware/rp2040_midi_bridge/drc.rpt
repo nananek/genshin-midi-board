@@ -1,22 +1,10 @@
 ** Drc report for rp2040_midi_bridge.kicad_pcb **
-** Created on 2026-11-24T16:42:44 **
+** Created on 2026-11-25T08:21:04 **
 ** Report includes: Errors, Warnings, Exclusions **
 
 ** Found 0 DRC violations **
 
-** Found 3 unconnected pads **
-[unconnected_items]: Missing connection between items
-    Local override; error
-    @(3.7000 mm, 9.0000 mm): PTH pad 2 [SW1_MUTE] of SW1
-    @(24.3000 mm, 20.4375 mm): Pad 40 [SW1_MUTE] of U1 on F.Cu
-[unconnected_items]: Missing connection between items
-    Local override; error
-    @(19.9500 mm, 18.9500 mm): Track [RUN] on F.Cu, length 0.2121 mm
-    @(27.6750 mm, 19.5000 mm): Pad 1 [RUN] of R19 on F.Cu
-[unconnected_items]: Missing connection between items
-    Local override; error
-    @(22.7000 mm, 13.5625 mm): Pad 7 [MIDI_UART_RX] of U1 on F.Cu
-    @(42.3000 mm, 10.8750 mm): Pad 3 [MIDI_UART_RX] of U3 on F.Cu
+** Found 0 unconnected pads **
 
 ** Found 0 Footprint errors **
 
