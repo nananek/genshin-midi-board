@@ -597,7 +597,7 @@ rules:
 - id: type-c-spacing
   text: USB-C 2 ポートの中心間距離は 25 mm 以上、コートヤード間の隙間は 15 mm 以上。
 - id: qspi
-  text: QSPI は RP2040 から U2 まで 25 mm 以内、等長 2 mm 以内、スタブなし。
+  text: QSPI は RP2040 から U2 まで 25 mm 以内、等長 10 mm 以内、スタブなし。208-mil 化と 4 層の配線制約に合わせた目標。
 - id: crystal
   text: 水晶は XIN/XOUT の近くに置き、GND ガードと短い配線にする。
 - id: thermal
