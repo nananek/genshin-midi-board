@@ -99,20 +99,20 @@ RP2040 の QFN-56 は 0.4 mm ピッチです。パッド間に配線を通さず
 | Ref | 部品 | パッケージ | LCSC |
 | --- | --- | --- | --- |
 | U1 | RP2040 | QFN-56 | C2040 |
-| U2 | W25Q128JVSIQ | SOIC-8 | C97521 |
+| U2 | W25Q128JVSIQ | SOIC-8 208-mil | C97521 |
 | U3 | CH345T | SSOP-20 | C5246448 |
 | U4 | AP2112K-3.3TRG1 | SOT-23-5 | C51118 |
 | U5 | TPS2553DBVR | SOT-23-6 | C55266 |
 | U6-U8 | USBLC6-2SC6 | SOT-23-6 | C7519 |
 | J1/J3 | TYPE-C-31-M-12 | USB-C 16P | C165948 |
 | SW6/SW7 | KMR2 SMD tact | 4.2 × 2.2 mm | C2689528 |
+| C27 | 100 uF 1210 セラミック | 3225 metric | C96123 |
 
 ### 手はんだ（THT）
 
 - J2: USB-A 5075AR-04-WH（Akizuki 100160）
 - SW1-SW4: NKK 115643（Akizuki 115643）
 - SW5: DTS-63-N-V-BLK（Akizuki 103647）
-- C27: 100 uF 1210 セラミックコンデンサ
 
 USB-C の J1/J3 は SMT パッドと THT のシェル固定タブを持ちます。JLCPCB の SMT 実装リストに C165948 が含まれているため、SMT で発注できます。シェルタブの半田が不安なら、手はんだを追加します。
 
@@ -128,7 +128,7 @@ JLCPCB の部品ライブラリと KiCad のフットプリントでは、回転
 
 USB-C は J1 と J3 で回転が同じです。CPL の X/Y と回転を、KiCad の配置と突き合わせます。Type-C の CPL はコネクタ軸方向に補正が必要になる場合があります。今回の `TYPE-C-31-M-12` は、JLCPCB の部品原点に合わせて 1.571 mm 補正します。
 
-今回の CPL は、実装プレビューで確認した結果に合わせて U2 / U3 / U4 / U6 / U7 / U8 を 270° 補正しています。U1 / U5 は KiCad の値のままです。`make fab` の `CPL_ROTATION_OFFSETS` に理由付きでまとめています。
+今回の CPL は、実装プレビューで確認した結果に合わせて U2 / U3 / U4 / U6 / U7 を 270°、U5 を 180° 補正しています。U8 は基板上で 90° 回転しているため CPL の回転は 0°、U1 は KiCad の値のままです。`make fab` の `CPL_ROTATION_OFFSETS` に理由付きでまとめています。データシートとフットプリントの照合は [datasheets.md](datasheets.md) にあります。
 
 CPL の座標は、基板左下のドリル/配置原点 (0, 44) を基準にします。Gerber とドリルも同じ原点で出力します。原点がずれると、JLCPCB のプレビューで基板全体がオフセットします。`make fab` は原点を検査し、ずれていれば失敗します。
 

@@ -69,12 +69,14 @@ USB_C_FOOTPRINT = "USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 USB_C_POSITION_OFFSET_MM = 1.571
 
 # JLCPCB library orientations that differ from the KiCad footprints.  These
-# were read from the JLCPCB assembly preview and checked against the reviewed
-# CPL of the completed waveshare board; U5 and U1 already line up.
+# were read from the JLCPCB assembly preview for this board; U1 already lines
+# up.  The TPS2553 library orientation is 180 degrees from the KiCad SOT-23-6
+# footprint (pin 1 = IN).
 CPL_ROTATION_OFFSETS = {
     "U2": 270,  # W25Q128, SOIC-8
     "U3": 270,  # CH345T, SSOP-20
     "U4": 270,  # AP2112K, SOT-23-5
+    "U5": 180,  # TPS2553, SOT-23-6 (pin 1 = IN)
     "U6": 270,  # USBLC6, SOT-23-6
     "U7": 270,  # USBLC6, SOT-23-6
     "U8": 270,  # USBLC6, SOT-23-6
@@ -271,8 +273,8 @@ Known issues
 - J1/J3 のシェル固定タブは THT です。SMT 実装のあとに手はんだしてください。
 - J1/J3 の CPL 位置は JLCPCB の USB-C 部品原点に合わせて 1.571 mm 補正しています。
 - CPL の回転は JLCPCB の部品ライブラリに合わせ、U2 / U3 / U4 / U6 / U7 を
-  270° 補正しています。U8 は基板上で 90° 回転しているため CPL の回転は 0°、
-  U1 / U5 は KiCad の値のままです。実装プレビューで最終確認してください。
+  270°、U5 を 180° 補正しています。U8 は基板上で 90° 回転しているため CPL の
+  回転は 0°、U1 は KiCad の値のままです。実装プレビューで最終確認してください。
 - 裏面に基板名とリポジトリ URL の QR コードを配置しています。
 - U4 (AP2112K-3.3TRG1) と C27 (100uF) の LCSC 型番は発注前に再確認してください。
 - 0.15 mm ドリルと via-in-pad は使いません。発注画面の DFM プレビューで確認してください。

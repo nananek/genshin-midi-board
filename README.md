@@ -23,7 +23,7 @@ USB MIDI キーボードを USB-A で受け、PC へは NKRO HID キーボード
 
 RP2040 の QFN-56 は 0.4 mm ピッチで、外周パッドを外側へ逃がすだけで全ピンを引き出せます。4 層なら GND プレーンを保ちながら標準ビアだけで配線できます。ファームウェアは pico-sdk で、PIO-USB、native USB、UART1 を使います。
 
-詳しい設計は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。
+詳しい設計は [docs/design.md](docs/design.md) と [docs/decisions.md](docs/decisions.md) を参照してください。データシートとフットプリントの照合は [docs/datasheets.md](docs/datasheets.md) にまとめています。
 
 ## 3 ポートの構成
 
@@ -88,6 +88,8 @@ README.md                         この文書
 AGENTS.md                         作業ルール（製造データの配布を含む）
 docs/design.md                    詳細設計（電源、ピン、回路、配置）
 docs/decisions.md                 設計判断と採用理由
+docs/datasheets.md                IC のデータシート、LCSC 型番、CPL 回転の確認
+docs/ic_footprints.md             IC フットプリント照合（生成物）
 docs/jlcpcb.md                    JLCPCB 向け製造制約と発注チェック
 docs/firmware.md                  ファームウェアの実装メモ
 docs/case_muji_m.md               無印 PP小物ケース M の加工手順
@@ -99,6 +101,7 @@ hardware/rp2040_midi_bridge/bom.csv     BOM
 hardware/rp2040_midi_bridge/floorplan.svg 配置検討図（生成物）
 firmware/include/board_pins.h     ファームウェア用ボード定義
 scripts/gen_floorplan.py          配置図生成
+scripts/export_ic_footprints.py   IC フットプリント照合の生成
 scripts/check_design.py           設計制約チェック
 tests/test_design.py              設計制約の単体テスト
 ```

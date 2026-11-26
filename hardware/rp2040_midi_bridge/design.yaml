@@ -23,7 +23,7 @@ stackup:
   role: solid GND plane
   copper_oz: 0.5
 - layer: In2.Cu
-  role: +3V3 plane, split only outside the USB/crystal area
+  role: +3V3 plane, with a short QSPI_SD3 channel under U2 and splits outside the USB/crystal area
   copper_oz: 0.5
 - layer: B.Cu
   role: signal, GND pour, THT solder side
@@ -137,11 +137,11 @@ placements:
   h_mm: 8.4
 - ref: U2
   value: W25Q128JVSIQ
-  package: SOIC-8
+  package: SOIC-8 208-mil
   x_mm: 33.0
-  y_mm: 14.0
-  w_mm: 7.5
-  h_mm: 5.5
+  y_mm: 15.6
+  w_mm: 9.3
+  h_mm: 5.8
   rotation_deg: 0
 - ref: U3
   value: CH345T
@@ -186,6 +186,7 @@ placements:
   y_mm: 10.5
   w_mm: 4.2
   h_mm: 3.5
+  rotation_deg: 90
 - ref: X1
   value: 12MHz
   package: 3225-4pin
@@ -448,7 +449,7 @@ bom:
   assembly: SMT
 - ref: U2
   value: W25Q128JVSIQ
-  footprint: SOIC-8 3.9x4.9 mm
+  footprint: SOIC-8 5.3x5.3 mm
   lcsc: C97521
   assembly: SMT
 - ref: U3
@@ -596,7 +597,7 @@ rules:
 - id: type-c-spacing
   text: USB-C 2 ポートの中心間距離は 25 mm 以上、コートヤード間の隙間は 15 mm 以上。
 - id: qspi
-  text: QSPI は RP2040 から U2 まで 25 mm 以内、等長 2 mm 以内、スタブなし。
+  text: QSPI は RP2040 から U2 まで 25 mm 以内、等長 10 mm 以内、スタブなし。208-mil 化と 4 層の配線制約に合わせた目標。
 - id: crystal
   text: 水晶は XIN/XOUT の近くに置き、GND ガードと短い配線にする。
 - id: thermal

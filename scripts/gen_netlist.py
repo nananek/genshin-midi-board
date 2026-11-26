@@ -40,7 +40,7 @@ add("U1", "RP2040", "QFN-56_7x7mm_P0.4mm", {
     "54": "QSPI_SD2", "55": "QSPI_SD1", "56": "QSPI_SS", "57": "GND",
 })
 
-add("U2", "W25Q128JVSIQ", "SOIC-8_3.9x4.9mm_P1.27mm", {
+add("U2", "W25Q128JVSIQ", "SOIC-8_5.3x5.3mm_P1.27mm", {
     "1": "QSPI_SS", "2": "QSPI_SD1", "3": "QSPI_SD2", "4": "GND",
     "5": "QSPI_SD0", "6": "QSPI_SCLK", "7": "QSPI_SD3", "8": "+3V3",
 })

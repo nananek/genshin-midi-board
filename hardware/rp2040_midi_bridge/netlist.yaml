@@ -63,7 +63,7 @@ components:
       '57': GND
   U2:
     value: W25Q128JVSIQ
-    footprint: SOIC-8_3.9x4.9mm_P1.27mm
+    footprint: SOIC-8_5.3x5.3mm_P1.27mm
     pins:
       '1': QSPI_SS
       '2': QSPI_SD1
